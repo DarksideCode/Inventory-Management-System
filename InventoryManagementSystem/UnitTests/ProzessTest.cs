@@ -80,5 +80,76 @@ namespace UnitTests
 
             Assert.AreEqual(hauptplatine.getSockel(), dbHauptplatine.getSockel());
         }
+
+        [TestMethod]
+        public void getProzessorFromDatabase()
+        {
+            ProzessorProcess process = new ProzessorProcess();
+            Prozessor prozessor = new Prozessor();
+
+            prozessor.setBeschreibung("Dies ist ein Test");
+            prozessor.setModell("i5");
+            prozessor.setKerne(4);
+            prozessor.setBefehlssatz("RISC");
+            prozessor.setArchitektur(64);
+            prozessor.setTaktrate(3.40);
+
+            process.save(prozessor);
+            Prozessor dbProzessor = process.getById(1);
+
+            Assert.AreEqual(prozessor.getBefehlssatz(), dbProzessor.getBefehlssatz());
+        }
+
+        [TestMethod]
+        public void getFestplatteFromDatabase()  
+        {
+            FestplatteProcess process = new FestplatteProcess();
+            Festplatte festplatte = new Festplatte();
+
+            festplatte.setBeschreibung("Dies ist ein Test");
+            festplatte.setKapazitaet(1000);
+            festplatte.setSSD(true);
+            festplatte.setZoll(3.5);
+
+            process.save(festplatte);
+            Festplatte dbFestplatte = process.getById(1);
+
+            Assert.AreEqual(festplatte.getKapazitaet(), dbFestplatte.getKapazitaet());
+        }
+
+        [TestMethod]
+        public void getMonitorFromDatabase()
+        {
+            MonitorProcess process = new MonitorProcess();
+            Monitor monitor = new Monitor();
+
+            monitor.setBeschreibung("Dies ist ein Test");
+            //TODO: Schlauere Idee für Auflöung
+            monitor.setAufloesung("1920 x 1080");
+            monitor.setZoll(24);
+            monitor.setSeitenverhaeltnis("4:3");
+
+            process.save(monitor);
+            Monitor dbMonitor = process.getById(1);
+
+            Assert.AreEqual(monitor.getZoll(), dbMonitor.getZoll());
+        }
+
+        [TestMethod]
+        public void getSchnittstelleFromDatabase()
+        {
+            SchnittstelleProcess process = new SchnittstelleProcess;
+            Schnittstelle schnittstelle = new Schnittstelle();
+
+            schnittstelle.setName("DVI");
+            schnittstelle.setBeschreibung("Digital Visual Interface - Eine elektronische Schnittstelle zur Übertragung von Videodaten.");
+            schnittstelle.setSeriell(true);
+            schnittstelle.setUebertragungsrate(10000); // TB/s natürlich
+
+            process.save(schnittstelle);
+            Schnittstelle dbSchnittstelle = process.getById(1);
+
+            Assert.AreEqual(schnittstelle.getBeschreibung(), dbSchnittstelle.getBeschreibung());
+        }
     }
 }
