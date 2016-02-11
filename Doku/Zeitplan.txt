@@ -1,0 +1,11 @@
+Datenbank-Modellierung: 3 Stunden
+Datenbank-Entwicklung: 2 Stunden
+
+Test schreiben: 2 Stunden
+Entitäten: 2 Stunden
+Prozess-Klassen: 3 Stunden
+Oberfläche & Controlling: 5 Stunden
+Validierungs-Klassen: 2 Stunden
+
+Dokumentation: 4 Stunden
+Präsentation: 1 Stunden
