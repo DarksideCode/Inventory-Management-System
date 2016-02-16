@@ -12,109 +12,109 @@ namespace UnitTests
     public class ProzessTest
     {
         [TestMethod]
-        public void getHerstellerFromDatabase()
+        public void getProducerFromDatabase()
         {
-            HerstellerProcess process = new HerstellerProcess();
-            Hersteller hersteller = new Hersteller();
+            ProducerProcess process = new ProducerProcess();
+            Producer producer = new Producer();
 
-            hersteller.setFirma("Siemens");
-            hersteller.setTelefon(123456);
-            hersteller.setEmail("info@siemens.com");
-            hersteller.setWebsite("www.siemens.de");
-            hersteller.setPLZ(21335);
-            hersteller.setOrt("Lüneburg");
-            hersteller.setStrasse("Lüneburger Straße");
-            hersteller.setHausnummer(1);
+            producer.setCompanyName("Siemens");
+            producer.setPhoneNumber(123456);
+            producer.setEmail("info@siemens.com");
+            producer.setWebsite("www.siemens.de");
+            producer.setPostalCode(21335);
+            producer.setPlace("Lüneburg");
+            producer.setStreet("Lüneburger Straße");
+            producer.setHouseNumber(1);
 
-            process.save(hersteller);
-            Hersteller dbHersteller = process.getById(1);
- 
-            Assert.AreEqual(hersteller.getWebsite(), dbHersteller.getWebsite());
+            process.save(producer);
+            Producer dbProducer = process.getById(1);
+
+            Assert.AreEqual(producer.getWebsite(), dbProducer.getWebsite());
         }
 
         [TestMethod]
-        public void getGrafikkarteFromDatabase()
+        public void getGraphicCardFromDatabase()
         {
-            GrafikkarteProcess process = new GrafikkarteProcess();
-            Grafikkarte grafikkarte = new Grafikkarte();
+            GraphicCardProcess process = new GraphicCardProcess();
+            GraphicCard graphicCard = new GraphicCard();
 
-            grafikkarte.setBeschreibung("Dies ist ein Test");
-            grafikkarte.setTaktrate(5);
-            grafikkarte.setModell("GTX1234");
-            grafikkarte.setSpeicher(2000);
+            graphicCard.setDescription("Dies ist ein Test");
+            graphicCard.setClockRate(5);
+            graphicCard.setModel("GTX1234");
+            graphicCard.setMemory(2000);
 
-            process.save(grafikkarte);
-            Grafikkarte dbGrafikkarte = process.getById(1);
+            process.save(graphicCard);
+            GraphicCard dbGraphicCard = process.getById(1);
 
-            Assert.AreEqual(grafikkarte.getBeschreibung(), dbGrafikkarte.getBeschreibung());
+            Assert.AreEqual(graphicCard.getDescription(), dbGraphicCard.getDescription());
         }
 
         [TestMethod]
-        public void getArbeitsspeicherFromDatabase()
+        public void getRandomAccessMemoryFromDatabase()
         {
-            ArbeitsspeicherProcess process = new ArbeitsspeicherProcess();
-            Arbeitsspeicher arbeitsspeicher = new Arbeitsspeicher();
+            RandomAccessMemoryProcess process = new RandomAccessMemoryProcess();
+            RandomAccessMemory ram = new RandomAccessMemory();
 
-            arbeitsspeicher.setBeschreibung("Dies ist ein Test");
-            arbeitsspeicher.setSpeicher(8000);
-            arbeitsspeicher.setTaktrate(12000);
+            ram.setDescription("Dies ist ein Test");
+            ram.setMemory(8000);
+            ram.setClockRate(12000);
 
-            process.save(arbeitsspeicher);
-            Arbeitsspeicher dbArbeitsspeicher = process.getById(1);
+            process.save(ram);
+            RandomAccessMemory dbRAM = process.getById(1);
 
-            Assert.AreEqual(arbeitsspeicher.getSpeicher(), dbArbeitsspeicher.getSpeicher());
+            Assert.AreEqual(ram.getMomory(), dbRAM.getMomory());
         }
 
         [TestMethod]
-        public void getHauptplatineFromDatabase()
+        public void getMotherboardFromDatabase()
         {
-            HauptplatineProcess process = new HauptplatineProcess();
-            Hauptplatine hauptplatine = new Hauptplatine();
+            MotherboardProcess process = new MotherboardProcess();
+            Motherboard motherboard = new Motherboard();
 
-            hauptplatine.setBeschreibung("Dies ist ein Test");
-            hauptplatine.setZoll(24.2);
-            hauptplatine.setSockel("PGA 988B");
+            motherboard.setDescription("Dies ist ein Test");
+            motherboard.setInch(24.2);
+            motherboard.setSocket("PGA 988B");
 
-            process.save(hauptplatine);
-            Hauptplatine dbHauptplatine = process.getById(1);
+            process.save(motherboard);
+            Motherboard dbMotherboard = process.getById(1);
 
-            Assert.AreEqual(hauptplatine.getSockel(), dbHauptplatine.getSockel());
+            Assert.AreEqual(motherboard.getSocket(), dbMotherboard.getSocket());
         }
 
         [TestMethod]
-        public void getProzessorFromDatabase()
+        public void getProcessorFromDatabase()
         {
-            ProzessorProcess process = new ProzessorProcess();
-            Prozessor prozessor = new Prozessor();
+            ProcessorProcess process = new ProcessorProcess();
+            Processor processor = new Processor();
 
-            prozessor.setBeschreibung("Dies ist ein Test");
-            prozessor.setModell("i5");
-            prozessor.setKerne(4);
-            prozessor.setBefehlssatz("RISC");
-            prozessor.setArchitektur(64);
-            prozessor.setTaktrate(3.40);
+            processor.setDescription("Dies ist ein Test");
+            processor.setModel("i5");
+            processor.setCore(4);
+            processor.setCommandSet("RISC");
+            processor.setArchitecture(64);
+            processor.setClockRate(3.40);
 
-            process.save(prozessor);
-            Prozessor dbProzessor = process.getById(1);
+            process.save(processor);
+            Processor dbProcessor = process.getById(1);
 
-            Assert.AreEqual(prozessor.getBefehlssatz(), dbProzessor.getBefehlssatz());
+            Assert.AreEqual(processor.getCommandSet(), dbProcessor.getCommandSet());
         }
 
         [TestMethod]
-        public void getFestplatteFromDatabase()  
+        public void getHardDiskDriveFromDatabase()  
         {
-            FestplatteProcess process = new FestplatteProcess();
-            Festplatte festplatte = new Festplatte();
+            HardDiskDriveProcess process = new HardDiskDriveProcess();
+            HardDiskDrive hdd = new HardDiskDrive();
 
-            festplatte.setBeschreibung("Dies ist ein Test");
-            festplatte.setKapazitaet(1000);
-            festplatte.setSSD(true);
-            festplatte.setZoll(3.5);
+            hdd.setDescription("Dies ist ein Test");
+            hdd.setCapacity(1000);
+            hdd.setSSD(true);
+            hdd.setInch(3.5);
 
-            process.save(festplatte);
-            Festplatte dbFestplatte = process.getById(1);
+            process.save(hdd);
+            HardDiskDrive dbHDD = process.getById(1);
 
-            Assert.AreEqual(festplatte.getKapazitaet(), dbFestplatte.getKapazitaet());
+            Assert.AreEqual(hdd.getCapacity(), dbHDD.getCapacity());
         }
 
         [TestMethod]
@@ -123,33 +123,33 @@ namespace UnitTests
             MonitorProcess process = new MonitorProcess();
             Monitor monitor = new Monitor();
 
-            monitor.setBeschreibung("Dies ist ein Test");
+            monitor.setDescription("Dies ist ein Test");
             //TODO: Schlauere Idee für Auflöung
-            monitor.setAufloesung("1920 x 1080");
-            monitor.setZoll(24);
-            monitor.setSeitenverhaeltnis("4:3");
+            monitor.setResolution("1920 x 1080");
+            monitor.setInch(24);
+            monitor.setAspectRatio("4:3");
 
             process.save(monitor);
             Monitor dbMonitor = process.getById(1);
 
-            Assert.AreEqual(monitor.getZoll(), dbMonitor.getZoll());
+            Assert.AreEqual(monitor.getInch(), dbMonitor.getInch());
         }
 
         [TestMethod]
-        public void getSchnittstelleFromDatabase()
+        public void getInterfaceFromDatabase()
         {
-            SchnittstelleProcess process = new SchnittstelleProcess;
-            Schnittstelle schnittstelle = new Schnittstelle();
+            InterfaceProcess process = new InterfaceProcess();
+            Inteface inteface = new Inteface();
 
-            schnittstelle.setName("DVI");
-            schnittstelle.setBeschreibung("Digital Visual Interface - Eine elektronische Schnittstelle zur Übertragung von Videodaten.");
-            schnittstelle.setSeriell(true);
-            schnittstelle.setUebertragungsrate(10000); // TB/s natürlich
+            inteface.setName("DVI");
+            inteface.setDescription("Digital Visual Interface - Eine elektronische Schnittstelle zur Übertragung von Videodaten.");
+            inteface.setSerial(true);
+            inteface.setTransferRate(10000); // TB/s natürlich
 
-            process.save(schnittstelle);
-            Schnittstelle dbSchnittstelle = process.getById(1);
+            process.save(inteface);
+            Inteface dbInterface = process.getById(1);
 
-            Assert.AreEqual(schnittstelle.getBeschreibung(), dbSchnittstelle.getBeschreibung());
+            Assert.AreEqual(inteface.getDescription(), dbInterface.getDescription());
         }
     }
 }
