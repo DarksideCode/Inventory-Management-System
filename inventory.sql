@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Erstellungszeit: 10. Feb 2016 um 12:57
+-- Erstellungszeit: 17. Feb 2016 um 08:53
 -- Server-Version: 10.1.9-MariaDB
 -- PHP-Version: 5.6.15
 
@@ -34,12 +34,6 @@ CREATE TABLE `ims_arbeitsspeicher` (
   `ID_Hersteller` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
---
--- RELATIONEN DER TABELLE `ims_arbeitsspeicher`:
---   `ID`
---       `ims_hersteller` -> `ID`
---
-
 -- --------------------------------------------------------
 
 --
@@ -55,11 +49,17 @@ CREATE TABLE `ims_festplatte` (
   `ID_Hersteller` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
+-- --------------------------------------------------------
+
 --
--- RELATIONEN DER TABELLE `ims_festplatte`:
---   `ID`
---       `ims_hersteller` -> `ID`
+-- Tabellenstruktur für Tabelle `ims_festplatte_schnittstelle`
 --
+
+CREATE TABLE `ims_festplatte_schnittstelle` (
+  `ID_Festplatte` int(11) NOT NULL,
+  `ID_Schnittstelle` int(11) NOT NULL,
+  `Anzahl` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 -- --------------------------------------------------------
 
@@ -76,12 +76,6 @@ CREATE TABLE `ims_grafikkarte` (
   `ID_Hersteller` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
---
--- RELATIONEN DER TABELLE `ims_grafikkarte`:
---   `ID_Hersteller`
---       `ims_hersteller` -> `ID`
---
-
 -- --------------------------------------------------------
 
 --
@@ -93,14 +87,6 @@ CREATE TABLE `ims_grafikkarte_schnittstelle` (
   `ID_Schnittstelle` int(11) NOT NULL,
   `Anzahl` int(11) NOT NULL DEFAULT '1'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
-
---
--- RELATIONEN DER TABELLE `ims_grafikkarte_schnittstelle`:
---   `ID_Grafikkarte`
---       `ims_grafikkarte` -> `ID`
---   `ID_Schnittstelle`
---       `ims_schnittstelle` -> `ID`
---
 
 -- --------------------------------------------------------
 
@@ -116,12 +102,6 @@ CREATE TABLE `ims_hauptplantine` (
   `ID_Hersteller` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
---
--- RELATIONEN DER TABELLE `ims_hauptplantine`:
---   `ID_Hersteller`
---       `ims_hersteller` -> `ID`
---
-
 -- --------------------------------------------------------
 
 --
@@ -133,14 +113,6 @@ CREATE TABLE `ims_hauptplatine_schnittstelle` (
   `ID_Schnittstelle` int(11) NOT NULL,
   `Anzahl` int(11) NOT NULL DEFAULT '1'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
-
---
--- RELATIONEN DER TABELLE `ims_hauptplatine_schnittstelle`:
---   `ID_Hauptplatine`
---       `ims_hauptplantine` -> `ID`
---   `ID_Schnittstelle`
---       `ims_schnittstelle` -> `ID`
---
 
 -- --------------------------------------------------------
 
@@ -160,10 +132,6 @@ CREATE TABLE `ims_hersteller` (
   `Hausnummer` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
---
--- RELATIONEN DER TABELLE `ims_hersteller`:
---
-
 -- --------------------------------------------------------
 
 --
@@ -172,20 +140,12 @@ CREATE TABLE `ims_hersteller` (
 
 CREATE TABLE `ims_monitor` (
   `ID` int(11) NOT NULL,
+  `Beschreibung` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `Auflösung` varchar(12) COLLATE utf8_unicode_ci NOT NULL,
   `Zoll` int(11) NOT NULL,
   `Seitenverhältnis` varchar(6) COLLATE utf8_unicode_ci NOT NULL,
-  `Mitarbeiter_ID` int(11) DEFAULT NULL,
-  `Hersteller_ID` int(11) NOT NULL
+  `ID_Hersteller` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
-
---
--- RELATIONEN DER TABELLE `ims_monitor`:
---   `Mitarbeiter_ID`
---       `mitarbeiter` -> `ID`
---   `Hersteller_ID`
---       `ims_hersteller` -> `ID`
---
 
 -- --------------------------------------------------------
 
@@ -198,14 +158,6 @@ CREATE TABLE `ims_monitor_schnittstelle` (
   `ID_Schnittstelle` int(11) NOT NULL,
   `Anzahl` int(11) DEFAULT '1'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
-
---
--- RELATIONEN DER TABELLE `ims_monitor_schnittstelle`:
---   `ID_Monitor`
---       `ims_monitor` -> `ID`
---   `ID_Schnittstelle`
---       `ims_schnittstelle` -> `ID`
---
 
 -- --------------------------------------------------------
 
@@ -224,12 +176,6 @@ CREATE TABLE `ims_prozessor` (
   `ID_Hersteller` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
---
--- RELATIONEN DER TABELLE `ims_prozessor`:
---   `ID`
---       `ims_hersteller` -> `ID`
---
-
 -- --------------------------------------------------------
 
 --
@@ -243,10 +189,6 @@ CREATE TABLE `ims_schnittstelle` (
   `Seriell` int(11) DEFAULT NULL,
   `Übertragungsrate` float NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
-
---
--- RELATIONEN DER TABELLE `ims_schnittstelle`:
---
 
 --
 -- Indizes der exportierten Tabellen
@@ -265,6 +207,13 @@ ALTER TABLE `ims_arbeitsspeicher`
 ALTER TABLE `ims_festplatte`
   ADD PRIMARY KEY (`ID`),
   ADD KEY `hersteller_Festplatte` (`ID_Hersteller`);
+
+--
+-- Indizes für die Tabelle `ims_festplatte_schnittstelle`
+--
+ALTER TABLE `ims_festplatte_schnittstelle`
+  ADD PRIMARY KEY (`ID_Festplatte`,`ID_Schnittstelle`),
+  ADD KEY `ID_Schnittstelle` (`ID_Schnittstelle`);
 
 --
 -- Indizes für die Tabelle `ims_grafikkarte`
@@ -307,8 +256,7 @@ ALTER TABLE `ims_hersteller`
 --
 ALTER TABLE `ims_monitor`
   ADD PRIMARY KEY (`ID`),
-  ADD KEY `Mitarbeiter_ID` (`Mitarbeiter_ID`,`Hersteller_ID`),
-  ADD KEY `Hersteller_ID` (`Hersteller_ID`);
+  ADD KEY `Hersteller_ID` (`ID_Hersteller`);
 
 --
 -- Indizes für die Tabelle `ims_monitor_schnittstelle`
@@ -392,6 +340,13 @@ ALTER TABLE `ims_festplatte`
   ADD CONSTRAINT `ims_festplatte_ibfk_1` FOREIGN KEY (`ID`) REFERENCES `ims_hersteller` (`ID`) ON UPDATE CASCADE;
 
 --
+-- Constraints der Tabelle `ims_festplatte_schnittstelle`
+--
+ALTER TABLE `ims_festplatte_schnittstelle`
+  ADD CONSTRAINT `ims_festplatte_schnittstelle_ibfk_1` FOREIGN KEY (`ID_Festplatte`) REFERENCES `ims_festplatte` (`ID`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `ims_festplatte_schnittstelle_ibfk_2` FOREIGN KEY (`ID_Schnittstelle`) REFERENCES `ims_schnittstelle` (`ID`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
 -- Constraints der Tabelle `ims_grafikkarte`
 --
 ALTER TABLE `ims_grafikkarte`
@@ -421,8 +376,7 @@ ALTER TABLE `ims_hauptplatine_schnittstelle`
 -- Constraints der Tabelle `ims_monitor`
 --
 ALTER TABLE `ims_monitor`
-  ADD CONSTRAINT `ims_monitor_ibfk_1` FOREIGN KEY (`Mitarbeiter_ID`) REFERENCES `mitarbeiter` (`ID`) ON DELETE SET NULL ON UPDATE CASCADE,
-  ADD CONSTRAINT `ims_monitor_ibfk_2` FOREIGN KEY (`Hersteller_ID`) REFERENCES `ims_hersteller` (`ID`) ON UPDATE CASCADE;
+  ADD CONSTRAINT `ims_monitor_ibfk_2` FOREIGN KEY (`ID_Hersteller`) REFERENCES `ims_hersteller` (`ID`) ON UPDATE CASCADE;
 
 --
 -- Constraints der Tabelle `ims_monitor_schnittstelle`
