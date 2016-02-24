@@ -25,9 +25,9 @@ namespace InventoryManagementSystem.utilitys
         private string DBPassword;
 
         /**
-        * string contains DB Präfix
+        * string contains DB Praefix
         **/
-        private string DBPräfix = "ims_";
+        private string DBPraefix = "ims_";
 
 
 
@@ -42,7 +42,7 @@ namespace InventoryManagementSystem.utilitys
             DBName = getDBName();
             DBUser = getDBUser();
             DBPassword = getDBPassword();
-            DBPräfix = getDBPräfix();
+            DBPraefix = getDBPraefix();
         }
 
         static void ReadAllSettings()
@@ -61,12 +61,34 @@ namespace InventoryManagementSystem.utilitys
         }
 
         /**
+        * Saves the DB Name in Config
+        * @sDBName = string
+        **/
+        public void saveDBName(string sDBName)
+        {
+            Properties.Settings.Default.DB_NAME = sDBName;
+
+            Properties.Settings.Default.Save();
+        }
+
+        /**
         * Returns the DB User from Config
         * return string
         **/
         public string getDBUser()
         {
             return Properties.Settings.Default.DB_USER;
+        }
+
+        /**
+        * Saves the DB User in Config
+        * @sDBUser = string
+        **/
+        public void saveDBUser(string sDBUser)
+        {
+            Properties.Settings.Default.DB_USER = sDBUser;
+
+            Properties.Settings.Default.Save();
         }
 
         /**
@@ -79,12 +101,34 @@ namespace InventoryManagementSystem.utilitys
         }
 
         /**
-        * Returns the DB Präfix from Config
+        * Saves the DB User in Config
+        * @sDBPassword = string
+        **/
+        public void saveDBPassword(string sDBPassword)
+        {
+            Properties.Settings.Default.DB_PASSWORD = sDBPassword;
+
+            Properties.Settings.Default.Save();
+        }
+
+        /**
+        * Returns the DB Praefix from Config
         * return string
         **/
-        public string getDBPräfix()
+        public string getDBPraefix()
         {
-            return Properties.Settings.Default.DB_PRÄFIX;
+            return Properties.Settings.Default.DB_PRAEFIX;
+        }
+
+        /**
+        * Saves the DB User in Config
+        * @sDBPraefix = string
+        **/
+        public void saveDBPraefix(string sDBPraefix)
+        {
+            Properties.Settings.Default.DB_PRAEFIX = sDBPraefix;
+
+            Properties.Settings.Default.Save();
         }
     }
 }

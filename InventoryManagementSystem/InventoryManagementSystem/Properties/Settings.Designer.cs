@@ -23,39 +23,51 @@ namespace InventoryManagementSystem.Properties {
             }
         }
         
-        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("inventory")]
         public string DB_NAME {
             get {
                 return ((string)(this["DB_NAME"]));
             }
+            set {
+                this["DB_NAME"] = value;
+            }
         }
         
-        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("root")]
         public string DB_USER {
             get {
                 return ((string)(this["DB_USER"]));
             }
+            set {
+                this["DB_USER"] = value;
+            }
         }
         
-        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("")]
         public string DB_PASSWORD {
             get {
                 return ((string)(this["DB_PASSWORD"]));
             }
+            set {
+                this["DB_PASSWORD"] = value;
+            }
         }
         
-        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("ims_")]
-        public string DB_PRÄFIX {
+        public string DB_PRAEFIX {
             get {
-                return ((string)(this["DB_PRÄFIX"]));
+                return ((string)(this["DB_PRAEFIX"]));
+            }
+            set {
+                this["DB_PRAEFIX"] = value;
             }
         }
     }
