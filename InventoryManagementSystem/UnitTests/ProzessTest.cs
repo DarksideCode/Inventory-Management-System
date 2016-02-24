@@ -112,7 +112,7 @@ namespace UnitTests
             hdd.setInch(3.5);
 
             process.save(hdd);
-            HardDiskDrive dbHDD = process.getById(1);
+            HardDiskDrive dbHDD = process.getById(1); 
 
             Assert.AreEqual(hdd.getCapacity(), dbHDD.getCapacity());
         }
