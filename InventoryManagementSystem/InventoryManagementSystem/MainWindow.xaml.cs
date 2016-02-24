@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using InventoryManagementSystem.utilitys;
 
 namespace InventoryManagementSystem
 {
@@ -23,6 +24,12 @@ namespace InventoryManagementSystem
         public MainWindow()
         {
             InitializeComponent();
+        }
+
+        private void textBox_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            ConfigProzesser config = new ConfigProzesser();
+            textBox.Text = config.getDBName();
         }
     }
 }

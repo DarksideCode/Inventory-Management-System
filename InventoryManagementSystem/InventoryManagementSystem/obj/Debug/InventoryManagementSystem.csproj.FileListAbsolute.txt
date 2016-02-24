@@ -23,4 +23,3 @@ C:\Users\dominik.traise\Documents\Schule\LF6 - Programmieren\SQL\Projekt - Inven
 C:\Users\dominik.traise\Documents\Schule\LF6 - Programmieren\SQL\Projekt - Inventory\Inventory-Management-System\InventoryManagementSystem\InventoryManagementSystem\obj\Debug\InventoryManagementSystem.csproj.GenerateResource.Cache
 C:\Users\dominik.traise\Documents\Schule\LF6 - Programmieren\SQL\Projekt - Inventory\Inventory-Management-System\InventoryManagementSystem\InventoryManagementSystem\obj\Debug\InventoryManagementSystem.exe
 C:\Users\dominik.traise\Documents\Schule\LF6 - Programmieren\SQL\Projekt - Inventory\Inventory-Management-System\InventoryManagementSystem\InventoryManagementSystem\obj\Debug\InventoryManagementSystem.pdb
-C:\Users\dominik.traise\Documents\Schule\LF6 - Programmieren\SQL\Projekt - Inventory\Inventory-Management-System\InventoryManagementSystem\InventoryManagementSystem\obj\Debug\InventoryManagementSystem.csprojResolveAssemblyReference.cache
