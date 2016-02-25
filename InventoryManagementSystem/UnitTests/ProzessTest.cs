@@ -18,19 +18,19 @@ namespace UnitTests
             ProducerProcess process = new ProducerProcess();
             Producer producer = new Producer();
 
-            producer.setCompanyName("Siemens");
-            producer.setPhoneNumber(123456);
-            producer.setEmail("info@siemens.com");
-            producer.setWebsite("www.siemens.de");
-            producer.setPostalCode(21335);
-            producer.setPlace("Lüneburg");
-            producer.setStreet("Lüneburger Straße");
-            producer.setHouseNumber(1);
+            producer.CompanyName = "Siemens";
+            producer.PhoneNumber = 123456;
+            producer.Email = "info@siemens.com";
+            producer.Website = "www.siemens.de";
+            producer.PostalCode = 21335;
+            producer.Place = "Lüneburg";
+            producer.Street = "Lüneburger Straße";
+            producer.HouseNumber = 1;
 
             process.save(producer);
             Producer dbProducer = process.getById(1);
 
-            Assert.AreEqual(producer.getWebsite(), dbProducer.getWebsite());
+            Assert.AreEqual(producer.Website, dbProducer.Website);
         }
 
         [TestMethod]
@@ -39,15 +39,15 @@ namespace UnitTests
             GraphicCardProcess process = new GraphicCardProcess();
             GraphicCard graphicCard = new GraphicCard();
 
-            graphicCard.setDescription("Dies ist ein Test");
-            graphicCard.setClockRate(5);
-            graphicCard.setModel("GTX1234");
-            graphicCard.setMemory(2000);
+            graphicCard.Description = "Dies ist ein Test";
+            graphicCard.ClockRate = 5;
+            graphicCard.Model = "GTX1234";
+            graphicCard.Memory = 2000;
 
             process.save(graphicCard);
             GraphicCard dbGraphicCard = process.getById(1);
 
-            Assert.AreEqual(graphicCard.getDescription(), dbGraphicCard.getDescription());
+            Assert.AreEqual(graphicCard.Description, dbGraphicCard.Description);
         }
 
         [TestMethod]
@@ -72,14 +72,14 @@ namespace UnitTests
             MotherboardProcess process = new MotherboardProcess();
             Motherboard motherboard = new Motherboard();
 
-            motherboard.setDescription("Dies ist ein Test");
-            motherboard.setInch(24.2);
-            motherboard.setSocket("PGA 988B");
+            motherboard.Description = "Dies ist ein Test";
+            motherboard.Inch = 24.2;
+            motherboard.Socket = "PGA 988B";
 
             process.save(motherboard);
             Motherboard dbMotherboard = process.getById(1);
 
-            Assert.AreEqual(motherboard.getSocket(), dbMotherboard.getSocket());
+            Assert.AreEqual(motherboard.Socket, dbMotherboard.Socket);
         }
 
         [TestMethod]
@@ -124,33 +124,32 @@ namespace UnitTests
             MonitorProcess process = new MonitorProcess();
             Monitor monitor = new Monitor();
 
-            monitor.setDescription("Dies ist ein Test");
-            //TODO: Schlauere Idee für Auflöung
-            monitor.setResolution("1920 x 1080");
-            monitor.setInch(24);
-            monitor.setAspectRatio("4:3");
+            monitor.Description = "Dies ist ein Test";
+            monitor.Resolution = 1000;
+            monitor.Inch = 24;
+            monitor.AspectRatio = 4;
 
             process.save(monitor);
             Monitor dbMonitor = process.getById(1);
 
-            Assert.AreEqual(monitor.getInch(), dbMonitor.getInch());
+            Assert.AreEqual(monitor.Inch, dbMonitor.Inch);
         }
 
         [TestMethod]
         public void getInterfaceFromDatabase()
         {
             InterfaceProcess process = new InterfaceProcess();
-            Inteface inteface = new Inteface();
+            PhysicalInterface physicalInterface = new PhysicalInterface();
 
-            inteface.setName("DVI");
-            inteface.setDescription("Digital Visual Interface - Eine elektronische Schnittstelle zur Übertragung von Videodaten.");
-            inteface.setSerial(true);
-            inteface.setTransferRate(10000); // TB/s natürlich
+            physicalInterface.Name = "DVI";
+            physicalInterface.Description = "Digital Visual Interface - Eine elektronische Schnittstelle zur Übertragungn von Videodaten.";
+            physicalInterface.Serial = true;
+            physicalInterface.TransferRate = 1000;
 
-            process.save(inteface);
-            Inteface dbInterface = process.getById(1);
+            process.save(physicalInterface);
+            PhysicalInterface dbPhysicalInterface = process.getById(1);
 
-            Assert.AreEqual(inteface.getDescription(), dbInterface.getDescription());
+            Assert.AreEqual(physicalInterface.Description, dbPhysicalInterface.Description);
         }
     }
 }
