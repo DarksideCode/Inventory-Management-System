@@ -12,7 +12,7 @@ namespace InventoryManagementSystem.components
 
         private string description;
 
-        private int inch;
+        private double inch;
 
         private string socket;
 
@@ -34,7 +34,7 @@ namespace InventoryManagementSystem.components
             set { this.description = value; }
         }
 
-        public int Inch
+        public double Inch
         {
             get { return this.inch; }
             set { this.inch = value; }

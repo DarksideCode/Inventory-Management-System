@@ -14,7 +14,7 @@ namespace InventoryManagementSystem.components
 
         private int resolution;
 
-        private int inch;
+        private double inch;
 
         private int aspectRatio;
 
@@ -41,7 +41,7 @@ namespace InventoryManagementSystem.components
             set { this.resolution = value; }
         }
 
-        public int Inch
+        public double Inch
         {
             get { return this.inch; }
             set { this.inch = value; }
