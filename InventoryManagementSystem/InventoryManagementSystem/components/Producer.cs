@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace InventoryManagementSystem.components
 {
-    class Producer
+    public class Producer
     {
         private int id;
 

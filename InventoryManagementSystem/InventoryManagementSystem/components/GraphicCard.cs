@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace InventoryManagementSystem.components
 {
-    class GraphicCard
+    public class GraphicCard
     {
         private int id;
 

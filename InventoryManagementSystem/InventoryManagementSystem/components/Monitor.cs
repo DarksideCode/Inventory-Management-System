@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace InventoryManagementSystem.components
 {
-    class Monitor
+    public class Monitor
     {
         private int id;
 

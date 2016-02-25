@@ -68,6 +68,11 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="components\GraphicCard.cs" />
+    <Compile Include="components\Monitor.cs" />
+    <Compile Include="components\Motherboard.cs" />
+    <Compile Include="components\PhysicalInterface.cs" />
+    <Compile Include="components\Producer.cs" />
     <Compile Include="utilitys\ConfigProzesser.cs" />
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
@@ -113,7 +118,6 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="components\" />
     <Folder Include="controller\" />
     <Folder Include="DB_Models\" />
     <Folder Include="views\" />
