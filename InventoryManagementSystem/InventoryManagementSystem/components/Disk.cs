@@ -1,0 +1,77 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace InventoryManagementSystem.components
+{
+    /*
+     *  Klasse für die Entität Festplatte
+     */
+    public class Disk
+    {
+        private int id;
+
+        private string description;
+
+        private int capacity;
+
+        private bool ssd;
+
+        private double inch;
+
+        private Producer producer;
+
+        private List<PhysicalInterface> physicalInterfaces;
+
+        public Disk() { }
+
+        public int Id
+        {
+            get { return this.id; }
+            set { this.id = value; }
+        }
+
+        public string Description
+        {
+            get { return this.description; }
+            set { this.description = value; }
+        }
+
+        public int Capacity
+        {
+            get { return this.capacity; }
+            set { this.capacity = value; }
+        }
+
+        public bool Ssd
+        {
+            get { return this.ssd; }
+            set { this.ssd = value; }
+        }
+
+        public double Inch
+        {
+            get { return this.inch; }
+            set { this.inch = value; }
+        }
+
+        public Producer Producer
+        {
+            get { return this.producer; }
+            set { this.producer = value; }
+        }
+
+        public List<PhysicalInterface> PhysicalInterfaces
+        {
+            get { return this.physicalInterfaces; }
+            set { this.physicalInterfaces = value; }
+        }
+
+        public void AddPhysicalInterface(PhysicalInterface physicalInterface)
+        {
+            this.physicalInterfaces.Add(physicalInterface);
+        }
+    }
+}

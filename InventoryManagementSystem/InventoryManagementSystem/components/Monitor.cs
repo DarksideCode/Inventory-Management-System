@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 
 namespace InventoryManagementSystem.components
 {
+    /*
+     *  Klasse für die Entität Monitor
+     */
     public class Monitor
     {
         private int id;
@@ -27,6 +30,7 @@ namespace InventoryManagementSystem.components
         public int Id
         {
             get { return this.id; }
+            set { this.id = value; }
         }
 
         public string Description

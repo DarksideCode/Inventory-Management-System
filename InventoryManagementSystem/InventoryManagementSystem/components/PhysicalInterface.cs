@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 
 namespace InventoryManagementSystem.components
 {
+    /*
+     *  Klasse für die Entität Schnittstelle
+     */
     public class PhysicalInterface
     {
         private int id;
@@ -26,6 +29,7 @@ namespace InventoryManagementSystem.components
         public int Id
         {
             get { return this.id; }
+            set { this.id = value; }
         }
 
         public string Name

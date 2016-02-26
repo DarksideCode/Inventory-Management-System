@@ -6,13 +6,16 @@ using System.Threading.Tasks;
 
 namespace InventoryManagementSystem.components
 {
+    /*
+     *  Klasse für die Entität Grafikkarte
+     */
     public class GraphicCard
     {
         private int id;
 
         private string description;
 
-        private int clockRate;
+        private double clockRate;
 
         private string model;
 
@@ -29,6 +32,7 @@ namespace InventoryManagementSystem.components
         public int Id
         {
             get { return this.id; }
+            set { this.id = value; }
         }
 
         public string Description
@@ -37,7 +41,7 @@ namespace InventoryManagementSystem.components
             set { this.description = value; }
         }
 
-        public int ClockRate
+        public double ClockRate
         {
             get { return this.clockRate; }
             set { this.clockRate = value; }
