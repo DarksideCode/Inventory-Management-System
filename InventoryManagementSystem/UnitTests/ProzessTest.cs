@@ -56,14 +56,14 @@ namespace UnitTests
             RandomAccessMemoryProcess process = new RandomAccessMemoryProcess();
             RandomAccessMemory ram = new RandomAccessMemory();
 
-            ram.setDescription("Dies ist ein Test");
-            ram.setMemory(8000);
-            ram.setClockRate(12000);
+            ram.Description = "Dies ist ein Test";
+            ram.Memory = 8000;
+            ram.ClockRate = 12000;
 
             process.save(ram);
             RandomAccessMemory dbRAM = process.getById(1);
 
-            Assert.AreEqual(ram.getMomory(), dbRAM.getMomory());
+            Assert.AreEqual(ram.Memory, dbRAM.Memory);
         }
 
         [TestMethod]
@@ -88,34 +88,34 @@ namespace UnitTests
             ProcessorProcess process = new ProcessorProcess();
             Processor processor = new Processor();
 
-            processor.setDescription("Dies ist ein Test");
-            processor.setModel("i5");
-            processor.setCore(4);
-            processor.setCommandSet("RISC");
-            processor.setArchitecture(64);
-            processor.setClockRate(3.40);
+            processor.Description = "Dies ist ein Test";
+            processor.Model = "i5";
+            processor.Core = 4;
+            processor.CommandSet = "RISC";
+            processor.Architecture = 64;
+            processor.ClockRate = 3.40;
 
             process.save(processor);
             Processor dbProcessor = process.getById(1);
 
-            Assert.AreEqual(processor.getCommandSet(), dbProcessor.getCommandSet());
+            Assert.AreEqual(processor.CommandSet, dbProcessor.CommandSet);
         }
 
         [TestMethod]
         public void getHardDiskDriveFromDatabase()  
         {
             HardDiskDriveProcess process = new HardDiskDriveProcess();
-            HardDiskDrive hdd = new HardDiskDrive();
+            Disk hdd = new Disk();
 
-            hdd.setDescription("Dies ist ein Test");
-            hdd.setCapacity(1000);
-            hdd.setSSD(true);
-            hdd.setInch(3.5);
+            hdd.Description = "Dies ist ein Test";
+            hdd.Capacity = 1000;
+            hdd.Ssd = false;
+            hdd.Inch = 3.5;
 
             process.save(hdd);
-            HardDiskDrive dbHDD = process.getById(1); 
+            Disk dbHDD = process.getById(1);
 
-            Assert.AreEqual(hdd.getCapacity(), dbHDD.getCapacity());
+            Assert.AreEqual(hdd.Capacity, dbHDD.Capacity);
         }
 
         [TestMethod]
