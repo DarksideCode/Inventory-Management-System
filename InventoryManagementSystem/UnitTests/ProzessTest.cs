@@ -102,7 +102,7 @@ namespace UnitTests
         }
 
         [TestMethod]
-        public void getHardDiskDriveFromDatabase()  
+        public void getDiskFromDatabase()  
         {
             HardDiskDriveProcess process = new HardDiskDriveProcess();
             Disk hdd = new Disk();
@@ -136,7 +136,7 @@ namespace UnitTests
         }
 
         [TestMethod]
-        public void getInterfaceFromDatabase()
+        public void getPhysicalInterfaceFromDatabase()
         {
             InterfaceProcess process = new InterfaceProcess();
             PhysicalInterface physicalInterface = new PhysicalInterface();
