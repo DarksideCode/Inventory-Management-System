@@ -13,13 +13,6 @@ namespace UnitTests
     public class ProzessTest
     {
         [TestMethod]
-        public void test()
-        {
-            Assert.AreEqual(1, 2);
-        }
-
-        /*
-        [TestMethod]
         public void getProducerFromDatabase()
         {
             ProducerProcess process = new ProducerProcess();
@@ -157,6 +150,6 @@ namespace UnitTests
             PhysicalInterface dbPhysicalInterface = process.getById(1);
 
             Assert.AreEqual(physicalInterface.Description, dbPhysicalInterface.Description);
-        }*/
+        }
     }
 }
