@@ -37,3 +37,17 @@ D:\Dokumente\Schule\LF6 (ml) - Programmieren\2. Lehrjahr\Projekt\Inventory-Manag
 D:\Dokumente\Schule\LF6 (ml) - Programmieren\2. Lehrjahr\Projekt\Inventory-Management-System\InventoryManagementSystem\InventoryManagementSystem\obj\Debug\InventoryManagementSystem.csproj.GenerateResource.Cache
 D:\Dokumente\Schule\LF6 (ml) - Programmieren\2. Lehrjahr\Projekt\Inventory-Management-System\InventoryManagementSystem\InventoryManagementSystem\obj\Debug\InventoryManagementSystem.exe
 D:\Dokumente\Schule\LF6 (ml) - Programmieren\2. Lehrjahr\Projekt\Inventory-Management-System\InventoryManagementSystem\InventoryManagementSystem\obj\Debug\InventoryManagementSystem.pdb
+C:\Schule\LF6\Datenbank-Projekt\InventoryManagementSystem\InventoryManagementSystem\bin\Debug\InventoryManagementSystem.exe.config
+C:\Schule\LF6\Datenbank-Projekt\InventoryManagementSystem\InventoryManagementSystem\obj\Debug\InventoryManagementSystem.csprojResolveAssemblyReference.cache
+C:\Schule\LF6\Datenbank-Projekt\InventoryManagementSystem\InventoryManagementSystem\obj\Debug\MainWindow.baml
+C:\Schule\LF6\Datenbank-Projekt\InventoryManagementSystem\InventoryManagementSystem\obj\Debug\MainWindow.g.cs
+C:\Schule\LF6\Datenbank-Projekt\InventoryManagementSystem\InventoryManagementSystem\obj\Debug\App.g.cs
+C:\Schule\LF6\Datenbank-Projekt\InventoryManagementSystem\InventoryManagementSystem\obj\Debug\InventoryManagementSystem_MarkupCompile.cache
+C:\Schule\LF6\Datenbank-Projekt\InventoryManagementSystem\InventoryManagementSystem\obj\Debug\InventoryManagementSystem.g.resources
+C:\Schule\LF6\Datenbank-Projekt\InventoryManagementSystem\InventoryManagementSystem\obj\Debug\InventoryManagementSystem.Properties.Resources.resources
+C:\Schule\LF6\Datenbank-Projekt\InventoryManagementSystem\InventoryManagementSystem\obj\Debug\InventoryManagementSystem.csproj.GenerateResource.Cache
+C:\Schule\LF6\Datenbank-Projekt\InventoryManagementSystem\InventoryManagementSystem\bin\Debug\InventoryManagementSystem.exe
+C:\Schule\LF6\Datenbank-Projekt\InventoryManagementSystem\InventoryManagementSystem\bin\Debug\InventoryManagementSystem.pdb
+C:\Schule\LF6\Datenbank-Projekt\InventoryManagementSystem\InventoryManagementSystem\bin\Debug\MySql.Data.dll
+C:\Schule\LF6\Datenbank-Projekt\InventoryManagementSystem\InventoryManagementSystem\obj\Debug\InventoryManagementSystem.exe
+C:\Schule\LF6\Datenbank-Projekt\InventoryManagementSystem\InventoryManagementSystem\obj\Debug\InventoryManagementSystem.pdb
