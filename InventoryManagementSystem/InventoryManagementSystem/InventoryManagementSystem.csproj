@@ -49,6 +49,10 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="MySql.Data, Version=6.9.4.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\Program Files (x86)\MySQL\MySQL Connector Net 6.9.4\Assemblies\v4.0\MySql.Data.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
@@ -76,6 +80,7 @@
     <Compile Include="components\Processor.cs" />
     <Compile Include="components\Producer.cs" />
     <Compile Include="components\RandomAccessMemory.cs" />
+    <Compile Include="DB_Models\ProducerProcess.cs" />
     <Compile Include="utilitys\ConfigProzesser.cs" />
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
@@ -122,7 +127,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="controller\" />
-    <Folder Include="DB_Models\" />
     <Folder Include="views\" />
   </ItemGroup>
   <ItemGroup>
