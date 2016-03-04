@@ -80,7 +80,14 @@
     <Compile Include="components\Processor.cs" />
     <Compile Include="components\Producer.cs" />
     <Compile Include="components\RandomAccessMemory.cs" />
-    <Compile Include="DB_Models\ProducerProcess.cs" />
+    <Compile Include="dataAccess\DiskDataAccess.cs" />
+    <Compile Include="dataAccess\GraphicCardDataAccess.cs" />
+    <Compile Include="dataAccess\MonitorDataAccess.cs" />
+    <Compile Include="dataAccess\MotherboardDataAccess.cs" />
+    <Compile Include="dataAccess\PhysicalInterfaceDataAccess.cs" />
+    <Compile Include="dataAccess\ProcessorDataAccess.cs" />
+    <Compile Include="dataAccess\ProducerDataAccess.cs" />
+    <Compile Include="dataAccess\RandomAccessMemoryDataAccess.cs" />
     <Compile Include="utilitys\ConfigProzesser.cs" />
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
@@ -126,8 +133,8 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="controller\" />
-    <Folder Include="views\" />
+    <Folder Include="control\" />
+    <Folder Include="presentation\" />
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include=".NETFramework,Version=v4.5">

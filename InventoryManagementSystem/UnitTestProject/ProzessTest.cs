@@ -15,7 +15,7 @@ namespace UnitTests
         [TestMethod]
         public void getProducerFromDatabase()
         {
-            ProducerProcess process = new ProducerProcess();
+            ProducerDataAccess process = new ProducerDataAccess();
             Producer producer = new Producer();
 
             producer.CompanyName = "Siemens";
@@ -27,8 +27,8 @@ namespace UnitTests
             producer.Street = "Lüneburger Straße";
             producer.HouseNumber = 1;
 
-            process.save(producer);
-            Producer dbProducer = process.getById(1);
+            process.Save(producer);
+            Producer dbProducer = process.GetEntityById(1);
 
             Assert.AreEqual(producer.Website, dbProducer.Website);
         }
@@ -36,7 +36,7 @@ namespace UnitTests
         [TestMethod]
         public void getGraphicCardFromDatabase()
         {
-            GraphicCardProcess process = new GraphicCardProcess();
+            GraphicCardDataAccess process = new GraphicCardDataAccess();
             GraphicCard graphicCard = new GraphicCard();
 
             graphicCard.Description = "Dies ist ein Test";
@@ -44,8 +44,8 @@ namespace UnitTests
             graphicCard.Model = "GTX1234";
             graphicCard.Memory = 2000;
 
-            process.save(graphicCard);
-            GraphicCard dbGraphicCard = process.getById(1);
+            process.Save(graphicCard);
+            GraphicCard dbGraphicCard = process.GetEntityById(1);
 
             Assert.AreEqual(graphicCard.Description, dbGraphicCard.Description);
         }
@@ -53,15 +53,15 @@ namespace UnitTests
         [TestMethod]
         public void getRandomAccessMemoryFromDatabase()
         {
-            RandomAccessMemoryProcess process = new RandomAccessMemoryProcess();
+            RandomAccessMemoryDataAccess process = new RandomAccessMemoryDataAccess();
             RandomAccessMemory ram = new RandomAccessMemory();
 
             ram.Description = "Dies ist ein Test";
             ram.Memory = 8000;
             ram.ClockRate = 12000;
 
-            process.save(ram);
-            RandomAccessMemory dbRAM = process.getById(1);
+            process.Save(ram);
+            RandomAccessMemory dbRAM = process.GetEntityById(1);
 
             Assert.AreEqual(ram.Memory, dbRAM.Memory);
         }
@@ -69,15 +69,15 @@ namespace UnitTests
         [TestMethod]
         public void getMotherboardFromDatabase()
         {
-            MotherboardProcess process = new MotherboardProcess();
+            MotherboardDataAccess process = new MotherboardDataAccess();
             Motherboard motherboard = new Motherboard();
 
             motherboard.Description = "Dies ist ein Test";
             motherboard.Inch = 24.2;
             motherboard.Socket = "PGA 988B";
 
-            process.save(motherboard);
-            Motherboard dbMotherboard = process.getById(1);
+            process.Save(motherboard);
+            Motherboard dbMotherboard = process.GetEntityById(1);
 
             Assert.AreEqual(motherboard.Socket, dbMotherboard.Socket);
         }
@@ -85,7 +85,7 @@ namespace UnitTests
         [TestMethod]
         public void getProcessorFromDatabase()
         {
-            ProcessorProcess process = new ProcessorProcess();
+            ProcessorDataAccess process = new ProcessorDataAccess();
             Processor processor = new Processor();
 
             processor.Description = "Dies ist ein Test";
@@ -95,8 +95,8 @@ namespace UnitTests
             processor.Architecture = 64;
             processor.ClockRate = 3.40;
 
-            process.save(processor);
-            Processor dbProcessor = process.getById(1);
+            process.Save(processor);
+            Processor dbProcessor = process.GetEntityById(1);
 
             Assert.AreEqual(processor.CommandSet, dbProcessor.CommandSet);
         }
@@ -104,7 +104,7 @@ namespace UnitTests
         [TestMethod]
         public void getDiskFromDatabase()  
         {
-            HardDiskDriveProcess process = new HardDiskDriveProcess();
+            DiskDataAccess process = new DiskDataAccess();
             Disk hdd = new Disk();
 
             hdd.Description = "Dies ist ein Test";
@@ -112,8 +112,8 @@ namespace UnitTests
             hdd.Ssd = false;
             hdd.Inch = 3.5;
 
-            process.save(hdd);
-            Disk dbHDD = process.getById(1);
+            process.Save(hdd);
+            Disk dbHDD = process.GetEntityById(1);
 
             Assert.AreEqual(hdd.Capacity, dbHDD.Capacity);
         }
@@ -121,7 +121,7 @@ namespace UnitTests
         [TestMethod]
         public void getMonitorFromDatabase()
         {
-            MonitorProcess process = new MonitorProcess();
+            MonitorDataAccess process = new MonitorDataAccess();
             Monitor monitor = new Monitor();
 
             monitor.Description = "Dies ist ein Test";
@@ -129,8 +129,8 @@ namespace UnitTests
             monitor.Inch = 24;
             monitor.AspectRatio = 4;
 
-            process.save(monitor);
-            Monitor dbMonitor = process.getById(1);
+            process.Save(monitor);
+            Monitor dbMonitor = process.GetEntityById(1);
 
             Assert.AreEqual(monitor.Inch, dbMonitor.Inch);
         }
@@ -138,7 +138,7 @@ namespace UnitTests
         [TestMethod]
         public void getPhysicalInterfaceFromDatabase()
         {
-            InterfaceProcess process = new InterfaceProcess();
+            PhysicalInterfaceDataAccess process = new PhysicalInterfaceDataAccess();
             PhysicalInterface physicalInterface = new PhysicalInterface();
 
             physicalInterface.Name = "DVI";
@@ -146,8 +146,8 @@ namespace UnitTests
             physicalInterface.Serial = true;
             physicalInterface.TransferRate = 1000;
 
-            process.save(physicalInterface);
-            PhysicalInterface dbPhysicalInterface = process.getById(1);
+            process.Save(physicalInterface);
+            PhysicalInterface dbPhysicalInterface = process.GetEntityById(1);
 
             Assert.AreEqual(physicalInterface.Description, dbPhysicalInterface.Description);
         }

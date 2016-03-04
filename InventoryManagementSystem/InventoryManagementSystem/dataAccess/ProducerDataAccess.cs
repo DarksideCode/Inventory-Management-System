@@ -9,7 +9,7 @@ using MySql.Data.MySqlClient;
 
 namespace InventoryManagementSystem.DB_Models
 {
-    public class ProducerProcess
+    public class ProducerDataAccess
     {
         private MySqlConnection CreateConnection()
         {
@@ -23,7 +23,7 @@ namespace InventoryManagementSystem.DB_Models
             return connection;
         }
 
-        public void save(Producer entity)
+        public void Save(Producer entity)
         {
             MySqlConnection connection = this.CreateConnection();
             MySqlCommand command = connection.CreateCommand();
@@ -36,7 +36,7 @@ namespace InventoryManagementSystem.DB_Models
             connection.Close();
         }
 
-        public Producer getById(int id)
+        public Producer GetEntityById(int id)
         {
             Producer producer = new Producer();
             MySqlConnection connection = this.CreateConnection();
