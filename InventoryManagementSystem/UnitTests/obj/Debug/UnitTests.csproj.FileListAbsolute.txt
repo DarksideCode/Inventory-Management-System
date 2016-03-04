@@ -1,7 +1,0 @@
-H:\Schule\LF6 (ml) - Programmieren\SQL\Projekt\IMS\InventoryManagementSystem\UnitTests\bin\Debug\UnitTests.dll
-H:\Schule\LF6 (ml) - Programmieren\SQL\Projekt\IMS\InventoryManagementSystem\UnitTests\bin\Debug\UnitTests.pdb
-H:\Schule\LF6 (ml) - Programmieren\SQL\Projekt\IMS\InventoryManagementSystem\UnitTests\bin\Debug\InventoryManagementSystem.exe
-H:\Schule\LF6 (ml) - Programmieren\SQL\Projekt\IMS\InventoryManagementSystem\UnitTests\bin\Debug\InventoryManagementSystem.pdb
-H:\Schule\LF6 (ml) - Programmieren\SQL\Projekt\IMS\InventoryManagementSystem\UnitTests\obj\Debug\UnitTests.csprojResolveAssemblyReference.cache
-H:\Schule\LF6 (ml) - Programmieren\SQL\Projekt\IMS\InventoryManagementSystem\UnitTests\obj\Debug\UnitTests.dll
-H:\Schule\LF6 (ml) - Programmieren\SQL\Projekt\IMS\InventoryManagementSystem\UnitTests\obj\Debug\UnitTests.pdb
