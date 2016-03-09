@@ -10,7 +10,7 @@ namespace UnitTests
         [TestMethod]
         public void getProducerFromDatabase()
         {
-            ProducerDataAccess process = new ProducerDataAccess();
+            ProducerDataAccess dataAccess = new ProducerDataAccess();
             Producer producer = new Producer();
 
             producer.CompanyName = "Siemens";
@@ -22,8 +22,8 @@ namespace UnitTests
             producer.Street = "Lüneburger Straße";
             producer.HouseNumber = 1;
 
-            process.Save(producer);
-            Producer dbProducer = process.GetEntityById(1);
+            dataAccess.Save(producer);
+            Producer dbProducer = dataAccess.GetLastEntity();
 
             Assert.AreEqual(producer.Website, dbProducer.Website);
         }
@@ -31,16 +31,18 @@ namespace UnitTests
         [TestMethod]
         public void getGraphicCardFromDatabase()
         {
-            GraphicCardDataAccess process = new GraphicCardDataAccess();
+            GraphicCardDataAccess dataAccess = new GraphicCardDataAccess();
+            ProducerDataAccess producerDataAccess = new ProducerDataAccess();
             GraphicCard graphicCard = new GraphicCard();
 
             graphicCard.Description = "Dies ist ein Test";
             graphicCard.ClockRate = 5;
             graphicCard.Model = "GTX1234";
             graphicCard.Memory = 2000;
+            graphicCard.Producer = producerDataAccess.GetLastEntity();
 
-            process.Save(graphicCard);
-            GraphicCard dbGraphicCard = process.GetEntityById(1);
+            dataAccess.Save(graphicCard);
+            GraphicCard dbGraphicCard = dataAccess.GetLastEntity();
 
             Assert.AreEqual(graphicCard.Description, dbGraphicCard.Description);
         }
@@ -48,15 +50,17 @@ namespace UnitTests
         [TestMethod]
         public void getRandomAccessMemoryFromDatabase()
         {
-            RandomAccessMemoryDataAccess process = new RandomAccessMemoryDataAccess();
+            RandomAccessMemoryDataAccess dataAccess = new RandomAccessMemoryDataAccess();
+            ProducerDataAccess producerDataAccess = new ProducerDataAccess();
             RandomAccessMemory ram = new RandomAccessMemory();
 
             ram.Description = "Dies ist ein Test";
             ram.Memory = 8000;
             ram.ClockRate = 12000;
+            ram.Producer = producerDataAccess.GetLastEntity();
 
-            process.Save(ram);
-            RandomAccessMemory dbRAM = process.GetEntityById(1);
+            dataAccess.Save(ram);
+            RandomAccessMemory dbRAM = dataAccess.GetLastEntity();
 
             Assert.AreEqual(ram.Memory, dbRAM.Memory);
         }
