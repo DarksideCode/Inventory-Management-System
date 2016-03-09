@@ -68,15 +68,17 @@ namespace UnitTests
         [TestMethod]
         public void getMotherboardFromDatabase()
         {
-            MotherboardDataAccess process = new MotherboardDataAccess();
+            MotherboardDataAccess dataAccess = new MotherboardDataAccess();
+            ProducerDataAccess producerDataAccess = new ProducerDataAccess();
             Motherboard motherboard = new Motherboard();
 
             motherboard.Description = "Dies ist ein Test";
             motherboard.Inch = 24.2;
             motherboard.Socket = "PGA 988B";
+            motherboard.Producer = producerDataAccess.GetLastEntity();
 
-            process.Save(motherboard);
-            Motherboard dbMotherboard = process.GetEntityById(1);
+            dataAccess.Save(motherboard);
+            Motherboard dbMotherboard = dataAccess.GetLastEntity();
 
             Assert.AreEqual(motherboard.Socket, dbMotherboard.Socket);
         }
