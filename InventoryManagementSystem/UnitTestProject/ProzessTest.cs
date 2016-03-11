@@ -86,7 +86,8 @@ namespace UnitTests
         [TestMethod]
         public void getProcessorFromDatabase()
         {
-            ProcessorDataAccess process = new ProcessorDataAccess();
+            ProcessorDataAccess dataAccess = new ProcessorDataAccess();
+            ProducerDataAccess producerDataAccess = new ProducerDataAccess();
             Processor processor = new Processor();
 
             processor.Description = "Dies ist ein Test";
@@ -95,9 +96,10 @@ namespace UnitTests
             processor.CommandSet = "RISC";
             processor.Architecture = 64;
             processor.ClockRate = 3.40;
+            processor.Producer = producerDataAccess.GetLastEntity();
 
-            process.Save(processor);
-            Processor dbProcessor = process.GetEntityById(1);
+            dataAccess.Save(processor);
+            Processor dbProcessor = dataAccess.GetLastEntity();
 
             Assert.AreEqual(processor.CommandSet, dbProcessor.CommandSet);
         }
@@ -105,16 +107,18 @@ namespace UnitTests
         [TestMethod]
         public void getDiskFromDatabase()  
         {
-            DiskDataAccess process = new DiskDataAccess();
+            DiskDataAccess dataAccess = new DiskDataAccess();
+            ProducerDataAccess producerDataAccess = new ProducerDataAccess();
             Disk hdd = new Disk();
 
             hdd.Description = "Dies ist ein Test";
             hdd.Capacity = 1000;
             hdd.Ssd = false;
             hdd.Inch = 3.5;
+            hdd.Producer = producerDataAccess.GetLastEntity();
 
-            process.Save(hdd);
-            Disk dbHDD = process.GetEntityById(1);
+            dataAccess.Save(hdd);
+            Disk dbHDD = dataAccess.GetLastEntity();
 
             Assert.AreEqual(hdd.Capacity, dbHDD.Capacity);
         }
