@@ -126,16 +126,18 @@ namespace UnitTests
         [TestMethod]
         public void getMonitorFromDatabase()
         {
-            MonitorDataAccess process = new MonitorDataAccess();
+            MonitorDataAccess dataAccess = new MonitorDataAccess();
+            ProducerDataAccess producerDataAccess = new ProducerDataAccess();
             Monitor monitor = new Monitor();
 
             monitor.Description = "Dies ist ein Test";
             monitor.Resolution = 1000;
             monitor.Inch = 24;
             monitor.AspectRatio = 4;
+            monitor.Producer = producerDataAccess.GetLastEntity();
 
-            process.Save(monitor);
-            Monitor dbMonitor = process.GetEntityById(1);
+            dataAccess.Save(monitor);
+            Monitor dbMonitor = dataAccess.GetLastEntity();
 
             Assert.AreEqual(monitor.Inch, dbMonitor.Inch);
         }
@@ -143,7 +145,7 @@ namespace UnitTests
         [TestMethod]
         public void getPhysicalInterfaceFromDatabase()
         {
-            PhysicalInterfaceDataAccess process = new PhysicalInterfaceDataAccess();
+            PhysicalInterfaceDataAccess dataAccess = new PhysicalInterfaceDataAccess();
             PhysicalInterface physicalInterface = new PhysicalInterface();
 
             physicalInterface.Name = "DVI";
@@ -151,8 +153,8 @@ namespace UnitTests
             physicalInterface.Serial = true;
             physicalInterface.TransferRate = 1000;
 
-            process.Save(physicalInterface);
-            PhysicalInterface dbPhysicalInterface = process.GetEntityById(1);
+            dataAccess.Save(physicalInterface);
+            PhysicalInterface dbPhysicalInterface = dataAccess.GetLastEntity();
 
             Assert.AreEqual(physicalInterface.Description, dbPhysicalInterface.Description);
         }

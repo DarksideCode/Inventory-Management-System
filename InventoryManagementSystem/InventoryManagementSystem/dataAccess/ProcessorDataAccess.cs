@@ -39,8 +39,6 @@ namespace InventoryManagementSystem.DB_Models
                                 + "`ID_Hersteller`) VALUES ('" + entity.Description + "','" + entity.Model + "'," + entity.Core + ",'" + entity.CommandSet 
                                 + "'," + entity.Architecture + ",'" + entity.ClockRate + "'," + entity.Producer.Id + ")";
 
-            //TODO: Beziehung zu Schnittstellen in Datenbank speichern
-
             connection.Open();
             command.ExecuteNonQuery();
             connection.Close();
@@ -126,8 +124,6 @@ namespace InventoryManagementSystem.DB_Models
             processor.Architecture = Int32.Parse(reader.GetValue(5).ToString());
             processor.ClockRate = Double.Parse(reader.GetValue(6).ToString());
             processor.Producer = producerDataAccess.GetEntityById(Int32.Parse(reader.GetValue(7).ToString()));
-
-            //TODO: Schnittstellen aus der Datenbank lesen.
 
             return processor;
         }

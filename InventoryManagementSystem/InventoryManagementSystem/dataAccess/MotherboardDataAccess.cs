@@ -35,10 +35,7 @@ namespace InventoryManagementSystem.DB_Models
             {
                 MySqlConnection connection = this.CreateConnection();
                 MySqlCommand command = connection.CreateCommand();
-
-                //command.CommandText = "INSERT INTO `ims_hauptplantine`(`Beschreibung`, `Zoll`, `Sockel`, "
-                //                    + "`ID_Hersteller`) VALUES ('" + entity.Description + "'," + entity.Inch + ",'"
-                //                    + entity.Socket + "'," + entity.Producer.Id + ")";
+            
                 command.CommandText = "INSERT INTO `ims_hauptplantine`(`Beschreibung`, `Zoll`, `Sockel`, `ID_Hersteller`) "
                                     + "VALUES ('" + entity.Description + "','" + entity.Inch + "','" + entity.Socket + "'," + entity.Producer.Id + ")";
 
