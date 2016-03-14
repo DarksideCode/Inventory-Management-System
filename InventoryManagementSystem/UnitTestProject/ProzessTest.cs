@@ -29,6 +29,23 @@ namespace UnitTests
         }
 
         [TestMethod]
+        public void getPhysicalInterfaceFromDatabase()
+        {
+            PhysicalInterfaceDataAccess dataAccess = new PhysicalInterfaceDataAccess();
+            PhysicalInterface physicalInterface = new PhysicalInterface();
+
+            physicalInterface.Name = "DVI";
+            physicalInterface.Description = "Digital Visual Interface - Eine elektronische Schnittstelle zur Übertragungn von Videodaten.";
+            physicalInterface.Serial = true;
+            physicalInterface.TransferRate = 1000;
+
+            dataAccess.Save(physicalInterface);
+            PhysicalInterface dbPhysicalInterface = dataAccess.GetLastEntity();
+
+            Assert.AreEqual(physicalInterface.Description, dbPhysicalInterface.Description);
+        }
+
+        [TestMethod]
         public void getGraphicCardFromDatabase()
         {
             GraphicCardDataAccess dataAccess = new GraphicCardDataAccess();
@@ -128,6 +145,7 @@ namespace UnitTests
         {
             MonitorDataAccess dataAccess = new MonitorDataAccess();
             ProducerDataAccess producerDataAccess = new ProducerDataAccess();
+            PhysicalInterfaceDataAccess physicalInterfaceDataAccess = new PhysicalInterfaceDataAccess();
             Monitor monitor = new Monitor();
 
             monitor.Description = "Dies ist ein Test";
@@ -135,6 +153,7 @@ namespace UnitTests
             monitor.Inch = 24;
             monitor.AspectRatio = 4;
             monitor.Producer = producerDataAccess.GetLastEntity();
+            monitor.AddPhysicalInterface(new PhysicalInterfaceWithCount(physicalInterfaceDataAccess.GetLastEntity(), 3));
 
             dataAccess.Save(monitor);
             Monitor dbMonitor = dataAccess.GetLastEntity();
@@ -142,33 +161,6 @@ namespace UnitTests
             Assert.AreEqual(monitor.Inch, dbMonitor.Inch);
         }
 
-        [TestMethod]
-        public void getPhysicalInterfaceFromDatabase()
-        {
-            PhysicalInterfaceDataAccess dataAccess = new PhysicalInterfaceDataAccess();
-            PhysicalInterface physicalInterface = new PhysicalInterface();
-
-            physicalInterface.Name = "DVI";
-            physicalInterface.Description = "Digital Visual Interface - Eine elektronische Schnittstelle zur Übertragungn von Videodaten.";
-            physicalInterface.Serial = true;
-            physicalInterface.TransferRate = 1000;
-
-            dataAccess.Save(physicalInterface);
-            PhysicalInterface dbPhysicalInterface = dataAccess.GetLastEntity();
-
-            Assert.AreEqual(physicalInterface.Description, dbPhysicalInterface.Description);
-        }
-
-        [TestMethod]
-        public void deletePhysicalInterfaceFromDatabase()
-        {
-            PhysicalInterfaceDataAccess dataAccess = new PhysicalInterfaceDataAccess();
-            PhysicalInterface physicalInterface = dataAccess.GetLastEntity();
-
-            dataAccess.Delete(physicalInterface);
-
-            Assert.IsTrue(dataAccess.GetLastEntity() == null || physicalInterface.Id == dataAccess.GetLastEntity().Id);
-        }
 
         [TestMethod]
         public void deleteMonitorFromDatabase()
@@ -245,6 +237,17 @@ namespace UnitTests
             dataAccess.Delete(producer);
 
             Assert.IsTrue(dataAccess.GetLastEntity() == null || producer.Id == dataAccess.GetLastEntity().Id);
+        }
+
+        [TestMethod]
+        public void deletePhysicalInterfaceFromDatabase()
+        {
+            PhysicalInterfaceDataAccess dataAccess = new PhysicalInterfaceDataAccess();
+            PhysicalInterface physicalInterface = dataAccess.GetLastEntity();
+
+            dataAccess.Delete(physicalInterface);
+
+            Assert.IsTrue(dataAccess.GetLastEntity() == null || physicalInterface.Id == dataAccess.GetLastEntity().Id);
         }
     }
 }

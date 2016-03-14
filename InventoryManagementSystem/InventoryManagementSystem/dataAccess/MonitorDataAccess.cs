@@ -39,11 +39,19 @@ namespace InventoryManagementSystem.DB_Models
                                 + "`ID_Hersteller`) VALUES ('" + entity.Description + "'," + entity.Resolution + ",'" + entity.Inch + "',"
                                 + "'" + entity.AspectRatio + "'," + entity.Producer.Id + ")";
 
-            //TODO: Beziehung zu Schnittstellen in Datenbank speichern
-
             connection.Open();
             command.ExecuteNonQuery();
             connection.Close();
+
+            for (int i = 0; i < entity.PhysicalInterfaces.Count; i++)
+            {
+                command.CommandText = "INSERT INTO `ims_monitor_schnittstelle`(`ID_Monitor`, `ID_Schnittstelle`, `Anzahl`) "
+                                    + "VALUES (" + this.GetLastEntity().Id + "," + entity.PhysicalInterfaces[i].PhysicalInterface.Id + "," 
+                                    + entity.PhysicalInterfaces[i].Number + ")";
+                connection.Open();
+                command.ExecuteNonQuery();
+                connection.Close();
+            }
         }
 
         /*
@@ -53,11 +61,14 @@ namespace InventoryManagementSystem.DB_Models
         {
             MySqlConnection connection = this.CreateConnection();
             MySqlCommand command = connection.CreateCommand();
+            MySqlCommand interfaceCommand = connection.CreateCommand();
 
             command.CommandText = "DELETE FROM `ims_monitor` WHERE id = " + entity.Id;
+            interfaceCommand.CommandText = "DELETE FROM `ims_monitor_schnittstelle` WHERE id_monitor = " + entity.Id;
 
             connection.Open();
             command.ExecuteNonQuery();
+            interfaceCommand.ExecuteNonQuery();
             connection.Close();
         }
 
@@ -73,10 +84,8 @@ namespace InventoryManagementSystem.DB_Models
 
             connection.Open();
             MySqlDataReader reader = command.ExecuteReader();
-
             reader.Read();
             Monitor monitor = this.MapToEntity(reader);
-
             connection.Close();
 
             return monitor;
@@ -115,6 +124,8 @@ namespace InventoryManagementSystem.DB_Models
             List<Monitor> monitors = new List<Monitor>();
             MySqlConnection connection = this.CreateConnection();
             MySqlCommand command = connection.CreateCommand();
+            MySqlCommand interfaceCommand = connection.CreateCommand();
+
             command.CommandText = "SELECT * FROM `ims_monitor`";
 
             connection.Open();
@@ -137,6 +148,7 @@ namespace InventoryManagementSystem.DB_Models
         {
             Monitor monitor = new Monitor();
             ProducerDataAccess producerDataAccess = new ProducerDataAccess();
+            PhysicalInterfaceDataAccess physicalInterfaceDataAccess = new PhysicalInterfaceDataAccess();
 
             monitor.Id = Int32.Parse(reader.GetValue(0).ToString());
             monitor.Description = reader.GetValue(1).ToString();
@@ -144,10 +156,33 @@ namespace InventoryManagementSystem.DB_Models
             monitor.Inch = Double.Parse(reader.GetValue(3).ToString());
             monitor.AspectRatio = Int32.Parse(reader.GetValue(4).ToString());
             monitor.Producer = producerDataAccess.GetEntityById(Int32.Parse(reader.GetValue(5).ToString()));
-
-            //TODO: Schnittstellen aus der Datenbank lesen.
-
+            monitor.PhysicalInterfaces = this.GetPhysicalInterfaces(monitor);
+           
             return monitor;
+        }
+
+        /*
+         *  Liest alle Beziehungen zu der Entität 'Schnittstelle' aus der Datenbank
+         */
+        private List<PhysicalInterfaceWithCount> GetPhysicalInterfaces(Monitor entity)
+        {
+            List<PhysicalInterfaceWithCount> physicalInterfaces = new List<PhysicalInterfaceWithCount>();
+            PhysicalInterfaceDataAccess physicalInterfaceDataAccess = new PhysicalInterfaceDataAccess();
+            MySqlConnection connection = this.CreateConnection();
+            MySqlCommand command = connection.CreateCommand();
+
+            command.CommandText = "SELECT * FROM `ims_monitor_schnittstelle` WHERE id_monitor = " + entity.Id;
+
+            connection.Open();
+            MySqlDataReader reader = command.ExecuteReader();
+            while (reader.Read())
+            {
+                PhysicalInterface physicalInterface = physicalInterfaceDataAccess.GetEntityById(Int32.Parse(reader.GetValue(1).ToString()));
+                int count = Int32.Parse(reader.GetValue(2).ToString());
+                physicalInterfaces.Add(new PhysicalInterfaceWithCount(physicalInterface, count));
+            }
+
+            return physicalInterfaces;
         }
     }
 }
