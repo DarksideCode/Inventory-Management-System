@@ -45,6 +45,21 @@ namespace InventoryManagementSystem.DB_Models
         }
 
         /*
+         *  Löscht ein Objekt der Entität 'Schnittstelle' aus der Datenbank 
+         */
+        public void Delete(PhysicalInterface entity)
+        {
+            MySqlConnection connection = this.CreateConnection();
+            MySqlCommand command = connection.CreateCommand();
+
+            command.CommandText = "DELETE FROM `ims_schnittstelle` WHERE id = " + entity.Id;
+
+            connection.Open();
+            command.ExecuteNonQuery();
+            connection.Close();
+        }
+
+        /*
         *   Liest den Datensatz der Entität 'Schnittstelle' aus der Datenbank, die der übergebenen ID
         *   entspricht
         */
@@ -78,11 +93,16 @@ namespace InventoryManagementSystem.DB_Models
 
             MySqlDataReader reader = command.ExecuteReader();
             reader.Read();
-            int id = Int32.Parse(reader.GetValue(0).ToString());
 
-            connection.Close();
-
-            return this.GetEntityById(id);
+            //Prüft, ob eine ID zurück gegeben wurde, falls nicht ist die Tabelle leer und es wird null zurück gegeben
+            if (reader.GetValue(0).ToString().Length > 0) {
+                int id = Int32.Parse(reader.GetValue(0).ToString());
+                connection.Close();
+                return this.GetEntityById(id);
+            } else {
+                connection.Close();
+                return null;
+            }
         }
 
         /*

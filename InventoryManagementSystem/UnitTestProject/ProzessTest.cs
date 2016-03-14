@@ -158,5 +158,93 @@ namespace UnitTests
 
             Assert.AreEqual(physicalInterface.Description, dbPhysicalInterface.Description);
         }
+
+        [TestMethod]
+        public void deletePhysicalInterfaceFromDatabase()
+        {
+            PhysicalInterfaceDataAccess dataAccess = new PhysicalInterfaceDataAccess();
+            PhysicalInterface physicalInterface = dataAccess.GetLastEntity();
+
+            dataAccess.Delete(physicalInterface);
+
+            Assert.IsTrue(dataAccess.GetLastEntity() == null || physicalInterface.Id == dataAccess.GetLastEntity().Id);
+        }
+
+        [TestMethod]
+        public void deleteMonitorFromDatabase()
+        {
+            MonitorDataAccess dataAccess = new MonitorDataAccess();
+            Monitor monitor = dataAccess.GetLastEntity();
+
+            dataAccess.Delete(monitor);
+
+            Assert.IsTrue(dataAccess.GetLastEntity() == null || monitor.Id == dataAccess.GetLastEntity().Id);
+        }
+
+        [TestMethod]
+        public void deleteDiskFromDatabase()
+        {
+            DiskDataAccess dataAccess = new DiskDataAccess();
+            Disk disk = dataAccess.GetLastEntity();
+
+            dataAccess.Delete(disk);
+
+            Assert.IsTrue(dataAccess.GetLastEntity() == null || disk.Id == dataAccess.GetLastEntity().Id);
+        }
+
+        [TestMethod]
+        public void deleteProcessorFromDatabase()
+        {
+            ProcessorDataAccess dataAccess = new ProcessorDataAccess();
+            Processor processor = dataAccess.GetLastEntity();
+
+            dataAccess.Delete(processor);
+
+            Assert.IsTrue(dataAccess.GetLastEntity() == null || processor.Id == dataAccess.GetLastEntity().Id);
+        }
+
+        [TestMethod]
+        public void deleteMotherboardFromDatabase()
+        {
+            MotherboardDataAccess dataAccess = new MotherboardDataAccess();
+            Motherboard motherboard = dataAccess.GetLastEntity();
+
+            dataAccess.Delete(motherboard);
+
+            Assert.IsTrue(dataAccess.GetLastEntity() == null || motherboard.Id == dataAccess.GetLastEntity().Id);
+        }
+
+        [TestMethod]
+        public void deleteRandomAccessMemoryFromDatabase()
+        {
+            RandomAccessMemoryDataAccess dataAccess = new RandomAccessMemoryDataAccess();
+            RandomAccessMemory randomAccessMemory = dataAccess.GetLastEntity();
+
+            dataAccess.Delete(randomAccessMemory);
+
+            Assert.IsTrue(dataAccess.GetLastEntity() == null || randomAccessMemory.Id == dataAccess.GetLastEntity().Id);
+        }
+
+        [TestMethod]
+        public void deleteGraphicCardFromDatabase()
+        {
+            GraphicCardDataAccess dataAccess = new GraphicCardDataAccess();
+            GraphicCard graphicCard = dataAccess.GetLastEntity();
+
+            dataAccess.Delete(graphicCard);
+
+            Assert.IsTrue(dataAccess.GetLastEntity() == null || graphicCard.Id == dataAccess.GetLastEntity().Id);
+        }
+
+        [TestMethod]
+        public void deleteProducerFromDatabase()
+        {
+            ProducerDataAccess dataAccess = new ProducerDataAccess();
+            Producer producer = dataAccess.GetLastEntity();
+
+            dataAccess.Delete(producer);
+
+            Assert.IsTrue(dataAccess.GetLastEntity() == null || producer.Id == dataAccess.GetLastEntity().Id);
+        }
     }
 }

@@ -28,7 +28,7 @@ namespace InventoryManagementSystem.DB_Models
         }
 
         /*
-        *   Speichert ein Objekt der Entität 'Gradikkarte' in die Datenbank
+        *   Speichert ein Objekt der Entität 'Grafikkarte' in die Datenbank
         */
         public void Save(GraphicCard entity)
         {
@@ -40,6 +40,21 @@ namespace InventoryManagementSystem.DB_Models
                                 + entity.Memory + "," + entity.Producer.Id + ")";
 
             //TODO: Beziehung zu Schnittstellen in Datenbank speichern
+
+            connection.Open();
+            command.ExecuteNonQuery();
+            connection.Close();
+        }
+
+        /*
+         *  Löscht ein Objekt der Entität 'Grafikkarte' aus der Datenbank 
+         */
+        public void Delete(GraphicCard entity)
+        {
+            MySqlConnection connection = this.CreateConnection();
+            MySqlCommand command = connection.CreateCommand();
+
+            command.CommandText = "DELETE FROM `ims_grafikkarte` WHERE id = " + entity.Id;
 
             connection.Open();
             command.ExecuteNonQuery();
@@ -80,11 +95,16 @@ namespace InventoryManagementSystem.DB_Models
 
             MySqlDataReader reader = command.ExecuteReader();
             reader.Read();
-            int id = Int32.Parse(reader.GetValue(0).ToString());
 
-            connection.Close();
-
-            return this.GetEntityById(id);
+            //Prüft, ob eine ID zurück gegeben wurde, falls nicht ist die Tabelle leer und es wird null zurück gegeben
+            if (reader.GetValue(0).ToString().Length > 0) {
+                int id = Int32.Parse(reader.GetValue(0).ToString());
+                connection.Close();
+                return this.GetEntityById(id);
+            } else {
+                connection.Close();
+                return null;
+            }
         }
 
         /*
