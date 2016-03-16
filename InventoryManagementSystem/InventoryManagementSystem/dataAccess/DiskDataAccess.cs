@@ -40,9 +40,8 @@ namespace InventoryManagementSystem.DB_Models
 
             for (int i = 0; i < entity.PhysicalInterfaces.Count; i++)
             {
-                command.CommandText = "INSERT INTO `ims_festplatte_schnittstelle`(`ID_Festplatte`, `ID_Schnittstelle`, `Anzahl`) "
-                                    + "VALUES (" + this.GetLastEntity().Id + "," + entity.PhysicalInterfaces[i].PhysicalInterface.Id + ","
-                                    + entity.PhysicalInterfaces[i].Number + ")";
+                command.CommandText = "INSERT INTO `ims_festplatte_schnittstelle`(`ID_Festplatte`, `ID_Schnittstelle`, `Anzahl`) VALUES "
+                                    + "(" + this.GetLastEntity().Id + "," + entity.PhysicalInterfaces[i].PhysicalInterface.Id + "," + entity.PhysicalInterfaces[i].Number + ")";
                 connection.Open();
                 command.ExecuteNonQuery();
                 connection.Close();
@@ -56,13 +55,10 @@ namespace InventoryManagementSystem.DB_Models
         {
             MySqlConnection connection = this.CreateConnection();
             MySqlCommand command = connection.CreateCommand();
-            MySqlCommand interfaceCommand = connection.CreateCommand();
 
             command.CommandText = "DELETE FROM `" + this.getTableName() + "` WHERE id = " + entity.Id;
-            interfaceCommand.CommandText = "DELETE FROM `ims_festplatte_schnittstelle` WHERE id_festplatte = " + entity.Id;
-
+            
             connection.Open();
-            interfaceCommand.ExecuteNonQuery();
             command.ExecuteNonQuery();
             connection.Close();
         }

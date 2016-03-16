@@ -48,13 +48,10 @@ namespace InventoryManagementSystem.DB_Models
         {
             MySqlConnection connection = this.CreateConnection();
             MySqlCommand command = connection.CreateCommand();
-            MySqlCommand interfaceCommand = connection.CreateCommand();
-
+            
             command.CommandText = "DELETE FROM `ims_hauptplatine` WHERE id = " + entity.Id;
-            interfaceCommand.CommandText = "DELETE FROM `ims_hauptplatine_schnittstelle` WHERE id_hauptplatine = " + entity.Id;
-
+            
             connection.Open();
-            interfaceCommand.ExecuteNonQuery();
             command.ExecuteNonQuery();
             connection.Close();
         }

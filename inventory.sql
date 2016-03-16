@@ -3,9 +3,9 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Erstellungszeit: 16. Mrz 2016 um 08:11
--- Server-Version: 10.1.9-MariaDB
--- PHP-Version: 5.6.15
+-- Erstellungszeit: 16. Mrz 2016 um 18:30
+-- Server-Version: 10.1.10-MariaDB
+-- PHP-Version: 7.0.4
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -17,7 +17,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Datenbank: `inventory`
+-- Datenbank: `ims`
 --
 
 -- --------------------------------------------------------
@@ -287,42 +287,42 @@ ALTER TABLE `ims_schnittstelle`
 -- AUTO_INCREMENT für Tabelle `ims_arbeitsspeicher`
 --
 ALTER TABLE `ims_arbeitsspeicher`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 --
 -- AUTO_INCREMENT für Tabelle `ims_festplatte`
 --
 ALTER TABLE `ims_festplatte`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 --
 -- AUTO_INCREMENT für Tabelle `ims_grafikkarte`
 --
 ALTER TABLE `ims_grafikkarte`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 --
 -- AUTO_INCREMENT für Tabelle `ims_hauptplatine`
 --
 ALTER TABLE `ims_hauptplatine`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 --
 -- AUTO_INCREMENT für Tabelle `ims_hersteller`
 --
 ALTER TABLE `ims_hersteller`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 --
 -- AUTO_INCREMENT für Tabelle `ims_monitor`
 --
 ALTER TABLE `ims_monitor`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 --
 -- AUTO_INCREMENT für Tabelle `ims_prozessor`
 --
 ALTER TABLE `ims_prozessor`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 --
 -- AUTO_INCREMENT für Tabelle `ims_schnittstelle`
 --
 ALTER TABLE `ims_schnittstelle`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 --
 -- Constraints der exportierten Tabellen
 --
@@ -344,7 +344,7 @@ ALTER TABLE `ims_festplatte`
 --
 ALTER TABLE `ims_festplatte_schnittstelle`
   ADD CONSTRAINT `ims_festplatte_schnittstelle_ibfk_1` FOREIGN KEY (`ID_Festplatte`) REFERENCES `ims_festplatte` (`ID`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `ims_festplatte_schnittstelle_ibfk_2` FOREIGN KEY (`ID_Schnittstelle`) REFERENCES `ims_schnittstelle` (`ID`) ON DELETE CASCADE ON UPDATE CASCADE;
+  ADD CONSTRAINT `ims_festplatte_schnittstelle_ibfk_2` FOREIGN KEY (`ID_Schnittstelle`) REFERENCES `ims_schnittstelle` (`ID`) ON UPDATE CASCADE;
 
 --
 -- Constraints der Tabelle `ims_grafikkarte`
@@ -356,7 +356,7 @@ ALTER TABLE `ims_grafikkarte`
 -- Constraints der Tabelle `ims_grafikkarte_schnittstelle`
 --
 ALTER TABLE `ims_grafikkarte_schnittstelle`
-  ADD CONSTRAINT `grafik` FOREIGN KEY (`ID_Grafikkarte`) REFERENCES `ims_grafikkarte` (`ID`) ON UPDATE CASCADE,
+  ADD CONSTRAINT `grafik` FOREIGN KEY (`ID_Grafikkarte`) REFERENCES `ims_grafikkarte` (`ID`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `schnittstelle` FOREIGN KEY (`ID_Schnittstelle`) REFERENCES `ims_schnittstelle` (`ID`) ON UPDATE CASCADE;
 
 --
@@ -369,7 +369,7 @@ ALTER TABLE `ims_hauptplatine`
 -- Constraints der Tabelle `ims_hauptplatine_schnittstelle`
 --
 ALTER TABLE `ims_hauptplatine_schnittstelle`
-  ADD CONSTRAINT `ims_hauptplatine_schnittstelle_ibfk_1` FOREIGN KEY (`ID_Hauptplatine`) REFERENCES `ims_hauptplatine` (`ID`) ON UPDATE CASCADE,
+  ADD CONSTRAINT `ims_hauptplatine_schnittstelle_ibfk_1` FOREIGN KEY (`ID_Hauptplatine`) REFERENCES `ims_hauptplatine` (`ID`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `ims_hauptplatine_schnittstelle_ibfk_2` FOREIGN KEY (`ID_Schnittstelle`) REFERENCES `ims_schnittstelle` (`ID`) ON UPDATE CASCADE;
 
 --

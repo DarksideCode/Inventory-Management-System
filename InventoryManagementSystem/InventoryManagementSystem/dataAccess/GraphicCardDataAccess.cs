@@ -47,13 +47,10 @@ namespace InventoryManagementSystem.DB_Models
         {
             MySqlConnection connection = this.CreateConnection();
             MySqlCommand command = connection.CreateCommand();
-            MySqlCommand interfaceCommand = connection.CreateCommand();
-
+            
             command.CommandText = "DELETE FROM `ims_grafikkarte` WHERE id = " + entity.Id;
-            interfaceCommand.CommandText = "DELETE FROM `ims_grafikkarte_schnittstelle` WHERE id_grafikkarte = " + entity.Id;
-
+            
             connection.Open();
-            interfaceCommand.ExecuteNonQuery();
             command.ExecuteNonQuery();
             connection.Close();
         }
