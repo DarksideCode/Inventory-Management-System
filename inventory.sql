@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Erstellungszeit: 16. Mrz 2016 um 08:04
+-- Erstellungszeit: 16. Mrz 2016 um 08:11
 -- Server-Version: 10.1.9-MariaDB
 -- PHP-Version: 5.6.15
 
@@ -44,7 +44,7 @@ CREATE TABLE `ims_festplatte` (
   `ID` int(11) NOT NULL,
   `Beschreibung` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `Kapazität` int(11) NOT NULL,
-  `SSD` int(11) DEFAULT NULL,
+  `SSD` tinyint(1) DEFAULT NULL,
   `Zoll` float NOT NULL,
   `ID_Hersteller` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
@@ -186,7 +186,7 @@ CREATE TABLE `ims_schnittstelle` (
   `ID` int(11) NOT NULL,
   `Name` varchar(30) COLLATE utf8_unicode_ci NOT NULL,
   `Beschreibung` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
-  `Seriell` int(11) DEFAULT NULL,
+  `Seriell` tinyint(1) DEFAULT NULL,
   `Übertragungsrate` float NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
