@@ -81,7 +81,7 @@
     <Compile Include="components\Processor.cs" />
     <Compile Include="components\Producer.cs" />
     <Compile Include="components\RandomAccessMemory.cs" />
-    <Compile Include="dataAccess\DatabasteBasic.cs" />
+    <Compile Include="dataAccess\DatabaseBasic.cs" />
     <Compile Include="dataAccess\DiskDataAccess.cs" />
     <Compile Include="dataAccess\GraphicCardDataAccess.cs" />
     <Compile Include="dataAccess\MonitorDataAccess.cs" />
@@ -132,7 +132,9 @@
     <AppDesigner Include="Properties\" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.config" />
+    <None Include="App.config">
+      <SubType>Designer</SubType>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="control\" />

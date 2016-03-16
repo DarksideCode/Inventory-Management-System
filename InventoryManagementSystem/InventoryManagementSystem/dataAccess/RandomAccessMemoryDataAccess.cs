@@ -11,7 +11,7 @@ namespace InventoryManagementSystem.DB_Models
     *   Data-Access-Klasse der Entität 'Arbeitsspeicher'
     *   Führt alle Operationen für die Entität auf der Datenbank aus.
     */
-    public class RandomAccessMemoryDataAccess : DatabasteBasic
+    public class RandomAccessMemoryDataAccess : DatabaseBasic
     {
         /*
         *   Speichert ein Objekt der Entität 'Arbeitsspeicher' in die Datenbank

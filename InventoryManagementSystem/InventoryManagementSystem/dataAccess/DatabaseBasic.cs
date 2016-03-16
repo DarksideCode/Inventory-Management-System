@@ -9,7 +9,7 @@ namespace InventoryManagementSystem.database.basic
     /**
     * Basis Klasse für Datenbank Verbindung
     **/
-    public class DatabasteBasic
+    public class DatabaseBasic
     {
         /**
         * gibt den Tabellen Namen zurück.

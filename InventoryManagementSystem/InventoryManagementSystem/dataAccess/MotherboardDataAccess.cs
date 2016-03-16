@@ -11,7 +11,7 @@ namespace InventoryManagementSystem.DB_Models
     *   Data-Access-Klasse der Entität 'Hauptplatine'
     *   Führt alle Operationen für die Entität auf der Datenbank aus.
     */
-    public class MotherboardDataAccess : DatabasteBasic
+    public class MotherboardDataAccess : DatabaseBasic
     {
             /*
             *   Speichert ein Objekt der Entität 'Hauptplatine' in die Datenbank

@@ -11,7 +11,7 @@ namespace InventoryManagementSystem.DB_Models
     *   Data-Access-Klasse der Entität 'Schnittstelle'
     *   Führt alle Operationen für die Entität auf der Datenbank aus.
     */
-    public class PhysicalInterfaceDataAccess : DatabasteBasic
+    public class PhysicalInterfaceDataAccess : DatabaseBasic
     {
         /*
          *   Speichert ein Objekt der Entität 'Schnittstelle' in die Datenbank

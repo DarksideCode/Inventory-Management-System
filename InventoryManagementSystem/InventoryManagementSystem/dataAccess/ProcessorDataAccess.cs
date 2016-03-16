@@ -11,7 +11,7 @@ namespace InventoryManagementSystem.DB_Models
     *   Data-Access-Klasse der Entität 'Prozessor'
     *   Führt alle Operationen für die Entität auf der Datenbank aus.
     */
-    public class ProcessorDataAccess : DatabasteBasic
+    public class ProcessorDataAccess : DatabaseBasic
     {
        /*
         *   Speichert ein Objekt der Entität 'Prozessor' in die Datenbank

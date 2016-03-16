@@ -11,7 +11,7 @@ namespace InventoryManagementSystem.DB_Models
     *   Data-Access-Klasse der Entität 'Monitor'
     *   Führt alle Operationen für die Entität auf der Datenbank aus.
     */
-    public class MonitorDataAccess : DatabasteBasic
+    public class MonitorDataAccess : DatabaseBasic
     {
         /*
         *   Speichert ein Objekt der Entität 'Monitor' in die Datenbank
@@ -110,7 +110,6 @@ namespace InventoryManagementSystem.DB_Models
             List<Monitor> monitors = new List<Monitor>();
             MySqlConnection connection = this.CreateConnection();
             MySqlCommand command = connection.CreateCommand();
-            MySqlCommand interfaceCommand = connection.CreateCommand();
 
             command.CommandText = "SELECT * FROM `ims_monitor`";
 

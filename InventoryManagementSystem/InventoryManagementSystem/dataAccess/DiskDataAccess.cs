@@ -11,7 +11,7 @@ namespace InventoryManagementSystem.DB_Models
     *   Data-Access-Klasse der Entität 'Festplatte'
     *   Führt alle Operationen für die Entität auf der Datenbank aus.
     */
-    public class DiskDataAccess : DatabasteBasic
+    public class DiskDataAccess : DatabaseBasic
     {
         /**
         * gibt den Tabellen Namen zurück.
@@ -34,11 +34,19 @@ namespace InventoryManagementSystem.DB_Models
                                 + "VALUES ('" + entity.Description + "'," + entity.Capacity + ",'" + entity.Ssd + "','" + entity.Inch + "',"
                                 + entity.Producer.Id + ")";
 
-            //TODO: Beziehung zu Schnittstellen in Datenbank speichern
-
             connection.Open();
             command.ExecuteNonQuery();
             connection.Close();
+
+            for (int i = 0; i < entity.PhysicalInterfaces.Count; i++)
+            {
+                command.CommandText = "INSERT INTO `ims_festplatte_schnittstelle`(`ID_Festplatte`, `ID_Schnittstelle`, `Anzahl`) "
+                                    + "VALUES (" + this.GetLastEntity().Id + "," + entity.PhysicalInterfaces[i].PhysicalInterface.Id + ","
+                                    + entity.PhysicalInterfaces[i].Number + ")";
+                connection.Open();
+                command.ExecuteNonQuery();
+                connection.Close();
+            }
         }
 
         /*
@@ -48,10 +56,13 @@ namespace InventoryManagementSystem.DB_Models
         {
             MySqlConnection connection = this.CreateConnection();
             MySqlCommand command = connection.CreateCommand();
+            MySqlCommand interfaceCommand = connection.CreateCommand();
 
             command.CommandText = "DELETE FROM `" + this.getTableName() + "` WHERE id = " + entity.Id;
+            interfaceCommand.CommandText = "DELETE FROM `ims_festplatte_schnittstelle` WHERE id_festplatte = " + entity.Id;
 
             connection.Open();
+            interfaceCommand.ExecuteNonQuery();
             command.ExecuteNonQuery();
             connection.Close();
         }
@@ -139,10 +150,33 @@ namespace InventoryManagementSystem.DB_Models
             disk.Ssd = Boolean.Parse(reader.GetValue(3).ToString());
             disk.Inch = Double.Parse(reader.GetValue(4).ToString());
             disk.Producer = producerDataAccess.GetEntityById(Int32.Parse(reader.GetValue(5).ToString()));
-
-            //TODO: Schnittstellen aus der Datenbank lesen.
+            disk.PhysicalInterfaces = this.GetPhysicalInterfaces(disk);
 
             return disk;
+        }
+
+        /*
+         *  Liest alle Beziehungen zu der Entität 'Schnittstelle' aus der Datenbank
+         */
+        private List<PhysicalInterfaceWithCount> GetPhysicalInterfaces(Disk entity)
+        {
+            List<PhysicalInterfaceWithCount> physicalInterfaces = new List<PhysicalInterfaceWithCount>();
+            PhysicalInterfaceDataAccess physicalInterfaceDataAccess = new PhysicalInterfaceDataAccess();
+            MySqlConnection connection = this.CreateConnection();
+            MySqlCommand command = connection.CreateCommand();
+
+            command.CommandText = "SELECT * FROM `ims_festplatte_schnittstelle` WHERE id_festplatte = " + entity.Id;
+
+            connection.Open();
+            MySqlDataReader reader = command.ExecuteReader();
+            while (reader.Read())
+            {
+                PhysicalInterface physicalInterface = physicalInterfaceDataAccess.GetEntityById(Int32.Parse(reader.GetValue(1).ToString()));
+                int count = Int32.Parse(reader.GetValue(2).ToString());
+                physicalInterfaces.Add(new PhysicalInterfaceWithCount(physicalInterface, count));
+            }
+
+            return physicalInterfaces;
         }
     }
 }

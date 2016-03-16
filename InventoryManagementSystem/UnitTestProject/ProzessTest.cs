@@ -126,6 +126,7 @@ namespace UnitTests
         {
             DiskDataAccess dataAccess = new DiskDataAccess();
             ProducerDataAccess producerDataAccess = new ProducerDataAccess();
+            PhysicalInterfaceDataAccess physicalInterfaceDataAccess = new PhysicalInterfaceDataAccess();
             Disk hdd = new Disk();
 
             hdd.Description = "Dies ist ein Test";
@@ -133,6 +134,7 @@ namespace UnitTests
             hdd.Ssd = false;
             hdd.Inch = 3.5;
             hdd.Producer = producerDataAccess.GetLastEntity();
+            hdd.AddPhysicalInterface(new PhysicalInterfaceWithCount(physicalInterfaceDataAccess.GetLastEntity(), 3));
 
             dataAccess.Save(hdd);
             Disk dbHDD = dataAccess.GetLastEntity();

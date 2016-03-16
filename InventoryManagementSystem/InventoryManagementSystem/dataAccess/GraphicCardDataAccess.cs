@@ -11,7 +11,7 @@ namespace InventoryManagementSystem.DB_Models
     *   Data-Access-Klasse der Entität 'Grafikkarte'
     *   Führt alle Operationen für die Entität auf der Datenbank aus.
     */
-    public class GraphicCardDataAccess : DatabasteBasic
+    public class GraphicCardDataAccess : DatabaseBasic
     {
         /*
         *   Speichert ein Objekt der Entität 'Grafikkarte' in die Datenbank

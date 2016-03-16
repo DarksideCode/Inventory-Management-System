@@ -11,7 +11,7 @@ namespace InventoryManagementSystem.DB_Models
     *   Data-Access-Klasse der Entität 'Hersteller'
     *   Führt alle Operationen für die Entität auf der Datenbank aus.
     */
-    public class ProducerDataAccess : DatabasteBasic
+    public class ProducerDataAccess : DatabaseBasic
     {
         /*
         *   Speichert ein Objekt der Entität 'Hersteller' in die Datenbank
