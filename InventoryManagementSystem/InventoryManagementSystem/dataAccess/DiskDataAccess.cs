@@ -13,6 +13,14 @@ namespace InventoryManagementSystem.DB_Models
     */
     public class DiskDataAccess : DatabasteBasic
     {
+        /**
+        * gibt den Tabellen Namen zurück.
+        **/
+        public override string getTableName()
+        {
+            ConfigProzesser config = new ConfigProzesser();
+            return config.getDBPraefix() + "festplatte";
+        }
 
         /*
          *   Speichert ein Objekt der Entität 'Festplatte' in die Datenbank
@@ -22,7 +30,7 @@ namespace InventoryManagementSystem.DB_Models
             MySqlConnection connection = this.CreateConnection();
             MySqlCommand command = connection.CreateCommand();
 
-            command.CommandText = "INSERT INTO `ims_festplatte`(`Beschreibung`, `Kapazität`, `SSD`, `Zoll`, `ID_Hersteller`) "
+            command.CommandText = "INSERT INTO `" + this.getTableName() + "`(`Beschreibung`, `Kapazität`, `SSD`, `Zoll`, `ID_Hersteller`) "
                                 + "VALUES ('" + entity.Description + "'," + entity.Capacity + ",'" + entity.Ssd + "','" + entity.Inch + "',"
                                 + entity.Producer.Id + ")";
 
@@ -41,7 +49,7 @@ namespace InventoryManagementSystem.DB_Models
             MySqlConnection connection = this.CreateConnection();
             MySqlCommand command = connection.CreateCommand();
 
-            command.CommandText = "DELETE FROM `ims_festplatte` WHERE id = " + entity.Id;
+            command.CommandText = "DELETE FROM `" + this.getTableName() + "` WHERE id = " + entity.Id;
 
             connection.Open();
             command.ExecuteNonQuery();
@@ -56,7 +64,7 @@ namespace InventoryManagementSystem.DB_Models
         {
             MySqlConnection connection = this.CreateConnection();
             MySqlCommand command = connection.CreateCommand();
-            command.CommandText = "SELECT * FROM `ims_festplatte` WHERE id = " + id;
+            command.CommandText = "SELECT * FROM `" + this.getTableName() + "` WHERE id = " + id;
 
             connection.Open();
             MySqlDataReader reader = command.ExecuteReader();
@@ -76,7 +84,7 @@ namespace InventoryManagementSystem.DB_Models
         {
             MySqlConnection connection = this.CreateConnection();
             MySqlCommand command = connection.CreateCommand();
-            command.CommandText = "SELECT MAX(id) FROM `ims_festplatte`";
+            command.CommandText = "SELECT MAX(id) FROM `" + this.getTableName() + "`";
 
             connection.Open();
 
@@ -102,7 +110,7 @@ namespace InventoryManagementSystem.DB_Models
             List<Disk> disks = new List<Disk>();
             MySqlConnection connection = this.CreateConnection();
             MySqlCommand command = connection.CreateCommand();
-            command.CommandText = "SELECT * FROM `ims_festplatte`";
+            command.CommandText = "SELECT * FROM `" + this.getTableName() + "`";
 
             connection.Open();
 

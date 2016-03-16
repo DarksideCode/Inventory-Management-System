@@ -11,6 +11,14 @@ namespace InventoryManagementSystem.database.basic
     **/
     public class DatabasteBasic
     {
+        /**
+        * gibt den Tabellen Namen zurück.
+        **/
+        public virtual string getTableName()
+        {
+            return "TableName";
+        }
+
         /*
         *   Baut eine Verbindung mit der Datenbank auf, basierend auf den Konfigurationen
         */
