@@ -36,7 +36,7 @@ namespace InventoryManagementSystem.DB_Models
                 MySqlConnection connection = this.CreateConnection();
                 MySqlCommand command = connection.CreateCommand();
             
-                command.CommandText = "INSERT INTO `ims_hauptplantine`(`Beschreibung`, `Zoll`, `Sockel`, `ID_Hersteller`) "
+                command.CommandText = "INSERT INTO `ims_hauptplatine`(`Beschreibung`, `Zoll`, `Sockel`, `ID_Hersteller`) "
                                     + "VALUES ('" + entity.Description + "','" + entity.Inch + "','" + entity.Socket + "'," + entity.Producer.Id + ")";
 
                 //TODO: Beziehung zu Schnittstellen in Datenbank speichern
@@ -54,7 +54,7 @@ namespace InventoryManagementSystem.DB_Models
                 MySqlConnection connection = this.CreateConnection();
                 MySqlCommand command = connection.CreateCommand();
 
-                command.CommandText = "DELETE FROM `ims_hauptplantine` WHERE id = " + entity.Id;
+                command.CommandText = "DELETE FROM `ims_hauptplatine` WHERE id = " + entity.Id;
 
                 connection.Open();
                 command.ExecuteNonQuery();
@@ -70,7 +70,7 @@ namespace InventoryManagementSystem.DB_Models
                 MySqlConnection connection = this.CreateConnection();
                 MySqlCommand command = connection.CreateCommand();
                 //TODO: DB-Tabelle in 'hauptplatine' umbenennen
-                command.CommandText = "SELECT * FROM `ims_hauptplantine` WHERE id = " + id;
+                command.CommandText = "SELECT * FROM `ims_hauptplatine` WHERE id = " + id;
 
                 connection.Open();
                 MySqlDataReader reader = command.ExecuteReader();
@@ -90,7 +90,7 @@ namespace InventoryManagementSystem.DB_Models
             {
                 MySqlConnection connection = this.CreateConnection();
                 MySqlCommand command = connection.CreateCommand();
-                command.CommandText = "SELECT MAX(id) FROM `ims_hauptplantine`";
+                command.CommandText = "SELECT MAX(id) FROM `ims_hauptplatine`";
 
                 connection.Open();
 
@@ -116,7 +116,7 @@ namespace InventoryManagementSystem.DB_Models
                 List<Motherboard> motherboards = new List<Motherboard>();
                 MySqlConnection connection = this.CreateConnection();
                 MySqlCommand command = connection.CreateCommand();
-                command.CommandText = "SELECT * FROM `ims_arbeitsspeicher`";
+                command.CommandText = "SELECT * FROM `ims_hauptplatine`";
 
                 connection.Open();
 
