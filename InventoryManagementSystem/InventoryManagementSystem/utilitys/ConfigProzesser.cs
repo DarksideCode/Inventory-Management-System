@@ -22,7 +22,10 @@
         **/
         private string DBPraefix = "ims_";
 
-
+        /**
+        * string contains DB Host
+        **/
+        private string DBHost = "localhost";
 
         public ConfigProzesser()
         {
@@ -36,12 +39,14 @@
             DBUser = getDBUser();
             DBPassword = getDBPassword();
             DBPraefix = getDBPraefix();
+            DBHost = getDBHost();
         }
 
         static void ReadAllSettings()
         {
             //SAVE Configs
-            Properties.Settings.Default.Save();
+            //Properties.Settings.Default.Save();
+            //@todo do it
         }
 
         /**
@@ -120,6 +125,26 @@
         public void saveDBPraefix(string sDBPraefix)
         {
             Properties.Settings.Default.DB_PRAEFIX = sDBPraefix;
+
+            Properties.Settings.Default.Save();
+        }
+
+        /**
+        * Returns the DB Host from Config
+        * return string
+        **/
+        public string getDBHost()
+        {
+            return Properties.Settings.Default.DB_HOST;
+        }
+
+        /**
+        * Saves the DB Host in Config
+        * @sDBHost = string
+        **/
+        public void saveDBHost(string sDBHost)
+        {
+            Properties.Settings.Default.DB_HOST = sDBHost;
 
             Properties.Settings.Default.Save();
         }

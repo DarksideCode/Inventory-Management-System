@@ -3,6 +3,7 @@ using InventoryManagementSystem.utilitys;
 using MySql.Data.MySqlClient;
 using System;
 using System.Collections.Generic;
+using InventoryManagementSystem.database.basic;
 
 namespace InventoryManagementSystem.DB_Models
 {
@@ -10,23 +11,8 @@ namespace InventoryManagementSystem.DB_Models
     *   Data-Access-Klasse der Entität 'Arbeitsspeicher'
     *   Führt alle Operationen für die Entität auf der Datenbank aus.
     */
-    public class RandomAccessMemoryDataAccess
+    public class RandomAccessMemoryDataAccess : DatabasteBasic
     {
-        /*
-        *   Baut eine Verbindung mit der Datenbank auf, basierend auf den Konfigurationen
-        */
-        private MySqlConnection CreateConnection()
-        {
-            ConfigProzesser config = new ConfigProzesser();
-            string myConnectionString = "SERVER=localhost;"
-                                      + "DATABASE=" + config.getDBName()
-                                      + ";UID=" + config.getDBUser()
-                                      + ";PASSWORD=" + config.getDBPassword() + ";";
-            MySqlConnection connection = new MySqlConnection(myConnectionString);
-
-            return connection;
-        }
-
         /*
         *   Speichert ein Objekt der Entität 'Arbeitsspeicher' in die Datenbank
         */

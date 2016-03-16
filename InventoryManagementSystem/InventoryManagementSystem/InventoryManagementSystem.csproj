@@ -81,6 +81,7 @@
     <Compile Include="components\Processor.cs" />
     <Compile Include="components\Producer.cs" />
     <Compile Include="components\RandomAccessMemory.cs" />
+    <Compile Include="dataAccess\DatabasteBasic.cs" />
     <Compile Include="dataAccess\DiskDataAccess.cs" />
     <Compile Include="dataAccess\GraphicCardDataAccess.cs" />
     <Compile Include="dataAccess\MonitorDataAccess.cs" />

@@ -14,5 +14,8 @@
     <Setting Name="DB_PRAEFIX" Type="System.String" Scope="User">
       <Value Profile="(Default)">ims_</Value>
     </Setting>
+    <Setting Name="DB_HOST" Type="System.String" Scope="User">
+      <Value Profile="(Default)">localhost</Value>
+    </Setting>
   </Settings>
 </SettingsFile>
