@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Erstellungszeit: 17. Feb 2016 um 08:53
+-- Erstellungszeit: 16. Mrz 2016 um 08:04
 -- Server-Version: 10.1.9-MariaDB
 -- PHP-Version: 5.6.15
 
@@ -91,10 +91,10 @@ CREATE TABLE `ims_grafikkarte_schnittstelle` (
 -- --------------------------------------------------------
 
 --
--- Tabellenstruktur für Tabelle `ims_hauptplantine`
+-- Tabellenstruktur für Tabelle `ims_hauptplatine`
 --
 
-CREATE TABLE `ims_hauptplantine` (
+CREATE TABLE `ims_hauptplatine` (
   `ID` int(11) NOT NULL,
   `Beschreibung` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `Zoll` float NOT NULL,
@@ -231,9 +231,9 @@ ALTER TABLE `ims_grafikkarte_schnittstelle`
   ADD KEY `schnittstelle` (`ID_Schnittstelle`);
 
 --
--- Indizes für die Tabelle `ims_hauptplantine`
+-- Indizes für die Tabelle `ims_hauptplatine`
 --
-ALTER TABLE `ims_hauptplantine`
+ALTER TABLE `ims_hauptplatine`
   ADD PRIMARY KEY (`ID`),
   ADD KEY `ID_Hersteller` (`ID_Hersteller`);
 
@@ -299,9 +299,9 @@ ALTER TABLE `ims_festplatte`
 ALTER TABLE `ims_grafikkarte`
   MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT;
 --
--- AUTO_INCREMENT für Tabelle `ims_hauptplantine`
+-- AUTO_INCREMENT für Tabelle `ims_hauptplatine`
 --
-ALTER TABLE `ims_hauptplantine`
+ALTER TABLE `ims_hauptplatine`
   MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT für Tabelle `ims_hersteller`
@@ -331,13 +331,13 @@ ALTER TABLE `ims_schnittstelle`
 -- Constraints der Tabelle `ims_arbeitsspeicher`
 --
 ALTER TABLE `ims_arbeitsspeicher`
-  ADD CONSTRAINT `ims_arbeitsspeicher_ibfk_1` FOREIGN KEY (`ID`) REFERENCES `ims_hersteller` (`ID`) ON UPDATE CASCADE;
+  ADD CONSTRAINT `ims_arbeitsspeicher_ibfk_1` FOREIGN KEY (`ID_Hersteller`) REFERENCES `ims_hersteller` (`ID`) ON UPDATE CASCADE;
 
 --
 -- Constraints der Tabelle `ims_festplatte`
 --
 ALTER TABLE `ims_festplatte`
-  ADD CONSTRAINT `ims_festplatte_ibfk_1` FOREIGN KEY (`ID`) REFERENCES `ims_hersteller` (`ID`) ON UPDATE CASCADE;
+  ADD CONSTRAINT `ims_festplatte_ibfk_1` FOREIGN KEY (`ID_Hersteller`) REFERENCES `ims_hersteller` (`ID`) ON UPDATE CASCADE;
 
 --
 -- Constraints der Tabelle `ims_festplatte_schnittstelle`
@@ -360,16 +360,16 @@ ALTER TABLE `ims_grafikkarte_schnittstelle`
   ADD CONSTRAINT `schnittstelle` FOREIGN KEY (`ID_Schnittstelle`) REFERENCES `ims_schnittstelle` (`ID`) ON UPDATE CASCADE;
 
 --
--- Constraints der Tabelle `ims_hauptplantine`
+-- Constraints der Tabelle `ims_hauptplatine`
 --
-ALTER TABLE `ims_hauptplantine`
-  ADD CONSTRAINT `ims_hauptplantine_ibfk_1` FOREIGN KEY (`ID_Hersteller`) REFERENCES `ims_hersteller` (`ID`) ON UPDATE CASCADE;
+ALTER TABLE `ims_hauptplatine`
+  ADD CONSTRAINT `ims_hauptplatine_ibfk_1` FOREIGN KEY (`ID_Hersteller`) REFERENCES `ims_hersteller` (`ID`) ON UPDATE CASCADE;
 
 --
 -- Constraints der Tabelle `ims_hauptplatine_schnittstelle`
 --
 ALTER TABLE `ims_hauptplatine_schnittstelle`
-  ADD CONSTRAINT `ims_hauptplatine_schnittstelle_ibfk_1` FOREIGN KEY (`ID_Hauptplatine`) REFERENCES `ims_hauptplantine` (`ID`) ON UPDATE CASCADE,
+  ADD CONSTRAINT `ims_hauptplatine_schnittstelle_ibfk_1` FOREIGN KEY (`ID_Hauptplatine`) REFERENCES `ims_hauptplatine` (`ID`) ON UPDATE CASCADE,
   ADD CONSTRAINT `ims_hauptplatine_schnittstelle_ibfk_2` FOREIGN KEY (`ID_Schnittstelle`) REFERENCES `ims_schnittstelle` (`ID`) ON UPDATE CASCADE;
 
 --
@@ -389,7 +389,7 @@ ALTER TABLE `ims_monitor_schnittstelle`
 -- Constraints der Tabelle `ims_prozessor`
 --
 ALTER TABLE `ims_prozessor`
-  ADD CONSTRAINT `ims_prozessor_ibfk_1` FOREIGN KEY (`ID`) REFERENCES `ims_hersteller` (`ID`) ON UPDATE CASCADE;
+  ADD CONSTRAINT `ims_prozessor_ibfk_1` FOREIGN KEY (`ID_Hersteller`) REFERENCES `ims_hersteller` (`ID`) ON UPDATE CASCADE;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
