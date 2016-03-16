@@ -50,6 +50,7 @@ namespace UnitTests
         {
             GraphicCardDataAccess dataAccess = new GraphicCardDataAccess();
             ProducerDataAccess producerDataAccess = new ProducerDataAccess();
+            PhysicalInterfaceDataAccess physicalInterfaceDataAccess = new PhysicalInterfaceDataAccess();
             GraphicCard graphicCard = new GraphicCard();
 
             graphicCard.Description = "Dies ist ein Test";
@@ -57,6 +58,7 @@ namespace UnitTests
             graphicCard.Model = "GTX1234";
             graphicCard.Memory = 2000;
             graphicCard.Producer = producerDataAccess.GetLastEntity();
+            graphicCard.AddPhysicalInterface(new PhysicalInterfaceWithCount(physicalInterfaceDataAccess.GetLastEntity(), 3));
 
             dataAccess.Save(graphicCard);
             GraphicCard dbGraphicCard = dataAccess.GetLastEntity();
@@ -87,12 +89,14 @@ namespace UnitTests
         {
             MotherboardDataAccess dataAccess = new MotherboardDataAccess();
             ProducerDataAccess producerDataAccess = new ProducerDataAccess();
+            PhysicalInterfaceDataAccess physicalInterfaceDataAccess = new PhysicalInterfaceDataAccess();
             Motherboard motherboard = new Motherboard();
 
             motherboard.Description = "Dies ist ein Test";
             motherboard.Inch = 24.2;
             motherboard.Socket = "PGA 988B";
             motherboard.Producer = producerDataAccess.GetLastEntity();
+            motherboard.AddPhysicalInterface(new PhysicalInterfaceWithCount(physicalInterfaceDataAccess.GetLastEntity(), 3));
 
             dataAccess.Save(motherboard);
             Motherboard dbMotherboard = dataAccess.GetLastEntity();

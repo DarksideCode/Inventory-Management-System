@@ -15,9 +15,9 @@ namespace InventoryManagementSystem.components
 
         private string socket;
 
-        private List<PhysicalInterface> physicalInterfaces;
-
         private Producer producer;
+
+        private List<PhysicalInterfaceWithCount> physicalInterfaces = new List<PhysicalInterfaceWithCount>();
 
 
         public Motherboard() { }
@@ -52,13 +52,13 @@ namespace InventoryManagementSystem.components
             set { this.producer = value; }
         }
 
-        public List<PhysicalInterface> PhysicalInterfaces
+        public List<PhysicalInterfaceWithCount> PhysicalInterfaces
         {
             get { return this.physicalInterfaces; }
             set { this.physicalInterfaces = value; }
         }
 
-        public void AddPhysicalInterface(PhysicalInterface physicalInterface)
+        public void AddPhysicalInterface(PhysicalInterfaceWithCount physicalInterface)
         {
             this.physicalInterfaces.Add(physicalInterface);
         }

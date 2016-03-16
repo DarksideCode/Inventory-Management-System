@@ -25,11 +25,19 @@ namespace InventoryManagementSystem.DB_Models
                                 + "VALUES ('" + entity.Description + "'," + entity.ClockRate + ",'" + entity.Model + "',"
                                 + entity.Memory + "," + entity.Producer.Id + ")";
 
-            //TODO: Beziehung zu Schnittstellen in Datenbank speichern
-
             connection.Open();
             command.ExecuteNonQuery();
             connection.Close();
+
+            for (int i = 0; i < entity.PhysicalInterfaces.Count; i++)
+            {
+                command.CommandText = "INSERT INTO `ims_grafikkarte_schnittstelle`(`ID_Grafikkarte`, `ID_Schnittstelle`, `Anzahl`) "
+                                    + "VALUES (" + this.GetLastEntity().Id + "," + entity.PhysicalInterfaces[i].PhysicalInterface.Id + ","
+                                    + entity.PhysicalInterfaces[i].Number + ")";
+                connection.Open();
+                command.ExecuteNonQuery();
+                connection.Close();
+            }
         }
 
         /*
@@ -39,10 +47,13 @@ namespace InventoryManagementSystem.DB_Models
         {
             MySqlConnection connection = this.CreateConnection();
             MySqlCommand command = connection.CreateCommand();
+            MySqlCommand interfaceCommand = connection.CreateCommand();
 
             command.CommandText = "DELETE FROM `ims_grafikkarte` WHERE id = " + entity.Id;
+            interfaceCommand.CommandText = "DELETE FROM `ims_grafikkarte_schnittstelle` WHERE id_grafikkarte = " + entity.Id;
 
             connection.Open();
+            interfaceCommand.ExecuteNonQuery();
             command.ExecuteNonQuery();
             connection.Close();
         }
@@ -130,11 +141,33 @@ namespace InventoryManagementSystem.DB_Models
             graphicCard.Model = reader.GetValue(3).ToString();
             graphicCard.Memory = Int32.Parse(reader.GetValue(4).ToString());
             graphicCard.Producer = producerDataAccess.GetEntityById(Int32.Parse(reader.GetValue(5).ToString()));
-
-            //TODO: Schnittstellen aus der Datenbank lesen
-            graphicCard.PhysicalInterfaces = null;
+            graphicCard.PhysicalInterfaces = this.GetPhysicalInterfaces(graphicCard);
 
             return graphicCard;
+        }
+
+        /*
+         *  Liest alle Beziehungen zu der Entität 'Schnittstelle' aus der Datenbank
+         */
+        private List<PhysicalInterfaceWithCount> GetPhysicalInterfaces(GraphicCard entity)
+        {
+            List<PhysicalInterfaceWithCount> physicalInterfaces = new List<PhysicalInterfaceWithCount>();
+            PhysicalInterfaceDataAccess physicalInterfaceDataAccess = new PhysicalInterfaceDataAccess();
+            MySqlConnection connection = this.CreateConnection();
+            MySqlCommand command = connection.CreateCommand();
+
+            command.CommandText = "SELECT * FROM `ims_grafikkarte_schnittstelle` WHERE id_grafikkarte = " + entity.Id;
+
+            connection.Open();
+            MySqlDataReader reader = command.ExecuteReader();
+            while (reader.Read())
+            {
+                PhysicalInterface physicalInterface = physicalInterfaceDataAccess.GetEntityById(Int32.Parse(reader.GetValue(1).ToString()));
+                int count = Int32.Parse(reader.GetValue(2).ToString());
+                physicalInterfaces.Add(new PhysicalInterfaceWithCount(physicalInterface, count));
+            }
+
+            return physicalInterfaces;
         }
     }
 }
