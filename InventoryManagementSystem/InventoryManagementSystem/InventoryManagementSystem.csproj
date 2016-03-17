@@ -91,6 +91,14 @@
     <Compile Include="dataAccess\ProducerDataAccess.cs" />
     <Compile Include="dataAccess\RandomAccessMemoryDataAccess.cs" />
     <Compile Include="utilitys\ConfigProzesser.cs" />
+    <Compile Include="validation\DiskValidator.cs" />
+    <Compile Include="validation\GraphicCardValidator.cs" />
+    <Compile Include="validation\MonitorValidator.cs" />
+    <Compile Include="validation\MotherboardValidator.cs" />
+    <Compile Include="validation\PhysicalInterfaceValidator.cs" />
+    <Compile Include="validation\ProcessorValidator.cs" />
+    <Compile Include="validation\ProducerValidator.cs" />
+    <Compile Include="validation\RandomAccessMemoryValidator.cs" />
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
