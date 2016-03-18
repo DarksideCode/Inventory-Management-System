@@ -65,7 +65,7 @@ namespace InventoryManagementSystem.dataAccess
 
         /*
          *  Verändert einen bestehenden Datensatz der Entität `Festplatte` in der Datenbank
-         *  Ermittelt auch nicht mehr genutzte Referenzen und löscht diese ebenfalls.
+         *  Ermittelt auch nicht mehr genutzte Referenzen und löscht diese.
          */
         public void Update(Disk entity)
         {

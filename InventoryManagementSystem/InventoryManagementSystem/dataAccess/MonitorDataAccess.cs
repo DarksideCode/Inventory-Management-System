@@ -56,6 +56,43 @@ namespace InventoryManagementSystem.dataAccess
         }
 
         /*
+         *  Verändert einen bestehenden Datensatz der Entität `Monitor` in der Datenbank
+         *  Ermittelt auch nicht mehr genutzte Referenzen und löscht diese.
+         */
+        public void Update(Monitor entity)
+        {
+            MySqlConnection connection = this.CreateConnection();
+            MySqlCommand command = connection.CreateCommand();
+            MySqlCommand interfaceCommand = connection.CreateCommand();
+            string usedInterfaces = "";
+
+            //UPDATE `ims_monitor` SET `ID`=[value-1],`Beschreibung`=[value-2],`Auflösung`=[value-3],`Zoll`=[value-4],`Seitenverhältnis`=[value-5],`ID_Hersteller`=[value-6] WHERE 1
+            command.CommandText = "UPDATE `ims_monitor` SET `Beschreibung`='" + entity.Description + "', `Auflösung`=" + entity.Resolution + ", `Zoll`='" + entity.Inch + "', "
+                                + "`Seitenverhältnis`=" + entity.AspectRatio + ", `ID_Hersteller`=" + entity.Producer.Id + " WHERE id = " + entity.Id;
+
+            Console.WriteLine(command.CommandText);
+
+            connection.Open();
+
+            for (int i = 0; i < entity.PhysicalInterfaces.Count; i++)
+            {
+                interfaceCommand.CommandText = "UPDATE `ims_monitor_schnittstelle` SET `Anzahl`=" + entity.PhysicalInterfaces[i].Number
+                                             + " WHERE `ID_Monitor` = " + entity.Id + " AND `ID_Schnittstelle` = " + entity.PhysicalInterfaces[i].PhysicalInterface.Id;
+                interfaceCommand.ExecuteNonQuery();
+                usedInterfaces += entity.PhysicalInterfaces[i].PhysicalInterface.Id;
+                if (i != entity.PhysicalInterfaces.Count - 1)
+                {
+                    usedInterfaces += ",";
+                }
+            }
+            interfaceCommand.CommandText = "DELETE FROM `ims_monitor_schnittstelle` WHERE `ID_Monitor` = " + entity.Id
+                                         + " AND `ID_Schnittstelle` NOT IN (" + usedInterfaces + ")";
+            interfaceCommand.ExecuteNonQuery();
+            command.ExecuteNonQuery();
+            connection.Close();
+        }
+
+        /*
         *   Liest den Datensatz der Entität 'Monitor' aus der Datenbank, die der übergebenen ID
         *   entspricht
         */
