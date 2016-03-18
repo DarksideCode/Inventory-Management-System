@@ -5,7 +5,7 @@ using System;
 using System.Collections.Generic;
 using InventoryManagementSystem.database.basic;
 
-namespace InventoryManagementSystem.DB_Models
+namespace InventoryManagementSystem.dataAccess
 {
     /*
     *   Data-Access-Klasse der Entität 'Monitor'

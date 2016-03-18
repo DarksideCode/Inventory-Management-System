@@ -5,7 +5,7 @@ using System;
 using System.Collections.Generic;
 using InventoryManagementSystem.database.basic;
 
-namespace InventoryManagementSystem.DB_Models
+namespace InventoryManagementSystem.dataAccess
 {
     /*
     *   Data-Access-Klasse der Entität 'Festplatte'
@@ -59,6 +59,40 @@ namespace InventoryManagementSystem.DB_Models
             command.CommandText = "DELETE FROM `" + this.getTableName() + "` WHERE id = " + entity.Id;
             
             connection.Open();
+            command.ExecuteNonQuery();
+            connection.Close();
+        }
+
+        /*
+         *  Verändert einen bestehenden Datensatz der Entität `Festplatte` in der Datenbank
+         *  Ermittelt auch nicht mehr genutzte Referenzen und löscht diese ebenfalls.
+         */
+        public void Update(Disk entity)
+        {
+            MySqlConnection connection = this.CreateConnection();
+            MySqlCommand command = connection.CreateCommand();
+            MySqlCommand interfaceCommand = connection.CreateCommand();
+            string usedInterfaces = "";
+
+            command.CommandText = "UPDATE `ims_festplatte` SET `Beschreibung`='" + entity.Description + "', `Kapazität`=" + entity.Capacity + ", `SSD`='" + entity.Ssd 
+                                + "', `Zoll`='" + entity.Inch + "', `ID_Hersteller`=" + entity.Producer.Id + " WHERE id = " + entity.Id;
+
+            connection.Open();
+
+            for (int i = 0; i < entity.PhysicalInterfaces.Count; i++)
+            {
+                interfaceCommand.CommandText = "UPDATE `ims_festplatte_schnittstelle` SET `Anzahl`=" + entity.PhysicalInterfaces[i].Number
+                                             + " WHERE `ID_Festplatte` = " + entity.Id + " AND `ID_Schnittstelle` = " + entity.PhysicalInterfaces[i].PhysicalInterface.Id;
+                interfaceCommand.ExecuteNonQuery();
+                usedInterfaces += entity.PhysicalInterfaces[i].PhysicalInterface.Id;
+                if (i != entity.PhysicalInterfaces.Count - 1)
+                {
+                    usedInterfaces += ",";
+                }
+            }
+            interfaceCommand.CommandText = "DELETE FROM `ims_festplatte_schnittstelle` WHERE `ID_Festplatte` = " + entity.Id
+                                         + " AND `ID_Schnittstelle` NOT IN (" + usedInterfaces + ")";
+            interfaceCommand.ExecuteNonQuery();
             command.ExecuteNonQuery();
             connection.Close();
         }
