@@ -25,8 +25,6 @@ namespace InventoryManagementSystem.dataAccess
                                 + "`ID_Hersteller`) VALUES ('" + entity.Description + "'," + entity.Memory + ","
                                 + entity.ClockRate + "," + entity.Producer.Id + ")";
 
-            //TODO: Beziehung zu Schnittstellen in Datenbank speichern
-
             connection.Open();
             command.ExecuteNonQuery();
             connection.Close();
@@ -41,6 +39,23 @@ namespace InventoryManagementSystem.dataAccess
             MySqlCommand command = connection.CreateCommand();
 
             command.CommandText = "DELETE FROM `ims_arbeitsspeicher` WHERE id = " + entity.Id;
+
+            connection.Open();
+            command.ExecuteNonQuery();
+            connection.Close();
+        }
+
+        /*
+         *  Verändert einen bestehenden Datensatz der Entität `Arbeitsspeicher` in der Datenbank
+         */
+        public void Update(RandomAccessMemory entity)
+        {
+            MySqlConnection connection = this.CreateConnection();
+            MySqlCommand command = connection.CreateCommand();
+
+            //UPDATE `ims_arbeitsspeicher` SET `ID`=[value-1],`Beschreibung`=[value-2],`Speicher`=[value-3],`Taktrate`=[value-4],`ID_Hersteller`=[value-5] WHERE 1
+            command.CommandText = "UPDATE `ims_arbeitsspeicher` SET `Beschreibung`='" + entity.Description + "', `Speicher`=" + entity.Memory + ", `Taktrate`='" + entity.ClockRate 
+                                + "', `ID_Hersteller`=" + entity.Producer.Id + " WHERE id = " + entity.Id;
 
             connection.Open();
             command.ExecuteNonQuery();
@@ -129,8 +144,6 @@ namespace InventoryManagementSystem.dataAccess
             ram.Memory = Int32.Parse(reader.GetValue(2).ToString());
             ram.ClockRate = Double.Parse(reader.GetValue(3).ToString());
             ram.Producer = producerDataAccess.GetEntityById(Int32.Parse(reader.GetValue(4).ToString()));
-
-            //TODO: Schnittstellen aus der Datenbank lesen.
 
             return ram;
         }

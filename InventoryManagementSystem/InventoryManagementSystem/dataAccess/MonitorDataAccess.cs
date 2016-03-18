@@ -66,7 +66,6 @@ namespace InventoryManagementSystem.dataAccess
             MySqlCommand interfaceCommand = connection.CreateCommand();
             string usedInterfaces = "";
 
-            //UPDATE `ims_monitor` SET `ID`=[value-1],`Beschreibung`=[value-2],`Auflösung`=[value-3],`Zoll`=[value-4],`Seitenverhältnis`=[value-5],`ID_Hersteller`=[value-6] WHERE 1
             command.CommandText = "UPDATE `ims_monitor` SET `Beschreibung`='" + entity.Description + "', `Auflösung`=" + entity.Resolution + ", `Zoll`='" + entity.Inch + "', "
                                 + "`Seitenverhältnis`=" + entity.AspectRatio + ", `ID_Hersteller`=" + entity.Producer.Id + " WHERE id = " + entity.Id;
 

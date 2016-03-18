@@ -46,6 +46,22 @@ namespace InventoryManagementSystem.dataAccess
         }
 
         /*
+         *  Verändert einen bestehenden Datensatz der Entität `Schnittstelle` in der Datenbank
+         */
+        public void Update(PhysicalInterface entity)
+        {
+            MySqlConnection connection = this.CreateConnection();
+            MySqlCommand command = connection.CreateCommand();
+
+            command.CommandText = "UPDATE `ims_schnittstelle` SET `Name`='" + entity.Name + "', `Beschreibung`='" + entity.Description + "', `Seriell`='" + entity.Serial
+                                + "', `Übertragungsrate`=" + entity.TransferRate + " WHERE id = " + entity.Id;
+
+            connection.Open();
+            command.ExecuteNonQuery();
+            connection.Close();
+        }
+
+        /*
         *   Liest den Datensatz der Entität 'Schnittstelle' aus der Datenbank, die der übergebenen ID
         *   entspricht
         */

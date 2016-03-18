@@ -24,8 +24,6 @@ namespace InventoryManagementSystem.dataAccess
             command.CommandText = "INSERT INTO `ims_hauptplatine`(`Beschreibung`, `Zoll`, `Sockel`, `ID_Hersteller`) "
                                 + "VALUES ('" + entity.Description + "','" + entity.Inch + "','" + entity.Socket + "'," + entity.Producer.Id + ")";
 
-            //TODO: Beziehung zu Schnittstellen in Datenbank speichern
-
             connection.Open();
             command.ExecuteNonQuery();
             connection.Close();
@@ -52,6 +50,40 @@ namespace InventoryManagementSystem.dataAccess
             command.CommandText = "DELETE FROM `ims_hauptplatine` WHERE id = " + entity.Id;
             
             connection.Open();
+            command.ExecuteNonQuery();
+            connection.Close();
+        }
+
+        /*
+         *  Verändert einen bestehenden Datensatz der Entität `Hauptplatine` in der Datenbank
+         *  Ermittelt auch nicht mehr genutzte Referenzen und löscht diese.
+         */
+        public void Update(Motherboard entity)
+        {
+            MySqlConnection connection = this.CreateConnection();
+            MySqlCommand command = connection.CreateCommand();
+            MySqlCommand interfaceCommand = connection.CreateCommand();
+            string usedInterfaces = "";
+
+            command.CommandText = "UPDATE `ims_hauptplatine` SET `Beschreibung`='" + entity.Description + "', `Zoll`='" + entity.Inch + "', `Sockel`='" + entity.Socket 
+                                + "', `ID_Hersteller`=" + entity.Producer.Id + " WHERE id = " + entity.Id;
+
+            connection.Open();
+
+            for (int i = 0; i < entity.PhysicalInterfaces.Count; i++)
+            {
+                interfaceCommand.CommandText = "UPDATE `ims_hauptplatine_schnittstelle` SET `Anzahl`=" + entity.PhysicalInterfaces[i].Number
+                                             + " WHERE `ID_Hauptplatine` = " + entity.Id + " AND `ID_Schnittstelle` = " + entity.PhysicalInterfaces[i].PhysicalInterface.Id;
+                interfaceCommand.ExecuteNonQuery();
+                usedInterfaces += entity.PhysicalInterfaces[i].PhysicalInterface.Id;
+                if (i != entity.PhysicalInterfaces.Count - 1)
+                {
+                    usedInterfaces += ",";
+                }
+            }
+            interfaceCommand.CommandText = "DELETE FROM `ims_hauptplatine_schnittstelle` WHERE `ID_Hauptplatine` = " + entity.Id
+                                         + " AND `ID_Schnittstelle` NOT IN (" + usedInterfaces + ")";
+            interfaceCommand.ExecuteNonQuery();
             command.ExecuteNonQuery();
             connection.Close();
         }

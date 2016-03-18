@@ -45,6 +45,23 @@ namespace InventoryManagementSystem.dataAccess
         }
 
         /*
+         *  Verändert einen bestehenden Datensatz der Entität `Hersteller` in der Datenbank
+         */
+        public void Update(Producer entity)
+        {
+            MySqlConnection connection = this.CreateConnection();
+            MySqlCommand command = connection.CreateCommand();
+
+            command.CommandText = "UPDATE `ims_hersteller` SET `Firma`='" + entity.CompanyName + "', `Telefon`=" + entity.PhoneNumber + ", `Email`='" + entity.Email 
+                                + "', `Webseite`='" + entity.Website + "', `PLZ`=" + entity.PostalCode + ", `Ort`='" + entity.Place + "', `Straße`='" + entity.Street 
+                                + "', `Hausnummer`=" + entity.HouseNumber + " WHERE id = " + entity.Id;
+
+            connection.Open();
+            command.ExecuteNonQuery();
+            connection.Close();
+        }
+
+        /*
         *   Liest den Datensatz der Entität 'Hersteller' aus der Datenbank, die der übergebenen ID
         *   entspricht
         */
