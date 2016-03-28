@@ -13,6 +13,15 @@ namespace InventoryManagementSystem.dataAccess
     */
     public class RandomAccessMemoryDataAccess : DatabaseBasic
     {
+        /**
+        * gibt den Tabellen Namen zurück.
+        **/
+        public override string getTableName()
+        {
+            ConfigProzesser config = new ConfigProzesser();
+            return config.getDBPraefix() + "arbeitsspeicher";
+        }
+
         /*
         *   Speichert ein Objekt der Entität 'Arbeitsspeicher' in die Datenbank
         */
@@ -21,7 +30,7 @@ namespace InventoryManagementSystem.dataAccess
             MySqlConnection connection = this.CreateConnection();
             MySqlCommand command = connection.CreateCommand();
 
-            command.CommandText = "INSERT INTO `ims_arbeitsspeicher`(`Beschreibung`, `Speicher`, `Taktrate`, "
+            command.CommandText = "INSERT INTO `" + this.getTableName() + "`(`Beschreibung`, `Speicher`, `Taktrate`, "
                                 + "`ID_Hersteller`) VALUES ('" + entity.Description + "'," + entity.Memory + ","
                                 + entity.ClockRate + "," + entity.Producer.Id + ")";
 
@@ -38,7 +47,7 @@ namespace InventoryManagementSystem.dataAccess
             MySqlConnection connection = this.CreateConnection();
             MySqlCommand command = connection.CreateCommand();
 
-            command.CommandText = "DELETE FROM `ims_arbeitsspeicher` WHERE id = " + entity.Id;
+            command.CommandText = "DELETE FROM `"+ this.getTableName() +"` WHERE id = " + entity.Id;
 
             connection.Open();
             command.ExecuteNonQuery();
@@ -54,7 +63,7 @@ namespace InventoryManagementSystem.dataAccess
             MySqlCommand command = connection.CreateCommand();
 
             //UPDATE `ims_arbeitsspeicher` SET `ID`=[value-1],`Beschreibung`=[value-2],`Speicher`=[value-3],`Taktrate`=[value-4],`ID_Hersteller`=[value-5] WHERE 1
-            command.CommandText = "UPDATE `ims_arbeitsspeicher` SET `Beschreibung`='" + entity.Description + "', `Speicher`=" + entity.Memory + ", `Taktrate`='" + entity.ClockRate 
+            command.CommandText = "UPDATE `"+ this.getTableName() +"` SET `Beschreibung`='" + entity.Description + "', `Speicher`=" + entity.Memory + ", `Taktrate`='" + entity.ClockRate 
                                 + "', `ID_Hersteller`=" + entity.Producer.Id + " WHERE id = " + entity.Id;
 
             connection.Open();
@@ -70,7 +79,7 @@ namespace InventoryManagementSystem.dataAccess
         {
             MySqlConnection connection = this.CreateConnection();
             MySqlCommand command = connection.CreateCommand();
-            command.CommandText = "SELECT * FROM `ims_arbeitsspeicher` WHERE id = " + id;
+            command.CommandText = "SELECT * FROM `" + this.getTableName() + "` WHERE id = " + id;
 
             connection.Open();
             MySqlDataReader reader = command.ExecuteReader();
@@ -90,7 +99,7 @@ namespace InventoryManagementSystem.dataAccess
         {
             MySqlConnection connection = this.CreateConnection();
             MySqlCommand command = connection.CreateCommand();
-            command.CommandText = "SELECT MAX(id) FROM `ims_arbeitsspeicher`";
+            command.CommandText = "SELECT MAX(id) FROM `" + this.getTableName() + "`";
 
             connection.Open();
 
@@ -116,7 +125,7 @@ namespace InventoryManagementSystem.dataAccess
             List<RandomAccessMemory> rams = new List<RandomAccessMemory>();
             MySqlConnection connection = this.CreateConnection();
             MySqlCommand command = connection.CreateCommand();
-            command.CommandText = "SELECT * FROM `ims_arbeitsspeicher`";
+            command.CommandText = "SELECT * FROM `" + this.getTableName() + "`";
 
             connection.Open();
 

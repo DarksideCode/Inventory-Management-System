@@ -13,6 +13,15 @@ namespace InventoryManagementSystem.dataAccess
     */
     public class GraphicCardDataAccess : DatabaseBasic
     {
+        /**
+        * gibt den Tabellen Namen zurück.
+        **/
+        public override string getTableName()
+        {
+            ConfigProzesser config = new ConfigProzesser();
+            return config.getDBPraefix() + "grafikkarte";
+        }
+
         /*
         *   Speichert ein Objekt der Entität 'Grafikkarte' in die Datenbank
         */
@@ -20,7 +29,7 @@ namespace InventoryManagementSystem.dataAccess
         {
             MySqlConnection connection = this.CreateConnection();
             MySqlCommand command = connection.CreateCommand();
-            command.CommandText = "INSERT INTO `ims_grafikkarte`(`Beschreibung`, `Taktrate`, "
+            command.CommandText = "INSERT INTO `" + this.getTableName() + "`(`Beschreibung`, `Taktrate`, "
                                 + "`Modelbezeichnung`, `Grafikspeicher`, `ID_Hersteller`) "
                                 + "VALUES ('" + entity.Description + "'," + entity.ClockRate + ",'" + entity.Model + "',"
                                 + entity.Memory + "," + entity.Producer.Id + ")";
@@ -31,7 +40,7 @@ namespace InventoryManagementSystem.dataAccess
 
             for (int i = 0; i < entity.PhysicalInterfaces.Count; i++)
             {
-                command.CommandText = "INSERT INTO `ims_grafikkarte_schnittstelle`(`ID_Grafikkarte`, `ID_Schnittstelle`, `Anzahl`) "
+                command.CommandText = "INSERT INTO `" + this.getTableName() + "_schnittstelle`(`ID_Grafikkarte`, `ID_Schnittstelle`, `Anzahl`) "
                                     + "VALUES (" + this.GetLastEntity().Id + "," + entity.PhysicalInterfaces[i].PhysicalInterface.Id + ","
                                     + entity.PhysicalInterfaces[i].Number + ")";
                 connection.Open();
@@ -48,7 +57,7 @@ namespace InventoryManagementSystem.dataAccess
             MySqlConnection connection = this.CreateConnection();
             MySqlCommand command = connection.CreateCommand();
             
-            command.CommandText = "DELETE FROM `ims_grafikkarte` WHERE id = " + entity.Id;
+            command.CommandText = "DELETE FROM `" + this.getTableName() + "` WHERE id = " + entity.Id;
             
             connection.Open();
             command.ExecuteNonQuery();
@@ -66,7 +75,7 @@ namespace InventoryManagementSystem.dataAccess
             MySqlCommand interfaceCommand = connection.CreateCommand();
             string usedInterfaces = "";
 
-            command.CommandText = "UPDATE `ims_grafikkarte` SET `Beschreibung`='" + entity.Description + "', `Taktrate`='" + entity.ClockRate + "', "
+            command.CommandText = "UPDATE `" + this.getTableName() + "` SET `Beschreibung`='" + entity.Description + "', `Taktrate`='" + entity.ClockRate + "', "
                                 + "`Modelbezeichnung`='" + entity.Model + "', `Grafikspeicher`=" + entity.Memory + ", `ID_Hersteller`=" + entity.Producer.Id 
                                 + " WHERE id = " + entity.Id;
 
@@ -74,7 +83,7 @@ namespace InventoryManagementSystem.dataAccess
 
             for (int i = 0; i < entity.PhysicalInterfaces.Count; i++)
             {
-                interfaceCommand.CommandText = "UPDATE `ims_grafikkarte_schnittstelle` SET `Anzahl`=" + entity.PhysicalInterfaces[i].Number
+                interfaceCommand.CommandText = "UPDATE `" + this.getTableName() + "_schnittstelle` SET `Anzahl`=" + entity.PhysicalInterfaces[i].Number
                                              + " WHERE `ID_Grafikkarte` = " + entity.Id + " AND `ID_Schnittstelle` = " + entity.PhysicalInterfaces[i].PhysicalInterface.Id;
                 interfaceCommand.ExecuteNonQuery();
                 usedInterfaces += entity.PhysicalInterfaces[i].PhysicalInterface.Id;
@@ -83,7 +92,7 @@ namespace InventoryManagementSystem.dataAccess
                     usedInterfaces += ",";
                 }
             }
-            interfaceCommand.CommandText = "DELETE FROM `ims_grafikkarte_schnittstelle` WHERE `ID_Grafikkarte` = " + entity.Id
+            interfaceCommand.CommandText = "DELETE FROM `" + this.getTableName() + "_schnittstelle` WHERE `ID_Grafikkarte` = " + entity.Id
                                          + " AND `ID_Schnittstelle` NOT IN (" + usedInterfaces + ")";
             interfaceCommand.ExecuteNonQuery();
             command.ExecuteNonQuery();
@@ -98,7 +107,7 @@ namespace InventoryManagementSystem.dataAccess
         {
             MySqlConnection connection = this.CreateConnection();
             MySqlCommand command = connection.CreateCommand();
-            command.CommandText = "SELECT * FROM `ims_grafikkarte` WHERE id = " + id;
+            command.CommandText = "SELECT * FROM `" + this.getTableName() + "` WHERE id = " + id;
 
             connection.Open();
             MySqlDataReader reader = command.ExecuteReader();
@@ -118,7 +127,7 @@ namespace InventoryManagementSystem.dataAccess
         {
             MySqlConnection connection = this.CreateConnection();
             MySqlCommand command = connection.CreateCommand();
-            command.CommandText = "SELECT MAX(id) FROM `ims_grafikkarte`";
+            command.CommandText = "SELECT MAX(id) FROM `" + this.getTableName() + "`";
 
             connection.Open();
 
@@ -144,7 +153,7 @@ namespace InventoryManagementSystem.dataAccess
             List<GraphicCard> graphicCards = new List<GraphicCard>();
             MySqlConnection connection = this.CreateConnection();
             MySqlCommand command = connection.CreateCommand();
-            command.CommandText = "SELECT * FROM `ims_grafikkarte`";
+            command.CommandText = "SELECT * FROM `" + this.getTableName() + "`";
 
             connection.Open();
 
@@ -188,7 +197,7 @@ namespace InventoryManagementSystem.dataAccess
             MySqlConnection connection = this.CreateConnection();
             MySqlCommand command = connection.CreateCommand();
 
-            command.CommandText = "SELECT * FROM `ims_grafikkarte_schnittstelle` WHERE id_grafikkarte = " + entity.Id;
+            command.CommandText = "SELECT * FROM `" + this.getTableName() + "_schnittstelle` WHERE id_grafikkarte = " + entity.Id;
 
             connection.Open();
             MySqlDataReader reader = command.ExecuteReader();

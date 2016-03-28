@@ -13,15 +13,24 @@ namespace InventoryManagementSystem.dataAccess
     */
     public class ProcessorDataAccess : DatabaseBasic
     {
-       /*
-        *   Speichert ein Objekt der Entität 'Prozessor' in die Datenbank
-        */
+        /**
+        * gibt den Tabellen Namen zurück.
+        **/
+        public override string getTableName()
+        {
+            ConfigProzesser config = new ConfigProzesser();
+            return config.getDBPraefix() + "prozessor";
+        }
+
+        /*
+         *   Speichert ein Objekt der Entität 'Prozessor' in die Datenbank
+         */
         public void Save(Processor entity)
         {
             MySqlConnection connection = this.CreateConnection();
             MySqlCommand command = connection.CreateCommand();
 
-            command.CommandText = "INSERT INTO `ims_prozessor`(`Beschreibung`, `Modell`, `Kerne`, `Befehlssatz`, `Architektur`, `Taktrate`, "
+            command.CommandText = "INSERT INTO `" + this.getTableName() + "`(`Beschreibung`, `Modell`, `Kerne`, `Befehlssatz`, `Architektur`, `Taktrate`, "
                                 + "`ID_Hersteller`) VALUES ('" + entity.Description + "','" + entity.Model + "'," + entity.Core + ",'" + entity.CommandSet 
                                 + "'," + entity.Architecture + ",'" + entity.ClockRate + "'," + entity.Producer.Id + ")";
 
@@ -38,7 +47,7 @@ namespace InventoryManagementSystem.dataAccess
             MySqlConnection connection = this.CreateConnection();
             MySqlCommand command = connection.CreateCommand();
 
-            command.CommandText = "DELETE FROM `ims_prozessor` WHERE id = " + entity.Id;
+            command.CommandText = "DELETE FROM `" + this.getTableName() + "` WHERE id = " + entity.Id;
 
             connection.Open();
             command.ExecuteNonQuery();
@@ -53,8 +62,8 @@ namespace InventoryManagementSystem.dataAccess
             MySqlConnection connection = this.CreateConnection();
             MySqlCommand command = connection.CreateCommand();
 
-            //UPDATE `ims_prozessor` SET `ID`=[value-1],`Beschreibung`=[value-2],`Modell`=[value-3],`Kerne`=[value-4],`Befehlssatz`=[value-5],`Architektur`=[value-6],`Taktrate`=[value-7],`ID_Hersteller`=[value-8] WHERE 1
-            command.CommandText = "UPDATE `ims_prozessor` SET `Beschreibung`='" + entity.Description + "', `Modell`='" + entity.Model + "', `Kerne`=" + entity.Core 
+            //UPDATE `" + this.getTableName() + "` SET `ID`=[value-1],`Beschreibung`=[value-2],`Modell`=[value-3],`Kerne`=[value-4],`Befehlssatz`=[value-5],`Architektur`=[value-6],`Taktrate`=[value-7],`ID_Hersteller`=[value-8] WHERE 1
+            command.CommandText = "UPDATE `" + this.getTableName() + "` SET `Beschreibung`='" + entity.Description + "', `Modell`='" + entity.Model + "', `Kerne`=" + entity.Core 
                                 + ", `Befehlssatz`='" + entity.CommandSet + "', `Architektur`=" + entity.Architecture + ", `Taktrate`='" + entity.ClockRate 
                                 + "', `ID_Hersteller`=" + entity.Producer.Id + " WHERE id = " + entity.Id;
 
@@ -71,7 +80,7 @@ namespace InventoryManagementSystem.dataAccess
         {
             MySqlConnection connection = this.CreateConnection();
             MySqlCommand command = connection.CreateCommand();
-            command.CommandText = "SELECT * FROM `ims_prozessor` WHERE id = " + id;
+            command.CommandText = "SELECT * FROM `" + this.getTableName() + "` WHERE id = " + id;
 
             connection.Open();
             MySqlDataReader reader = command.ExecuteReader();
@@ -91,7 +100,7 @@ namespace InventoryManagementSystem.dataAccess
         {
             MySqlConnection connection = this.CreateConnection();
             MySqlCommand command = connection.CreateCommand();
-            command.CommandText = "SELECT MAX(id) FROM `ims_prozessor`";
+            command.CommandText = "SELECT MAX(id) FROM `" + this.getTableName() + "`";
 
             connection.Open();
 
@@ -117,7 +126,7 @@ namespace InventoryManagementSystem.dataAccess
             List<Processor> processors = new List<Processor>();
             MySqlConnection connection = this.CreateConnection();
             MySqlCommand command = connection.CreateCommand();
-            command.CommandText = "SELECT * FROM `ims_prozessor`";
+            command.CommandText = "SELECT * FROM `" + this.getTableName() + "`";
 
             connection.Open();
 

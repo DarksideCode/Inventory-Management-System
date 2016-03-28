@@ -13,6 +13,15 @@ namespace InventoryManagementSystem.dataAccess
     */
     public class MotherboardDataAccess : DatabaseBasic
     {
+        /**
+        * gibt den Tabellen Namen zurück.
+        **/
+        public override string getTableName()
+        {
+            ConfigProzesser config = new ConfigProzesser();
+            return config.getDBPraefix() + "hauptplatine";
+        }
+
         /*
         *   Speichert ein Objekt der Entität 'Hauptplatine' in die Datenbank
         */
@@ -21,7 +30,7 @@ namespace InventoryManagementSystem.dataAccess
             MySqlConnection connection = this.CreateConnection();
             MySqlCommand command = connection.CreateCommand();
             
-            command.CommandText = "INSERT INTO `ims_hauptplatine`(`Beschreibung`, `Zoll`, `Sockel`, `ID_Hersteller`) "
+            command.CommandText = "INSERT INTO `" + this.getTableName() + "`(`Beschreibung`, `Zoll`, `Sockel`, `ID_Hersteller`) "
                                 + "VALUES ('" + entity.Description + "','" + entity.Inch + "','" + entity.Socket + "'," + entity.Producer.Id + ")";
 
             connection.Open();
@@ -30,7 +39,7 @@ namespace InventoryManagementSystem.dataAccess
 
             for (int i = 0; i < entity.PhysicalInterfaces.Count; i++)
             {
-                command.CommandText = "INSERT INTO `ims_hauptplatine_schnittstelle`(`ID_Hauptplatine`, `ID_Schnittstelle`, `Anzahl`) "
+                command.CommandText = "INSERT INTO `" + this.getTableName() + "_schnittstelle`(`ID_Hauptplatine`, `ID_Schnittstelle`, `Anzahl`) "
                                     + "VALUES (" + this.GetLastEntity().Id + "," + entity.PhysicalInterfaces[i].PhysicalInterface.Id + ","
                                     + entity.PhysicalInterfaces[i].Number + ")";
                 connection.Open();
@@ -47,7 +56,7 @@ namespace InventoryManagementSystem.dataAccess
             MySqlConnection connection = this.CreateConnection();
             MySqlCommand command = connection.CreateCommand();
             
-            command.CommandText = "DELETE FROM `ims_hauptplatine` WHERE id = " + entity.Id;
+            command.CommandText = "DELETE FROM `" + this.getTableName() + "` WHERE id = " + entity.Id;
             
             connection.Open();
             command.ExecuteNonQuery();
@@ -65,14 +74,14 @@ namespace InventoryManagementSystem.dataAccess
             MySqlCommand interfaceCommand = connection.CreateCommand();
             string usedInterfaces = "";
 
-            command.CommandText = "UPDATE `ims_hauptplatine` SET `Beschreibung`='" + entity.Description + "', `Zoll`='" + entity.Inch + "', `Sockel`='" + entity.Socket 
+            command.CommandText = "UPDATE `" + this.getTableName() + "` SET `Beschreibung`='" + entity.Description + "', `Zoll`='" + entity.Inch + "', `Sockel`='" + entity.Socket 
                                 + "', `ID_Hersteller`=" + entity.Producer.Id + " WHERE id = " + entity.Id;
 
             connection.Open();
 
             for (int i = 0; i < entity.PhysicalInterfaces.Count; i++)
             {
-                interfaceCommand.CommandText = "UPDATE `ims_hauptplatine_schnittstelle` SET `Anzahl`=" + entity.PhysicalInterfaces[i].Number
+                interfaceCommand.CommandText = "UPDATE `" + this.getTableName() + "_schnittstelle` SET `Anzahl`=" + entity.PhysicalInterfaces[i].Number
                                              + " WHERE `ID_Hauptplatine` = " + entity.Id + " AND `ID_Schnittstelle` = " + entity.PhysicalInterfaces[i].PhysicalInterface.Id;
                 interfaceCommand.ExecuteNonQuery();
                 usedInterfaces += entity.PhysicalInterfaces[i].PhysicalInterface.Id;
@@ -81,7 +90,7 @@ namespace InventoryManagementSystem.dataAccess
                     usedInterfaces += ",";
                 }
             }
-            interfaceCommand.CommandText = "DELETE FROM `ims_hauptplatine_schnittstelle` WHERE `ID_Hauptplatine` = " + entity.Id
+            interfaceCommand.CommandText = "DELETE FROM `" + this.getTableName() + "_schnittstelle` WHERE `ID_Hauptplatine` = " + entity.Id
                                          + " AND `ID_Schnittstelle` NOT IN (" + usedInterfaces + ")";
             interfaceCommand.ExecuteNonQuery();
             command.ExecuteNonQuery();
@@ -96,7 +105,7 @@ namespace InventoryManagementSystem.dataAccess
         {
             MySqlConnection connection = this.CreateConnection();
             MySqlCommand command = connection.CreateCommand();
-            command.CommandText = "SELECT * FROM `ims_hauptplatine` WHERE id = " + id;
+            command.CommandText = "SELECT * FROM `" + this.getTableName() + "` WHERE id = " + id;
 
             connection.Open();
             MySqlDataReader reader = command.ExecuteReader();
@@ -116,7 +125,7 @@ namespace InventoryManagementSystem.dataAccess
         {
             MySqlConnection connection = this.CreateConnection();
             MySqlCommand command = connection.CreateCommand();
-            command.CommandText = "SELECT MAX(id) FROM `ims_hauptplatine`";
+            command.CommandText = "SELECT MAX(id) FROM `" + this.getTableName() + "`";
 
             connection.Open();
 
@@ -142,7 +151,7 @@ namespace InventoryManagementSystem.dataAccess
             List<Motherboard> motherboards = new List<Motherboard>();
             MySqlConnection connection = this.CreateConnection();
             MySqlCommand command = connection.CreateCommand();
-            command.CommandText = "SELECT * FROM `ims_hauptplatine`";
+            command.CommandText = "SELECT * FROM `" + this.getTableName() + "`";
 
             connection.Open();
 
@@ -185,7 +194,7 @@ namespace InventoryManagementSystem.dataAccess
             MySqlConnection connection = this.CreateConnection();
             MySqlCommand command = connection.CreateCommand();
 
-            command.CommandText = "SELECT * FROM `ims_hauptplatine_schnittstelle` WHERE id_hauptplatine = " + entity.Id;
+            command.CommandText = "SELECT * FROM `" + this.getTableName() + "_schnittstelle` WHERE id_hauptplatine = " + entity.Id;
 
             connection.Open();
             MySqlDataReader reader = command.ExecuteReader();

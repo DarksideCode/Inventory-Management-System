@@ -13,6 +13,15 @@ namespace InventoryManagementSystem.dataAccess
     */
     public class ProducerDataAccess : DatabaseBasic
     {
+        /**
+        * gibt den Tabellen Namen zurück.
+        **/
+        public override string getTableName()
+        {
+            ConfigProzesser config = new ConfigProzesser();
+            return config.getDBPraefix() + "hersteller";
+        }
+
         /*
         *   Speichert ein Objekt der Entität 'Hersteller' in die Datenbank
         */
@@ -20,7 +29,7 @@ namespace InventoryManagementSystem.dataAccess
         {
             MySqlConnection connection = this.CreateConnection();
             MySqlCommand command = connection.CreateCommand();
-            command.CommandText = "INSERT INTO `ims_hersteller`(`Firma`, `Telefon`, `Email`, `Webseite`, `PLZ`, `Ort`, `Straße`, `Hausnummer`) "
+            command.CommandText = "INSERT INTO `" + this.getTableName() + "`(`Firma`, `Telefon`, `Email`, `Webseite`, `PLZ`, `Ort`, `Straße`, `Hausnummer`) "
                                 + "VALUES ('" + entity.CompanyName + "'," + entity.PhoneNumber + ",'" + entity.Email + "',"
                                 + "'" + entity.Website + "'," + entity.PostalCode + ",'" + entity.Place + "','" + entity.Street + "'," + entity.HouseNumber + ")";
 
@@ -37,7 +46,7 @@ namespace InventoryManagementSystem.dataAccess
             MySqlConnection connection = this.CreateConnection();
             MySqlCommand command = connection.CreateCommand();
 
-            command.CommandText = "DELETE FROM `ims_hersteller` WHERE id = " + entity.Id;
+            command.CommandText = "DELETE FROM `" + this.getTableName() + "` WHERE id = " + entity.Id;
 
             connection.Open();
             command.ExecuteNonQuery();
@@ -52,7 +61,7 @@ namespace InventoryManagementSystem.dataAccess
             MySqlConnection connection = this.CreateConnection();
             MySqlCommand command = connection.CreateCommand();
 
-            command.CommandText = "UPDATE `ims_hersteller` SET `Firma`='" + entity.CompanyName + "', `Telefon`=" + entity.PhoneNumber + ", `Email`='" + entity.Email 
+            command.CommandText = "UPDATE `" + this.getTableName() + "` SET `Firma`='" + entity.CompanyName + "', `Telefon`=" + entity.PhoneNumber + ", `Email`='" + entity.Email 
                                 + "', `Webseite`='" + entity.Website + "', `PLZ`=" + entity.PostalCode + ", `Ort`='" + entity.Place + "', `Straße`='" + entity.Street 
                                 + "', `Hausnummer`=" + entity.HouseNumber + " WHERE id = " + entity.Id;
 
@@ -69,7 +78,7 @@ namespace InventoryManagementSystem.dataAccess
         {
             MySqlConnection connection = this.CreateConnection();
             MySqlCommand command = connection.CreateCommand();
-            command.CommandText = "SELECT * FROM `ims_hersteller` WHERE id = " + id;
+            command.CommandText = "SELECT * FROM `" + this.getTableName() + "` WHERE id = " + id;
 
             connection.Open();
             MySqlDataReader reader = command.ExecuteReader();
@@ -90,7 +99,7 @@ namespace InventoryManagementSystem.dataAccess
             MySqlConnection connection = this.CreateConnection();
             MySqlCommand command = connection.CreateCommand();
 
-            command.CommandText = "SELECT MAX(id) FROM `ims_hersteller`";
+            command.CommandText = "SELECT MAX(id) FROM `" + this.getTableName() + "`";
 
             connection.Open();
 
@@ -116,7 +125,7 @@ namespace InventoryManagementSystem.dataAccess
             List<Producer> producers = new System.Collections.Generic.List<Producer>();
             MySqlConnection connection = this.CreateConnection();
             MySqlCommand command = connection.CreateCommand();
-            command.CommandText = "SELECT * FROM `ims_hersteller`";
+            command.CommandText = "SELECT * FROM `" + this.getTableName() + "`";
 
             connection.Open();
 

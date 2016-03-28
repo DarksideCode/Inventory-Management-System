@@ -13,6 +13,15 @@ namespace InventoryManagementSystem.dataAccess
     */
     public class PhysicalInterfaceDataAccess : DatabaseBasic
     {
+        /**
+        * gibt den Tabellen Namen zurück.
+        **/
+        public override string getTableName()
+        {
+            ConfigProzesser config = new ConfigProzesser();
+            return config.getDBPraefix() + "schnittstelle";
+        }
+
         /*
          *   Speichert ein Objekt der Entität 'Schnittstelle' in die Datenbank
          */
@@ -21,7 +30,7 @@ namespace InventoryManagementSystem.dataAccess
             MySqlConnection connection = this.CreateConnection();
             MySqlCommand command = connection.CreateCommand();
 
-            command.CommandText = "INSERT INTO `ims_schnittstelle`(`Name`, `Beschreibung`, `Seriell`, `Übertragungsrate`) "
+            command.CommandText = "INSERT INTO `" + this.getTableName() + "`(`Name`, `Beschreibung`, `Seriell`, `Übertragungsrate`) "
                                 + "VALUES ('" + entity.Name + "','" + entity.Description + "','" + entity.Serial + "',"
                                 + entity.TransferRate + ")";
 
@@ -38,7 +47,7 @@ namespace InventoryManagementSystem.dataAccess
             MySqlConnection connection = this.CreateConnection();
             MySqlCommand command = connection.CreateCommand();
 
-            command.CommandText = "DELETE FROM `ims_schnittstelle` WHERE id = " + entity.Id;
+            command.CommandText = "DELETE FROM `" + this.getTableName() + "` WHERE id = " + entity.Id;
 
             connection.Open();
             command.ExecuteNonQuery();
@@ -53,7 +62,7 @@ namespace InventoryManagementSystem.dataAccess
             MySqlConnection connection = this.CreateConnection();
             MySqlCommand command = connection.CreateCommand();
 
-            command.CommandText = "UPDATE `ims_schnittstelle` SET `Name`='" + entity.Name + "', `Beschreibung`='" + entity.Description + "', `Seriell`='" + entity.Serial
+            command.CommandText = "UPDATE `" + this.getTableName() + "` SET `Name`='" + entity.Name + "', `Beschreibung`='" + entity.Description + "', `Seriell`='" + entity.Serial
                                 + "', `Übertragungsrate`=" + entity.TransferRate + " WHERE id = " + entity.Id;
 
             connection.Open();
@@ -69,7 +78,7 @@ namespace InventoryManagementSystem.dataAccess
         {
             MySqlConnection connection = this.CreateConnection();
             MySqlCommand command = connection.CreateCommand();
-            command.CommandText = "SELECT * FROM `ims_schnittstelle` WHERE id = " + id;
+            command.CommandText = "SELECT * FROM `" + this.getTableName() + "` WHERE id = " + id;
 
             connection.Open();
             MySqlDataReader reader = command.ExecuteReader();
@@ -89,7 +98,7 @@ namespace InventoryManagementSystem.dataAccess
         {
             MySqlConnection connection = this.CreateConnection();
             MySqlCommand command = connection.CreateCommand();
-            command.CommandText = "SELECT MAX(id) FROM `ims_schnittstelle`";
+            command.CommandText = "SELECT MAX(id) FROM `" + this.getTableName() + "`";
 
             connection.Open();
 
@@ -115,7 +124,7 @@ namespace InventoryManagementSystem.dataAccess
             List<PhysicalInterface> physicalInterfaces = new List<PhysicalInterface>();
             MySqlConnection connection = this.CreateConnection();
             MySqlCommand command = connection.CreateCommand();
-            command.CommandText = "SELECT * FROM `ims_schnittstelle`";
+            command.CommandText = "SELECT * FROM `" + this.getTableName() + "`";
 
             connection.Open();
 
