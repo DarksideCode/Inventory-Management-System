@@ -51,3 +51,5 @@ C:\Schule\LF6\Datenbank-Projekt\InventoryManagementSystem\InventoryManagementSys
 C:\Schule\LF6\Datenbank-Projekt\InventoryManagementSystem\InventoryManagementSystem\bin\Debug\MySql.Data.dll
 C:\Schule\LF6\Datenbank-Projekt\InventoryManagementSystem\InventoryManagementSystem\obj\Debug\InventoryManagementSystem.exe
 C:\Schule\LF6\Datenbank-Projekt\InventoryManagementSystem\InventoryManagementSystem\obj\Debug\InventoryManagementSystem.pdb
+C:\Users\dominik.traise\Documents\Schule\LF6 - Programmieren\SQL\Projekt - Inventory\Inventory-Management-System\InventoryManagementSystem\InventoryManagementSystem\bin\Debug\MySql.Data.dll
+C:\Users\dominik.traise\Documents\Schule\LF6 - Programmieren\SQL\Projekt - Inventory\Inventory-Management-System\InventoryManagementSystem\InventoryManagementSystem\obj\Debug\InventoryManagementSystem.csprojResolveAssemblyReference.cache

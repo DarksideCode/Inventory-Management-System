@@ -70,5 +70,17 @@ namespace InventoryManagementSystem.Properties {
                 this["DB_PRAEFIX"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("localhost")]
+        public string DB_HOST {
+            get {
+                return ((string)(this["DB_HOST"]));
+            }
+            set {
+                this["DB_HOST"] = value;
+            }
+        }
     }
 }
