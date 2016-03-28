@@ -1,6 +1,6 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using InventoryManagementSystem.components;
-using InventoryManagementSystem.DB_Models;
+using InventoryManagementSystem.dataAccess;
 
 namespace UnitTests
 {

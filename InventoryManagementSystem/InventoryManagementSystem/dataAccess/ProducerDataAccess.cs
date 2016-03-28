@@ -5,7 +5,7 @@ using MySql.Data.MySqlClient;
 using System.Collections.Generic;
 using InventoryManagementSystem.database.basic;
 
-namespace InventoryManagementSystem.DB_Models
+namespace InventoryManagementSystem.dataAccess
 {
     /*
     *   Data-Access-Klasse der Entität 'Hersteller'
@@ -38,6 +38,23 @@ namespace InventoryManagementSystem.DB_Models
             MySqlCommand command = connection.CreateCommand();
 
             command.CommandText = "DELETE FROM `ims_hersteller` WHERE id = " + entity.Id;
+
+            connection.Open();
+            command.ExecuteNonQuery();
+            connection.Close();
+        }
+
+        /*
+         *  Verändert einen bestehenden Datensatz der Entität `Hersteller` in der Datenbank
+         */
+        public void Update(Producer entity)
+        {
+            MySqlConnection connection = this.CreateConnection();
+            MySqlCommand command = connection.CreateCommand();
+
+            command.CommandText = "UPDATE `ims_hersteller` SET `Firma`='" + entity.CompanyName + "', `Telefon`=" + entity.PhoneNumber + ", `Email`='" + entity.Email 
+                                + "', `Webseite`='" + entity.Website + "', `PLZ`=" + entity.PostalCode + ", `Ort`='" + entity.Place + "', `Straße`='" + entity.Street 
+                                + "', `Hausnummer`=" + entity.HouseNumber + " WHERE id = " + entity.Id;
 
             connection.Open();
             command.ExecuteNonQuery();

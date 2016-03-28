@@ -5,7 +5,7 @@ using System;
 using System.Collections.Generic;
 using InventoryManagementSystem.database.basic;
 
-namespace InventoryManagementSystem.DB_Models
+namespace InventoryManagementSystem.dataAccess
 {
     /*
     *   Data-Access-Klasse der Entität 'Prozessor'
@@ -39,6 +39,24 @@ namespace InventoryManagementSystem.DB_Models
             MySqlCommand command = connection.CreateCommand();
 
             command.CommandText = "DELETE FROM `ims_prozessor` WHERE id = " + entity.Id;
+
+            connection.Open();
+            command.ExecuteNonQuery();
+            connection.Close();
+        }
+
+        /*
+         *  Verändert einen bestehenden Datensatz der Entität 'Prozessor' in der Datenbank
+         */
+        public void Update(Processor entity)
+        {
+            MySqlConnection connection = this.CreateConnection();
+            MySqlCommand command = connection.CreateCommand();
+
+            //UPDATE `ims_prozessor` SET `ID`=[value-1],`Beschreibung`=[value-2],`Modell`=[value-3],`Kerne`=[value-4],`Befehlssatz`=[value-5],`Architektur`=[value-6],`Taktrate`=[value-7],`ID_Hersteller`=[value-8] WHERE 1
+            command.CommandText = "UPDATE `ims_prozessor` SET `Beschreibung`='" + entity.Description + "', `Modell`='" + entity.Model + "', `Kerne`=" + entity.Core 
+                                + ", `Befehlssatz`='" + entity.CommandSet + "', `Architektur`=" + entity.Architecture + ", `Taktrate`='" + entity.ClockRate 
+                                + "', `ID_Hersteller`=" + entity.Producer.Id + " WHERE id = " + entity.Id;
 
             connection.Open();
             command.ExecuteNonQuery();

@@ -5,7 +5,7 @@ using System;
 using System.Collections.Generic;
 using InventoryManagementSystem.database.basic;
 
-namespace InventoryManagementSystem.DB_Models
+namespace InventoryManagementSystem.dataAccess
 {
     /*
     *   Data-Access-Klasse der Entität 'Grafikkarte'
@@ -51,6 +51,41 @@ namespace InventoryManagementSystem.DB_Models
             command.CommandText = "DELETE FROM `ims_grafikkarte` WHERE id = " + entity.Id;
             
             connection.Open();
+            command.ExecuteNonQuery();
+            connection.Close();
+        }
+
+        /*
+         *  Verändert einen bestehenden Datensatz der Entität `Grafikkarte` in der Datenbank
+         *  Ermittelt auch nicht mehr genutzte Referenzen und löscht diese.
+         */
+        public void Update(GraphicCard entity)
+        {
+            MySqlConnection connection = this.CreateConnection();
+            MySqlCommand command = connection.CreateCommand();
+            MySqlCommand interfaceCommand = connection.CreateCommand();
+            string usedInterfaces = "";
+
+            command.CommandText = "UPDATE `ims_grafikkarte` SET `Beschreibung`='" + entity.Description + "', `Taktrate`='" + entity.ClockRate + "', "
+                                + "`Modelbezeichnung`='" + entity.Model + "', `Grafikspeicher`=" + entity.Memory + ", `ID_Hersteller`=" + entity.Producer.Id 
+                                + " WHERE id = " + entity.Id;
+
+            connection.Open();
+
+            for (int i = 0; i < entity.PhysicalInterfaces.Count; i++)
+            {
+                interfaceCommand.CommandText = "UPDATE `ims_grafikkarte_schnittstelle` SET `Anzahl`=" + entity.PhysicalInterfaces[i].Number
+                                             + " WHERE `ID_Grafikkarte` = " + entity.Id + " AND `ID_Schnittstelle` = " + entity.PhysicalInterfaces[i].PhysicalInterface.Id;
+                interfaceCommand.ExecuteNonQuery();
+                usedInterfaces += entity.PhysicalInterfaces[i].PhysicalInterface.Id;
+                if (i != entity.PhysicalInterfaces.Count - 1)
+                {
+                    usedInterfaces += ",";
+                }
+            }
+            interfaceCommand.CommandText = "DELETE FROM `ims_grafikkarte_schnittstelle` WHERE `ID_Grafikkarte` = " + entity.Id
+                                         + " AND `ID_Schnittstelle` NOT IN (" + usedInterfaces + ")";
+            interfaceCommand.ExecuteNonQuery();
             command.ExecuteNonQuery();
             connection.Close();
         }
