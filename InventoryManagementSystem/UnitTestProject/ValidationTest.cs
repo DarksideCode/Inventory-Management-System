@@ -8,7 +8,7 @@ namespace UnitTests
     public class ValidationTest
     {
         [TestMethod]
-        public void validateProduce()
+        public void validateProducer()
         {
             Producer producer = new Producer();
             ProducerValidator validator = new ProducerValidator();
@@ -22,7 +22,7 @@ namespace UnitTests
             producer.Street = "Lüneburger Straße";
             producer.HouseNumber = 1;
 
-            Assert.AreNotEqual(validator.Validate(producer), null);
+            Assert.AreEqual(false, validator.CheckConsistency(producer));
         }
 
         [TestMethod]
