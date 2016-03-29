@@ -14,9 +14,9 @@ namespace InventoryManagementSystem.validation
      */
     public class ProducerValidator
     {
-        private string emailPattern = "[a-zA-Z]{1,}.*\\@[a-zA-Z]*\\.(de|com|net|org){1,1}";
-        private string websitePattern = "(http:\\/\\/){0,1}www\\..*\\.[a-z]{1,4}";
-        private string placePattern = "[A-Z]{1,}[A-Za-zöäü ]*";
+        private string emailPattern = "^[a-zA-Z]{1,}.*\\@[a-zA-Z]*\\.(de|com|net|org){1,1}$";
+        private string websitePattern = "^(http:\\/\\/){0,1}www\\..*\\.[a-z]{1,4}$";
+        private string placePattern = "^[A-Z]{1,}[A-Za-zöäü ]*$";
 
         /*
          *  Prüft die Konsistenz der Attribute der Entität 'Hersteller'
@@ -27,6 +27,16 @@ namespace InventoryManagementSystem.validation
             Regex emailReg = new Regex(this.emailPattern, RegexOptions.IgnoreCase);
             Regex websiteReg = new Regex(this.websitePattern, RegexOptions.IgnoreCase);
             Regex placeReg = new Regex(this.placePattern);
+
+            if(entity.CompanyName.Length == 0)
+            {
+                result = false;
+            }
+
+            if(entity.PhoneNumber < 0)
+            {
+                result = false;
+            }
 
             if(!emailReg.Match(entity.Email).Success)
             {
@@ -44,6 +54,16 @@ namespace InventoryManagementSystem.validation
             }
 
             if(!placeReg.Match(entity.Place).Success)
+            {
+                result = false;
+            }
+
+            if(entity.Street.Length == 0)
+            {
+                result = false;
+            }
+
+            if (entity.HouseNumber < 1)
             {
                 result = false;
             }

@@ -33,10 +33,10 @@ namespace UnitTests
 
             graphicCard.Description = "Dies ist ein Test";
             graphicCard.ClockRate = 5;
-            graphicCard.Model = null;
+            graphicCard.Model = "ASD::123";
             graphicCard.Memory = 2000;
 
-            Assert.AreEqual(validator.Validate(graphicCard), null);
+            Assert.AreEqual(false, validator.CheckConsistency(graphicCard));
         }
 
         [TestMethod]
