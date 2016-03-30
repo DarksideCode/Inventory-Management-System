@@ -49,7 +49,7 @@ namespace UnitTests
             ram.Memory = 8000;
             ram.ClockRate = 12000;
 
-            Assert.AreEqual(validator.Validate(ram), null);
+            Assert.AreEqual(true, validator.CheckConsistency(ram));
         }
 
         [TestMethod]
@@ -60,9 +60,9 @@ namespace UnitTests
 
             motherboard.Description = "Dies ist ein Test";
             motherboard.Inch = 24.2;
-            motherboard.Socket = null;
+            motherboard.Socket = "!$%&§&";
 
-            Assert.AreNotEqual(validator.Validate(motherboard), null);
+            Assert.AreEqual(false, validator.CheckConsistency(motherboard));
         }
 
         [TestMethod]
@@ -78,7 +78,7 @@ namespace UnitTests
             processor.Architecture = 64;
             processor.ClockRate = 3.40;
 
-            Assert.AreEqual(validator.Validate(processor), null);
+            Assert.AreEqual(false, validator.CheckConsistency(processor));
         }
 
         [TestMethod]
@@ -92,7 +92,7 @@ namespace UnitTests
             hdd.Ssd = false;
             hdd.Inch = -3.5;
 
-            Assert.AreEqual(validator.Validate(hdd), null);
+            Assert.AreEqual(false, validator.CheckConsistency(hdd));
         }
 
         [TestMethod]
@@ -106,7 +106,7 @@ namespace UnitTests
             monitor.Inch = 24;
             monitor.AspectRatio = 4;
 
-            Assert.AreNotEqual(validator.Validate(monitor), null);
+            Assert.AreEqual(true, validator.CheckConsistency(monitor));
         }
 
         [TestMethod]
@@ -117,10 +117,10 @@ namespace UnitTests
 
             physicalInterface.Name = "DVI";
             physicalInterface.Description = "Digital Visual Interface - Eine elektronische Schnittstelle zur Übertragungn von Videodaten.";
-            physicalInterface.Serial = true;
-            physicalInterface.TransferRate = 1000;
+            physicalInterface.Serial = false;
+            physicalInterface.TransferRate = -1000;
 
-            Assert.AreNotEqual(validator.Validate(physicalInterface), null);
+            Assert.AreEqual(false, validator.CheckConsistency(physicalInterface));
         }
 
     }

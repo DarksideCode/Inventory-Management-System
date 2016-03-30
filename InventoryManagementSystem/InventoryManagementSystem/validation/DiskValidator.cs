@@ -7,11 +7,35 @@ using InventoryManagementSystem.components;
 
 namespace InventoryManagementSystem.validation
 {
+    /*
+     *  Validator-Klasse der Entität 'Festplatte'
+     *  Legt die Regeln für die Validierung fest und überprüft diese mittels regulärer Ausdrücke
+     */
     public class DiskValidator
     {
-        public Disk Validate(Disk entity)
+        /*
+         *  Prüft die Konsistenz der Attribute der Entität 'Festplatte'
+         */
+        public bool CheckConsistency(Disk entity)
         {
-            return null;
+            bool result = true;
+            
+            if(entity.Capacity <= 0)
+            {
+                result = false;
+            }
+
+            if (entity.Ssd == null)
+            {
+                result = false;
+            }
+
+            if(entity.Inch <= 0)
+            {
+                result = false;
+            }
+
+            return result;
         }
     }
 }
