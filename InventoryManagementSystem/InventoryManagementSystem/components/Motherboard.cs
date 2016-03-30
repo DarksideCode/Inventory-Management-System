@@ -17,10 +17,13 @@ namespace InventoryManagementSystem.components
 
         private Producer producer;
 
-        private List<PhysicalInterfaceWithCount> physicalInterfaces = new List<PhysicalInterfaceWithCount>();
+        private List<PhysicalInterfaceWithCount> physicalInterfaces;
 
 
-        public Motherboard() { }
+        public Motherboard() 
+        {
+            this.physicalInterfaces = new List<PhysicalInterfaceWithCount>();
+        }
 
         public int Id
         {
