@@ -15,7 +15,7 @@ namespace InventoryManagementSystem.validation
     public class ProducerValidator
     {
         private string emailPattern = "^[a-zA-Z]{1,}.*\\@[a-zA-Z]*\\.(de|com|net|org){1,1}$";
-        private string websitePattern = "^(http:\\/\\/){0,1}www\\..*\\.[a-z]{1,4}$";
+        private string websitePattern = "^(http:\\/\\/|https:\\/\\/){0,1}www\\..{1,}\\.[a-z]{1,4}(\\/){0,1}$";
         private string placePattern = "^[A-Z]{1,}[A-Za-zöäü ]*$";
 
         /*
