@@ -2,7 +2,7 @@ Lastenheft:
 
 Muss:
 
-- Dauerhaftes Speichern von Komponenten mit allen definierten Merkmalen  (Festplatte, Grafikkarte, Hauptplatine, Monitor, Prozessor)
+- Dauerhaftes Speichern von Komponenten mit allen definierten Merkmalen  (Arbeitsspeicher, Festplatte, Grafikkarte, Hauptplatine, Monitor, Prozessor)
 - Anzeigen von Komponenten in einer Liste
 - Bearbeiten von bereits gespeicherten Komponenten
 - Löschen von gespeicherten Komponenten
