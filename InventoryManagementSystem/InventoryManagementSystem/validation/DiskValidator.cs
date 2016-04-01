@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using InventoryManagementSystem.components;
+﻿using InventoryManagementSystem.components;
 
 namespace InventoryManagementSystem.validation
 {
@@ -19,13 +14,8 @@ namespace InventoryManagementSystem.validation
         public bool CheckConsistency(Disk entity)
         {
             bool result = true;
-            
-            if(entity.Capacity <= 0)
-            {
-                result = false;
-            }
 
-            if (entity.Ssd == null)
+            if (entity.Capacity <= 0)
             {
                 result = false;
             }

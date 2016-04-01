@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using InventoryManagementSystem.components;
+﻿using InventoryManagementSystem.components;
 using System.Text.RegularExpressions;
 
 namespace InventoryManagementSystem.validation
@@ -25,11 +20,6 @@ namespace InventoryManagementSystem.validation
             Regex nameReg = new Regex(this.namePattern);
 
             if(!nameReg.Match(entity.Name).Success)
-            {
-                result = false;
-            }
-
-            if(entity.Serial == null)
             {
                 result = false;
             }
