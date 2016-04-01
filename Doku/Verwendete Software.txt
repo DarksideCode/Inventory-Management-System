@@ -1,0 +1,9 @@
+- Visual Studio Community 2015
+- XAMPP (Version ???)
+- GitHub
+- draw.io
+- Microsoft Word ???
+- Microsoft Power Point ???
+- Windows Presentation Foundation (WPF)
+- Notepad++ (Version ???)
+- .NET MySQL-Treiber

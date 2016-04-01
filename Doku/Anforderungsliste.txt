@@ -1,0 +1,45 @@
+Lastenheft:
+
+Muss:
+
+- Dauerhaftes Speichern von Komponenten mit allen definierten Merkmalen  (Festplatte, Grafikkarte, Hauptplatine, Monitor, Prozessor)
+- Anzeigen von Komponenten in einer Liste
+- Bearbeiten von bereits gespeicherten Komponenten
+- Löschen von gespeicherten Komponenten
+- Grafische Oberfläche
+
+Soll:
+
+- Filtern von Komponenten nach definierten Merkmalen
+- Umrechnung in andere Einheiten (z.B. Byte -> GB)
+- Löschen von mehreren Komponenten gleichzeitig
+
+Kann:
+
+- Ansprechende grafische Oberfläche
+- Konfigurieren der Datenbankverbindung über die Oberfläche
+- Exportieren einer gefilterten Tabelle als CSV-Datei
+
+
+Pflichtenheft:
+
+Muss:
+
+- Speichern vom Komponenten in einer relationalen Datenbank (MariaDB)
+- Datenbankverbindung mittels MySQL-Treiber für .NET (C#)
+- Selektieren von Datensätzen aus der Datenbank mittels SQL
+- Anzeigen von Datensätzen in einer Tabelle auf der GUI
+- Löschen von gespeicherten Komponenten aus der Datenbank mittels SQL
+- Gestalten der grafischen Oberfläche (GUI) mit dem Windows Presentation Foundation Framework (WPF)
+
+Soll:
+
+- Selektieren von gefilterten Listen aus der relationalen Datenbank mittels SQL
+- Schreiben eines Algorithmus für die Umrechnung von Einheiten in C#
+- Selektieren von mehreren Einträgen mittels Auswahlboxen auf der WPF-Oberfläche
+
+Kann:
+
+- Entwicklung einer ergonomischen GUI mittels Mockups
+- Konfigurieren der Datenbankverbindung über ein Konfigurationsfenster in C# mittels WPF
+- Exportieren einer gefilterten Tabelle als CSV-Datei mittels File Stream
