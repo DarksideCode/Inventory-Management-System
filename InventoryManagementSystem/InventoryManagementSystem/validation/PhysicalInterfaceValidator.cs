@@ -3,17 +3,20 @@ using System.Text.RegularExpressions;
 
 namespace InventoryManagementSystem.validation
 {
-    /*
-     *  Validator-Klasse der Entität 'Schnittstelle'
-     *  Legt die Regeln für die Validierung fest und überprüft diese mittels regulärer Ausdrücke
-     */
+    /// <summary>
+    /// Validator-Klasse der Entität 'Schnittstelle'.
+    /// Legt die Regeln für die Validierung fest und überprüft mittels regulärer Ausdrückes, ob diese
+    /// eingehalten werden.
+    /// </summary>
     public class PhysicalInterfaceValidator
     {
         private string namePattern = "^[A-Za-z0-9 \\-\\.]*$";
 
-        /*
-         *  Prüft die Konsistenz der Attribute der Entität 'Schnittstelle'
-         */
+        /// <summary>
+        /// Prüft die Konsistenz der Attribute der Entität 'Schnittstelle'
+        /// </summary>
+        /// <param name="entity">Das Objekt, welches geprüft wird</param>
+        /// <returns>true: Objekt Konsistent, false: Objekt fehlerhaft</returns>
         public bool CheckConsistency(PhysicalInterface entity)
         {
             bool result = true;

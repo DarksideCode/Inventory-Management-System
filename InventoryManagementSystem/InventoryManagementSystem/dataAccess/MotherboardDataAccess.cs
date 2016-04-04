@@ -7,24 +7,26 @@ using InventoryManagementSystem.database.basic;
 
 namespace InventoryManagementSystem.dataAccess
 {
-   /*
-    *   Data-Access-Klasse der Entität 'Hauptplatine'
-    *   Führt alle Operationen für die Entität auf der Datenbank aus.
-    */
+    /// <summary>
+    /// Data-Access-Klasse der Entität 'Hauptplatine'.
+    /// Führt alle Operationen für die Entität auf der Datenbank aus.
+    /// </summary>
     public class MotherboardDataAccess : DatabaseBasic
     {
-        /**
-        * gibt den Tabellen Namen zurück.
-        **/
+        /// <summary>
+        /// Gibt den Tabellennamen zusammen mit dem konfigurierten Präfix zurück.
+        /// </summary>
+        /// <returns>string</returns>
         public override string getTableName()
         {
             ConfigProzesser config = new ConfigProzesser();
             return config.getDBPraefix() + "hauptplatine";
         }
 
-        /*
-        *   Speichert ein Objekt der Entität 'Hauptplatine' in die Datenbank
-        */
+        /// <summary>
+        /// Speichert ein Objekt der Entität 'Hauptplatine' in der Datenbank
+        /// </summary>
+        /// <param name="entity">Das Objekt, welches gespeichert wird</param>
         public void Save(Motherboard entity)
         {
             MySqlConnection connection = this.CreateConnection();
@@ -48,9 +50,10 @@ namespace InventoryManagementSystem.dataAccess
             }
         }
 
-        /*
-        *  Löscht ein Objekt der Entität 'Hauptplatine' aus der Datenbank 
-        *  */
+        /// <summary>
+        /// Löscht ein Objekt der Entität 'Hauptplatine' aus der Datenbank
+        /// </summary>
+        /// <param name="entity">Das Objekt, welches gelöscht wird</param>
         public void Delete(Motherboard entity)
         {
             MySqlConnection connection = this.CreateConnection();
@@ -63,10 +66,11 @@ namespace InventoryManagementSystem.dataAccess
             connection.Close();
         }
 
-        /*
-         *  Verändert einen bestehenden Datensatz der Entität `Hauptplatine` in der Datenbank
-         *  Ermittelt auch nicht mehr genutzte Referenzen und löscht diese.
-         */
+        /// <summary>
+        /// Verändert einen bestehenden Datensatz der Entität 'Hauptplatine' in der Datenbank.
+        /// Ermittelt auch nicht mehr genutzte Referenzen und löscht diese aus der Beziehungstabelle.
+        /// </summary>
+        /// <param name="entity">Die veränderte Entität</param>
         public void Update(Motherboard entity)
         {
             MySqlConnection connection = this.CreateConnection();
@@ -97,10 +101,12 @@ namespace InventoryManagementSystem.dataAccess
             connection.Close();
         }
 
-        /*
-        *   Liest den Datensatz der Entität 'Hauptplatine' aus der Datenbank, die der übergebenen ID
-        *   entspricht
-        */
+        /// <summary>
+        /// Liest den Datensatz der Entität 'Hauptplatine' aus der Datenbank, die der übergebenen ID
+        /// entspricht
+        /// </summary>
+        /// <param name="id">Technische ID der gesuchten Entität</param>
+        /// <returns>Motherboard</returns>
         public Motherboard GetEntityById(int id)
         {
             MySqlConnection connection = this.CreateConnection();
@@ -118,9 +124,10 @@ namespace InventoryManagementSystem.dataAccess
             return motherboard;
         }
 
-        /*
-        *   Liest den zuletzt gespeicherten Datensatz der Entität 'Hauptplatine' aus der Datenbank
-        */
+        /// <summary>
+        /// Liest den zuletzt gespeicherten Datensatz der Entität 'Hauptplatine' aus der Datenbank
+        /// </summary>
+        /// <returns>Motherboard</returns>
         public Motherboard GetLastEntity()
         {
             MySqlConnection connection = this.CreateConnection();
@@ -143,9 +150,10 @@ namespace InventoryManagementSystem.dataAccess
             }
         }
 
-        /*
-        *   Liest alle Datensätze der Entität 'Hauptplatine' aus der Datenbank
-        */
+        /// <summary>
+        /// Liest alle Datensätze der Entität 'Hauptplatine' aus der Datenbank
+        /// </summary>
+        /// <returns>Liste von Motherboard</returns>
         public List<Motherboard> GetAllEntities()
         {
             List<Motherboard> motherboards = new List<Motherboard>();
@@ -166,9 +174,11 @@ namespace InventoryManagementSystem.dataAccess
             return motherboards;
         }
 
-        /*
-        *   Mappt einen Datensatz aus der Datenbank auf ein Objekt vom Typ 'Hauptplatine' (Motherboard)
-        */
+        /// <summary>
+        /// Mappt einen Datensatz aus der Datenbank auf ein Objekt vom Typ 'Hauptplatine'
+        /// </summary>
+        /// <param name="reader">Der Datensatz, welcher gemappt wird</param>
+        /// <returns>Motherboard</returns>
         private Motherboard MapToEntity(MySqlDataReader reader)
         {
             Motherboard motherboard = new Motherboard();
@@ -184,9 +194,11 @@ namespace InventoryManagementSystem.dataAccess
             return motherboard;
         }
 
-        /*
-        *  Liest alle Beziehungen zu der Entität 'Schnittstelle' aus der Datenbank
-        */
+        /// <summary>
+        /// Liest alle Beziehungen zu der Entität 'Schnittstelle' aus der Datenbank
+        /// </summary>
+        /// <param name="entity">Die Hauptplatine, zu welcher die Schnittstellen ermittelt werden</param>
+        /// <returns>Liste von PhysicalInterfaceWithCount</returns>
         private List<PhysicalInterfaceWithCount> GetPhysicalInterfaces(Motherboard entity)
         {
             List<PhysicalInterfaceWithCount> physicalInterfaces = new List<PhysicalInterfaceWithCount>();

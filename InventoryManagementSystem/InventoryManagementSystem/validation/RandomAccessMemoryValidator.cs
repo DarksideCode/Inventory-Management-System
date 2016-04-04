@@ -2,15 +2,18 @@
 
 namespace InventoryManagementSystem.validation
 {
-    /*
-     *  Validator-Klasse der Entität 'Arbeitsspeicher'
-     *  Legt die Regeln für die Validierung fest und überprüft diese mittels regulärer Ausdrücke
-     */
+    /// <summary>
+    /// Validator-Klasse der Entität 'Arbeitsspeicher'.
+    /// Legt die Regeln für die Validierung fest und überprüft mittels regulärer Ausdrückes, ob diese
+    /// eingehalten werden.
+    /// </summary>
     public class RandomAccessMemoryValidator
     {
-        /*
-         *  Prüft die Konsistenz der Attribute der Entität 'Arbeitsspeicher'
-         */
+        /// <summary>
+        /// Prüft die Konsistenz der Attribute der Entität 'Arbeitsspeicher'
+        /// </summary>
+        /// <param name="entity">Das Objekt, welches geprüft wird</param>
+        /// <returns>true: Objekt Konsistent, false: Objekt fehlerhaft</returns>
         public bool CheckConsistency(RandomAccessMemory entity)
         {
             bool result = true;

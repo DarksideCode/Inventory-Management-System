@@ -3,17 +3,20 @@ using System.Text.RegularExpressions;
 
 namespace InventoryManagementSystem.validation
 {
-   /*
-    *  Validator-Klasse der Entität 'Hauptplatine'
-    *  Legt die Regeln für die Validierung fest und überprüft diese mittels regulärer Ausdrücke
-    */
+    /// <summary>
+    /// Validator-Klasse der Entität 'Hauptplatine'.
+    /// Legt die Regeln für die Validierung fest und überprüft mittels regulärer Ausdrückes, ob diese
+    /// eingehalten werden.
+    /// </summary>
     public class MotherboardValidator
     {
         private string socketPattern = "^[A-Za-z0-9\\-]*$";
 
-        /*
-         *  Prüft die Konsistenz der Attribute der Entität 'Hauptplatine'
-         */
+        /// <summary>
+        /// Prüft die Konsistenz der Attribute der Entität 'Hauptplatine'
+        /// </summary>
+        /// <param name="entity">Das Objekt, welches geprüft wird</param>
+        /// <returns>true: Objekt Konsistent, false: Objekt fehlerhaft</returns>
         public bool CheckConsistency(Motherboard entity)
         {
             bool result = true;

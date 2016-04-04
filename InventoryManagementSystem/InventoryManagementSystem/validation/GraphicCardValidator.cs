@@ -3,17 +3,20 @@ using System.Text.RegularExpressions;
 
 namespace InventoryManagementSystem.validation
 {
-    /*
-     *  Validator-Klasse der Entität 'Grafikkarte'
-     *  Legt die Regeln für die Validierung fest und überprüft diese mittels regulärer Ausdrücke
-     */
+    /// <summary>
+    /// Validator-Klasse der Entität 'Grafikkarte'.
+    /// Legt die Regeln für die Validierung fest und überprüft mittels regulärer Ausdrückes, ob diese
+    /// eingehalten werden.
+    /// </summary>
     public class GraphicCardValidator
     {
         private string modelPattern = "^[A-Za-z0-9]*$";
 
-        /*
-         *  Prüft die Konsistenz der Attribute der Entität 'Grafikkarte'
-         */
+        /// <summary>
+        /// Prüft die Konsistenz der Attribute der Entität 'Grafikkarte'
+        /// </summary>
+        /// <param name="entity">Das Objekt, welches geprüft wird</param>
+        /// <returns>true: Objekt Konsistent, false: Objekt fehlerhaft</returns>
         public bool CheckConsistency(GraphicCard entity)
         {
             bool result = true;

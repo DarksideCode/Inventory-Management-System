@@ -7,24 +7,26 @@ using InventoryManagementSystem.database.basic;
 
 namespace InventoryManagementSystem.dataAccess
 {
-    /*
-    *   Data-Access-Klasse der Entität 'Monitor'
-    *   Führt alle Operationen für die Entität auf der Datenbank aus.
-    */
+    /// <summary>
+    /// Data-Access-Klasse der Entität 'Monitor'.
+    /// Führt alle Operationen für die Entität auf der Datenbank aus.
+    /// </summary>
     public class MonitorDataAccess : DatabaseBasic
     {
-        /**
-        * gibt den Tabellen Namen zurück.
-        **/
+        /// <summary>
+        /// Gibt den Tabellennamen zusammen mit dem konfigurierten Präfix zurück.
+        /// </summary>
+        /// <returns>string</returns>
         public override string getTableName()
         {
             ConfigProzesser config = new ConfigProzesser();
             return config.getDBPraefix() + "monitor";
         }
 
-        /*
-        *   Speichert ein Objekt der Entität 'Monitor' in die Datenbank
-        */
+        /// <summary>
+        /// Speichert ein Objekt der Entität 'Monitor' in der Datenbank
+        /// </summary>
+        /// <param name="entity">Das Objekt, welches gespeichert wird</param>
         public void Save(Monitor entity)
         {
             MySqlConnection connection = this.CreateConnection();
@@ -49,9 +51,10 @@ namespace InventoryManagementSystem.dataAccess
             }
         }
 
-        /*
-         *  Löscht ein Objekt der Entität 'Monitor' aus der Datenbank 
-         */
+        /// <summary>
+        /// Löscht ein Objekt der Entität 'Monitor aus der Datenbank
+        /// </summary>
+        /// <param name="entity">Das Objekt, welches gelöscht wird</param>
         public void Delete(Monitor entity)
         {
             MySqlConnection connection = this.CreateConnection();
@@ -64,10 +67,11 @@ namespace InventoryManagementSystem.dataAccess
             connection.Close();
         }
 
-        /*
-         *  Verändert einen bestehenden Datensatz der Entität `Monitor` in der Datenbank
-         *  Ermittelt auch nicht mehr genutzte Referenzen und löscht diese.
-         */
+        /// <summary>
+        /// Verändert einen bestehenden Datensatz der Entität 'Monitor' in der Datenbank.
+        /// Ermittelt auch nicht mehr genutzte Referenzen und löscht diese aus der Beziehungstabelle.
+        /// </summary>
+        /// <param name="entity">Die veränderte Entität</param>
         public void Update(Monitor entity)
         {
             MySqlConnection connection = this.CreateConnection();
@@ -100,10 +104,12 @@ namespace InventoryManagementSystem.dataAccess
             connection.Close();
         }
 
-        /*
-        *   Liest den Datensatz der Entität 'Monitor' aus der Datenbank, die der übergebenen ID
-        *   entspricht
-        */
+        /// <summary>
+        /// Liest den Datensatz der Entität 'Monitor' aus der Datenbank, die der übergebenen ID
+        /// entspricht
+        /// </summary>
+        /// <param name="id">Technische ID der gesuchten Entität</param>
+        /// <returns>Monitor</returns>
         public Monitor GetEntityById(int id)
         {
             MySqlConnection connection = this.CreateConnection();
@@ -119,9 +125,10 @@ namespace InventoryManagementSystem.dataAccess
             return monitor;
         }
 
-        /*
-        *   Liest den zuletzt gespeicherten Datensatz der Entität 'Monitor' aus der Datenbank
-        */
+        /// <summary>
+        /// Liest den zuletzt gespeicherten Datensatz der Entität 'Monitor' aus der Datenbank
+        /// </summary>
+        /// <returns>Monitor</returns>
         public Monitor GetLastEntity()
         {
             MySqlConnection connection = this.CreateConnection();
@@ -144,9 +151,10 @@ namespace InventoryManagementSystem.dataAccess
             }
         }
 
-        /*
-        *   Liest alle Datensätze der Entität 'Monitor' aus der Datenbank
-        */
+        /// <summary>
+        /// Liest alle Datensätze der Entität 'Monitor' aus der Datenbank
+        /// </summary>
+        /// <returns>Liste von Monitor</returns>
         public List<Monitor> GetAllEntities()
         {
             List<Monitor> monitors = new List<Monitor>();
@@ -168,9 +176,11 @@ namespace InventoryManagementSystem.dataAccess
             return monitors;
         }
 
-        /*
-        *   Mappt einen Datensatz aus der Datenbank auf ein Objekt vom Typ 'Monitor' (Monitor)
-        */
+        /// <summary>
+        /// Mappt einen Datensatz aus der Datenbank auf ein Objekt vom Typ 'Monitor'
+        /// </summary>
+        /// <param name="reader">Der Datensatz, welcher gemappt wird</param>
+        /// <returns>Monitor</returns>
         private Monitor MapToEntity(MySqlDataReader reader)
         {
             Monitor monitor = new Monitor();
@@ -188,9 +198,11 @@ namespace InventoryManagementSystem.dataAccess
             return monitor;
         }
 
-        /*
-         *  Liest alle Beziehungen zu der Entität 'Schnittstelle' aus der Datenbank
-         */
+        /// <summary>
+        /// Liest alle Beziehungen zu der Entität 'Schnittstelle' aus der Datenbank
+        /// </summary>
+        /// <param name="entity">Der Monitor, zu welchem die Schnittstellen ermittelt werden</param>
+        /// <returns>Liste von PhysicalInterfaceWithCount</returns>
         private List<PhysicalInterfaceWithCount> GetPhysicalInterfaces(Monitor entity)
         {
             List<PhysicalInterfaceWithCount> physicalInterfaces = new List<PhysicalInterfaceWithCount>();

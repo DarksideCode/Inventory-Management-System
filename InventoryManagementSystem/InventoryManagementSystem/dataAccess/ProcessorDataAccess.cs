@@ -7,24 +7,26 @@ using InventoryManagementSystem.database.basic;
 
 namespace InventoryManagementSystem.dataAccess
 {
-    /*
-    *   Data-Access-Klasse der Entität 'Prozessor'
-    *   Führt alle Operationen für die Entität auf der Datenbank aus.
-    */
+    /// <summary>
+    /// Data-Access-Klasse der Entität 'Prozessor'.
+    /// Führt alle Operationen für die Entität auf der Datenbank aus.
+    /// </summary>
     public class ProcessorDataAccess : DatabaseBasic
     {
-        /**
-        * gibt den Tabellen Namen zurück.
-        **/
+        /// <summary>
+        /// Gibt den Tabellennamen zusammen mit dem konfigurierten Präfix zurück.
+        /// </summary>
+        /// <returns>string</returns>
         public override string getTableName()
         {
             ConfigProzesser config = new ConfigProzesser();
             return config.getDBPraefix() + "prozessor";
         }
 
-        /*
-         *   Speichert ein Objekt der Entität 'Prozessor' in die Datenbank
-         */
+        /// <summary>
+        /// Speichert ein Objekt der Entität 'Prozessor' in der Datenbank
+        /// </summary>
+        /// <param name="entity">Das Objekt, welches gespeichert wird</param>
         public void Save(Processor entity)
         {
             MySqlConnection connection = this.CreateConnection();
@@ -39,9 +41,10 @@ namespace InventoryManagementSystem.dataAccess
             connection.Close();
         }
 
-        /*
-         *  Löscht ein Objekt der Entität 'Prozessor' aus der Datenbank 
-         */
+        /// <summary>
+        /// Löscht ein Objekt der Entität 'Prozessor' aus der Datenbank
+        /// </summary>
+        /// <param name="entity">Das Objekt, welches gelöscht wird</param>
         public void Delete(Processor entity)
         {
             MySqlConnection connection = this.CreateConnection();
@@ -54,15 +57,15 @@ namespace InventoryManagementSystem.dataAccess
             connection.Close();
         }
 
-        /*
-         *  Verändert einen bestehenden Datensatz der Entität 'Prozessor' in der Datenbank
-         */
+        /// <summary>
+        /// Verändert einen bestehenden Datensatz der Entität 'Prozessor' in der Datenbank.
+        /// </summary>
+        /// <param name="entity">Die veränderte Entität</param>
         public void Update(Processor entity)
         {
             MySqlConnection connection = this.CreateConnection();
             MySqlCommand command = connection.CreateCommand();
 
-            //UPDATE `" + this.getTableName() + "` SET `ID`=[value-1],`Beschreibung`=[value-2],`Modell`=[value-3],`Kerne`=[value-4],`Befehlssatz`=[value-5],`Architektur`=[value-6],`Taktrate`=[value-7],`ID_Hersteller`=[value-8] WHERE 1
             command.CommandText = "UPDATE `" + this.getTableName() + "` SET `Beschreibung`='" + entity.Description + "', `Modell`='" + entity.Model + "', `Kerne`=" + entity.Core 
                                 + ", `Befehlssatz`='" + entity.CommandSet + "', `Architektur`=" + entity.Architecture + ", `Taktrate`='" + entity.ClockRate 
                                 + "', `ID_Hersteller`=" + entity.Producer.Id + " WHERE id = " + entity.Id;
@@ -72,10 +75,12 @@ namespace InventoryManagementSystem.dataAccess
             connection.Close();
         }
 
-        /*
-        *   Liest den Datensatz der Entität 'Prozessor' aus der Datenbank, die der übergebenen ID
-        *   entspricht
-        */
+        /// <summary>
+        /// Liest den Datensatz der Entität 'Prozessor' aus der Datenbank, die der übergebenen ID
+        /// entspricht
+        /// </summary>
+        /// <param name="id">Technische ID der gesuchten Entität</param>
+        /// <returns>Processor</returns>
         public Processor GetEntityById(int id)
         {
             MySqlConnection connection = this.CreateConnection();
@@ -93,9 +98,10 @@ namespace InventoryManagementSystem.dataAccess
             return processor;
         }
 
-        /*
-        *   Liest den zuletzt gespeicherten Datensatz der Entität 'Prozessor' aus der Datenbank
-        */
+        /// <summary>
+        /// Liest den zuletzt gespeicherten Datensatz der Entität 'Prozessor' aus der Datenbank
+        /// </summary>
+        /// <returns>Processor</returns>
         public Processor GetLastEntity()
         {
             MySqlConnection connection = this.CreateConnection();
@@ -118,9 +124,10 @@ namespace InventoryManagementSystem.dataAccess
             }
         }
 
-        /*
-        *   Liest alle Datensätze der Entität 'Prozessor' aus der Datenbank
-        */
+        /// <summary>
+        /// Liest alle Datensätze der Entität 'Prozessor' aus der Datenbank
+        /// </summary>
+        /// <returns>Liste von Processor</returns>
         public List<Processor> GetAllEntities()
         {
             List<Processor> processors = new List<Processor>();
@@ -141,9 +148,11 @@ namespace InventoryManagementSystem.dataAccess
             return processors;
         }
 
-        /*
-        *   Mappt einen Datensatz aus der Datenbank auf ein Objekt vom Typ 'Prozessor' (Processor)
-        */
+        /// <summary>
+        /// Mappt einen Datensatz aus der Datenbank auf ein Objekt vom Typ 'Prozessor'
+        /// </summary>
+        /// <param name="reader">Der Datensatz, welcher gemappt wird</param>
+        /// <returns>Processor</returns>
         private Processor MapToEntity(MySqlDataReader reader)
         {
             Processor processor = new Processor();

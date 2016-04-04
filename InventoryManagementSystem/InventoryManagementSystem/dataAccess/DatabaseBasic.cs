@@ -6,22 +6,23 @@ using System.Collections.Generic;
 
 namespace InventoryManagementSystem.database.basic
 {
-    /**
-    * Basis Klasse für Datenbank Verbindung
-    **/
+    /// <summary>
+    /// Basis Klasse für Datenbank-Verbindung
+    /// </summary>
     public abstract class DatabaseBasic
     {
-        /**
-        * gibt den Tabellen Namen zurück.
-        **/
+        /// <summary>
+        /// Dient als Vorgabe für abgeleitete Klassen
+        /// </summary>
         public virtual string getTableName()
         {
             return "TableName";
         }
 
-        /*
-        *   Baut eine Verbindung mit der Datenbank auf, basierend auf den Konfigurationen
-        */
+        /// <summary>
+        /// Baut eine Verbindung mit der Datenbank auf, basierend auf den Konfigurationen
+        /// </summary>
+        /// <returns>MySqlConnection</returns>
         public MySqlConnection CreateConnection()
         {
             ConfigProzesser config = new ConfigProzesser();

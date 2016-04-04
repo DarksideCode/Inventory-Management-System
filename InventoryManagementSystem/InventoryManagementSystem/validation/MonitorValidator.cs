@@ -2,15 +2,18 @@
 
 namespace InventoryManagementSystem.validation
 {
-    /*
-     *  Validator-Klasse der Entität 'Monitor'
-     *  Legt die Regeln für die Validierung fest und überprüft diese mittels regulärer Ausdrücke
-     */
+    /// <summary>
+    /// Validator-Klasse der Entität 'Monitor'.
+    /// Legt die Regeln für die Validierung fest und überprüft mittels regulärer Ausdrückes, ob diese
+    /// eingehalten werden.
+    /// </summary>
     public class MonitorValidator
     {
-        /*
-         *  Prüft die Konsistenz der Attribute der Entität 'Monitor'
-         */
+        /// <summary>
+        /// Prüft die Konsistenz der Attribute der Entität 'Monitor'
+        /// </summary>
+        /// <param name="entity">Das Objekt, welches geprüft wird</param>
+        /// <returns>true: Objekt Konsistent, false: Objekt fehlerhaft</returns>
         public bool CheckConsistency(Monitor entity)
         {
             bool result = true;

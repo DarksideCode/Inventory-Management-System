@@ -7,24 +7,26 @@ using InventoryManagementSystem.database.basic;
 
 namespace InventoryManagementSystem.dataAccess
 {
-    /*
-    *   Data-Access-Klasse der Entität 'Grafikkarte'
-    *   Führt alle Operationen für die Entität auf der Datenbank aus.
-    */
+    /// <summary>
+    /// Data-Access-Klasse der Entität 'Grafikkarte'.
+    /// Führt alle Operationen für die Entität auf der Datenbank aus.
+    /// </summary>
     public class GraphicCardDataAccess : DatabaseBasic
     {
-        /**
-        * gibt den Tabellen Namen zurück.
-        **/
+        /// <summary>
+        /// Gibt den Tabellennamen zusammen mit dem konfigurierten Präfix zurück.
+        /// </summary>
+        /// <returns>string</returns>
         public override string getTableName()
         {
             ConfigProzesser config = new ConfigProzesser();
             return config.getDBPraefix() + "grafikkarte";
         }
 
-        /*
-        *   Speichert ein Objekt der Entität 'Grafikkarte' in die Datenbank
-        */
+        /// <summary>
+        /// Speichert ein Objekt der Entität 'Grafikkarte' in die Datenbank
+        /// </summary>
+        /// <param name="entity">Das Objekt, welches gespeichert wird</param>
         public void Save(GraphicCard entity)
         {
             MySqlConnection connection = this.CreateConnection();
@@ -49,9 +51,10 @@ namespace InventoryManagementSystem.dataAccess
             }
         }
 
-        /*
-         *  Löscht ein Objekt der Entität 'Grafikkarte' aus der Datenbank 
-         */
+        /// <summary>
+        /// Löscht ein Objekt der Entität 'Grafikkarte' aus der Datenbank
+        /// </summary>
+        /// <param name="entity">Das Objekt, welches gelöscht wird</param>
         public void Delete(GraphicCard entity)
         {
             MySqlConnection connection = this.CreateConnection();
@@ -64,10 +67,10 @@ namespace InventoryManagementSystem.dataAccess
             connection.Close();
         }
 
-        /*
-         *  Verändert einen bestehenden Datensatz der Entität `Grafikkarte` in der Datenbank
-         *  Ermittelt auch nicht mehr genutzte Referenzen und löscht diese.
-         */
+        /// <summary>
+        /// Löscht ein Objekt der Entität 'Grafikkarte aus der Datenbank
+        /// </summary>
+        /// <param name="entity">Das Objekt, welches gelöscht wird</param>
         public void Update(GraphicCard entity)
         {
             MySqlConnection connection = this.CreateConnection();
@@ -99,10 +102,12 @@ namespace InventoryManagementSystem.dataAccess
             connection.Close();
         }
 
-        /*
-        *   Liest den Datensatz der Entität 'Grafikkarte' aus der Datenbank, die der übergebenen ID
-        *   entspricht
-        */
+        /// <summary>
+        /// Liest den Datensatz der Entität 'Grafikkarte' aus der Datenbank, die der übergebenen ID
+        /// entspricht
+        /// </summary>
+        /// <param name="id">Technische ID der gesuchten Entität</param>
+        /// <returns>GraphicCard</returns>
         public GraphicCard GetEntityById(int id)
         {
             MySqlConnection connection = this.CreateConnection();
@@ -120,9 +125,10 @@ namespace InventoryManagementSystem.dataAccess
             return graphicCard;
         }
 
-        /*
-        *   Liest den zuletzt gespeicherten Datensatz der Entität 'Grafikkarte' aus der Datenbank
-        */
+        /// <summary>
+        /// Liest den zuletzt gespeicherten Datensatz der Entität 'Grafikkarte' aus der Datenbank
+        /// </summary>
+        /// <returns>GraphicCard</returns>
         public GraphicCard GetLastEntity()
         {
             MySqlConnection connection = this.CreateConnection();
@@ -145,9 +151,10 @@ namespace InventoryManagementSystem.dataAccess
             }
         }
 
-        /*
-        *   Liest alle Datensätze der Entität 'Grafikkarte' aus der Datenbank
-        */
+        /// <summary>
+        /// Liest alle Datensätze der Entität 'Grafikkarte' aus der Datenbank
+        /// </summary>
+        /// <returns>Liste von GraphicCard</returns>
         public List<GraphicCard> GetAllEntities()
         {
             List<GraphicCard> graphicCards = new List<GraphicCard>();
@@ -168,9 +175,11 @@ namespace InventoryManagementSystem.dataAccess
             return graphicCards;
         }
 
-        /*
-        *   Mappt einen Datensatz aus der Datenbank auf ein Objekt vom Typ 'Grafikkarte' (GraphicCard)
-        */
+        /// <summary>
+        /// Mappt einen Datensatz aus der Datenbank auf ein Objekt vom Typ 'Grafikkarte'
+        /// </summary>
+        /// <param name="reader">Der Datensatz, welcher gemappt wird</param>
+        /// <returns>GraphicCard</returns>
         private GraphicCard MapToEntity(MySqlDataReader reader)
         {
             GraphicCard graphicCard = new GraphicCard();
@@ -187,9 +196,11 @@ namespace InventoryManagementSystem.dataAccess
             return graphicCard;
         }
 
-        /*
-         *  Liest alle Beziehungen zu der Entität 'Schnittstelle' aus der Datenbank
-         */
+        /// <summary>
+        /// Liest alle Beziehungen zu der Entität 'Schnittstelle' aus der Datenbank
+        /// </summary>
+        /// <param name="entity">Die Grafikkarte, zu welcher die Schnittstellen ermittelt werden</param>
+        /// <returns>Liste von PhysicalInterfaceWithCount</returns>
         private List<PhysicalInterfaceWithCount> GetPhysicalInterfaces(GraphicCard entity)
         {
             List<PhysicalInterfaceWithCount> physicalInterfaces = new List<PhysicalInterfaceWithCount>();

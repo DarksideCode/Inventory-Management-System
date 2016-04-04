@@ -7,24 +7,26 @@ using InventoryManagementSystem.database.basic;
 
 namespace InventoryManagementSystem.dataAccess
 {
-    /*
-    *   Data-Access-Klasse der Entität 'Schnittstelle'
-    *   Führt alle Operationen für die Entität auf der Datenbank aus.
-    */
+    /// <summary>
+    /// Data-Access-Klasse der Entität 'Schnittstelle'.
+    /// Führt alle Operationen für die Entität auf der Datenbank aus.
+    /// </summary>
     public class PhysicalInterfaceDataAccess : DatabaseBasic
     {
-        /**
-        * gibt den Tabellen Namen zurück.
-        **/
+        /// <summary>
+        /// Gibt den Tabellennamen zusammen mit dem konfigurierten Präfix zurück.
+        /// </summary>
+        /// <returns>string</returns>
         public override string getTableName()
         {
             ConfigProzesser config = new ConfigProzesser();
             return config.getDBPraefix() + "schnittstelle";
         }
 
-        /*
-         *   Speichert ein Objekt der Entität 'Schnittstelle' in die Datenbank
-         */
+        /// <summary>
+        /// Speichert ein Objekt der Entität 'Schnittstelle' in der Datenbank
+        /// </summary>
+        /// <param name="entity">Das Objekt, welches gespeichert wird</param>
         public void Save(PhysicalInterface entity)
         {
             MySqlConnection connection = this.CreateConnection();
@@ -39,9 +41,10 @@ namespace InventoryManagementSystem.dataAccess
             connection.Close();
         }
 
-        /*
-         *  Löscht ein Objekt der Entität 'Schnittstelle' aus der Datenbank 
-         */
+        /// <summary>
+        /// Löscht ein Objekt der Entität 'Schnittstelle' aus der Datenbank
+        /// </summary>
+        /// <param name="entity">Das Objekt, welches gelöscht wird</param>
         public void Delete(PhysicalInterface entity)
         {
             MySqlConnection connection = this.CreateConnection();
@@ -54,9 +57,10 @@ namespace InventoryManagementSystem.dataAccess
             connection.Close();
         }
 
-        /*
-         *  Verändert einen bestehenden Datensatz der Entität `Schnittstelle` in der Datenbank
-         */
+        /// <summary>
+        /// Verändert einen bestehenden Datensatz der Entität 'Schnittstelle' in der Datenbank.
+        /// </summary>
+        /// <param name="entity">Die veränderte Entität</param>
         public void Update(PhysicalInterface entity)
         {
             MySqlConnection connection = this.CreateConnection();
@@ -70,10 +74,12 @@ namespace InventoryManagementSystem.dataAccess
             connection.Close();
         }
 
-        /*
-        *   Liest den Datensatz der Entität 'Schnittstelle' aus der Datenbank, die der übergebenen ID
-        *   entspricht
-        */
+        /// <summary>
+        /// Liest den Datensatz der Entität 'Schnittstelle' aus der Datenbank, die der übergebenen ID
+        /// entspricht
+        /// </summary>
+        /// <param name="id">Technische ID der gesuchten Entität</param>
+        /// <returns>PhysicalInterface</returns>
         public PhysicalInterface GetEntityById(int id)
         {
             MySqlConnection connection = this.CreateConnection();
@@ -91,9 +97,10 @@ namespace InventoryManagementSystem.dataAccess
             return physicalInterface;
         }
 
-        /*
-        *   Liest den zuletzt gespeicherten Datensatz der Entität 'Schnittstelle' aus der Datenbank
-        */
+        /// <summary>
+        /// Liest den zuletzt gespeicherten Datensatz der Entität 'Schnittstelle' aus der Datenbank
+        /// </summary>
+        /// <returns>PhysicalInterface</returns>
         public PhysicalInterface GetLastEntity()
         {
             MySqlConnection connection = this.CreateConnection();
@@ -116,9 +123,10 @@ namespace InventoryManagementSystem.dataAccess
             }
         }
 
-        /*
-        *   Liest alle Datensätze der Entität 'Schnittstelle' aus der Datenbank
-        */
+        /// <summary>
+        /// Liest alle Datensätze der Entität 'Schnittstelle' aus der Datenbank
+        /// </summary>
+        /// <returns>Liste von PhysicalInterface</returns>
         public List<PhysicalInterface> GetAllEntities()
         {
             List<PhysicalInterface> physicalInterfaces = new List<PhysicalInterface>();
@@ -139,9 +147,11 @@ namespace InventoryManagementSystem.dataAccess
             return physicalInterfaces;
         }
 
-        /*
-        *   Mappt einen Datensatz aus der Datenbank auf ein Objekt vom Typ 'Schnittstelle' (PhysicalInterface)
-        */
+        /// <summary>
+        /// Mappt einen Datensatz aus der Datenbank auf ein Objekt vom Typ 'Schnittstelle'
+        /// </summary>
+        /// <param name="reader">Der Datensatz, welcher gemappt wird</param>
+        /// <returns>PhysicalInterface</returns>
         private PhysicalInterface MapToEntity(MySqlDataReader reader)
         {
             PhysicalInterface physicalInterface = new PhysicalInterface();

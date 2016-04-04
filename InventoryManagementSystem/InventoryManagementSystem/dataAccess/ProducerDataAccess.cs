@@ -7,24 +7,26 @@ using InventoryManagementSystem.database.basic;
 
 namespace InventoryManagementSystem.dataAccess
 {
-    /*
-    *   Data-Access-Klasse der Entität 'Hersteller'
-    *   Führt alle Operationen für die Entität auf der Datenbank aus.
-    */
+    /// <summary>
+    /// Data-Access-Klasse der Entität 'Hersteller'.
+    /// Führt alle Operationen für die Entität auf der Datenbank aus.
+    /// </summary>
     public class ProducerDataAccess : DatabaseBasic
     {
-        /**
-        * gibt den Tabellen Namen zurück.
-        **/
+        /// <summary>
+        /// Gibt den Tabellennamen zusammen mit dem konfigurierten Präfix zurück.
+        /// </summary>
+        /// <returns>string</returns>
         public override string getTableName()
         {
             ConfigProzesser config = new ConfigProzesser();
             return config.getDBPraefix() + "hersteller";
         }
 
-        /*
-        *   Speichert ein Objekt der Entität 'Hersteller' in die Datenbank
-        */
+        /// <summary>
+        /// Speichert ein Objekt der Entität 'Hersteller' in der Datenbank
+        /// </summary>
+        /// <param name="entity">Das Objekt, welches gespeichert wird</param>
         public void Save(Producer entity)
         {
             MySqlConnection connection = this.CreateConnection();
@@ -38,9 +40,10 @@ namespace InventoryManagementSystem.dataAccess
             connection.Close();
         }
 
-        /*
-         *  Löscht ein Objekt der Entität 'Hersteller' aus der Datenbank 
-         */
+        /// <summary>
+        /// Löscht ein Objekt der Entität 'Hersteller' aus der Datenbank
+        /// </summary>
+        /// <param name="entity">Das Objekt, welches gelöscht wird</param>
         public void Delete(Producer entity)
         {
             MySqlConnection connection = this.CreateConnection();
@@ -53,9 +56,11 @@ namespace InventoryManagementSystem.dataAccess
             connection.Close();
         }
 
-        /*
-         *  Verändert einen bestehenden Datensatz der Entität `Hersteller` in der Datenbank
-         */
+        /// <summary>
+        /// Verändert einen bestehenden Datensatz der Entität 'Hersteller' in der Datenbank.
+        /// Ermittelt auch nicht mehr genutzte Referenzen und löscht diese aus der Beziehungstabelle.
+        /// </summary>
+        /// <param name="entity">Die veränderte Entität</param>
         public void Update(Producer entity)
         {
             MySqlConnection connection = this.CreateConnection();
@@ -70,10 +75,12 @@ namespace InventoryManagementSystem.dataAccess
             connection.Close();
         }
 
-        /*
-        *   Liest den Datensatz der Entität 'Hersteller' aus der Datenbank, die der übergebenen ID
-        *   entspricht
-        */
+        /// <summary>
+        /// Liest den Datensatz der Entität 'Hersteller' aus der Datenbank, die der übergebenen ID
+        /// entspricht
+        /// </summary>
+        /// <param name="id">Technische ID der gesuchten Entität</param>
+        /// <returns>Producer</returns>
         public Producer GetEntityById(int id)
         {
             MySqlConnection connection = this.CreateConnection();
@@ -91,9 +98,10 @@ namespace InventoryManagementSystem.dataAccess
             return producer;
         }
 
-        /*
-        *   Liest den zuletzt gespeicherten Datensatz der Entität 'Hersteller' aus der Datenbank
-        */
+        /// <summary>
+        /// Liest den zuletzt gespeicherten Datensatz der Entität 'Hersteller' aus der Datenbank
+        /// </summary>
+        /// <returns>Producer</returns>
         public Producer GetLastEntity()
         {
             MySqlConnection connection = this.CreateConnection();
@@ -117,9 +125,10 @@ namespace InventoryManagementSystem.dataAccess
             }
         }
 
-        /*
-        *   Liest alle Datensätze der Entität 'Hersteller' aus der Datenbank
-        */
+        /// <summary>
+        /// Liest alle Datensätze der Entität 'Hersteller' aus der Datenbank
+        /// </summary>
+        /// <returns>Liste von Producer</returns>
         public List<Producer> GetAllEntities()
         {
             List<Producer> producers = new System.Collections.Generic.List<Producer>();
@@ -140,9 +149,11 @@ namespace InventoryManagementSystem.dataAccess
             return producers;
         }
 
-        /*
-        *   Mappt einen Datensatz aus der Datenbank auf ein Objekt vom Typ 'Hersteller' (Producer)
-        */
+        /// <summary>
+        /// Mappt einen Datensatz aus der Datenbank auf ein Objekt vom Typ 'Hersteller'
+        /// </summary>
+        /// <param name="reader">Der Datensatz, welcher gemappt wird</param>
+        /// <returns>Producer</returns>
         private Producer MapToEntity(MySqlDataReader reader)
         {
             Producer producer = new Producer();

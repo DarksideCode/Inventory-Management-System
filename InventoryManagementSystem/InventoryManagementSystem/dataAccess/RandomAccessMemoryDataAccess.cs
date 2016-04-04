@@ -7,24 +7,26 @@ using InventoryManagementSystem.database.basic;
 
 namespace InventoryManagementSystem.dataAccess
 {
-    /*
-    *   Data-Access-Klasse der Entität 'Arbeitsspeicher'
-    *   Führt alle Operationen für die Entität auf der Datenbank aus.
-    */
+    /// <summary>
+    /// Data-Access-Klasse der Entität 'Arbeitsspeicher'.
+    /// Führt alle Operationen für die Entität auf der Datenbank aus.
+    /// </summary>
     public class RandomAccessMemoryDataAccess : DatabaseBasic
     {
-        /**
-        * gibt den Tabellen Namen zurück.
-        **/
+        /// <summary>
+        /// Gibt den Tabellennamen zusammen mit dem konfigurierten Präfix zurück.
+        /// </summary>
+        /// <returns>string</returns>
         public override string getTableName()
         {
             ConfigProzesser config = new ConfigProzesser();
             return config.getDBPraefix() + "arbeitsspeicher";
         }
 
-        /*
-        *   Speichert ein Objekt der Entität 'Arbeitsspeicher' in die Datenbank
-        */
+        /// <summary>
+        /// Speichert ein Objekt der Entität 'Arbeitsspeicher' in der Datenbank
+        /// </summary>
+        /// <param name="entity">Das Objekt, welches gespeichert wird</param>
         public void Save(RandomAccessMemory entity)
         {
             MySqlConnection connection = this.CreateConnection();
@@ -39,9 +41,10 @@ namespace InventoryManagementSystem.dataAccess
             connection.Close();
         }
 
-        /*
-         *  Löscht ein Objekt der Entität 'Arbeitsspeicher' aus der Datenbank 
-         */
+        /// <summary>
+        /// Löscht ein Objekt der Entität 'Arbeitsspeicher' aus der Datenbank
+        /// </summary>
+        /// <param name="entity">Das Objekt, welches gelöscht wird</param>
         public void Delete(RandomAccessMemory entity)
         {
             MySqlConnection connection = this.CreateConnection();
@@ -54,15 +57,15 @@ namespace InventoryManagementSystem.dataAccess
             connection.Close();
         }
 
-        /*
-         *  Verändert einen bestehenden Datensatz der Entität `Arbeitsspeicher` in der Datenbank
-         */
+        /// <summary>
+        /// Verändert einen bestehenden Datensatz der Entität 'Arbeitsspeicher' in der Datenbank.
+        /// </summary>
+        /// <param name="entity">Die veränderte Entität</param>
         public void Update(RandomAccessMemory entity)
         {
             MySqlConnection connection = this.CreateConnection();
             MySqlCommand command = connection.CreateCommand();
 
-            //UPDATE `ims_arbeitsspeicher` SET `ID`=[value-1],`Beschreibung`=[value-2],`Speicher`=[value-3],`Taktrate`=[value-4],`ID_Hersteller`=[value-5] WHERE 1
             command.CommandText = "UPDATE `"+ this.getTableName() +"` SET `Beschreibung`='" + entity.Description + "', `Speicher`=" + entity.Memory + ", `Taktrate`='" + entity.ClockRate 
                                 + "', `ID_Hersteller`=" + entity.Producer.Id + " WHERE id = " + entity.Id;
 
@@ -71,10 +74,12 @@ namespace InventoryManagementSystem.dataAccess
             connection.Close();
         }
 
-        /*
-        *   Liest den Datensatz der Entität 'Arbeitsspeicher' aus der Datenbank, die der übergebenen ID
-        *   entspricht
-        */
+        /// <summary>
+        /// Liest den Datensatz der Entität 'Arbeitsspeicher' aus der Datenbank, die der übergebenen ID
+        /// entspricht
+        /// </summary>
+        /// <param name="id">Technische ID der gesuchten Entität</param>
+        /// <returns>RandomAccessMemory</returns>
         public RandomAccessMemory GetEntityById(int id)
         {
             MySqlConnection connection = this.CreateConnection();
@@ -92,9 +97,10 @@ namespace InventoryManagementSystem.dataAccess
             return ram;
         }
 
-        /*
-        *   Liest den zuletzt gespeicherten Datensatz der Entität 'Arbeitsspeicher' aus der Datenbank
-        */
+        /// <summary>
+        /// Liest den zuletzt gespeicherten Datensatz der Entität 'Arbeitsspeicher' aus der Datenbank
+        /// </summary>
+        /// <returns>RandomAccessMemory</returns>
         public RandomAccessMemory GetLastEntity()
         {
             MySqlConnection connection = this.CreateConnection();
@@ -117,9 +123,10 @@ namespace InventoryManagementSystem.dataAccess
             }
         }
 
-        /*
-        *   Liest alle Datensätze der Entität 'Grafikkarte' aus der Datenbank
-        */
+        /// <summary>
+        /// Liest alle Datensätze der Entität 'Arbeitsspeicher' aus der Datenbank
+        /// </summary>
+        /// <returns>Liste von RandomAccessMemory</returns>
         public List<RandomAccessMemory> GetAllEntities()
         {
             List<RandomAccessMemory> rams = new List<RandomAccessMemory>();
@@ -140,9 +147,11 @@ namespace InventoryManagementSystem.dataAccess
             return rams;
         }
 
-        /*
-        *   Mappt einen Datensatz aus der Datenbank auf ein Objekt vom Typ 'Arbeitsspeicher' (RandomAccessMemory)
-        */
+        /// <summary>
+        /// Mappt einen Datensatz aus der Datenbank auf ein Objekt vom Typ 'Arbeitsspeicher'
+        /// </summary>
+        /// <param name="reader">Der Datensatz, welcher gemappt wird</param>
+        /// <returns>RandomAccessMemory</returns>
         private RandomAccessMemory MapToEntity(MySqlDataReader reader)
         {
             RandomAccessMemory ram = new RandomAccessMemory();

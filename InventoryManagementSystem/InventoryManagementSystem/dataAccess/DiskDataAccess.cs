@@ -7,24 +7,27 @@ using InventoryManagementSystem.database.basic;
 
 namespace InventoryManagementSystem.dataAccess
 {
-    /*
-    *   Data-Access-Klasse der Entität 'Festplatte'
-    *   Führt alle Operationen für die Entität auf der Datenbank aus.
-    */
+    /// <summary>
+    /// Data-Access-Klasse der Entität 'Festplatte'.
+    /// Führt alle Operationen für die Entität auf der Datenbank aus.
+    /// </summary>
     public class DiskDataAccess : DatabaseBasic
     {
-        /**
-        * gibt den Tabellen Namen zurück.
-        **/
+
+        /// <summary>
+        /// Gibt den Tabellennamen zusammen mit dem konfigurierten Präfix zurück.
+        /// </summary>
+        /// <returns>string</returns>
         public override string getTableName()
         {
             ConfigProzesser config = new ConfigProzesser();
             return config.getDBPraefix() + "festplatte";
         }
 
-        /*
-         *   Speichert ein Objekt der Entität 'Festplatte' in die Datenbank
-         */
+        /// <summary>
+        /// Speichert ein Objekt der Entität 'Festplatte' in der Datenbank
+        /// </summary>
+        /// <param name="entity">Das Objekt, welches gespeichert wird</param>
         public void Save(Disk entity)
         {
             MySqlConnection connection = this.CreateConnection();
@@ -48,9 +51,10 @@ namespace InventoryManagementSystem.dataAccess
             }
         }
 
-        /*
-         *  Löscht ein Objekt der Entität 'Festplatte' aus der Datenbank 
-         */
+        /// <summary>
+        /// Löscht ein Objekt der Entität 'Festplatte' aus der Datenbank
+        /// </summary>
+        /// <param name="entity">Das Objekt, welches gelöscht wird</param>
         public void Delete(Disk entity)
         {
             MySqlConnection connection = this.CreateConnection();
@@ -63,10 +67,11 @@ namespace InventoryManagementSystem.dataAccess
             connection.Close();
         }
 
-        /*
-         *  Verändert einen bestehenden Datensatz der Entität `Festplatte` in der Datenbank
-         *  Ermittelt auch nicht mehr genutzte Referenzen und löscht diese.
-         */
+        /// <summary>
+        /// Verändert einen bestehenden Datensatz der Entität 'Festplatte' in der Datenbank.
+        /// Ermittelt auch nicht mehr genutzte Referenzen und löscht diese aus der Beziehungstabelle.
+        /// </summary>
+        /// <param name="entity">Die veränderte Entität</param>
         public void Update(Disk entity)
         {
             MySqlConnection connection = this.CreateConnection();
@@ -97,10 +102,12 @@ namespace InventoryManagementSystem.dataAccess
             connection.Close();
         }
 
-        /*
-        *   Liest den Datensatz der Entität 'Festplatte' aus der Datenbank, die der übergebenen ID
-        *   entspricht
-        */
+        /// <summary>
+        /// Liest den Datensatz der Entität 'Festplatte' aus der Datenbank, die der übergebenen ID
+        /// entspricht
+        /// </summary>
+        /// <param name="id">Technische ID der gesuchten Entität</param>
+        /// <returns>Disk</returns>
         public Disk GetEntityById(int id)
         {
             MySqlConnection connection = this.CreateConnection();
@@ -118,9 +125,10 @@ namespace InventoryManagementSystem.dataAccess
             return disk;
         }
 
-        /*
-        *   Liest den zuletzt gespeicherten Datensatz der Entität 'Festplatte' aus der Datenbank
-        */
+        /// <summary>
+        /// Liest den zuletzt gespeicherten Datensatz der Entität 'Festplatte' aus der Datenbank
+        /// </summary>
+        /// <returns>Disk</returns>
         public Disk GetLastEntity()
         {
             MySqlConnection connection = this.CreateConnection();
@@ -143,9 +151,10 @@ namespace InventoryManagementSystem.dataAccess
             }
         }
 
-        /*
-        *   Liest alle Datensätze der Entität 'Festplatte' aus der Datenbank
-        */
+        /// <summary>
+        /// Liest alle Datensätze der Entität 'Festplatte' aus der Datenbank
+        /// </summary>
+        /// <returns>Liste von Disk</returns>
         public List<Disk> GetAllEntities()
         {
             List<Disk> disks = new List<Disk>();
@@ -166,9 +175,11 @@ namespace InventoryManagementSystem.dataAccess
             return disks;
         }
 
-        /*
-        *   Mappt einen Datensatz aus der Datenbank auf ein Objekt vom Typ 'Festplatte' (Disk)
-        */
+        /// <summary>
+        /// Mappt einen Datensatz aus der Datenbank auf ein Objekt vom Typ 'Festplatte'
+        /// </summary>
+        /// <param name="reader">Der Datensatz, welcher gemappt wird</param>
+        /// <returns>Disk</returns>
         private Disk MapToEntity(MySqlDataReader reader)
         {
             Disk disk = new Disk();
@@ -185,9 +196,11 @@ namespace InventoryManagementSystem.dataAccess
             return disk;
         }
 
-        /*
-         *  Liest alle Beziehungen zu der Entität 'Schnittstelle' aus der Datenbank
-         */
+        /// <summary>
+        /// Liest alle Beziehungen zu der Entität 'Schnittstelle' aus der Datenbank
+        /// </summary>
+        /// <param name="entity">Die Festplatte, zu welcher die Schnittstellen ermittelt werden</param>
+        /// <returns>Liste von PhysicalInterfaceWithCount</returns>
         private List<PhysicalInterfaceWithCount> GetPhysicalInterfaces(Disk entity)
         {
             List<PhysicalInterfaceWithCount> physicalInterfaces = new List<PhysicalInterfaceWithCount>();
