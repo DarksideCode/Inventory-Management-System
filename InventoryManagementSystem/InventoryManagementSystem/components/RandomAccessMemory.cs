@@ -1,8 +1,8 @@
 ﻿namespace InventoryManagementSystem.components
 {
-    /*
-     *  Klasse für die Entität Arbeitsspeicher
-     */
+    /// <summary>
+    /// Klasse für die Entität 'Arbeitsspeicher'
+    /// </summary>
     public class RandomAccessMemory
     {
         public RandomAccessMemory() { }
@@ -16,5 +16,25 @@
         public double ClockRate { get; set; }
 
         public Producer Producer { get; set; }
+    }
+
+    /// <summary>
+    /// Ein grafisches Objekt der Entität 'Arbeitsspeicher' zur Anzeige der Informationen auf
+    /// der Benutzeroberfläche.
+    /// </summary>
+    public class RandomAccessMemoryGraphicalObject
+    {
+        public string Description { get; set; }
+        public int Memory { get; set; }
+        public double ClockRate { get; set; }
+        public string Producer { get; set; }
+
+        public void MapFromEntity(RandomAccessMemory entity)
+        {
+            this.Description = entity.Description;
+            this.Memory = entity.Memory;
+            this.ClockRate = entity.ClockRate;
+            this.Producer = entity.Producer.CompanyName;
+        }
     }
 }

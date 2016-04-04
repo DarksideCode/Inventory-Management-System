@@ -2,9 +2,9 @@
 
 namespace InventoryManagementSystem.components
 {
-    /*
-     *  Klasse für die Entität Festplatte
-     */
+    /// <summary>
+    /// Klasse für die Entität 'Festplatte'
+    /// </summary>
     public class Disk
     {
         private List<PhysicalInterfaceWithCount> physicalInterfaces;
@@ -35,6 +35,28 @@ namespace InventoryManagementSystem.components
         public void AddPhysicalInterface(PhysicalInterfaceWithCount physicalInterface)
         {
             this.physicalInterfaces.Add(physicalInterface);
+        }
+    }
+
+    /// <summary>
+    /// Ein grafisches Objekt der Entität 'Festplatte' zur Anzeige der Informationen auf
+    /// der Benutzeroberfläche.
+    /// </summary>
+    public class DiskGraphicalObject
+    {
+        public string Description { get; set; }
+        public int Capacity { get; set; }
+        public string Ssd { get; set; }
+        public double Inch { get; set; }
+        public string Producer { get; set; }
+
+        public void MapFromEntity(Disk entity)
+        {
+            this.Description = entity.Description;
+            this.Capacity = entity.Capacity;
+            this.Ssd = entity.Ssd.ToString();
+            this.Inch = entity.Inch;
+            this.Producer = entity.Producer.CompanyName;
         }
     }
 }
