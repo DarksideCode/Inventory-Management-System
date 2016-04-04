@@ -8,26 +8,14 @@ namespace InventoryManagementSystem.components
 {
     public class PhysicalInterfaceWithCount
     {
-        private PhysicalInterface physicalInterface;
-
-        private int number;
-
         public PhysicalInterfaceWithCount (PhysicalInterface physicalInterface, int number)
         {
-            this.physicalInterface = physicalInterface;
-            this.number = number;
+            this.PhysicalInterface = physicalInterface;
+            this.Number = number;
         }
 
-        public PhysicalInterface PhysicalInterface
-        {
-            get { return this.physicalInterface; }
-            set { this.physicalInterface = value; }
-        }
+        public PhysicalInterface PhysicalInterface { get; set; }
 
-        public int Number
-        {
-            get { return this.number; }
-            set { this.number = value; }
-        }
+        public int Number { get; set; }
     }
 }

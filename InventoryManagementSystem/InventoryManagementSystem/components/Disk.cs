@@ -7,18 +7,6 @@ namespace InventoryManagementSystem.components
      */
     public class Disk
     {
-        private int id;
-
-        private string description;
-
-        private int capacity;
-
-        private bool ssd;
-
-        private double inch;
-
-        private Producer producer;
-
         private List<PhysicalInterfaceWithCount> physicalInterfaces;
 
         public Disk() 
@@ -26,41 +14,17 @@ namespace InventoryManagementSystem.components
             this.physicalInterfaces = new List<PhysicalInterfaceWithCount>();
         }
 
-        public int Id
-        {
-            get { return this.id; }
-            set { this.id = value; }
-        }
+        public int Id { get; set; }
 
-        public string Description
-        {
-            get { return this.description; }
-            set { this.description = value; }
-        }
+        public string Description { get; set; }
 
-        public int Capacity
-        {
-            get { return this.capacity; }
-            set { this.capacity = value; }
-        }
+        public int Capacity { get; set; }
 
-        public bool Ssd
-        {
-            get { return this.ssd; }
-            set { this.ssd = value; }
-        }
+        public bool Ssd { get; set; }
 
-        public double Inch
-        {
-            get { return this.inch; }
-            set { this.inch = value; }
-        }
+        public double Inch { get; set; }
 
-        public Producer Producer
-        {
-            get { return this.producer; }
-            set { this.producer = value; }
-        }
+        public Producer Producer { get; set; }
 
         public List<PhysicalInterfaceWithCount> PhysicalInterfaces
         {
