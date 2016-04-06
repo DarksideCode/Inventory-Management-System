@@ -6,16 +6,16 @@
         <DataGrid x:Name="dataGrid" HorizontalAlignment="Left" Margin="206,10,0,0" VerticalAlignment="Top" Height="229" Width="376"/>
         <TreeView x:Name="treeView" HorizontalAlignment="Left" Height="280" Margin="10,10,0,0" VerticalAlignment="Top" Width="191">
             <TreeViewItem Header="Komponenten" IsExpanded="True" FontSize="16">
-                <TreeViewItem Header="Arbeitsspeicher" HorizontalAlignment="Left" Width="168"/>
-                <TreeViewItem Header="Festplatte" HorizontalAlignment="Left" Width="168"/>
-                <TreeViewItem Header="Grafikkarte" HorizontalAlignment="Left" Width="168"/>
-                <TreeViewItem Header="Hauptplatine" HorizontalAlignment="Left" Width="168"/>
-                <TreeViewItem Header="Monitor" HorizontalAlignment="Left" Width="168"/>
-                <TreeViewItem Header="Prozessor" HorizontalAlignment="Left" Width="168"/>
+                <TreeViewItem Header="Arbeitsspeicher" HorizontalAlignment="Left" Width="168" Selected="RAM_Selected"/>
+                <TreeViewItem Header="Festplatte" HorizontalAlignment="Left" Width="168" Selected="Disk_Selected"/>
+                <TreeViewItem Header="Grafikkarte" HorizontalAlignment="Left" Width="168" Selected="GraphicCard_Selected"/>
+                <TreeViewItem Header="Hauptplatine" HorizontalAlignment="Left" Width="168" Selected="Motherboard_Selected"/>
+                <TreeViewItem Header="Monitor" HorizontalAlignment="Left" Width="168" Selected="Monitor_Selected"/>
+                <TreeViewItem Header="Prozessor" HorizontalAlignment="Left" Width="168" Selected="Processor_Selected"/>
             </TreeViewItem>
             <TreeViewItem Header="Stammdaten" IsExpanded="True" FontSize="16">
-                <TreeViewItem Header="Hersteller" HorizontalAlignment="Left" Width="168"/>
-                <TreeViewItem Header="Schnittstelle" HorizontalAlignment="Left" Width="168"/>
+                <TreeViewItem Header="Hersteller" HorizontalAlignment="Left" Width="168" Selected="Producer_Selected"/>
+                <TreeViewItem Header="Schnittstelle" HorizontalAlignment="Left" Width="168" Selected="Interface_Selected"/>
             </TreeViewItem>
         </TreeView>
         <Button x:Name="newBtn" Content="Neu" HorizontalAlignment="Left" Margin="246,295,0,0" VerticalAlignment="Top" Width="79" Height="31"/>
