@@ -23,7 +23,7 @@ namespace UnitTests
             producer.HouseNumber = 1;
 
             dataAccess.Save(producer);
-            Producer dbProducer = dataAccess.GetLastEntity();
+            Producer dbProducer = dataAccess.GetLastEntity<Producer>();
 
             Assert.AreEqual(producer.Website, dbProducer.Website);
         }
@@ -40,7 +40,7 @@ namespace UnitTests
             physicalInterface.TransferRate = 1000;
 
             dataAccess.Save(physicalInterface);
-            PhysicalInterface dbPhysicalInterface = dataAccess.GetLastEntity();
+            PhysicalInterface dbPhysicalInterface = dataAccess.GetLastEntity<PhysicalInterface>();
 
             Assert.AreEqual(physicalInterface.Description, dbPhysicalInterface.Description);
         }
@@ -57,11 +57,11 @@ namespace UnitTests
             graphicCard.ClockRate = 5;
             graphicCard.Model = "GTX1234";
             graphicCard.Memory = 2000;
-            graphicCard.Producer = producerDataAccess.GetLastEntity();
-            graphicCard.AddPhysicalInterface(new PhysicalInterfaceWithCount(physicalInterfaceDataAccess.GetLastEntity(), 3));
+            graphicCard.Producer = producerDataAccess.GetLastEntity<Producer>();
+            graphicCard.AddPhysicalInterface(new PhysicalInterfaceWithCount(physicalInterfaceDataAccess.GetLastEntity<PhysicalInterface>(), 3));
 
             dataAccess.Save(graphicCard);
-            GraphicCard dbGraphicCard = dataAccess.GetLastEntity();
+            GraphicCard dbGraphicCard = dataAccess.GetLastEntity<GraphicCard>();
 
             Assert.AreEqual(graphicCard.Description, dbGraphicCard.Description);
         }
@@ -76,10 +76,10 @@ namespace UnitTests
             ram.Description = "Dies ist ein Test";
             ram.Memory = 8000;
             ram.ClockRate = 12000;
-            ram.Producer = producerDataAccess.GetLastEntity();
+            ram.Producer = producerDataAccess.GetLastEntity<Producer>();
 
             dataAccess.Save(ram);
-            RandomAccessMemory dbRAM = dataAccess.GetLastEntity();
+            RandomAccessMemory dbRAM = dataAccess.GetLastEntity<RandomAccessMemory>();
 
             Assert.AreEqual(ram.Memory, dbRAM.Memory);
         }
@@ -95,11 +95,11 @@ namespace UnitTests
             motherboard.Description = "Dies ist ein Test";
             motherboard.Inch = 24.2;
             motherboard.Socket = "PGA 988B";
-            motherboard.Producer = producerDataAccess.GetLastEntity();
-            motherboard.AddPhysicalInterface(new PhysicalInterfaceWithCount(physicalInterfaceDataAccess.GetLastEntity(), 3));
+            motherboard.Producer = producerDataAccess.GetLastEntity<Producer>();
+            motherboard.AddPhysicalInterface(new PhysicalInterfaceWithCount(physicalInterfaceDataAccess.GetLastEntity<PhysicalInterface>(), 3));
 
             dataAccess.Save(motherboard);
-            Motherboard dbMotherboard = dataAccess.GetLastEntity();
+            Motherboard dbMotherboard = dataAccess.GetLastEntity<Motherboard>();
 
             Assert.AreEqual(motherboard.Socket, dbMotherboard.Socket);
         }
@@ -117,10 +117,10 @@ namespace UnitTests
             processor.CommandSet = "RISC";
             processor.Architecture = 64;
             processor.ClockRate = 3.40;
-            processor.Producer = producerDataAccess.GetLastEntity();
+            processor.Producer = producerDataAccess.GetLastEntity<Producer>();
 
             dataAccess.Save(processor);
-            Processor dbProcessor = dataAccess.GetLastEntity();
+            Processor dbProcessor = dataAccess.GetLastEntity<Processor>();
 
             Assert.AreEqual(processor.CommandSet, dbProcessor.CommandSet);
         }
@@ -137,11 +137,11 @@ namespace UnitTests
             hdd.Capacity = 1000;
             hdd.Ssd = false;
             hdd.Inch = 3.5;
-            hdd.Producer = producerDataAccess.GetLastEntity();
-            hdd.AddPhysicalInterface(new PhysicalInterfaceWithCount(physicalInterfaceDataAccess.GetLastEntity(), 3));
+            hdd.Producer = producerDataAccess.GetLastEntity<Producer>();
+            hdd.AddPhysicalInterface(new PhysicalInterfaceWithCount(physicalInterfaceDataAccess.GetLastEntity<PhysicalInterface>(), 3));
 
             dataAccess.Save(hdd);
-            Disk dbHDD = dataAccess.GetLastEntity();
+            Disk dbHDD = dataAccess.GetLastEntity<Disk>();
 
             Assert.AreEqual(hdd.Capacity, dbHDD.Capacity);
         }
@@ -158,11 +158,11 @@ namespace UnitTests
             monitor.Resolution = 1000;
             monitor.Inch = 24;
             monitor.AspectRatio = 4;
-            monitor.Producer = producerDataAccess.GetLastEntity();
-            monitor.AddPhysicalInterface(new PhysicalInterfaceWithCount(physicalInterfaceDataAccess.GetLastEntity(), 3));
+            monitor.Producer = producerDataAccess.GetLastEntity<Producer>();
+            monitor.AddPhysicalInterface(new PhysicalInterfaceWithCount(physicalInterfaceDataAccess.GetLastEntity<PhysicalInterface>(), 3));
 
             dataAccess.Save(monitor);
-            Monitor dbMonitor = dataAccess.GetLastEntity();
+            Monitor dbMonitor = dataAccess.GetLastEntity<Monitor>();
 
             Assert.AreEqual(monitor.Inch, dbMonitor.Inch);
         }
@@ -172,88 +172,88 @@ namespace UnitTests
         public void deleteMonitorFromDatabase()
         {
             MonitorDataAccess dataAccess = new MonitorDataAccess();
-            Monitor monitor = dataAccess.GetLastEntity();
+            Monitor monitor = dataAccess.GetLastEntity<Monitor>();
 
             dataAccess.Delete(monitor);
 
-            Assert.IsTrue(dataAccess.GetLastEntity() == null || monitor.Id == dataAccess.GetLastEntity().Id);
+            Assert.IsTrue(dataAccess.GetLastEntity<Monitor>() == null || monitor.Id == dataAccess.GetLastEntity<Monitor>().Id);
         }
 
         [TestMethod]
         public void deleteDiskFromDatabase()
         {
             DiskDataAccess dataAccess = new DiskDataAccess();
-            Disk disk = dataAccess.GetLastEntity();
+            Disk disk = dataAccess.GetLastEntity<Disk>();
 
             dataAccess.Delete(disk);
 
-            Assert.IsTrue(dataAccess.GetLastEntity() == null || disk.Id == dataAccess.GetLastEntity().Id);
+            Assert.IsTrue(dataAccess.GetLastEntity<Disk>() == null || disk.Id == dataAccess.GetLastEntity<Disk>().Id);
         }
 
         [TestMethod]
         public void deleteProcessorFromDatabase()
         {
             ProcessorDataAccess dataAccess = new ProcessorDataAccess();
-            Processor processor = dataAccess.GetLastEntity();
+            Processor processor = dataAccess.GetLastEntity<Processor>();
 
             dataAccess.Delete(processor);
 
-            Assert.IsTrue(dataAccess.GetLastEntity() == null || processor.Id == dataAccess.GetLastEntity().Id);
+            Assert.IsTrue(dataAccess.GetLastEntity<Processor>() == null || processor.Id == dataAccess.GetLastEntity<Processor>().Id);
         }
 
         [TestMethod]
         public void deleteMotherboardFromDatabase()
         {
             MotherboardDataAccess dataAccess = new MotherboardDataAccess();
-            Motherboard motherboard = dataAccess.GetLastEntity();
+            Motherboard motherboard = dataAccess.GetLastEntity<Motherboard>();
 
             dataAccess.Delete(motherboard);
 
-            Assert.IsTrue(dataAccess.GetLastEntity() == null || motherboard.Id == dataAccess.GetLastEntity().Id);
+            Assert.IsTrue(dataAccess.GetLastEntity<Motherboard>() == null || motherboard.Id == dataAccess.GetLastEntity<Motherboard>().Id);
         }
 
         [TestMethod]
         public void deleteRandomAccessMemoryFromDatabase()
         {
             RandomAccessMemoryDataAccess dataAccess = new RandomAccessMemoryDataAccess();
-            RandomAccessMemory randomAccessMemory = dataAccess.GetLastEntity();
+            RandomAccessMemory randomAccessMemory = dataAccess.GetLastEntity<RandomAccessMemory>();
 
             dataAccess.Delete(randomAccessMemory);
 
-            Assert.IsTrue(dataAccess.GetLastEntity() == null || randomAccessMemory.Id == dataAccess.GetLastEntity().Id);
+            Assert.IsTrue(dataAccess.GetLastEntity<RandomAccessMemory>() == null || randomAccessMemory.Id == dataAccess.GetLastEntity<RandomAccessMemory>().Id);
         }
 
         [TestMethod]
         public void deleteGraphicCardFromDatabase()
         {
             GraphicCardDataAccess dataAccess = new GraphicCardDataAccess();
-            GraphicCard graphicCard = dataAccess.GetLastEntity();
+            GraphicCard graphicCard = dataAccess.GetLastEntity<GraphicCard>();
 
             dataAccess.Delete(graphicCard);
 
-            Assert.IsTrue(dataAccess.GetLastEntity() == null || graphicCard.Id == dataAccess.GetLastEntity().Id);
+            Assert.IsTrue(dataAccess.GetLastEntity<GraphicCard>() == null || graphicCard.Id == dataAccess.GetLastEntity<GraphicCard>().Id);
         }
 
         [TestMethod]
         public void deleteProducerFromDatabase()
         {
             ProducerDataAccess dataAccess = new ProducerDataAccess();
-            Producer producer = dataAccess.GetLastEntity();
+            Producer producer = dataAccess.GetLastEntity<Producer>();
 
             dataAccess.Delete(producer);
 
-            Assert.IsTrue(dataAccess.GetLastEntity() == null || producer.Id == dataAccess.GetLastEntity().Id);
+            Assert.IsTrue(dataAccess.GetLastEntity<Producer>() == null || producer.Id == dataAccess.GetLastEntity<Producer>().Id);
         }
 
         [TestMethod]
         public void deletePhysicalInterfaceFromDatabase()
         {
             PhysicalInterfaceDataAccess dataAccess = new PhysicalInterfaceDataAccess();
-            PhysicalInterface physicalInterface = dataAccess.GetLastEntity();
+            PhysicalInterface physicalInterface = dataAccess.GetLastEntity<PhysicalInterface>();
 
             dataAccess.Delete(physicalInterface);
 
-            Assert.IsTrue(dataAccess.GetLastEntity() == null || physicalInterface.Id == dataAccess.GetLastEntity().Id);
+            Assert.IsTrue(dataAccess.GetLastEntity<PhysicalInterface>() == null || physicalInterface.Id == dataAccess.GetLastEntity<PhysicalInterface>().Id);
         }
     }
 }

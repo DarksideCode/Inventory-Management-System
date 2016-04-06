@@ -14,6 +14,7 @@ namespace InventoryManagementSystem.database.basic
         /// <summary>
         /// Dient als Vorgabe für abgeleitete Klassen
         /// </summary>
+        /// <returns>String Tablename</returns>
         public virtual string getTableName()
         {
             return "TableName";
@@ -58,5 +59,33 @@ namespace InventoryManagementSystem.database.basic
         }
 
         protected abstract object MapToEntity(MySqlDataReader reader);
+
+        /// <summary>
+        /// Liest den zuletzt gespeicherten Datensatz einer Entität aus der Datenbank
+        /// </summary>
+        /// <returns>Entität</returns>
+        public virtual T GetLastEntity<T>()
+        {
+            MySqlConnection connection = this.CreateConnection();
+            MySqlCommand command = connection.CreateCommand();
+            command.CommandText = "SELECT MAX(id) FROM `" + this.getTableName() + "`";
+
+            connection.Open();
+
+            MySqlDataReader reader = command.ExecuteReader();
+            reader.Read();
+
+            //Prüft, ob eine ID zurück gegeben wurde, falls nicht ist die Tabelle leer und es wird null zurück gegeben
+            if (reader.GetValue(0).ToString().Length > 0)
+            {
+                int id = Int32.Parse(reader.GetValue(0).ToString());
+                connection.Close();
+                return this.GetEntityById<T>(id);
+            }
+            else {
+                connection.Close();
+                return default(T);
+            }
+        }
     }
 }

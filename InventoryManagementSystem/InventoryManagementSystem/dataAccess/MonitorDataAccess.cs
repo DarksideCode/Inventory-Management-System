@@ -43,7 +43,7 @@ namespace InventoryManagementSystem.dataAccess
             for (int i = 0; i < entity.PhysicalInterfaces.Count; i++)
             {
                 command.CommandText = "INSERT INTO `" + this.getTableName() + "_schnittstelle`(`ID_Monitor`, `ID_Schnittstelle`, `Anzahl`) "
-                                    + "VALUES (" + this.GetLastEntity().Id + "," + entity.PhysicalInterfaces[i].PhysicalInterface.Id + "," 
+                                    + "VALUES (" + this.GetLastEntity<Monitor>().Id + "," + entity.PhysicalInterfaces[i].PhysicalInterface.Id + "," 
                                     + entity.PhysicalInterfaces[i].Number + ")";
                 connection.Open();
                 command.ExecuteNonQuery();
@@ -102,32 +102,6 @@ namespace InventoryManagementSystem.dataAccess
             interfaceCommand.ExecuteNonQuery();
             command.ExecuteNonQuery();
             connection.Close();
-        }
-
-        /// <summary>
-        /// Liest den zuletzt gespeicherten Datensatz der Entität 'Monitor' aus der Datenbank
-        /// </summary>
-        /// <returns>Monitor</returns>
-        public Monitor GetLastEntity()
-        {
-            MySqlConnection connection = this.CreateConnection();
-            MySqlCommand command = connection.CreateCommand();
-            command.CommandText = "SELECT MAX(id) FROM `" + this.getTableName() + "`";
-
-            connection.Open();
-
-            MySqlDataReader reader = command.ExecuteReader();
-            reader.Read();
-
-            //Prüft, ob eine ID zurück gegeben wurde, falls nicht ist die Tabelle leer und es wird null zurück gegeben
-            if (reader.GetValue(0).ToString().Length > 0) {
-                int id = Int32.Parse(reader.GetValue(0).ToString());
-                connection.Close();
-                return this.GetEntityById<Monitor>(id);
-            } else {
-                connection.Close();
-                return null;
-            }
         }
 
         /// <summary>

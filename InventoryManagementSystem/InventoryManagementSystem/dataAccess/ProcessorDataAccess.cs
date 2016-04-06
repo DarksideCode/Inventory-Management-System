@@ -76,32 +76,6 @@ namespace InventoryManagementSystem.dataAccess
         }
 
         /// <summary>
-        /// Liest den zuletzt gespeicherten Datensatz der Entität 'Prozessor' aus der Datenbank
-        /// </summary>
-        /// <returns>Processor</returns>
-        public Processor GetLastEntity()
-        {
-            MySqlConnection connection = this.CreateConnection();
-            MySqlCommand command = connection.CreateCommand();
-            command.CommandText = "SELECT MAX(id) FROM `" + this.getTableName() + "`";
-
-            connection.Open();
-
-            MySqlDataReader reader = command.ExecuteReader();
-            reader.Read();
-
-            //Prüft, ob eine ID zurück gegeben wurde, falls nicht ist die Tabelle leer und es wird null zurück gegeben
-            if (reader.GetValue(0).ToString().Length > 0) {
-                int id = Int32.Parse(reader.GetValue(0).ToString());
-                connection.Close();
-                return this.GetEntityById<Processor>(id);
-            } else {
-                connection.Close();
-                return null;
-            }
-        }
-
-        /// <summary>
         /// Liest alle Datensätze der Entität 'Prozessor' aus der Datenbank
         /// </summary>
         /// <returns>Liste von Processor</returns>
