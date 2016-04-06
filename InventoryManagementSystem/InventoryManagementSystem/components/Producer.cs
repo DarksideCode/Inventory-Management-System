@@ -32,6 +32,7 @@
     /// </summary>
     public class ProducerGraphicalObject
     {
+        public int Id { get; set; }
         public string CompanyName { get; set; }
         public int PhoneNumber { get; set; }
         public string Email { get; set; }
@@ -43,6 +44,7 @@
 
         public void MapFromEntity (Producer entity)
         {
+            this.Id = entity.Id;
             this.CompanyName = entity.CompanyName;
             this.PhoneNumber = entity.PhoneNumber;
             this.Email = entity.Email;

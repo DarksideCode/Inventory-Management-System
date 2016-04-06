@@ -30,6 +30,7 @@
     /// </summary>
     public class ProcessorGraphicalObject
     {
+        public int Id { get; set; }
         public string Description { get; set; }
         public string Model { get; set; }
         public int Core { get; set; }
@@ -40,6 +41,7 @@
 
         public void MapFromEntity (Processor entity)
         {
+            this.Id = entity.Id;
             this.Description = entity.Description;
             this.Model = entity.Model;
             this.Core = entity.Core;

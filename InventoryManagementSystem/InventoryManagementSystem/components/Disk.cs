@@ -44,6 +44,7 @@ namespace InventoryManagementSystem.components
     /// </summary>
     public class DiskGraphicalObject
     {
+        public int Id { get; set; }
         public string Description { get; set; }
         public int Capacity { get; set; }
         public string Ssd { get; set; }
@@ -52,6 +53,7 @@ namespace InventoryManagementSystem.components
 
         public void MapFromEntity(Disk entity)
         {
+            this.Id = entity.Id;
             this.Description = entity.Description;
             this.Capacity = entity.Capacity;
             this.Ssd = entity.Ssd.ToString();

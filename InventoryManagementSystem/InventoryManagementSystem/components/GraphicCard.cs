@@ -44,6 +44,7 @@ namespace InventoryManagementSystem.components
     /// </summary>
     public class GraphicCardGraphicalObject
     {
+        public int Id { get; set; }
         public string Description { get; set; }
         public double ClockRate { get; set; }
         public string Model { get; set; }
@@ -52,6 +53,7 @@ namespace InventoryManagementSystem.components
 
         public void MapFromEntity(GraphicCard entity)
         {
+            this.Id = entity.Id;
             this.Description = entity.Description;
             this.ClockRate = entity.ClockRate;
             this.Model = entity.Model;

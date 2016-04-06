@@ -44,6 +44,7 @@ namespace InventoryManagementSystem.components
     /// </summary>
     public class MonitorGraphicalObject
     {
+        public int Id { get; set; }
         public string Description { get; set; }
         public int Resolution { get; set; }
         public double Inch { get; set; }
@@ -52,6 +53,7 @@ namespace InventoryManagementSystem.components
 
         public void MapFromEntity(Monitor entity)
         {
+            this.Id = entity.Id;
             this.Description = entity.Description;
             this.Resolution = entity.Resolution;
             this.Inch = entity.Inch;

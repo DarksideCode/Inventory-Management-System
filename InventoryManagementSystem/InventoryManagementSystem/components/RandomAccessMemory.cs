@@ -24,6 +24,7 @@
     /// </summary>
     public class RandomAccessMemoryGraphicalObject
     {
+        public int Id { get; set; }
         public string Description { get; set; }
         public int Memory { get; set; }
         public double ClockRate { get; set; }
@@ -31,6 +32,7 @@
 
         public void MapFromEntity(RandomAccessMemory entity)
         {
+            this.Id = entity.Id;
             this.Description = entity.Description;
             this.Memory = entity.Memory;
             this.ClockRate = entity.ClockRate;

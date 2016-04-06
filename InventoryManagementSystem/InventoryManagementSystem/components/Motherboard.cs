@@ -42,6 +42,7 @@ namespace InventoryManagementSystem.components
     /// </summary>
     public class MotherboardGraphicalObject
     {
+        public int Id { get; set; }
         public string Description { get; set; }
         public double Inch { get; set; }
         public string Socket { get; set; }
@@ -49,6 +50,7 @@ namespace InventoryManagementSystem.components
 
         public void MapFromEntity (Motherboard entity)
         {
+            this.Id = entity.Id;
             this.Description = entity.Description;
             this.Inch = entity.Inch;
             this.Socket = entity.Socket;
