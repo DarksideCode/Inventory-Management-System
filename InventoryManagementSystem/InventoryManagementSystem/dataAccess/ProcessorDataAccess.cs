@@ -60,30 +60,6 @@ namespace InventoryManagementSystem.dataAccess
         }
 
         /// <summary>
-        /// Liest alle Datensätze der Entität 'Prozessor' aus der Datenbank
-        /// </summary>
-        /// <returns>Liste von Processor</returns>
-        public List<Processor> GetAllEntities()
-        {
-            List<Processor> processors = new List<Processor>();
-            MySqlConnection connection = this.CreateConnection();
-            MySqlCommand command = connection.CreateCommand();
-            command.CommandText = "SELECT * FROM `" + this.getTableName() + "`";
-
-            connection.Open();
-
-            MySqlDataReader reader = command.ExecuteReader();
-
-            while (reader.Read())
-            {
-                Processor processor = (Processor) this.MapToEntity(reader);
-                processors.Add(processor);
-            }
-
-            return processors;
-        }
-
-        /// <summary>
         /// Mappt einen Datensatz aus der Datenbank auf ein Objekt vom Typ 'Prozessor'
         /// </summary>
         /// <param name="reader">Der Datensatz, welcher gemappt wird</param>

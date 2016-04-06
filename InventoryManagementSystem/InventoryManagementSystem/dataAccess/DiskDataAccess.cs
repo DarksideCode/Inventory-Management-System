@@ -87,30 +87,6 @@ namespace InventoryManagementSystem.dataAccess
         }
 
         /// <summary>
-        /// Liest alle Datensätze der Entität 'Festplatte' aus der Datenbank
-        /// </summary>
-        /// <returns>Liste von Disk</returns>
-        public List<Disk> GetAllEntities()
-        {
-            List<Disk> disks = new List<Disk>();
-            MySqlConnection connection = this.CreateConnection();
-            MySqlCommand command = connection.CreateCommand();
-            command.CommandText = "SELECT * FROM `" + this.getTableName() + "`";
-
-            connection.Open();
-
-            MySqlDataReader reader = command.ExecuteReader();
-
-            while (reader.Read())
-            {
-                Disk disk = (Disk) this.MapToEntity(reader);
-                disks.Add(disk);
-            }
-
-            return disks;
-        }
-
-        /// <summary>
         /// Mappt einen Datensatz aus der Datenbank auf ein Objekt vom Typ 'Festplatte'
         /// </summary>
         /// <param name="reader">Der Datensatz, welcher gemappt wird</param>

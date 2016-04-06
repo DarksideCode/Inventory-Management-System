@@ -59,30 +59,6 @@ namespace InventoryManagementSystem.dataAccess
         }
 
         /// <summary>
-        /// Liest alle Datensätze der Entität 'Arbeitsspeicher' aus der Datenbank
-        /// </summary>
-        /// <returns>Liste von RandomAccessMemory</returns>
-        public List<RandomAccessMemory> GetAllEntities()
-        {
-            List<RandomAccessMemory> rams = new List<RandomAccessMemory>();
-            MySqlConnection connection = this.CreateConnection();
-            MySqlCommand command = connection.CreateCommand();
-            command.CommandText = "SELECT * FROM `" + this.getTableName() + "`";
-
-            connection.Open();
-
-            MySqlDataReader reader = command.ExecuteReader();
-
-            while (reader.Read())
-            {
-                RandomAccessMemory ram = (RandomAccessMemory) this.MapToEntity(reader);
-                rams.Add(ram);
-            }
-
-            return rams;
-        }
-
-        /// <summary>
         /// Mappt einen Datensatz aus der Datenbank auf ein Objekt vom Typ 'Arbeitsspeicher'
         /// </summary>
         /// <param name="reader">Der Datensatz, welcher gemappt wird</param>

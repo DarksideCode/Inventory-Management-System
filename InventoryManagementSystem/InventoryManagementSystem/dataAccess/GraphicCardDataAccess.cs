@@ -87,30 +87,6 @@ namespace InventoryManagementSystem.dataAccess
         }
 
         /// <summary>
-        /// Liest alle Datensätze der Entität 'Grafikkarte' aus der Datenbank
-        /// </summary>
-        /// <returns>Liste von GraphicCard</returns>
-        public List<GraphicCard> GetAllEntities()
-        {
-            List<GraphicCard> graphicCards = new List<GraphicCard>();
-            MySqlConnection connection = this.CreateConnection();
-            MySqlCommand command = connection.CreateCommand();
-            command.CommandText = "SELECT * FROM `" + this.getTableName() + "`";
-
-            connection.Open();
-
-            MySqlDataReader reader = command.ExecuteReader();
-
-            while (reader.Read())
-            {
-                GraphicCard graphicCard = (GraphicCard) this.MapToEntity(reader);
-                graphicCards.Add(graphicCard);
-            }
-
-            return graphicCards;
-        }
-
-        /// <summary>
         /// Mappt einen Datensatz aus der Datenbank auf ein Objekt vom Typ 'Grafikkarte'
         /// </summary>
         /// <param name="reader">Der Datensatz, welcher gemappt wird</param>

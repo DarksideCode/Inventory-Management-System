@@ -103,5 +103,30 @@ namespace InventoryManagementSystem.database.basic
             command.ExecuteNonQuery();
             connection.Close();
         }
+
+
+        /// <summary>
+        /// Liestet alle Datensätze der Entität aus der Datenbank
+        /// </summary>
+        /// <returns>Liste der Entität</returns>
+        public List<T> GetAllEntities<T>()
+        {
+            List<T> entitys = new List<T>();
+            MySqlConnection connection = this.CreateConnection();
+            MySqlCommand command = connection.CreateCommand();
+            command.CommandText = "SELECT * FROM `" + this.getTableName() + "`";
+
+            connection.Open();
+
+            MySqlDataReader reader = command.ExecuteReader();
+
+            while (reader.Read())
+            {
+                T entity = (T)this.MapToEntity(reader);
+                entitys.Add(entity);
+            }
+
+            return entitys;
+        }
     }
 }
