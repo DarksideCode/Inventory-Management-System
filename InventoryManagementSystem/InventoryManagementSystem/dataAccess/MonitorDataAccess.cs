@@ -89,31 +89,6 @@ namespace InventoryManagementSystem.dataAccess
         }
 
         /// <summary>
-        /// Liest alle Datensätze der Entität 'Monitor' aus der Datenbank
-        /// </summary>
-        /// <returns>Liste von Monitor</returns>
-        public List<Monitor> GetAllEntities()
-        {
-            List<Monitor> monitors = new List<Monitor>();
-            MySqlConnection connection = this.CreateConnection();
-            MySqlCommand command = connection.CreateCommand();
-
-            command.CommandText = "SELECT * FROM `" + this.getTableName() + "`";
-
-            connection.Open();
-
-            MySqlDataReader reader = command.ExecuteReader();
-
-            while (reader.Read())
-            {
-                Monitor monitor = (Monitor) this.MapToEntity(reader);
-                monitors.Add(monitor);
-            }
-
-            return monitors;
-        }
-
-        /// <summary>
         /// Mappt einen Datensatz aus der Datenbank auf ein Objekt vom Typ 'Monitor'
         /// </summary>
         /// <param name="reader">Der Datensatz, welcher gemappt wird</param>

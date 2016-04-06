@@ -59,30 +59,6 @@ namespace InventoryManagementSystem.dataAccess
         }
 
         /// <summary>
-        /// Liest alle Datensätze der Entität 'Schnittstelle' aus der Datenbank
-        /// </summary>
-        /// <returns>Liste von PhysicalInterface</returns>
-        public List<PhysicalInterface> GetAllEntities()
-        {
-            List<PhysicalInterface> physicalInterfaces = new List<PhysicalInterface>();
-            MySqlConnection connection = this.CreateConnection();
-            MySqlCommand command = connection.CreateCommand();
-            command.CommandText = "SELECT * FROM `" + this.getTableName() + "`";
-
-            connection.Open();
-
-            MySqlDataReader reader = command.ExecuteReader();
-
-            while (reader.Read())
-            {
-                PhysicalInterface physicalInterface = (PhysicalInterface) this.MapToEntity(reader);
-                physicalInterfaces.Add(physicalInterface);
-            }
-
-            return physicalInterfaces;
-        }
-
-        /// <summary>
         /// Mappt einen Datensatz aus der Datenbank auf ein Objekt vom Typ 'Schnittstelle'
         /// </summary>
         /// <param name="reader">Der Datensatz, welcher gemappt wird</param>

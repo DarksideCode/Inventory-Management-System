@@ -60,30 +60,6 @@ namespace InventoryManagementSystem.dataAccess
         }
 
         /// <summary>
-        /// Liest alle Datensätze der Entität 'Hersteller' aus der Datenbank
-        /// </summary>
-        /// <returns>Liste von Producer</returns>
-        public List<Producer> GetAllEntities()
-        {
-            List<Producer> producers = new System.Collections.Generic.List<Producer>();
-            MySqlConnection connection = this.CreateConnection();
-            MySqlCommand command = connection.CreateCommand();
-            command.CommandText = "SELECT * FROM `" + this.getTableName() + "`";
-
-            connection.Open();
-
-            MySqlDataReader reader = command.ExecuteReader();
-
-            while (reader.Read())
-            {
-                Producer producer = (Producer) this.MapToEntity(reader);
-                producers.Add(producer);
-            }
-
-            return producers;
-        }
-
-        /// <summary>
         /// Mappt einen Datensatz aus der Datenbank auf ein Objekt vom Typ 'Hersteller'
         /// </summary>
         /// <param name="reader">Der Datensatz, welcher gemappt wird</param>
