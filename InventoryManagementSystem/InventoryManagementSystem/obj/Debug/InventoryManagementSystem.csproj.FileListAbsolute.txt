@@ -52,3 +52,16 @@ C:\Schule\LF6\Datenbank-Projekt\InventoryManagementSystem\InventoryManagementSys
 C:\Schule\LF6\Datenbank-Projekt\InventoryManagementSystem\InventoryManagementSystem\obj\Debug\InventoryManagementSystem.exe
 C:\Schule\LF6\Datenbank-Projekt\InventoryManagementSystem\InventoryManagementSystem\obj\Debug\InventoryManagementSystem.pdb
 C:\Users\dominik.traise\Documents\Schule\LF6 - Programmieren\SQL\Projekt - Inventory\Inventory-Management-System\InventoryManagementSystem\InventoryManagementSystem\bin\Debug\MySql.Data.dll
+D:\Schule\LF6 (ml) - Programmieren\2. Lehrjahr\Datenbank-Projekt\InventoryManagementSystem\InventoryManagementSystem\bin\Debug\InventoryManagementSystem.exe.config
+D:\Schule\LF6 (ml) - Programmieren\2. Lehrjahr\Datenbank-Projekt\InventoryManagementSystem\InventoryManagementSystem\obj\Debug\InventoryManagementSystem.exe
+D:\Schule\LF6 (ml) - Programmieren\2. Lehrjahr\Datenbank-Projekt\InventoryManagementSystem\InventoryManagementSystem\obj\Debug\InventoryManagementSystem.pdb
+D:\Schule\LF6 (ml) - Programmieren\2. Lehrjahr\Datenbank-Projekt\InventoryManagementSystem\InventoryManagementSystem\obj\Debug\InventoryManagementSystem.csprojResolveAssemblyReference.cache
+D:\Schule\LF6 (ml) - Programmieren\2. Lehrjahr\Datenbank-Projekt\InventoryManagementSystem\InventoryManagementSystem\obj\Debug\App.g.cs
+D:\Schule\LF6 (ml) - Programmieren\2. Lehrjahr\Datenbank-Projekt\InventoryManagementSystem\InventoryManagementSystem\obj\Debug\InventoryManagementSystem_MarkupCompile.cache
+D:\Schule\LF6 (ml) - Programmieren\2. Lehrjahr\Datenbank-Projekt\InventoryManagementSystem\InventoryManagementSystem\obj\Debug\InventoryManagementSystem.g.resources
+D:\Schule\LF6 (ml) - Programmieren\2. Lehrjahr\Datenbank-Projekt\InventoryManagementSystem\InventoryManagementSystem\obj\Debug\InventoryManagementSystem.Properties.Resources.resources
+D:\Schule\LF6 (ml) - Programmieren\2. Lehrjahr\Datenbank-Projekt\InventoryManagementSystem\InventoryManagementSystem\obj\Debug\InventoryManagementSystem.csproj.GenerateResource.Cache
+D:\Schule\LF6 (ml) - Programmieren\2. Lehrjahr\Datenbank-Projekt\InventoryManagementSystem\InventoryManagementSystem\obj\Debug\presentation\MainWindow.baml
+D:\Schule\LF6 (ml) - Programmieren\2. Lehrjahr\Datenbank-Projekt\InventoryManagementSystem\InventoryManagementSystem\obj\Debug\presentation\MainWindow.g.cs
+D:\Schule\LF6 (ml) - Programmieren\2. Lehrjahr\Datenbank-Projekt\InventoryManagementSystem\InventoryManagementSystem\bin\Debug\InventoryManagementSystem.exe
+D:\Schule\LF6 (ml) - Programmieren\2. Lehrjahr\Datenbank-Projekt\InventoryManagementSystem\InventoryManagementSystem\bin\Debug\InventoryManagementSystem.pdb

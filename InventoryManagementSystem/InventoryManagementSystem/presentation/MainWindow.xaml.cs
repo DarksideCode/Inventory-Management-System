@@ -19,7 +19,7 @@ namespace InventoryManagementSystem
             RandomAccessMemoryDataAccess dataAccess = new RandomAccessMemoryDataAccess();
             GraphicalObjectMapper mapper = new GraphicalObjectMapper();
 
-            this.AddToTable(mapper.MapToGraphicalObject(dataAccess.GetAllEntities()));
+            this.AddToTable(mapper.MapToGraphicalObject(dataAccess.GetAllEntities<RandomAccessMemory>()));
         }
 
         private void AddToTable<T> (List<T> list)
