@@ -76,29 +76,6 @@ namespace InventoryManagementSystem.dataAccess
         }
 
         /// <summary>
-        /// Liest den Datensatz der Entität 'Hersteller' aus der Datenbank, die der übergebenen ID
-        /// entspricht
-        /// </summary>
-        /// <param name="id">Technische ID der gesuchten Entität</param>
-        /// <returns>Producer</returns>
-        public Producer GetEntityById(int id)
-        {
-            MySqlConnection connection = this.CreateConnection();
-            MySqlCommand command = connection.CreateCommand();
-            command.CommandText = "SELECT * FROM `" + this.getTableName() + "` WHERE id = " + id;
-
-            connection.Open();
-            MySqlDataReader reader = command.ExecuteReader();
-            
-            reader.Read();
-            Producer producer = this.MapToEntity(reader);
-
-            connection.Close();
-
-            return producer;
-        }
-
-        /// <summary>
         /// Liest den zuletzt gespeicherten Datensatz der Entität 'Hersteller' aus der Datenbank
         /// </summary>
         /// <returns>Producer</returns>
@@ -118,7 +95,7 @@ namespace InventoryManagementSystem.dataAccess
             if (reader.GetValue(0).ToString().Length > 0) {
                 int id = Int32.Parse(reader.GetValue(0).ToString());
                 connection.Close();
-                return this.GetEntityById(id);
+                return this.GetEntityById<Producer>(id);
             } else {
                 connection.Close();
                 return null;
@@ -142,7 +119,7 @@ namespace InventoryManagementSystem.dataAccess
 
             while (reader.Read())
             {
-                Producer producer = this.MapToEntity(reader);
+                Producer producer = (Producer) this.MapToEntity(reader);
                 producers.Add(producer);
             }
 
@@ -154,7 +131,7 @@ namespace InventoryManagementSystem.dataAccess
         /// </summary>
         /// <param name="reader">Der Datensatz, welcher gemappt wird</param>
         /// <returns>Producer</returns>
-        private Producer MapToEntity(MySqlDataReader reader)
+        protected override object MapToEntity(MySqlDataReader reader)
         {
             Producer producer = new Producer();
 

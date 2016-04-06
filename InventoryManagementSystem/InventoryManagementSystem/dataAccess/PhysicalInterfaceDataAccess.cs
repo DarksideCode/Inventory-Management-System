@@ -75,29 +75,6 @@ namespace InventoryManagementSystem.dataAccess
         }
 
         /// <summary>
-        /// Liest den Datensatz der Entität 'Schnittstelle' aus der Datenbank, die der übergebenen ID
-        /// entspricht
-        /// </summary>
-        /// <param name="id">Technische ID der gesuchten Entität</param>
-        /// <returns>PhysicalInterface</returns>
-        public PhysicalInterface GetEntityById(int id)
-        {
-            MySqlConnection connection = this.CreateConnection();
-            MySqlCommand command = connection.CreateCommand();
-            command.CommandText = "SELECT * FROM `" + this.getTableName() + "` WHERE id = " + id;
-
-            connection.Open();
-            MySqlDataReader reader = command.ExecuteReader();
-
-            reader.Read();
-            PhysicalInterface physicalInterface = this.MapToEntity(reader);
-
-            connection.Close();
-
-            return physicalInterface;
-        }
-
-        /// <summary>
         /// Liest den zuletzt gespeicherten Datensatz der Entität 'Schnittstelle' aus der Datenbank
         /// </summary>
         /// <returns>PhysicalInterface</returns>
@@ -116,7 +93,7 @@ namespace InventoryManagementSystem.dataAccess
             if (reader.GetValue(0).ToString().Length > 0) {
                 int id = Int32.Parse(reader.GetValue(0).ToString());
                 connection.Close();
-                return this.GetEntityById(id);
+                return this.GetEntityById<PhysicalInterface>(id);
             } else {
                 connection.Close();
                 return null;
@@ -140,7 +117,7 @@ namespace InventoryManagementSystem.dataAccess
 
             while (reader.Read())
             {
-                PhysicalInterface physicalInterface = this.MapToEntity(reader);
+                PhysicalInterface physicalInterface = (PhysicalInterface) this.MapToEntity(reader);
                 physicalInterfaces.Add(physicalInterface);
             }
 
@@ -152,7 +129,7 @@ namespace InventoryManagementSystem.dataAccess
         /// </summary>
         /// <param name="reader">Der Datensatz, welcher gemappt wird</param>
         /// <returns>PhysicalInterface</returns>
-        private PhysicalInterface MapToEntity(MySqlDataReader reader)
+        protected override object MapToEntity(MySqlDataReader reader)
         {
             PhysicalInterface physicalInterface = new PhysicalInterface();
 

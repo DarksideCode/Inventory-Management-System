@@ -34,11 +34,14 @@ namespace InventoryManagementSystem.database.basic
 
             return connection;
         }
-        /*
-           *   Liest den Datensatz der Entität 'Festplatte' aus der Datenbank, die der übergebenen ID
-           *   entspricht
-           */
-           /*
+
+        /// <summary>
+        /// Liest den Datensatz der jeweiligen Entität aus der Datenbank, die der übergebenen ID
+        /// entspricht. Durch den generischen Ansatz muss der Typ der Entität übergeben werden.
+        /// </summary>
+        /// <typeparam name="T">Entitätsklasse</typeparam>
+        /// <param name="id">ID des Datensatzes</param>
+        /// <returns>Objekt der jeweiligen Entität</returns>
         public virtual T GetEntityById<T>(int id)
         {
             MySqlConnection connection = this.CreateConnection();
@@ -48,12 +51,12 @@ namespace InventoryManagementSystem.database.basic
             connection.Open();
             MySqlDataReader reader = command.ExecuteReader();
             reader.Read();
-            T monitor = (T)this.MapToEntity(reader);
+            T entity = (T)this.MapToEntity(reader);
             connection.Close();
 
-            return monitor;
+            return entity;
         }
 
-        protected abstract object MapToEntity(MySqlDataReader reader);*/
+        protected abstract object MapToEntity(MySqlDataReader reader);
     }
 }

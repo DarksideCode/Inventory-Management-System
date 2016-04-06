@@ -105,27 +105,6 @@ namespace InventoryManagementSystem.dataAccess
         }
 
         /// <summary>
-        /// Liest den Datensatz der Entität 'Monitor' aus der Datenbank, die der übergebenen ID
-        /// entspricht
-        /// </summary>
-        /// <param name="id">Technische ID der gesuchten Entität</param>
-        /// <returns>Monitor</returns>
-        public Monitor GetEntityById(int id)
-        {
-            MySqlConnection connection = this.CreateConnection();
-            MySqlCommand command = connection.CreateCommand();
-            command.CommandText = "SELECT * FROM `" + this.getTableName() + "` WHERE id = " + id;
-
-            connection.Open();
-            MySqlDataReader reader = command.ExecuteReader();
-            reader.Read();
-            Monitor monitor = this.MapToEntity(reader);
-            connection.Close();
-
-            return monitor;
-        }
-
-        /// <summary>
         /// Liest den zuletzt gespeicherten Datensatz der Entität 'Monitor' aus der Datenbank
         /// </summary>
         /// <returns>Monitor</returns>
@@ -144,7 +123,7 @@ namespace InventoryManagementSystem.dataAccess
             if (reader.GetValue(0).ToString().Length > 0) {
                 int id = Int32.Parse(reader.GetValue(0).ToString());
                 connection.Close();
-                return this.GetEntityById(id);
+                return this.GetEntityById<Monitor>(id);
             } else {
                 connection.Close();
                 return null;
@@ -169,7 +148,7 @@ namespace InventoryManagementSystem.dataAccess
 
             while (reader.Read())
             {
-                Monitor monitor = this.MapToEntity(reader);
+                Monitor monitor = (Monitor) this.MapToEntity(reader);
                 monitors.Add(monitor);
             }
 
@@ -181,7 +160,7 @@ namespace InventoryManagementSystem.dataAccess
         /// </summary>
         /// <param name="reader">Der Datensatz, welcher gemappt wird</param>
         /// <returns>Monitor</returns>
-        private Monitor MapToEntity(MySqlDataReader reader)
+        protected override object MapToEntity(MySqlDataReader reader)
         {
             Monitor monitor = new Monitor();
             ProducerDataAccess producerDataAccess = new ProducerDataAccess();
@@ -192,7 +171,7 @@ namespace InventoryManagementSystem.dataAccess
             monitor.Resolution = Int32.Parse(reader.GetValue(2).ToString());
             monitor.Inch = Double.Parse(reader.GetValue(3).ToString());
             monitor.AspectRatio = Int32.Parse(reader.GetValue(4).ToString());
-            monitor.Producer = producerDataAccess.GetEntityById(Int32.Parse(reader.GetValue(5).ToString()));
+            monitor.Producer = producerDataAccess.GetEntityById<Producer>(Int32.Parse(reader.GetValue(5).ToString()));
             monitor.PhysicalInterfaces = this.GetPhysicalInterfaces(monitor);
            
             return monitor;
@@ -216,7 +195,7 @@ namespace InventoryManagementSystem.dataAccess
             MySqlDataReader reader = command.ExecuteReader();
             while (reader.Read())
             {
-                PhysicalInterface physicalInterface = physicalInterfaceDataAccess.GetEntityById(Int32.Parse(reader.GetValue(1).ToString()));
+                PhysicalInterface physicalInterface = physicalInterfaceDataAccess.GetEntityById<PhysicalInterface>(Int32.Parse(reader.GetValue(1).ToString()));
                 int count = Int32.Parse(reader.GetValue(2).ToString());
                 physicalInterfaces.Add(new PhysicalInterfaceWithCount(physicalInterface, count));
             }

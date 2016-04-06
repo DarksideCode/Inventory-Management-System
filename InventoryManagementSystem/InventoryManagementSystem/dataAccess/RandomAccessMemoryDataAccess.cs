@@ -75,29 +75,6 @@ namespace InventoryManagementSystem.dataAccess
         }
 
         /// <summary>
-        /// Liest den Datensatz der Entität 'Arbeitsspeicher' aus der Datenbank, die der übergebenen ID
-        /// entspricht
-        /// </summary>
-        /// <param name="id">Technische ID der gesuchten Entität</param>
-        /// <returns>RandomAccessMemory</returns>
-        public RandomAccessMemory GetEntityById(int id)
-        {
-            MySqlConnection connection = this.CreateConnection();
-            MySqlCommand command = connection.CreateCommand();
-            command.CommandText = "SELECT * FROM `" + this.getTableName() + "` WHERE id = " + id;
-
-            connection.Open();
-            MySqlDataReader reader = command.ExecuteReader();
-
-            reader.Read();
-            RandomAccessMemory ram = this.MapToEntity(reader);
-
-            connection.Close();
-
-            return ram;
-        }
-
-        /// <summary>
         /// Liest den zuletzt gespeicherten Datensatz der Entität 'Arbeitsspeicher' aus der Datenbank
         /// </summary>
         /// <returns>RandomAccessMemory</returns>
@@ -116,7 +93,7 @@ namespace InventoryManagementSystem.dataAccess
             if (reader.GetValue(0).ToString().Length > 0) {
                 int id = Int32.Parse(reader.GetValue(0).ToString());
                 connection.Close();
-                return this.GetEntityById(id);
+                return this.GetEntityById<RandomAccessMemory>(id);
             } else {
                 connection.Close();
                 return null;
@@ -140,7 +117,7 @@ namespace InventoryManagementSystem.dataAccess
 
             while (reader.Read())
             {
-                RandomAccessMemory ram = this.MapToEntity(reader);
+                RandomAccessMemory ram = (RandomAccessMemory) this.MapToEntity(reader);
                 rams.Add(ram);
             }
 
@@ -152,7 +129,7 @@ namespace InventoryManagementSystem.dataAccess
         /// </summary>
         /// <param name="reader">Der Datensatz, welcher gemappt wird</param>
         /// <returns>RandomAccessMemory</returns>
-        private RandomAccessMemory MapToEntity(MySqlDataReader reader)
+        protected override object MapToEntity(MySqlDataReader reader)
         {
             RandomAccessMemory ram = new RandomAccessMemory();
             ProducerDataAccess producerDataAccess = new ProducerDataAccess();
@@ -161,7 +138,7 @@ namespace InventoryManagementSystem.dataAccess
             ram.Description = reader.GetValue(1).ToString();
             ram.Memory = Int32.Parse(reader.GetValue(2).ToString());
             ram.ClockRate = Double.Parse(reader.GetValue(3).ToString());
-            ram.Producer = producerDataAccess.GetEntityById(Int32.Parse(reader.GetValue(4).ToString()));
+            ram.Producer = producerDataAccess.GetEntityById<Producer>(Int32.Parse(reader.GetValue(4).ToString()));
 
             return ram;
         }

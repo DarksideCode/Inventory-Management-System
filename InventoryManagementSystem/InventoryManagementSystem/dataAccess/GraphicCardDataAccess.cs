@@ -103,29 +103,6 @@ namespace InventoryManagementSystem.dataAccess
         }
 
         /// <summary>
-        /// Liest den Datensatz der Entität 'Grafikkarte' aus der Datenbank, die der übergebenen ID
-        /// entspricht
-        /// </summary>
-        /// <param name="id">Technische ID der gesuchten Entität</param>
-        /// <returns>GraphicCard</returns>
-        public GraphicCard GetEntityById(int id)
-        {
-            MySqlConnection connection = this.CreateConnection();
-            MySqlCommand command = connection.CreateCommand();
-            command.CommandText = "SELECT * FROM `" + this.getTableName() + "` WHERE id = " + id;
-
-            connection.Open();
-            MySqlDataReader reader = command.ExecuteReader();
-
-            reader.Read();
-            GraphicCard graphicCard = this.MapToEntity(reader);
-
-            connection.Close();
-
-            return graphicCard;
-        }
-
-        /// <summary>
         /// Liest den zuletzt gespeicherten Datensatz der Entität 'Grafikkarte' aus der Datenbank
         /// </summary>
         /// <returns>GraphicCard</returns>
@@ -144,7 +121,7 @@ namespace InventoryManagementSystem.dataAccess
             if (reader.GetValue(0).ToString().Length > 0) {
                 int id = Int32.Parse(reader.GetValue(0).ToString());
                 connection.Close();
-                return this.GetEntityById(id);
+                return this.GetEntityById<GraphicCard>(id);
             } else {
                 connection.Close();
                 return null;
@@ -168,7 +145,7 @@ namespace InventoryManagementSystem.dataAccess
 
             while (reader.Read())
             {
-                GraphicCard graphicCard = this.MapToEntity(reader);
+                GraphicCard graphicCard = (GraphicCard) this.MapToEntity(reader);
                 graphicCards.Add(graphicCard);
             }
 
@@ -180,7 +157,7 @@ namespace InventoryManagementSystem.dataAccess
         /// </summary>
         /// <param name="reader">Der Datensatz, welcher gemappt wird</param>
         /// <returns>GraphicCard</returns>
-        private GraphicCard MapToEntity(MySqlDataReader reader)
+        protected override object MapToEntity(MySqlDataReader reader)
         {
             GraphicCard graphicCard = new GraphicCard();
             ProducerDataAccess producerDataAccess = new ProducerDataAccess();
@@ -190,7 +167,7 @@ namespace InventoryManagementSystem.dataAccess
             graphicCard.ClockRate = Double.Parse(reader.GetValue(2).ToString());
             graphicCard.Model = reader.GetValue(3).ToString();
             graphicCard.Memory = Int32.Parse(reader.GetValue(4).ToString());
-            graphicCard.Producer = producerDataAccess.GetEntityById(Int32.Parse(reader.GetValue(5).ToString()));
+            graphicCard.Producer = producerDataAccess.GetEntityById<Producer>(Int32.Parse(reader.GetValue(5).ToString()));
             graphicCard.PhysicalInterfaces = this.GetPhysicalInterfaces(graphicCard);
 
             return graphicCard;
@@ -214,7 +191,7 @@ namespace InventoryManagementSystem.dataAccess
             MySqlDataReader reader = command.ExecuteReader();
             while (reader.Read())
             {
-                PhysicalInterface physicalInterface = physicalInterfaceDataAccess.GetEntityById(Int32.Parse(reader.GetValue(1).ToString()));
+                PhysicalInterface physicalInterface = physicalInterfaceDataAccess.GetEntityById<PhysicalInterface>(Int32.Parse(reader.GetValue(1).ToString()));
                 int count = Int32.Parse(reader.GetValue(2).ToString());
                 physicalInterfaces.Add(new PhysicalInterfaceWithCount(physicalInterface, count));
             }

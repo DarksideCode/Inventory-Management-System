@@ -76,29 +76,6 @@ namespace InventoryManagementSystem.dataAccess
         }
 
         /// <summary>
-        /// Liest den Datensatz der Entität 'Prozessor' aus der Datenbank, die der übergebenen ID
-        /// entspricht
-        /// </summary>
-        /// <param name="id">Technische ID der gesuchten Entität</param>
-        /// <returns>Processor</returns>
-        public Processor GetEntityById(int id)
-        {
-            MySqlConnection connection = this.CreateConnection();
-            MySqlCommand command = connection.CreateCommand();
-            command.CommandText = "SELECT * FROM `" + this.getTableName() + "` WHERE id = " + id;
-
-            connection.Open();
-            MySqlDataReader reader = command.ExecuteReader();
-
-            reader.Read();
-            Processor processor = this.MapToEntity(reader);
-
-            connection.Close();
-
-            return processor;
-        }
-
-        /// <summary>
         /// Liest den zuletzt gespeicherten Datensatz der Entität 'Prozessor' aus der Datenbank
         /// </summary>
         /// <returns>Processor</returns>
@@ -117,7 +94,7 @@ namespace InventoryManagementSystem.dataAccess
             if (reader.GetValue(0).ToString().Length > 0) {
                 int id = Int32.Parse(reader.GetValue(0).ToString());
                 connection.Close();
-                return this.GetEntityById(id);
+                return this.GetEntityById<Processor>(id);
             } else {
                 connection.Close();
                 return null;
@@ -141,7 +118,7 @@ namespace InventoryManagementSystem.dataAccess
 
             while (reader.Read())
             {
-                Processor processor = this.MapToEntity(reader);
+                Processor processor = (Processor) this.MapToEntity(reader);
                 processors.Add(processor);
             }
 
@@ -153,7 +130,7 @@ namespace InventoryManagementSystem.dataAccess
         /// </summary>
         /// <param name="reader">Der Datensatz, welcher gemappt wird</param>
         /// <returns>Processor</returns>
-        private Processor MapToEntity(MySqlDataReader reader)
+        protected override object MapToEntity(MySqlDataReader reader)
         {
             Processor processor = new Processor();
             ProducerDataAccess producerDataAccess = new ProducerDataAccess();
@@ -165,7 +142,7 @@ namespace InventoryManagementSystem.dataAccess
             processor.CommandSet = reader.GetValue(4).ToString();
             processor.Architecture = Int32.Parse(reader.GetValue(5).ToString());
             processor.ClockRate = Double.Parse(reader.GetValue(6).ToString());
-            processor.Producer = producerDataAccess.GetEntityById(Int32.Parse(reader.GetValue(7).ToString()));
+            processor.Producer = producerDataAccess.GetEntityById<Producer>(Int32.Parse(reader.GetValue(7).ToString()));
 
             return processor;
         }
