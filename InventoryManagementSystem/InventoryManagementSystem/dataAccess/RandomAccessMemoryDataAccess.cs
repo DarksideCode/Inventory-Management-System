@@ -42,22 +42,6 @@ namespace InventoryManagementSystem.dataAccess
         }
 
         /// <summary>
-        /// Löscht ein Objekt der Entität 'Arbeitsspeicher' aus der Datenbank
-        /// </summary>
-        /// <param name="entity">Das Objekt, welches gelöscht wird</param>
-        public void Delete(RandomAccessMemory entity)
-        {
-            MySqlConnection connection = this.CreateConnection();
-            MySqlCommand command = connection.CreateCommand();
-
-            command.CommandText = "DELETE FROM `"+ this.getTableName() +"` WHERE id = " + entity.Id;
-
-            connection.Open();
-            command.ExecuteNonQuery();
-            connection.Close();
-        }
-
-        /// <summary>
         /// Verändert einen bestehenden Datensatz der Entität 'Arbeitsspeicher' in der Datenbank.
         /// </summary>
         /// <param name="entity">Die veränderte Entität</param>

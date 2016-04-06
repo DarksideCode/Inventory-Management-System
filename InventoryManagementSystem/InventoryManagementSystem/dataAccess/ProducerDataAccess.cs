@@ -41,22 +41,6 @@ namespace InventoryManagementSystem.dataAccess
         }
 
         /// <summary>
-        /// Löscht ein Objekt der Entität 'Hersteller' aus der Datenbank
-        /// </summary>
-        /// <param name="entity">Das Objekt, welches gelöscht wird</param>
-        public void Delete(Producer entity)
-        {
-            MySqlConnection connection = this.CreateConnection();
-            MySqlCommand command = connection.CreateCommand();
-
-            command.CommandText = "DELETE FROM `" + this.getTableName() + "` WHERE id = " + entity.Id;
-
-            connection.Open();
-            command.ExecuteNonQuery();
-            connection.Close();
-        }
-
-        /// <summary>
         /// Verändert einen bestehenden Datensatz der Entität 'Hersteller' in der Datenbank.
         /// Ermittelt auch nicht mehr genutzte Referenzen und löscht diese aus der Beziehungstabelle.
         /// </summary>

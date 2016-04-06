@@ -174,7 +174,7 @@ namespace UnitTests
             MonitorDataAccess dataAccess = new MonitorDataAccess();
             Monitor monitor = dataAccess.GetLastEntity<Monitor>();
 
-            dataAccess.Delete(monitor);
+            dataAccess.Delete(monitor.Id);
 
             Assert.IsTrue(dataAccess.GetLastEntity<Monitor>() == null || monitor.Id == dataAccess.GetLastEntity<Monitor>().Id);
         }
@@ -185,7 +185,7 @@ namespace UnitTests
             DiskDataAccess dataAccess = new DiskDataAccess();
             Disk disk = dataAccess.GetLastEntity<Disk>();
 
-            dataAccess.Delete(disk);
+            dataAccess.Delete(disk.Id);
 
             Assert.IsTrue(dataAccess.GetLastEntity<Disk>() == null || disk.Id == dataAccess.GetLastEntity<Disk>().Id);
         }
@@ -196,7 +196,7 @@ namespace UnitTests
             ProcessorDataAccess dataAccess = new ProcessorDataAccess();
             Processor processor = dataAccess.GetLastEntity<Processor>();
 
-            dataAccess.Delete(processor);
+            dataAccess.Delete(processor.Id);
 
             Assert.IsTrue(dataAccess.GetLastEntity<Processor>() == null || processor.Id == dataAccess.GetLastEntity<Processor>().Id);
         }
@@ -207,7 +207,7 @@ namespace UnitTests
             MotherboardDataAccess dataAccess = new MotherboardDataAccess();
             Motherboard motherboard = dataAccess.GetLastEntity<Motherboard>();
 
-            dataAccess.Delete(motherboard);
+            dataAccess.Delete(motherboard.Id);
 
             Assert.IsTrue(dataAccess.GetLastEntity<Motherboard>() == null || motherboard.Id == dataAccess.GetLastEntity<Motherboard>().Id);
         }
@@ -218,7 +218,7 @@ namespace UnitTests
             RandomAccessMemoryDataAccess dataAccess = new RandomAccessMemoryDataAccess();
             RandomAccessMemory randomAccessMemory = dataAccess.GetLastEntity<RandomAccessMemory>();
 
-            dataAccess.Delete(randomAccessMemory);
+            dataAccess.Delete(randomAccessMemory.Id);
 
             Assert.IsTrue(dataAccess.GetLastEntity<RandomAccessMemory>() == null || randomAccessMemory.Id == dataAccess.GetLastEntity<RandomAccessMemory>().Id);
         }
@@ -229,7 +229,7 @@ namespace UnitTests
             GraphicCardDataAccess dataAccess = new GraphicCardDataAccess();
             GraphicCard graphicCard = dataAccess.GetLastEntity<GraphicCard>();
 
-            dataAccess.Delete(graphicCard);
+            dataAccess.Delete(graphicCard.Id);
 
             Assert.IsTrue(dataAccess.GetLastEntity<GraphicCard>() == null || graphicCard.Id == dataAccess.GetLastEntity<GraphicCard>().Id);
         }
@@ -240,7 +240,7 @@ namespace UnitTests
             ProducerDataAccess dataAccess = new ProducerDataAccess();
             Producer producer = dataAccess.GetLastEntity<Producer>();
 
-            dataAccess.Delete(producer);
+            dataAccess.Delete(producer.Id);
 
             Assert.IsTrue(dataAccess.GetLastEntity<Producer>() == null || producer.Id == dataAccess.GetLastEntity<Producer>().Id);
         }
@@ -251,7 +251,7 @@ namespace UnitTests
             PhysicalInterfaceDataAccess dataAccess = new PhysicalInterfaceDataAccess();
             PhysicalInterface physicalInterface = dataAccess.GetLastEntity<PhysicalInterface>();
 
-            dataAccess.Delete(physicalInterface);
+            dataAccess.Delete(physicalInterface.Id);
 
             Assert.IsTrue(dataAccess.GetLastEntity<PhysicalInterface>() == null || physicalInterface.Id == dataAccess.GetLastEntity<PhysicalInterface>().Id);
         }

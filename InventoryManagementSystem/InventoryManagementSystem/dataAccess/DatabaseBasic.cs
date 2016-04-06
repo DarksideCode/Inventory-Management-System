@@ -87,5 +87,21 @@ namespace InventoryManagementSystem.database.basic
                 return default(T);
             }
         }
+
+        /// <summary>
+        /// Löscht ein Objekt der Entität aus der Datenbank
+        /// </summary>
+        /// <param name="id">Die ID des Objekts, welches gelöscht wird</param>
+        public virtual void Delete(int id)
+        {
+            MySqlConnection connection = this.CreateConnection();
+            MySqlCommand command = connection.CreateCommand();
+
+            command.CommandText = "DELETE FROM `" + this.getTableName() + "` WHERE id = " + id;
+
+            connection.Open();
+            command.ExecuteNonQuery();
+            connection.Close();
+        }
     }
 }

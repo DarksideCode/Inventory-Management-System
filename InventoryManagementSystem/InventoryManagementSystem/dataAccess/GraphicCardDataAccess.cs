@@ -52,22 +52,6 @@ namespace InventoryManagementSystem.dataAccess
         }
 
         /// <summary>
-        /// Löscht ein Objekt der Entität 'Grafikkarte' aus der Datenbank
-        /// </summary>
-        /// <param name="entity">Das Objekt, welches gelöscht wird</param>
-        public void Delete(GraphicCard entity)
-        {
-            MySqlConnection connection = this.CreateConnection();
-            MySqlCommand command = connection.CreateCommand();
-            
-            command.CommandText = "DELETE FROM `" + this.getTableName() + "` WHERE id = " + entity.Id;
-            
-            connection.Open();
-            command.ExecuteNonQuery();
-            connection.Close();
-        }
-
-        /// <summary>
         /// Löscht ein Objekt der Entität 'Grafikkarte aus der Datenbank
         /// </summary>
         /// <param name="entity">Das Objekt, welches gelöscht wird</param>
