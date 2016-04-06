@@ -81,6 +81,7 @@
     <Compile Include="components\Processor.cs" />
     <Compile Include="components\Producer.cs" />
     <Compile Include="components\RandomAccessMemory.cs" />
+    <Compile Include="control\GraphicalObjectMapper.cs" />
     <Compile Include="dataAccess\DatabaseBasic.cs" />
     <Compile Include="dataAccess\DiskDataAccess.cs" />
     <Compile Include="dataAccess\GraphicCardDataAccess.cs" />
@@ -90,6 +91,9 @@
     <Compile Include="dataAccess\ProcessorDataAccess.cs" />
     <Compile Include="dataAccess\ProducerDataAccess.cs" />
     <Compile Include="dataAccess\RandomAccessMemoryDataAccess.cs" />
+    <Compile Include="presentation\MainWindow.xaml.cs">
+      <DependentUpon>MainWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="utilitys\ConfigProzesser.cs" />
     <Compile Include="validation\DiskValidator.cs" />
     <Compile Include="validation\GraphicCardValidator.cs" />
@@ -99,18 +103,14 @@
     <Compile Include="validation\ProcessorValidator.cs" />
     <Compile Include="validation\ProducerValidator.cs" />
     <Compile Include="validation\RandomAccessMemoryValidator.cs" />
-    <Page Include="MainWindow.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="MainWindow.xaml.cs">
-      <DependentUpon>MainWindow.xaml</DependentUpon>
-      <SubType>Code</SubType>
-    </Compile>
+    <Page Include="presentation\MainWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs">
@@ -144,10 +144,7 @@
       <SubType>Designer</SubType>
     </None>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="control\" />
-    <Folder Include="presentation\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <BootstrapperPackage Include=".NETFramework,Version=v4.5">
       <Visible>False</Visible>
