@@ -26,17 +26,17 @@
     {
         public int Id { get; set; }
         public string Name { get; set; }
-        public string Description { get; set; }
-        public string Serial { get; set; }
-        public int TransferRate { get; set; }
+        public string Beschreibung { get; set; }
+        public string Seriell { get; set; }
+        public int Transferrate { get; set; }
 
         public void MapFromEntity(PhysicalInterface entity)
         {
             this.Id = entity.Id;
             this.Name = entity.Name;
-            this.Description = entity.Description;
-            this.Serial = entity.Serial.ToString();
-            this.TransferRate = entity.TransferRate;
+            this.Beschreibung = entity.Description;
+            this.Seriell = entity.Serial.ToString();
+            this.Transferrate = entity.TransferRate;
         }
     }
 }

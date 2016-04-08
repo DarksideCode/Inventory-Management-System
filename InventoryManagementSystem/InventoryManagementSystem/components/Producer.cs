@@ -33,26 +33,26 @@
     public class ProducerGraphicalObject
     {
         public int Id { get; set; }
-        public string CompanyName { get; set; }
-        public int PhoneNumber { get; set; }
+        public string Firma { get; set; }
+        public int Telefon { get; set; }
         public string Email { get; set; }
-        public string Website { get; set; }
-        public int PostalCode { get; set; }
-        public string Place { get; set; }
-        public string Street { get; set; }
-        public int HouseNumber { get; set; }
+        public string Webseite { get; set; }
+        public int PLZ { get; set; }
+        public string Ort { get; set; }
+        public string Straße { get; set; }
+        public int Hausnummer { get; set; }
 
         public void MapFromEntity (Producer entity)
         {
             this.Id = entity.Id;
-            this.CompanyName = entity.CompanyName;
-            this.PhoneNumber = entity.PhoneNumber;
+            this.Firma = entity.CompanyName;
+            this.Telefon = entity.PhoneNumber;
             this.Email = entity.Email;
-            this.Website = entity.Website;
-            this.PostalCode = entity.PostalCode;
-            this.Place = entity.Place;
-            this.Street = entity.Street;
-            this.HouseNumber = entity.HouseNumber;
+            this.Webseite = entity.Website;
+            this.PLZ = entity.PostalCode;
+            this.Ort = entity.Place;
+            this.Straße = entity.Street;
+            this.Hausnummer = entity.HouseNumber;
         }
     }
 }

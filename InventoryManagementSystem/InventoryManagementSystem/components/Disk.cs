@@ -45,20 +45,20 @@ namespace InventoryManagementSystem.components
     public class DiskGraphicalObject
     {
         public int Id { get; set; }
-        public string Description { get; set; }
-        public int Capacity { get; set; }
-        public string Ssd { get; set; }
-        public double Inch { get; set; }
-        public string Producer { get; set; }
+        public string Beschreibung { get; set; }
+        public int Kapazität { get; set; }
+        public string SSD { get; set; }
+        public double Zoll { get; set; }
+        public string Hersteller { get; set; }
 
         public void MapFromEntity(Disk entity)
         {
             this.Id = entity.Id;
-            this.Description = entity.Description;
-            this.Capacity = entity.Capacity;
-            this.Ssd = entity.Ssd.ToString();
-            this.Inch = entity.Inch;
-            this.Producer = entity.Producer.CompanyName;
+            this.Beschreibung = entity.Description;
+            this.Kapazität = entity.Capacity;
+            this.SSD = entity.Ssd.ToString();
+            this.Zoll = entity.Inch;
+            this.Hersteller = entity.Producer.CompanyName;
         }
     }
 }

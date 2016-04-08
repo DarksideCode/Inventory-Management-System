@@ -45,20 +45,20 @@ namespace InventoryManagementSystem.components
     public class GraphicCardGraphicalObject
     {
         public int Id { get; set; }
-        public string Description { get; set; }
-        public double ClockRate { get; set; }
-        public string Model { get; set; }
-        public int Memory { get; set; }
-        public string Producer { get; set; }
+        public string Beschreibung { get; set; }
+        public double Taktrate { get; set; }
+        public string Modell { get; set; }
+        public int Speicher { get; set; }
+        public string Hersteller { get; set; }
 
         public void MapFromEntity(GraphicCard entity)
         {
             this.Id = entity.Id;
-            this.Description = entity.Description;
-            this.ClockRate = entity.ClockRate;
-            this.Model = entity.Model;
-            this.Memory = entity.Memory;
-            this.Producer = entity.Producer.CompanyName;
+            this.Beschreibung = entity.Description;
+            this.Taktrate = entity.ClockRate;
+            this.Modell = entity.Model;
+            this.Speicher = entity.Memory;
+            this.Hersteller = entity.Producer.CompanyName;
         }
     }
 }

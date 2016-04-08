@@ -43,18 +43,18 @@ namespace InventoryManagementSystem.components
     public class MotherboardGraphicalObject
     {
         public int Id { get; set; }
-        public string Description { get; set; }
-        public double Inch { get; set; }
-        public string Socket { get; set; }
-        public string Producer { get; set; }
+        public string Beschreibung { get; set; }
+        public double Zoll { get; set; }
+        public string Sockel { get; set; }
+        public string Hersteller { get; set; }
 
         public void MapFromEntity (Motherboard entity)
         {
             this.Id = entity.Id;
-            this.Description = entity.Description;
-            this.Inch = entity.Inch;
-            this.Socket = entity.Socket;
-            this.Producer = entity.Producer.CompanyName;
+            this.Beschreibung = entity.Description;
+            this.Zoll = entity.Inch;
+            this.Sockel = entity.Socket;
+            this.Hersteller = entity.Producer.CompanyName;
         }
     }
 }

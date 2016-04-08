@@ -45,20 +45,20 @@ namespace InventoryManagementSystem.components
     public class MonitorGraphicalObject
     {
         public int Id { get; set; }
-        public string Description { get; set; }
-        public int Resolution { get; set; }
-        public double Inch { get; set; }
-        public int AspectRatio { get; set; }
-        public string Producer { get; set; }
+        public string Beschreibung { get; set; }
+        public int Auflösung { get; set; }
+        public double Zoll { get; set; }
+        public int Seitenverhältnis { get; set; }
+        public string Hersteller { get; set; }
 
         public void MapFromEntity(Monitor entity)
         {
             this.Id = entity.Id;
-            this.Description = entity.Description;
-            this.Resolution = entity.Resolution;
-            this.Inch = entity.Inch;
-            this.AspectRatio = entity.AspectRatio;
-            this.Producer = entity.Producer.CompanyName;
+            this.Beschreibung = entity.Description;
+            this.Auflösung = entity.Resolution;
+            this.Zoll = entity.Inch;
+            this.Seitenverhältnis = entity.AspectRatio;
+            this.Hersteller = entity.Producer.CompanyName;
         }
     }
 }

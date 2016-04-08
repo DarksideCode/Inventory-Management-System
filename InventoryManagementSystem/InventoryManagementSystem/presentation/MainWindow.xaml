@@ -3,23 +3,53 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         Title="Inventory Management System - IMS" Height="370" Width="600" Loaded="Window_Loaded" ResizeMode="NoResize">
     <Grid>
-        <DataGrid x:Name="dataGrid" HorizontalAlignment="Left" Margin="206,10,0,0" VerticalAlignment="Top" Height="229" Width="376"/>
-        <TreeView x:Name="treeView" HorizontalAlignment="Left" Height="280" Margin="10,10,0,0" VerticalAlignment="Top" Width="191">
-            <TreeViewItem Header="Komponenten" IsExpanded="True" FontSize="16">
-                <TreeViewItem Header="Arbeitsspeicher" HorizontalAlignment="Left" Width="168" Selected="RAM_Selected"/>
-                <TreeViewItem Header="Festplatte" HorizontalAlignment="Left" Width="168" Selected="Disk_Selected"/>
-                <TreeViewItem Header="Grafikkarte" HorizontalAlignment="Left" Width="168" Selected="GraphicCard_Selected"/>
-                <TreeViewItem Header="Hauptplatine" HorizontalAlignment="Left" Width="168" Selected="Motherboard_Selected"/>
-                <TreeViewItem Header="Monitor" HorizontalAlignment="Left" Width="168" Selected="Monitor_Selected"/>
-                <TreeViewItem Header="Prozessor" HorizontalAlignment="Left" Width="168" Selected="Processor_Selected"/>
-            </TreeViewItem>
-            <TreeViewItem Header="Stammdaten" IsExpanded="True" FontSize="16">
-                <TreeViewItem Header="Hersteller" HorizontalAlignment="Left" Width="168" Selected="Producer_Selected"/>
-                <TreeViewItem Header="Schnittstelle" HorizontalAlignment="Left" Width="168" Selected="Interface_Selected"/>
-            </TreeViewItem>
-        </TreeView>
-        <Button x:Name="newBtn" Content="Neu" HorizontalAlignment="Left" Margin="246,295,0,0" VerticalAlignment="Top" Width="79" Height="31"/>
-        <Button x:Name="editBtn" Content="Bearbeiten" HorizontalAlignment="Left" Margin="353,295,0,0" VerticalAlignment="Top" Width="79" Height="31"/>
-        <Button x:Name="deleteBtn" Content="Löschen" HorizontalAlignment="Left" Margin="457,295,0,0" VerticalAlignment="Top" Width="79" Height="31"/>
+        <DataGrid x:Name="dataGrid" HorizontalAlignment="Left" Margin="184,49,0,0" VerticalAlignment="Top" Height="196" Width="391" Background="White" BorderBrush="Black">
+        </DataGrid>
+        <Button x:Name="newBtn" Content="Neu" HorizontalAlignment="Left" Margin="246,295,0,0" VerticalAlignment="Top" Width="79" Height="31" IsEnabled="False">
+            <Button.Background>
+                <LinearGradientBrush EndPoint="0,1" StartPoint="0,0">
+                    <GradientStop Color="#FFF3F3F3" Offset="0"/>
+                    <GradientStop Color="#FFEBEBEB" Offset="1"/>
+                    <GradientStop Color="#FFDDDDDD"/>
+                    <GradientStop Color="#FFCDCDCD" Offset="1"/>
+                </LinearGradientBrush>
+            </Button.Background>
+        </Button>
+        <Button x:Name="editBtn" Content="Bearbeiten" HorizontalAlignment="Left" Margin="353,295,0,0" VerticalAlignment="Top" Width="79" Height="31" IsEnabled="False"/>
+        <Button x:Name="deleteBtn" Content="Löschen" HorizontalAlignment="Left" Margin="457,295,0,0" VerticalAlignment="Top" Width="79" Height="31" Click="Delete_Entity" FontWeight="Bold">
+            <Button.Background>
+                <LinearGradientBrush EndPoint="0,1" StartPoint="0,0">
+                    <GradientStop Color="#FFD5E8D4" Offset="0"/>
+                    <GradientStop Color="#FF97D077" Offset="1"/>
+                </LinearGradientBrush>
+            </Button.Background>
+        </Button>
+        <Label x:Name="entityName" Content="Arbeitsspeicher" VerticalAlignment="Top" Margin="301,10,137,0" FontSize="18" FontWeight="Bold" RenderTransformOrigin="-0.15,0.356" Width="156" Opacity="0.9" AllowDrop="True" IsHitTestVisible="False" HorizontalAlignment="Center" HorizontalContentAlignment="Center"/>
+        <Menu HorizontalAlignment="Left" Height="280" Margin="10,10,0,0" VerticalAlignment="Top" Width="159" Background="White" FontSize="14" BorderThickness="1" BorderBrush="Black">
+            <MenuItem Header="Komponenten" Width="159" FontSize="14" HorizontalContentAlignment="Center" Height="26" FontWeight="Bold" IsEnabled="False" Foreground="Black" HorizontalAlignment="Left" Padding="30,2,8,3">
+                <MenuItem.Background>
+                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                        <GradientStop Color="#FFD5E8D4" Offset="0"/>
+                        <GradientStop Color="#FF97D077" Offset="1"/>
+                    </LinearGradientBrush>
+                </MenuItem.Background>
+            </MenuItem>
+            <MenuItem Header="Arbeitsspeicher" Width="159" Click="RAM_Selected" Cursor="Hand"/>
+            <MenuItem Header="Festplatte" Width="159" Click="Disk_Selected" Margin="-1,0,0,0" Cursor="Hand"/>
+            <MenuItem Header="Grafikkarte" Width="159" Click="GraphicCard_Selected" Cursor="Hand"/>
+            <MenuItem Header="Hauptplatine" Width="159" Click="Motherboard_Selected" Cursor="Hand"/>
+            <MenuItem Header="Monitor" Width="159" Click="Monitor_Selected" Cursor="Hand"/>
+            <MenuItem Header="Prozessor" Width="159" Click="Processor_Selected" Cursor="Hand"/>
+            <MenuItem Header="Stammdaten" Width="159" FontWeight="Bold" Height="27" IsEnabled="False" Foreground="Black" Padding="35,2,8,3">
+                <MenuItem.Background>
+                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                        <GradientStop Color="#FFD5E8D4" Offset="0"/>
+                        <GradientStop Color="#FF97D077" Offset="1"/>
+                    </LinearGradientBrush>
+                </MenuItem.Background>
+            </MenuItem>
+            <MenuItem x:Name="menu_producer" Header="Hersteller" Width="159" Click="Producer_Selected" Cursor="Hand"/>
+            <MenuItem Header="Schnittstelle" Click="Interface_Selected" Width="159" Cursor="Hand"/>
+        </Menu>
     </Grid>
 </Window>
