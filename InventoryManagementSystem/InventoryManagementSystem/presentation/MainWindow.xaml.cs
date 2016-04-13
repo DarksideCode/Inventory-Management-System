@@ -193,5 +193,10 @@ namespace InventoryManagementSystem
             Window ConfigWindow = new InventoryManagementSystem.presentation.ConfigWindow();
             ConfigWindow.Show();
         }
+
+        private void NewBtn_Click(object sender, RoutedEventArgs e)
+        {
+            Console.WriteLine("Neue Entität erstellen!");
+        }
     }
 }
