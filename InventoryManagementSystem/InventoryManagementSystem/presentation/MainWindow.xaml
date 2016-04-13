@@ -23,8 +23,8 @@
             </Button.Background>
         </Button>
         <Label x:Name="entityName" Content="Arbeitsspeicher" VerticalAlignment="Top" Margin="301,10,137,0" FontSize="18" FontWeight="Bold" RenderTransformOrigin="-0.15,0.356" Width="156" Opacity="0.9" AllowDrop="True" IsHitTestVisible="False" HorizontalAlignment="Center" HorizontalContentAlignment="Center"/>
-        <Menu HorizontalAlignment="Left" Height="280" Margin="10,10,0,0" VerticalAlignment="Top" Width="159" Background="White" FontSize="14" BorderThickness="1" BorderBrush="Black">
-            <MenuItem Header="Komponenten" Width="159" FontSize="14" HorizontalContentAlignment="Center" Height="26" FontWeight="Bold" IsEnabled="False" Foreground="Black" HorizontalAlignment="Left" Padding="30,2,8,3">
+        <Menu x:Name="menu" HorizontalAlignment="Left" Height="280" Margin="10,10,0,0" VerticalAlignment="Top" Width="159" Background="White" FontSize="14" BorderThickness="1" BorderBrush="Black">
+            <MenuItem x:Name="menu_komponenten" Header="Komponenten" Width="159" FontSize="14" HorizontalContentAlignment="Center" Height="26" FontWeight="Bold" IsEnabled="False" Foreground="Black" HorizontalAlignment="Left" Padding="30,2,8,3">
                 <MenuItem.Background>
                     <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
                         <GradientStop Color="#FFD5E8D4" Offset="0"/>
@@ -32,13 +32,13 @@
                     </LinearGradientBrush>
                 </MenuItem.Background>
             </MenuItem>
-            <MenuItem Header="Arbeitsspeicher" Width="159" Click="RAM_Selected" Cursor="Hand" ToolTip="Arbeitsspeicher" />
-            <MenuItem Header="Festplatte" Width="159" Click="Disk_Selected" Margin="-1,0,0,0" Cursor="Hand" ToolTip="Festplatte"/>
-            <MenuItem Header="Grafikkarte" Width="159" Click="GraphicCard_Selected" Cursor="Hand" ToolTip="Grafikkarte"/>
-            <MenuItem Header="Hauptplatine" Width="159" Click="Motherboard_Selected" Cursor="Hand" ToolTip="Hauptplatine"/>
-            <MenuItem Header="Monitor" Width="159" Click="Monitor_Selected" Cursor="Hand" ToolTip="Monitor"/>
-            <MenuItem Header="Prozessor" Width="159" Click="Processor_Selected" Cursor="Hand" ToolTip="Prozessor"/>
-            <MenuItem Header="Stammdaten" Width="159" FontWeight="Bold" Height="27" IsEnabled="False" Foreground="Black" Padding="35,2,8,3">
+            <MenuItem x:Name="menu_ram" Header="Arbeitsspeicher" Width="159" Click="RAM_Selected" Cursor="Hand" ToolTip="Arbeitsspeicher" />
+            <MenuItem x:Name="menu_disk" Header="Festplatte" Width="159" Click="Disk_Selected" Margin="-1,0,0,0" Cursor="Hand" ToolTip="Festplatte"/>
+            <MenuItem x:Name="menu_graphiccard" Header="Grafikkarte" Width="159" Click="GraphicCard_Selected" Cursor="Hand" ToolTip="Grafikkarte"/>
+            <MenuItem x:Name="menu_motherboard" Header="Hauptplatine" Width="159" Click="Motherboard_Selected" Cursor="Hand" ToolTip="Hauptplatine"/>
+            <MenuItem x:Name="menu_monitor" Header="Monitor" Width="159" Click="Monitor_Selected" Cursor="Hand" ToolTip="Monitor"/>
+            <MenuItem x:Name="menu_processor" Header="Prozessor" Width="159" Click="Processor_Selected" Cursor="Hand" ToolTip="Prozessor"/>
+            <MenuItem x:Name="menu_stammdaten" Header="Stammdaten" Width="159" FontWeight="Bold" Height="27" IsEnabled="False" Foreground="Black" Padding="35,2,8,3">
                 <MenuItem.Background>
                     <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
                         <GradientStop Color="#FFD5E8D4" Offset="0"/>
@@ -47,7 +47,7 @@
                 </MenuItem.Background>
             </MenuItem>
             <MenuItem x:Name="menu_producer" Header="Hersteller" Width="159" Click="Producer_Selected" Cursor="Hand" ToolTip="Hersteller"/>
-            <MenuItem Header="Schnittstelle" Click="Interface_Selected" Width="159" Cursor="Hand" ToolTip="Schnittstelle"/>
+            <MenuItem x:Name="menu_interface" Header="Schnittstelle" Click="Interface_Selected" Width="159" Cursor="Hand" ToolTip="Schnittstelle"/>
         </Menu>
         <Button x:Name="ConfigBtn" Content="Settings" HorizontalAlignment="Left" Margin="552,10,0,0" VerticalAlignment="Top" Width="23" RenderTransformOrigin="0.315,0.598" Click="ConfigBtn_Click"/>
     </Grid>

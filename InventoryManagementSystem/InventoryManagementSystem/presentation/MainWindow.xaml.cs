@@ -8,6 +8,7 @@ using InventoryManagementSystem.control;
 using InventoryManagementSystem.database.basic;
 using System.Data;
 using System;
+using System.Windows.Media;
 
 namespace InventoryManagementSystem
 {
@@ -18,12 +19,15 @@ namespace InventoryManagementSystem
     {
         GraphicalObjectMapper mapper;
         private string selectedEntity = "RandomAccessMemory";
+        SolidColorBrush defaultBrush = new SolidColorBrush();
+        
 
         public MainWindow()
         {
             InitializeComponent();
             RandomAccessMemoryDataAccess dataAccess = new RandomAccessMemoryDataAccess();
             mapper = new GraphicalObjectMapper();
+            defaultBrush.Color = Color.FromRgb(196, 255, 194);
 
             this.AddToTable(mapper.MapToGraphicalObject(dataAccess.GetAllEntities<RandomAccessMemory>()));
         }
@@ -39,6 +43,14 @@ namespace InventoryManagementSystem
             this.dataGrid.Columns[0].Visibility = Visibility.Hidden;
         }
         
+        private void resetMenuBackground()
+        {
+            for (int i = 0; i < this.menu.Items.Count; i++)
+            {
+                if(((MenuItem)this.menu.Items[i]).Name != "menu_stammdaten" && ((MenuItem)this.menu.Items[i]).Name != "menu_komponenten")
+                    ((MenuItem)this.menu.Items[i]).Background = Brushes.White;
+            }
+        }
 
         private void RAM_Selected(object sender, RoutedEventArgs e)
         {
@@ -47,6 +59,8 @@ namespace InventoryManagementSystem
             this.dataGrid.Columns[0].Visibility = Visibility.Hidden;
             this.entityName.Content = "Arbeitsspeicher";
             this.selectedEntity = "RandomAccessMemory";
+            this.resetMenuBackground();
+            this.menu_ram.Background = this.defaultBrush;
         }
 
         private void Disk_Selected(object sender, RoutedEventArgs e)
@@ -56,6 +70,8 @@ namespace InventoryManagementSystem
             this.dataGrid.Columns[0].Visibility = Visibility.Hidden;
             this.entityName.Content = "Festplatte";
             this.selectedEntity = "Disk";
+            this.resetMenuBackground();
+            this.menu_disk.Background = this.defaultBrush;
         }
 
         private void GraphicCard_Selected(object sender, RoutedEventArgs e)
@@ -65,6 +81,8 @@ namespace InventoryManagementSystem
             this.dataGrid.Columns[0].Visibility = Visibility.Hidden;
             this.entityName.Content = "Grafikkarte";
             this.selectedEntity = "GraphicCard";
+            this.resetMenuBackground();
+            this.menu_graphiccard.Background = this.defaultBrush;
         }
 
         private void Motherboard_Selected(object sender, RoutedEventArgs e)
@@ -74,6 +92,8 @@ namespace InventoryManagementSystem
             this.dataGrid.Columns[0].Visibility = Visibility.Hidden;
             this.entityName.Content = "Hauptplatine";
             this.selectedEntity = "Motherboard";
+            this.resetMenuBackground();
+            this.menu_motherboard.Background = this.defaultBrush;
         }
 
         private void Monitor_Selected(object sender, RoutedEventArgs e)
@@ -83,6 +103,8 @@ namespace InventoryManagementSystem
             this.dataGrid.Columns[0].Visibility = Visibility.Hidden;
             this.entityName.Content = "Monitor";
             this.selectedEntity = "Monitor";
+            this.resetMenuBackground();
+            this.menu_monitor.Background = this.defaultBrush;
         }
 
         private void Processor_Selected(object sender, RoutedEventArgs e)
@@ -92,6 +114,8 @@ namespace InventoryManagementSystem
             this.dataGrid.Columns[0].Visibility = Visibility.Hidden;
             this.entityName.Content = "Prozessor";
             this.selectedEntity = "Processor";
+            this.resetMenuBackground();
+            this.menu_processor.Background = this.defaultBrush;
         }
 
         
@@ -102,6 +126,8 @@ namespace InventoryManagementSystem
             this.dataGrid.Columns[0].Visibility = Visibility.Hidden;
             this.entityName.Content = "Hersteller";
             this.selectedEntity = "Producer";
+            this.resetMenuBackground();
+            this.menu_producer.Background = this.defaultBrush;
         }
         
         private void Interface_Selected(object sender, RoutedEventArgs e)
@@ -111,6 +137,8 @@ namespace InventoryManagementSystem
             this.dataGrid.Columns[0].Visibility = Visibility.Hidden;
             this.entityName.Content = "Schnittstelle";
             this.selectedEntity = "PhysicalInterface";
+            this.resetMenuBackground();
+            this.menu_interface.Background = this.defaultBrush;
         }
 
         /// <summary>
