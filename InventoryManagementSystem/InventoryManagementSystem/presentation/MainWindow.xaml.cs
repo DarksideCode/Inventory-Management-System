@@ -187,5 +187,11 @@ namespace InventoryManagementSystem
                 this.dataGrid.Items.Refresh();
             }
         }
+
+        private void ConfigBtn_Click(object sender, RoutedEventArgs e)
+        {
+            Window ConfigWindow = new InventoryManagementSystem.presentation.ConfigWindow();
+            ConfigWindow.Show();
+        }
     }
 }

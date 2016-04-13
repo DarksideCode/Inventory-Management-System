@@ -1,0 +1,21 @@
+﻿<Window x:Class="InventoryManagementSystem.presentation.ConfigWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:InventoryManagementSystem.presentation"
+        mc:Ignorable="d"
+        Title="Settings" Height="250.653" Width="426.11" ResizeMode="NoResize">
+    <Grid>
+        <Label x:Name="Lable01" Content="Datenbank Name" HorizontalAlignment="Left" Margin="17,19,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="label04" Content="Passwort" HorizontalAlignment="Left" Margin="223,76,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.51,0.819"/>
+        <Label x:Name="label05" Content="Benutzer" HorizontalAlignment="Left" Margin="223,19,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="label02" Content="Datenbank Präfix" HorizontalAlignment="Left" Margin="17,76,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.371,0.62"/>
+        <Label x:Name="label03" Content="Datenbank Host" HorizontalAlignment="Left" Margin="17,131,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="TBName" HorizontalAlignment="Left" Height="23" Margin="24,45,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="147"/>
+        <TextBox x:Name="TBPraefix" HorizontalAlignment="Left" Height="23" Margin="24,102,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="147"/>
+        <TextBox x:Name="TBHost" HorizontalAlignment="Left" Height="23" Margin="24,157,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="147"/>
+        <TextBox x:Name="TBUser" HorizontalAlignment="Left" Height="23" Margin="230,45,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="147"/>
+        <TextBox x:Name="TBPassword" HorizontalAlignment="Left" Height="23" Margin="230,102,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="147"/>
+    </Grid>
+</Window>

@@ -25,7 +25,7 @@ namespace InventoryManagementSystem.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("inventory")]
+        [global::System.Configuration.DefaultSettingValueAttribute("imps")]
         public string DB_NAME {
             get {
                 return ((string)(this["DB_NAME"]));

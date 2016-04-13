@@ -65,3 +65,20 @@ D:\Schule\LF6 (ml) - Programmieren\2. Lehrjahr\Datenbank-Projekt\InventoryManage
 D:\Schule\LF6 (ml) - Programmieren\2. Lehrjahr\Datenbank-Projekt\InventoryManagementSystem\InventoryManagementSystem\obj\Debug\presentation\MainWindow.g.cs
 D:\Schule\LF6 (ml) - Programmieren\2. Lehrjahr\Datenbank-Projekt\InventoryManagementSystem\InventoryManagementSystem\bin\Debug\InventoryManagementSystem.exe
 D:\Schule\LF6 (ml) - Programmieren\2. Lehrjahr\Datenbank-Projekt\InventoryManagementSystem\InventoryManagementSystem\bin\Debug\InventoryManagementSystem.pdb
+C:\Users\turtl\Source\Repos\Inventory-Management-System\InventoryManagementSystem\InventoryManagementSystem\bin\Debug\InventoryManagementSystem.exe.config
+C:\Users\turtl\Source\Repos\Inventory-Management-System\InventoryManagementSystem\InventoryManagementSystem\obj\Debug\InventoryManagementSystem.csprojResolveAssemblyReference.cache
+C:\Users\turtl\Source\Repos\Inventory-Management-System\InventoryManagementSystem\InventoryManagementSystem\obj\Debug\presentation\MainWindow.baml
+C:\Users\turtl\Source\Repos\Inventory-Management-System\InventoryManagementSystem\InventoryManagementSystem\obj\Debug\presentation\MainWindow.g.cs
+C:\Users\turtl\Source\Repos\Inventory-Management-System\InventoryManagementSystem\InventoryManagementSystem\obj\Debug\App.g.cs
+C:\Users\turtl\Source\Repos\Inventory-Management-System\InventoryManagementSystem\InventoryManagementSystem\obj\Debug\InventoryManagementSystem_MarkupCompile.cache
+C:\Users\turtl\Source\Repos\Inventory-Management-System\InventoryManagementSystem\InventoryManagementSystem\obj\Debug\InventoryManagementSystem.g.resources
+C:\Users\turtl\Source\Repos\Inventory-Management-System\InventoryManagementSystem\InventoryManagementSystem\obj\Debug\InventoryManagementSystem.Properties.Resources.resources
+C:\Users\turtl\Source\Repos\Inventory-Management-System\InventoryManagementSystem\InventoryManagementSystem\obj\Debug\InventoryManagementSystem.csproj.GenerateResource.Cache
+C:\Users\turtl\Source\Repos\Inventory-Management-System\InventoryManagementSystem\InventoryManagementSystem\bin\Debug\InventoryManagementSystem.exe
+C:\Users\turtl\Source\Repos\Inventory-Management-System\InventoryManagementSystem\InventoryManagementSystem\bin\Debug\InventoryManagementSystem.pdb
+C:\Users\turtl\Source\Repos\Inventory-Management-System\InventoryManagementSystem\InventoryManagementSystem\bin\Debug\mysql.data.dll
+C:\Users\turtl\Source\Repos\Inventory-Management-System\InventoryManagementSystem\InventoryManagementSystem\obj\Debug\InventoryManagementSystem.exe
+C:\Users\turtl\Source\Repos\Inventory-Management-System\InventoryManagementSystem\InventoryManagementSystem\obj\Debug\InventoryManagementSystem.pdb
+C:\Users\turtl\Source\Repos\Inventory-Management-System\InventoryManagementSystem\InventoryManagementSystem\obj\Debug\presentation\ConfigWindow.g.cs
+C:\Users\turtl\Source\Repos\Inventory-Management-System\InventoryManagementSystem\InventoryManagementSystem\obj\Debug\InventoryManagementSystem_MarkupCompile.lref
+C:\Users\turtl\Source\Repos\Inventory-Management-System\InventoryManagementSystem\InventoryManagementSystem\obj\Debug\presentation\ConfigWindow.baml
