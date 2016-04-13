@@ -17,14 +17,13 @@ namespace InventoryManagementSystem
     public partial class MainWindow : Window
     {
         GraphicalObjectMapper mapper;
-        private string selectedEntity;
+        private string selectedEntity = "RandomAccessMemory";
 
         public MainWindow()
         {
             InitializeComponent();
             RandomAccessMemoryDataAccess dataAccess = new RandomAccessMemoryDataAccess();
             mapper = new GraphicalObjectMapper();
-            selectedEntity = "RandomAccessMemory";
 
             this.AddToTable(mapper.MapToGraphicalObject(dataAccess.GetAllEntities<RandomAccessMemory>()));
         }
@@ -47,6 +46,7 @@ namespace InventoryManagementSystem
             this.AddToTable(mapper.MapToGraphicalObject(dataAccess.GetAllEntities<RandomAccessMemory>()));
             this.dataGrid.Columns[0].Visibility = Visibility.Hidden;
             this.entityName.Content = "Arbeitsspeicher";
+            this.selectedEntity = "RandomAccessMemory";
         }
 
         private void Disk_Selected(object sender, RoutedEventArgs e)
@@ -55,6 +55,7 @@ namespace InventoryManagementSystem
             this.AddToTable(mapper.MapToGraphicalObject(dataAccess.GetAllEntities<Disk>()));
             this.dataGrid.Columns[0].Visibility = Visibility.Hidden;
             this.entityName.Content = "Festplatte";
+            this.selectedEntity = "Disk";
         }
 
         private void GraphicCard_Selected(object sender, RoutedEventArgs e)
@@ -63,6 +64,7 @@ namespace InventoryManagementSystem
             this.AddToTable(mapper.MapToGraphicalObject(dataAccess.GetAllEntities<GraphicCard>()));
             this.dataGrid.Columns[0].Visibility = Visibility.Hidden;
             this.entityName.Content = "Grafikkarte";
+            this.selectedEntity = "GraphicCard";
         }
 
         private void Motherboard_Selected(object sender, RoutedEventArgs e)
@@ -71,6 +73,7 @@ namespace InventoryManagementSystem
             this.AddToTable(mapper.MapToGraphicalObject(dataAccess.GetAllEntities<Motherboard>()));
             this.dataGrid.Columns[0].Visibility = Visibility.Hidden;
             this.entityName.Content = "Hauptplatine";
+            this.selectedEntity = "Motherboard";
         }
 
         private void Monitor_Selected(object sender, RoutedEventArgs e)
@@ -79,6 +82,7 @@ namespace InventoryManagementSystem
             this.AddToTable(mapper.MapToGraphicalObject(dataAccess.GetAllEntities<Monitor>()));
             this.dataGrid.Columns[0].Visibility = Visibility.Hidden;
             this.entityName.Content = "Monitor";
+            this.selectedEntity = "Monitor";
         }
 
         private void Processor_Selected(object sender, RoutedEventArgs e)
@@ -87,6 +91,7 @@ namespace InventoryManagementSystem
             this.AddToTable(mapper.MapToGraphicalObject(dataAccess.GetAllEntities<Processor>()));
             this.dataGrid.Columns[0].Visibility = Visibility.Hidden;
             this.entityName.Content = "Prozessor";
+            this.selectedEntity = "Processor";
         }
 
         
@@ -96,6 +101,7 @@ namespace InventoryManagementSystem
             this.AddToTable(mapper.MapToGraphicalObject(dataAccess.GetAllEntities<Producer>()));
             this.dataGrid.Columns[0].Visibility = Visibility.Hidden;
             this.entityName.Content = "Hersteller";
+            this.selectedEntity = "Producer";
         }
         
         private void Interface_Selected(object sender, RoutedEventArgs e)
@@ -104,6 +110,7 @@ namespace InventoryManagementSystem
             this.AddToTable(mapper.MapToGraphicalObject(dataAccess.GetAllEntities<PhysicalInterface>()));
             this.dataGrid.Columns[0].Visibility = Visibility.Hidden;
             this.entityName.Content = "Schnittstelle";
+            this.selectedEntity = "PhysicalInterface";
         }
 
         /// <summary>
@@ -196,6 +203,7 @@ namespace InventoryManagementSystem
 
         private void NewBtn_Click(object sender, RoutedEventArgs e)
         {
+            Console.WriteLine(this.selectedEntity);
             Console.WriteLine("Neue Entität erstellen!");
         }
     }
