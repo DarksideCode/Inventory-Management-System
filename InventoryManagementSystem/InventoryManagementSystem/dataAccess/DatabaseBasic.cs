@@ -15,7 +15,7 @@ namespace InventoryManagementSystem.database.basic
         /// Dient als Vorgabe für abgeleitete Klassen
         /// </summary>
         /// <returns>String Tablename</returns>
-        public virtual string getTableName()
+        public virtual string GetTableName()
         {
             return "TableName";
         }
@@ -47,7 +47,7 @@ namespace InventoryManagementSystem.database.basic
         {
             MySqlConnection connection = this.CreateConnection();
             MySqlCommand command = connection.CreateCommand();
-            command.CommandText = "SELECT * FROM `" + this.getTableName() + "` WHERE id = " + id;
+            command.CommandText = "SELECT * FROM `" + this.GetTableName() + "` WHERE id = " + id;
 
             connection.Open();
             MySqlDataReader reader = command.ExecuteReader();
@@ -68,7 +68,7 @@ namespace InventoryManagementSystem.database.basic
         {
             MySqlConnection connection = this.CreateConnection();
             MySqlCommand command = connection.CreateCommand();
-            command.CommandText = "SELECT MAX(id) FROM `" + this.getTableName() + "`";
+            command.CommandText = "SELECT MAX(id) FROM `" + this.GetTableName() + "`";
 
             connection.Open();
 
@@ -97,7 +97,7 @@ namespace InventoryManagementSystem.database.basic
             MySqlConnection connection = this.CreateConnection();
             MySqlCommand command = connection.CreateCommand();
 
-            command.CommandText = "DELETE FROM `" + this.getTableName() + "` WHERE id = " + id;
+            command.CommandText = "DELETE FROM `" + this.GetTableName() + "` WHERE id = " + id;
 
             connection.Open();
             command.ExecuteNonQuery();
@@ -114,7 +114,7 @@ namespace InventoryManagementSystem.database.basic
             List<T> entitys = new List<T>();
             MySqlConnection connection = this.CreateConnection();
             MySqlCommand command = connection.CreateCommand();
-            command.CommandText = "SELECT * FROM `" + this.getTableName() + "`";
+            command.CommandText = "SELECT * FROM `" + this.GetTableName() + "`";
 
             connection.Open();
 

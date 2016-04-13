@@ -17,7 +17,7 @@ namespace InventoryManagementSystem.dataAccess
         /// Gibt den Tabellennamen zusammen mit dem konfigurierten Präfix zurück.
         /// </summary>
         /// <returns>string</returns>
-        public override string getTableName()
+        public override string GetTableName()
         {
             ConfigProzesser config = new ConfigProzesser();
             return config.getDBPraefix() + "hauptplatine";
@@ -32,7 +32,7 @@ namespace InventoryManagementSystem.dataAccess
             MySqlConnection connection = this.CreateConnection();
             MySqlCommand command = connection.CreateCommand();
             
-            command.CommandText = "INSERT INTO `" + this.getTableName() + "`(`Beschreibung`, `Zoll`, `Sockel`, `ID_Hersteller`) "
+            command.CommandText = "INSERT INTO `" + this.GetTableName() + "`(`Beschreibung`, `Zoll`, `Sockel`, `ID_Hersteller`) "
                                 + "VALUES ('" + entity.Description + "','" + entity.Inch + "','" + entity.Socket + "'," + entity.Producer.Id + ")";
 
             connection.Open();
@@ -41,7 +41,7 @@ namespace InventoryManagementSystem.dataAccess
 
             for (int i = 0; i < entity.PhysicalInterfaces.Count; i++)
             {
-                command.CommandText = "INSERT INTO `" + this.getTableName() + "_schnittstelle`(`ID_Hauptplatine`, `ID_Schnittstelle`, `Anzahl`) "
+                command.CommandText = "INSERT INTO `" + this.GetTableName() + "_schnittstelle`(`ID_Hauptplatine`, `ID_Schnittstelle`, `Anzahl`) "
                                     + "VALUES (" + this.GetLastEntity<Motherboard>().Id + "," + entity.PhysicalInterfaces[i].PhysicalInterface.Id + ","
                                     + entity.PhysicalInterfaces[i].Number + ")";
                 connection.Open();
@@ -62,14 +62,14 @@ namespace InventoryManagementSystem.dataAccess
             MySqlCommand interfaceCommand = connection.CreateCommand();
             string usedInterfaces = "";
 
-            command.CommandText = "UPDATE `" + this.getTableName() + "` SET `Beschreibung`='" + entity.Description + "', `Zoll`='" + entity.Inch + "', `Sockel`='" + entity.Socket 
+            command.CommandText = "UPDATE `" + this.GetTableName() + "` SET `Beschreibung`='" + entity.Description + "', `Zoll`='" + entity.Inch + "', `Sockel`='" + entity.Socket 
                                 + "', `ID_Hersteller`=" + entity.Producer.Id + " WHERE id = " + entity.Id;
 
             connection.Open();
 
             for (int i = 0; i < entity.PhysicalInterfaces.Count; i++)
             {
-                interfaceCommand.CommandText = "UPDATE `" + this.getTableName() + "_schnittstelle` SET `Anzahl`=" + entity.PhysicalInterfaces[i].Number
+                interfaceCommand.CommandText = "UPDATE `" + this.GetTableName() + "_schnittstelle` SET `Anzahl`=" + entity.PhysicalInterfaces[i].Number
                                              + " WHERE `ID_Hauptplatine` = " + entity.Id + " AND `ID_Schnittstelle` = " + entity.PhysicalInterfaces[i].PhysicalInterface.Id;
                 interfaceCommand.ExecuteNonQuery();
                 usedInterfaces += entity.PhysicalInterfaces[i].PhysicalInterface.Id;
@@ -78,7 +78,7 @@ namespace InventoryManagementSystem.dataAccess
                     usedInterfaces += ",";
                 }
             }
-            interfaceCommand.CommandText = "DELETE FROM `" + this.getTableName() + "_schnittstelle` WHERE `ID_Hauptplatine` = " + entity.Id
+            interfaceCommand.CommandText = "DELETE FROM `" + this.GetTableName() + "_schnittstelle` WHERE `ID_Hauptplatine` = " + entity.Id
                                          + " AND `ID_Schnittstelle` NOT IN (" + usedInterfaces + ")";
             interfaceCommand.ExecuteNonQuery();
             command.ExecuteNonQuery();
@@ -117,7 +117,7 @@ namespace InventoryManagementSystem.dataAccess
             MySqlConnection connection = this.CreateConnection();
             MySqlCommand command = connection.CreateCommand();
 
-            command.CommandText = "SELECT * FROM `" + this.getTableName() + "_schnittstelle` WHERE id_hauptplatine = " + entity.Id;
+            command.CommandText = "SELECT * FROM `" + this.GetTableName() + "_schnittstelle` WHERE id_hauptplatine = " + entity.Id;
 
             connection.Open();
             MySqlDataReader reader = command.ExecuteReader();

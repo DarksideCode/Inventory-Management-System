@@ -18,7 +18,7 @@ namespace InventoryManagementSystem.dataAccess
         /// Gibt den Tabellennamen zusammen mit dem konfigurierten Präfix zurück.
         /// </summary>
         /// <returns>string</returns>
-        public override string getTableName()
+        public override string GetTableName()
         {
             ConfigProzesser config = new ConfigProzesser();
             return config.getDBPraefix() + "festplatte";
@@ -33,7 +33,7 @@ namespace InventoryManagementSystem.dataAccess
             MySqlConnection connection = this.CreateConnection();
             MySqlCommand command = connection.CreateCommand();
 
-            command.CommandText = "INSERT INTO `" + this.getTableName() + "`(`Beschreibung`, `Kapazität`, `SSD`, `Zoll`, `ID_Hersteller`) "
+            command.CommandText = "INSERT INTO `" + this.GetTableName() + "`(`Beschreibung`, `Kapazität`, `SSD`, `Zoll`, `ID_Hersteller`) "
                                 + "VALUES ('" + entity.Description + "'," + entity.Capacity + ",'" + entity.Ssd + "','" + entity.Inch + "',"
                                 + entity.Producer.Id + ")";
 
@@ -63,7 +63,7 @@ namespace InventoryManagementSystem.dataAccess
             MySqlCommand interfaceCommand = connection.CreateCommand();
             string usedInterfaces = "";
 
-            command.CommandText = "UPDATE `ims_festplatte` SET `Beschreibung`='" + entity.Description + "', `Kapazität`=" + entity.Capacity + ", `SSD`='" + entity.Ssd 
+            command.CommandText = "UPDATE `" + this.GetTableName() + "` SET `Beschreibung`='" + entity.Description + "', `Kapazität`=" + entity.Capacity + ", `SSD`='" + entity.Ssd 
                                 + "', `Zoll`='" + entity.Inch + "', `ID_Hersteller`=" + entity.Producer.Id + " WHERE id = " + entity.Id;
 
             connection.Open();
