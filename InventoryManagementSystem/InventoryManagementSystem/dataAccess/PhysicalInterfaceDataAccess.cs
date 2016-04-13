@@ -17,7 +17,7 @@ namespace InventoryManagementSystem.dataAccess
         /// Gibt den Tabellennamen zusammen mit dem konfigurierten Präfix zurück.
         /// </summary>
         /// <returns>string</returns>
-        public override string getTableName()
+        public override string GetTableName()
         {
             ConfigProzesser config = new ConfigProzesser();
             return config.getDBPraefix() + "schnittstelle";
@@ -32,7 +32,7 @@ namespace InventoryManagementSystem.dataAccess
             MySqlConnection connection = this.CreateConnection();
             MySqlCommand command = connection.CreateCommand();
 
-            command.CommandText = "INSERT INTO `" + this.getTableName() + "`(`Name`, `Beschreibung`, `Seriell`, `Übertragungsrate`) "
+            command.CommandText = "INSERT INTO `" + this.GetTableName() + "`(`Name`, `Beschreibung`, `Seriell`, `Übertragungsrate`) "
                                 + "VALUES ('" + entity.Name + "','" + entity.Description + "','" + entity.Serial + "',"
                                 + entity.TransferRate + ")";
 
@@ -50,7 +50,7 @@ namespace InventoryManagementSystem.dataAccess
             MySqlConnection connection = this.CreateConnection();
             MySqlCommand command = connection.CreateCommand();
 
-            command.CommandText = "UPDATE `" + this.getTableName() + "` SET `Name`='" + entity.Name + "', `Beschreibung`='" + entity.Description + "', `Seriell`='" + entity.Serial
+            command.CommandText = "UPDATE `" + this.GetTableName() + "` SET `Name`='" + entity.Name + "', `Beschreibung`='" + entity.Description + "', `Seriell`='" + entity.Serial
                                 + "', `Übertragungsrate`=" + entity.TransferRate + " WHERE id = " + entity.Id;
 
             connection.Open();
