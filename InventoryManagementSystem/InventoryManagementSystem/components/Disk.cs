@@ -63,10 +63,10 @@ namespace InventoryManagementSystem.components
             string schnittstellen = "";
             for (int i = 0; i < entity.PhysicalInterfaces.Count; i++ )
             {
+                if (i > 0)
+                    schnittstellen += ", ";
                 schnittstellen += entity.PhysicalInterfaces[i].PhysicalInterface.Name;
                 schnittstellen += " (" + entity.PhysicalInterfaces[i].Number + ")";
-                if(i > 0)
-                    schnittstellen += ", ";
             }
             this.Schnittstellen = schnittstellen;
         }
