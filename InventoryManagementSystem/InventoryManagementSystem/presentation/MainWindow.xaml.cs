@@ -28,6 +28,7 @@ namespace InventoryManagementSystem
             RandomAccessMemoryDataAccess dataAccess = new RandomAccessMemoryDataAccess();
             mapper = new GraphicalObjectMapper();
             defaultBrush.Color = Color.FromRgb(196, 255, 194);
+            this.menu_ram.Background = defaultBrush;
 
             this.AddToTable(mapper.MapToGraphicalObject(dataAccess.GetAllEntities<RandomAccessMemory>()));
         }
