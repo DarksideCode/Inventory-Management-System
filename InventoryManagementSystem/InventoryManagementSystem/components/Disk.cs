@@ -50,6 +50,7 @@ namespace InventoryManagementSystem.components
         public string SSD { get; set; }
         public double Zoll { get; set; }
         public string Hersteller { get; set; }
+        public string Schnittstellen { get; set; }
 
         public void MapFromEntity(Disk entity)
         {
@@ -59,6 +60,15 @@ namespace InventoryManagementSystem.components
             this.SSD = entity.Ssd.ToString();
             this.Zoll = entity.Inch;
             this.Hersteller = entity.Producer.CompanyName;
+            string schnittstellen = "";
+            for (int i = 0; i < entity.PhysicalInterfaces.Count; i++ )
+            {
+                schnittstellen += entity.PhysicalInterfaces[i].PhysicalInterface.Name;
+                schnittstellen += " (" + entity.PhysicalInterfaces[i].Number + ")";
+                if(i > 0)
+                    schnittstellen += ", ";
+            }
+            this.Schnittstellen = schnittstellen;
         }
     }
 }

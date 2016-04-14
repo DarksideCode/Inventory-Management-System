@@ -50,6 +50,7 @@ namespace InventoryManagementSystem.components
         public string Modell { get; set; }
         public int Speicher { get; set; }
         public string Hersteller { get; set; }
+        public string Schnittstellen { get; set; }
 
         public void MapFromEntity(GraphicCard entity)
         {
@@ -59,6 +60,15 @@ namespace InventoryManagementSystem.components
             this.Modell = entity.Model;
             this.Speicher = entity.Memory;
             this.Hersteller = entity.Producer.CompanyName;
+            string schnittstellen = "";
+            for (int i = 0; i < entity.PhysicalInterfaces.Count; i++)
+            {
+                schnittstellen += entity.PhysicalInterfaces[i].PhysicalInterface.Name;
+                schnittstellen += " (" + entity.PhysicalInterfaces[i].Number + ")";
+                if (i > 0)
+                    schnittstellen += ", ";
+            }
+            this.Schnittstellen = schnittstellen;
         }
     }
 }
