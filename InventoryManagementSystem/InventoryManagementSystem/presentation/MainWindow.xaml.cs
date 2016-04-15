@@ -17,11 +17,16 @@ namespace InventoryManagementSystem
     /// </summary>
     public partial class MainWindow : Window
     {
-        GraphicalObjectMapper mapper;
+        private GraphicalObjectMapper mapper;
         private string selectedEntity = "RandomAccessMemory";
-        SolidColorBrush defaultBrush = new SolidColorBrush();
-        
+        private SolidColorBrush defaultBrush = new SolidColorBrush();
 
+        private readonly string noDatabaseConnection = "Es konnte keine Verbindung zur Datenbank hergestellt werden. Bitte überprüfen Sie Ihre Einstellungen!";
+        private readonly string elementStillReferenced = "Das ausgewählte Element kann nicht gelöscht werden, da noch eine Referenz darauf besteht.";
+
+        /// <summary>
+        /// Initialisiert die UI-Elemente und selektiert den ersten Menüeintrag (Arbeitsspeicher)
+        /// </summary>
         public MainWindow()
         {
             InitializeComponent();
@@ -30,7 +35,12 @@ namespace InventoryManagementSystem
             defaultBrush.Color = Color.FromRgb(196, 255, 194);
             this.menu_ram.Background = defaultBrush;
 
-            this.AddToTable(mapper.MapToGraphicalObject(dataAccess.GetAllEntities<RandomAccessMemory>()));
+            try
+            {
+                this.AddToTable(mapper.MapToGraphicalObject(dataAccess.GetAllEntities<RandomAccessMemory>()));
+            } catch (MySql.Data.MySqlClient.MySqlException exception) {
+                this.showErrorMessage(exception, this.noDatabaseConnection);
+            }
         }
 
         private void AddToTable<T> (List<T> list)
@@ -53,11 +63,20 @@ namespace InventoryManagementSystem
             }
         }
 
+        private void showErrorMessage(Exception exception, string message)
+        {
+            MessageBoxResult result = MessageBox.Show(message, exception.GetType().Name, MessageBoxButton.OK, MessageBoxImage.Warning);
+        }
+
         private void RAM_Selected(object sender, RoutedEventArgs e)
         {
-            RandomAccessMemoryDataAccess dataAccess = new RandomAccessMemoryDataAccess();
-            this.AddToTable(mapper.MapToGraphicalObject(dataAccess.GetAllEntities<RandomAccessMemory>()));
-            this.dataGrid.Columns[0].Visibility = Visibility.Hidden;
+            try {
+                RandomAccessMemoryDataAccess dataAccess = new RandomAccessMemoryDataAccess();
+                this.AddToTable(mapper.MapToGraphicalObject(dataAccess.GetAllEntities<RandomAccessMemory>()));
+                this.dataGrid.Columns[0].Visibility = Visibility.Hidden;
+            } catch (MySql.Data.MySqlClient.MySqlException exception) {
+                this.showErrorMessage(exception, this.noDatabaseConnection);
+            }
             this.entityName.Content = "Arbeitsspeicher";
             this.selectedEntity = "RandomAccessMemory";
             this.resetMenuBackground();
@@ -66,9 +85,13 @@ namespace InventoryManagementSystem
 
         private void Disk_Selected(object sender, RoutedEventArgs e)
         {
-            DiskDataAccess dataAccess = new DiskDataAccess();
-            this.AddToTable(mapper.MapToGraphicalObject(dataAccess.GetAllEntities<Disk>()));
-            this.dataGrid.Columns[0].Visibility = Visibility.Hidden;
+            try {
+                DiskDataAccess dataAccess = new DiskDataAccess();
+                this.AddToTable(mapper.MapToGraphicalObject(dataAccess.GetAllEntities<Disk>()));
+                this.dataGrid.Columns[0].Visibility = Visibility.Hidden;
+            } catch (MySql.Data.MySqlClient.MySqlException exception) {
+                this.showErrorMessage(exception, this.noDatabaseConnection);
+            }
             this.entityName.Content = "Festplatte";
             this.selectedEntity = "Disk";
             this.resetMenuBackground();
@@ -77,9 +100,13 @@ namespace InventoryManagementSystem
 
         private void GraphicCard_Selected(object sender, RoutedEventArgs e)
         {
-            GraphicCardDataAccess dataAccess = new GraphicCardDataAccess();
-            this.AddToTable(mapper.MapToGraphicalObject(dataAccess.GetAllEntities<GraphicCard>()));
-            this.dataGrid.Columns[0].Visibility = Visibility.Hidden;
+            try {
+                GraphicCardDataAccess dataAccess = new GraphicCardDataAccess();
+                this.AddToTable(mapper.MapToGraphicalObject(dataAccess.GetAllEntities<GraphicCard>()));
+                this.dataGrid.Columns[0].Visibility = Visibility.Hidden;
+            } catch (MySql.Data.MySqlClient.MySqlException exception) {
+                this.showErrorMessage(exception, this.noDatabaseConnection);
+            }
             this.entityName.Content = "Grafikkarte";
             this.selectedEntity = "GraphicCard";
             this.resetMenuBackground();
@@ -88,9 +115,13 @@ namespace InventoryManagementSystem
 
         private void Motherboard_Selected(object sender, RoutedEventArgs e)
         {
-            MotherboardDataAccess dataAccess = new MotherboardDataAccess();
-            this.AddToTable(mapper.MapToGraphicalObject(dataAccess.GetAllEntities<Motherboard>()));
-            this.dataGrid.Columns[0].Visibility = Visibility.Hidden;
+            try {
+                MotherboardDataAccess dataAccess = new MotherboardDataAccess();
+                this.AddToTable(mapper.MapToGraphicalObject(dataAccess.GetAllEntities<Motherboard>()));
+                this.dataGrid.Columns[0].Visibility = Visibility.Hidden;
+            } catch (MySql.Data.MySqlClient.MySqlException exception) {
+                this.showErrorMessage(exception, this.noDatabaseConnection);
+            }
             this.entityName.Content = "Hauptplatine";
             this.selectedEntity = "Motherboard";
             this.resetMenuBackground();
@@ -99,9 +130,13 @@ namespace InventoryManagementSystem
 
         private void Monitor_Selected(object sender, RoutedEventArgs e)
         {
-            MonitorDataAccess dataAccess = new MonitorDataAccess();
-            this.AddToTable(mapper.MapToGraphicalObject(dataAccess.GetAllEntities<Monitor>()));
-            this.dataGrid.Columns[0].Visibility = Visibility.Hidden;
+            try {
+                MonitorDataAccess dataAccess = new MonitorDataAccess();
+                this.AddToTable(mapper.MapToGraphicalObject(dataAccess.GetAllEntities<Monitor>()));
+                this.dataGrid.Columns[0].Visibility = Visibility.Hidden;
+            } catch (MySql.Data.MySqlClient.MySqlException exception) {
+                this.showErrorMessage(exception, this.noDatabaseConnection);
+            }
             this.entityName.Content = "Monitor";
             this.selectedEntity = "Monitor";
             this.resetMenuBackground();
@@ -110,9 +145,13 @@ namespace InventoryManagementSystem
 
         private void Processor_Selected(object sender, RoutedEventArgs e)
         {
-            ProcessorDataAccess dataAccess = new ProcessorDataAccess();
-            this.AddToTable(mapper.MapToGraphicalObject(dataAccess.GetAllEntities<Processor>()));
-            this.dataGrid.Columns[0].Visibility = Visibility.Hidden;
+            try {
+                ProcessorDataAccess dataAccess = new ProcessorDataAccess();
+                this.AddToTable(mapper.MapToGraphicalObject(dataAccess.GetAllEntities<Processor>()));
+                this.dataGrid.Columns[0].Visibility = Visibility.Hidden;
+            } catch (MySql.Data.MySqlClient.MySqlException exception) {
+                this.showErrorMessage(exception, this.noDatabaseConnection);
+            }
             this.entityName.Content = "Prozessor";
             this.selectedEntity = "Processor";
             this.resetMenuBackground();
@@ -122,9 +161,13 @@ namespace InventoryManagementSystem
         
         private void Producer_Selected(object sender, RoutedEventArgs e)
         {
-            ProducerDataAccess dataAccess = new ProducerDataAccess();
-            this.AddToTable(mapper.MapToGraphicalObject(dataAccess.GetAllEntities<Producer>()));
-            this.dataGrid.Columns[0].Visibility = Visibility.Hidden;
+            try {
+                ProducerDataAccess dataAccess = new ProducerDataAccess();
+                this.AddToTable(mapper.MapToGraphicalObject(dataAccess.GetAllEntities<Producer>()));
+                this.dataGrid.Columns[0].Visibility = Visibility.Hidden;
+            } catch (MySql.Data.MySqlClient.MySqlException exception) {
+                this.showErrorMessage(exception, this.noDatabaseConnection);
+            }
             this.entityName.Content = "Hersteller";
             this.selectedEntity = "Producer";
             this.resetMenuBackground();
@@ -133,9 +176,13 @@ namespace InventoryManagementSystem
         
         private void Interface_Selected(object sender, RoutedEventArgs e)
         {
-            PhysicalInterfaceDataAccess dataAccess = new PhysicalInterfaceDataAccess();
-            this.AddToTable(mapper.MapToGraphicalObject(dataAccess.GetAllEntities<PhysicalInterface>()));
-            this.dataGrid.Columns[0].Visibility = Visibility.Hidden;
+            try {
+                PhysicalInterfaceDataAccess dataAccess = new PhysicalInterfaceDataAccess();
+                this.AddToTable(mapper.MapToGraphicalObject(dataAccess.GetAllEntities<PhysicalInterface>()));
+                this.dataGrid.Columns[0].Visibility = Visibility.Hidden;
+            } catch (MySql.Data.MySqlClient.MySqlException exception) {
+                this.showErrorMessage(exception, this.noDatabaseConnection);
+            }
             this.entityName.Content = "Schnittstelle";
             this.selectedEntity = "PhysicalInterface";
             this.resetMenuBackground();
@@ -201,7 +248,7 @@ namespace InventoryManagementSystem
                         try {
                             dataAccess.Delete(id);
                         } catch (MySql.Data.MySqlClient.MySqlException exception) {
-                            MessageBoxResult result = MessageBox.Show("Das ausgewählte Element kann nicht gelöscht werden, da noch eine Referenz darauf besteht.", "Warnung", MessageBoxButton.OK, MessageBoxImage.Warning);
+                            this.showErrorMessage(exception, this.elementStillReferenced);    
                         }
 
                         this.AddToTable(mapper.MapToGraphicalObject(dataAccess.GetAllEntities<Producer>()));
@@ -213,7 +260,7 @@ namespace InventoryManagementSystem
                         try {
                             dataAccess.Delete(id);
                         } catch (MySql.Data.MySqlClient.MySqlException exception) {
-                            MessageBoxResult result = MessageBox.Show("Das ausgewählte Element kann nicht gelöscht werden, da noch eine Referenz darauf besteht.", "Warnung", MessageBoxButton.OK, MessageBoxImage.Warning);
+                            this.showErrorMessage(exception, this.elementStillReferenced);
                         }
 
                         this.AddToTable(mapper.MapToGraphicalObject(dataAccess.GetAllEntities<PhysicalInterface>()));
