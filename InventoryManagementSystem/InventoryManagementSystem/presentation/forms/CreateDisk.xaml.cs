@@ -12,6 +12,8 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using InventoryManagementSystem.dataAccess;
+using InventoryManagementSystem.components;
 
 namespace InventoryManagementSystem.presentation.forms
 {
@@ -20,9 +22,29 @@ namespace InventoryManagementSystem.presentation.forms
     /// </summary>
     public partial class CreateDisk : Page
     {
+
         public CreateDisk()
         {
             InitializeComponent();
+            this.SetValuesCapacityUnit();
+
+        }
+
+        private void SetValuesCapacityUnit()
+        {
+            DiskCapacityUnit.Items.Add("MB");
+            DiskCapacityUnit.Items.Add("GB");
+            DiskCapacityUnit.Items.Add("TB");
+
+            DiskCapacityUnit.SelectedIndex = 1;
+        }
+
+        private void SetValuesProducerBox()
+        {
+            Producer producer = new Producer();
+
+            DiskProducer.Items.Add(producer.CompanyName);
+            //DiskProducer.SelectedIndex = 1;
         }
     }
 }

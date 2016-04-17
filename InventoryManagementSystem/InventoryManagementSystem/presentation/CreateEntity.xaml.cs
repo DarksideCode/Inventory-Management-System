@@ -35,12 +35,15 @@ namespace InventoryManagementSystem.presentation
             switch (Entity)
             {
                 case "Disk":
-                    Disk DiskModel = new Disk();
-
                     CreateFrame.Navigate(new CreateDisk());
-                    Console.WriteLine("Disk");
                     break;
             }
+        }
+
+        private void DiskCancel_Click(object sender, RoutedEventArgs e)
+        {
+            // Close this window
+            this.Close();
         }
     }
 }
