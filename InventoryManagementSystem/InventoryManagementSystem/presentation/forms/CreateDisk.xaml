@@ -1,0 +1,16 @@
+﻿<Page x:Class="InventoryManagementSystem.presentation.forms.CreateDisk"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:InventoryManagementSystem.presentation.forms"
+      mc:Ignorable="d" 
+      d:DesignHeight="300" d:DesignWidth="300"
+      Title="CreateDisk">
+
+    <Grid>
+        <Label x:Name="CreateEntityName" Content="Festplatte" VerticalAlignment="Top" Margin="73,10,71,0" FontSize="18" FontWeight="Bold" RenderTransformOrigin="-0.15,0.356" Width="156" Opacity="0.9" AllowDrop="True" IsHitTestVisible="False" HorizontalAlignment="Center" HorizontalContentAlignment="Center"/>
+        <Label x:Name="DiskDescriptionLBL" Content="Beschreibung" HorizontalAlignment="Left" Margin="25,46,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="Disk_description" HorizontalAlignment="Left" Height="23" Margin="141,49,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120"/>
+    </Grid>
+</Page>

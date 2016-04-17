@@ -94,6 +94,12 @@
     <Compile Include="presentation\ConfigWindow.xaml.cs">
       <DependentUpon>ConfigWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="presentation\CreateEntity.xaml.cs">
+      <DependentUpon>CreateEntity.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="presentation\forms\CreateDisk.xaml.cs">
+      <DependentUpon>CreateDisk.xaml</DependentUpon>
+    </Compile>
     <Compile Include="presentation\MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
     </Compile>
@@ -111,6 +117,14 @@
       <SubType>Code</SubType>
     </Compile>
     <Page Include="presentation\ConfigWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="presentation\CreateEntity.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="presentation\forms\CreateDisk.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

@@ -9,6 +9,7 @@ using InventoryManagementSystem.database.basic;
 using System.Data;
 using System;
 using System.Windows.Media;
+using InventoryManagementSystem.presentation;
 
 namespace InventoryManagementSystem
 {
@@ -280,7 +281,14 @@ namespace InventoryManagementSystem
         private void NewBtn_Click(object sender, RoutedEventArgs e)
         {
             Console.WriteLine(this.selectedEntity);
-            Console.WriteLine("Neue Entität erstellen!");
+            switch(this.selectedEntity)
+            {
+                case "Disk":
+                    CreateEntity Create = new CreateEntity(this.selectedEntity);
+                    Create.Show();
+                    break;
+            }
         }
+
     }
 }
