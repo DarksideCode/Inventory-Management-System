@@ -44,6 +44,17 @@ namespace InventoryManagementSystem
             this.dataGrid.ItemsSource = list;
         }
 
+        private void ChangeHeaderName(string currentHeader, string newHeader)
+        {
+            for(int i = 0; i < this.dataGrid.Columns.Count; i++)
+            {
+                if(this.dataGrid.Columns[i].Header.ToString().Equals(currentHeader))
+                {
+                    this.dataGrid.Columns[i].Header = newHeader;
+                }
+            }
+        }
+
         /// <summary>
         /// Wird beim ersten Laden des Fensters aufgerufen.
         /// Versteckt die erste Spalte (ID), da diese einen rein technischen Zweck erfüllt.
