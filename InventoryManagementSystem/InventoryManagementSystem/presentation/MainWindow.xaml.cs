@@ -31,30 +31,31 @@ namespace InventoryManagementSystem
         public MainWindow()
         {
             InitializeComponent();
-            RandomAccessMemoryDataAccess dataAccess = new RandomAccessMemoryDataAccess();
             mapper = new GraphicalObjectMapper();
             defaultBrush.Color = Color.FromRgb(196, 255, 194);
-            this.menu_ram.Background = defaultBrush;
-
-            try
-            {
-                this.AddToTable(mapper.MapToGraphicalObject(dataAccess.GetAllEntities<RandomAccessMemory>()));
-            } catch (MySql.Data.MySqlClient.MySqlException exception) {
-                this.showErrorMessage(exception, this.noDatabaseConnection);
-            }
         }
 
+        /// <summary>
+        /// Lädt eine beliebige Liste in die Tabelle
+        /// </summary>
+        /// <param name="list">Eine beliebige Liste von Datensätzen</param>
         private void AddToTable<T> (List<T> list)
         {
             this.dataGrid.ItemsSource = list;
-            this.dataGrid.IsReadOnly = true;
         }
 
+        /// <summary>
+        /// Wird beim ersten Laden des Fensters aufgerufen.
+        /// Versteckt die erste Spalte (ID), da diese einen rein technischen Zweck erfüllt.
+        /// </summary>
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
             this.dataGrid.Columns[0].Visibility = Visibility.Hidden;
         }
         
+        /// <summary>
+        /// Setzt die Hintergrundfarbe aller Elemente zurück auf die Ursprungsfarbe (Weiß)
+        /// </summary>
         private void resetMenuBackground()
         {
             for (int i = 0; i < this.menu.Items.Count; i++)
@@ -64,11 +65,20 @@ namespace InventoryManagementSystem
             }
         }
 
+        /// <summary>
+        /// Öffnet eine MessageBox mit der übergebenen Fehlermeldung.
+        /// </summary>
+        /// <param name="exception">Die Exception, welche ausgelöst wurde</param>
+        /// <param name="message">Die Fehlermeldung, welche angezeigt wird</param>
         private void showErrorMessage(Exception exception, string message)
         {
-            MessageBoxResult result = MessageBox.Show(message, exception.GetType().Name, MessageBoxButton.OK, MessageBoxImage.Warning);
+            MessageBox.Show(message, exception.GetType().Name, MessageBoxButton.OK, MessageBoxImage.Warning);
         }
 
+        /// <summary>
+        /// Wird aufgerufen, wenn der Menüpunkt 'Arbeitsspeicher' selektiert wurde.
+        /// Lädt die Tabelle neu, passt den Titel an und ändert die Hintergrundfarbe des Menüpunktes.
+        /// </summary>
         private void RAM_Selected(object sender, RoutedEventArgs e)
         {
             try {
@@ -84,6 +94,10 @@ namespace InventoryManagementSystem
             this.menu_ram.Background = this.defaultBrush;
         }
 
+        /// <summary>
+        /// Wird aufgerufen, wenn der Menüpunkt 'Festplatte' selektiert wurde.
+        /// Lädt die Tabelle neu, passt den Titel an und ändert die Hintergrundfarbe des Menüpunktes.
+        /// </summary>
         private void Disk_Selected(object sender, RoutedEventArgs e)
         {
             try {
@@ -99,6 +113,10 @@ namespace InventoryManagementSystem
             this.menu_disk.Background = this.defaultBrush;
         }
 
+        /// <summary>
+        /// Wird aufgerufen, wenn der Menüpunkt 'Grafikkarte' selektiert wurde.
+        /// Lädt die Tabelle neu, passt den Titel an und ändert die Hintergrundfarbe des Menüpunktes.
+        /// </summary>
         private void GraphicCard_Selected(object sender, RoutedEventArgs e)
         {
             try {
@@ -114,6 +132,10 @@ namespace InventoryManagementSystem
             this.menu_graphiccard.Background = this.defaultBrush;
         }
 
+        /// <summary>
+        /// Wird aufgerufen, wenn der Menüpunkt 'Hauptplatine' selektiert wurde.
+        /// Lädt die Tabelle neu, passt den Titel an und ändert die Hintergrundfarbe des Menüpunktes.
+        /// </summary>
         private void Motherboard_Selected(object sender, RoutedEventArgs e)
         {
             try {
@@ -129,6 +151,10 @@ namespace InventoryManagementSystem
             this.menu_motherboard.Background = this.defaultBrush;
         }
 
+        /// <summary>
+        /// Wird aufgerufen, wenn der Menüpunkt 'Monitor' selektiert wurde.
+        /// Lädt die Tabelle neu, passt den Titel an und ändert die Hintergrundfarbe des Menüpunktes.
+        /// </summary>
         private void Monitor_Selected(object sender, RoutedEventArgs e)
         {
             try {
@@ -144,6 +170,10 @@ namespace InventoryManagementSystem
             this.menu_monitor.Background = this.defaultBrush;
         }
 
+        /// <summary>
+        /// Wird aufgerufen, wenn der Menüpunkt 'Prozessor' selektiert wurde.
+        /// Lädt die Tabelle neu, passt den Titel an und ändert die Hintergrundfarbe des Menüpunktes.
+        /// </summary>
         private void Processor_Selected(object sender, RoutedEventArgs e)
         {
             try {
@@ -159,7 +189,10 @@ namespace InventoryManagementSystem
             this.menu_processor.Background = this.defaultBrush;
         }
 
-        
+        /// <summary>
+        /// Wird aufgerufen, wenn der Menüpunkt 'Hersteller' selektiert wurde.
+        /// Lädt die Tabelle neu, passt den Titel an und ändert die Hintergrundfarbe des Menüpunktes.
+        /// </summary>
         private void Producer_Selected(object sender, RoutedEventArgs e)
         {
             try {
@@ -174,7 +207,11 @@ namespace InventoryManagementSystem
             this.resetMenuBackground();
             this.menu_producer.Background = this.defaultBrush;
         }
-        
+
+        /// <summary>
+        /// Wird aufgerufen, wenn der Menüpunkt 'Schnittstelle' selektiert wurde.
+        /// Lädt die Tabelle neu, passt den Titel an und ändert die Hintergrundfarbe des Menüpunktes.
+        /// </summary>
         private void Interface_Selected(object sender, RoutedEventArgs e)
         {
             try {
@@ -195,8 +232,6 @@ namespace InventoryManagementSystem
         /// erneut. Beim verletzen einer Datenbank-Regel wird das Löschen verhindert und eine entsprechende
         /// Fehlermeldung ausgegeben.
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
         private void Delete_Entity(object sender, RoutedEventArgs e)
         {
             int id = 0;
@@ -274,8 +309,8 @@ namespace InventoryManagementSystem
 
         private void ConfigBtn_Click(object sender, RoutedEventArgs e)
         {
-            Window ConfigWindow = new InventoryManagementSystem.presentation.ConfigWindow();
-            ConfigWindow.Show();
+            Window configWindow = new InventoryManagementSystem.presentation.ConfigWindow();
+            configWindow.ShowDialog();
         }
 
         private void NewBtn_Click(object sender, RoutedEventArgs e)
@@ -284,8 +319,8 @@ namespace InventoryManagementSystem
             switch(this.selectedEntity)
             {
                 case "Disk":
-                    CreateEntity Create = new CreateEntity(this.selectedEntity);
-                    Create.Show();
+                    CreateEntity createWindow = new CreateEntity(this.selectedEntity);
+                    createWindow.ShowDialog();
                     break;
             }
         }

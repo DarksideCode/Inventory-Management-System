@@ -11,6 +11,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using InventoryManagementSystem.utilitys;
 
 namespace InventoryManagementSystem.presentation
 {
@@ -22,6 +23,12 @@ namespace InventoryManagementSystem.presentation
         public ConfigWindow()
         {
             InitializeComponent();
+            ConfigProzesser config = new ConfigProzesser();
+            this.TBHost.Text = config.getDBHost();
+            this.TBName.Text = config.getDBName();
+            this.TBPraefix.Text = config.getDBPraefix();
+            this.TBUser.Text = config.getDBUser();
+            this.TBPassword.Text = config.getDBPassword();
 
             /*private InventoryManagementSystem.utilitys.ConfigProzesser otherForm;
             private void test()
