@@ -11,7 +11,7 @@
 
         public string Description { get; set; }
 
-        public int Memory { get; set; }
+        public ulong Memory { get; set; }
 
         public double ClockRate { get; set; }
 
@@ -26,7 +26,7 @@
     {
         public int Id { get; set; }
         public string Beschreibung { get; set; }
-        public int Speicher { get; set; }
+        public ulong Speicher { get; set; }
         public double Taktrate { get; set; }
         public string Hersteller { get; set; }
 

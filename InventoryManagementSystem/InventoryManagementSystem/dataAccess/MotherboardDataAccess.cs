@@ -124,7 +124,7 @@ namespace InventoryManagementSystem.dataAccess
             while (reader.Read())
             {
                 PhysicalInterface physicalInterface = physicalInterfaceDataAccess.GetEntityById<PhysicalInterface>(Int32.Parse(reader.GetValue(1).ToString()));
-                int count = Int32.Parse(reader.GetValue(2).ToString());
+                uint count = uint.Parse(reader.GetValue(2).ToString());
                 physicalInterfaces.Add(new PhysicalInterfaceWithCount(physicalInterface, count));
             }
 

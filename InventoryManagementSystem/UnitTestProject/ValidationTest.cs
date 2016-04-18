@@ -73,7 +73,7 @@ namespace UnitTests
 
             processor.Description = "Dies ist ein Test";
             processor.Model = "i5";
-            processor.Core = -6;
+            processor.Core = 6;
             processor.CommandSet = "RISCC!";
             processor.Architecture = 64;
             processor.ClockRate = 3.40;
@@ -88,7 +88,7 @@ namespace UnitTests
             DiskValidator validator = new DiskValidator();
 
             hdd.Description = "Dies ist ein Test";
-            hdd.Capacity = -50;
+            hdd.Capacity = 50;
             hdd.Ssd = false;
             hdd.Inch = -3.5;
 
@@ -118,7 +118,7 @@ namespace UnitTests
             physicalInterface.Name = "DVI";
             physicalInterface.Description = "Digital Visual Interface - Eine elektronische Schnittstelle zur Übertragungn von Videodaten.";
             physicalInterface.Serial = false;
-            physicalInterface.TransferRate = -1000;
+            physicalInterface.TransferRate = 0;
 
             Assert.AreEqual(false, validator.CheckConsistency(physicalInterface));
         }

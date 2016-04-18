@@ -11,19 +11,19 @@
 
         public string CompanyName { get; set; }
 
-        public int PhoneNumber { get; set; }
+        public uint PhoneNumber { get; set; }
 
         public string Email { get; set; }
 
         public string Website { get; set; }
 
-        public int PostalCode { get; set; }
+        public uint PostalCode { get; set; }
 
         public string Place { get; set; }
 
         public string Street { get; set; }
 
-        public int HouseNumber { get; set; }
+        public uint HouseNumber { get; set; }
     }
 
     /// <summary>
@@ -34,13 +34,13 @@
     {
         public int Id { get; set; }
         public string Firma { get; set; }
-        public int Telefon { get; set; }
+        public uint Telefon { get; set; }
         public string Email { get; set; }
         public string Webseite { get; set; }
-        public int PLZ { get; set; }
+        public uint PLZ { get; set; }
         public string Ort { get; set; }
         public string Straße { get; set; }
-        public int Hausnummer { get; set; }
+        public uint Hausnummer { get; set; }
 
         public void MapFromEntity (Producer entity)
         {

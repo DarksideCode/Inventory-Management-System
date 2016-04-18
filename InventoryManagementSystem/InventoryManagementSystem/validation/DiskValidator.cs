@@ -18,7 +18,7 @@ namespace InventoryManagementSystem.validation
         {
             bool result = true;
 
-            if (entity.Capacity <= 0)
+            if (entity.Capacity == 0)
             {
                 result = false;
             }

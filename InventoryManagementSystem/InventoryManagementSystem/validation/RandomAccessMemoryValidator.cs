@@ -18,7 +18,7 @@ namespace InventoryManagementSystem.validation
         {
             bool result = true;
 
-            if(entity.Memory <= 0)
+            if(entity.Memory == 0)
             {
                 result = false;
             }

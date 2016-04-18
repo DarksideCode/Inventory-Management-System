@@ -12,7 +12,7 @@ namespace InventoryManagementSystem.components
     /// </summary>
     public class PhysicalInterfaceWithCount
     {
-        public PhysicalInterfaceWithCount (PhysicalInterface physicalInterface, int number)
+        public PhysicalInterfaceWithCount (PhysicalInterface physicalInterface, uint number)
         {
             this.PhysicalInterface = physicalInterface;
             this.Number = number;
@@ -20,6 +20,6 @@ namespace InventoryManagementSystem.components
 
         public PhysicalInterface PhysicalInterface { get; set; }
 
-        public int Number { get; set; }
+        public uint Number { get; set; }
     }
 }

@@ -70,7 +70,7 @@ namespace InventoryManagementSystem.dataAccess
 
             ram.Id = Int32.Parse(reader.GetValue(0).ToString());
             ram.Description = reader.GetValue(1).ToString();
-            ram.Memory = Int32.Parse(reader.GetValue(2).ToString());
+            ram.Memory = ulong.Parse(reader.GetValue(2).ToString());
             ram.ClockRate = Double.Parse(reader.GetValue(3).ToString());
             ram.Producer = producerDataAccess.GetEntityById<Producer>(Int32.Parse(reader.GetValue(4).ToString()));
 

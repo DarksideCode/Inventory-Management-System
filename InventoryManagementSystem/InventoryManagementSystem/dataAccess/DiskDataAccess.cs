@@ -98,7 +98,7 @@ namespace InventoryManagementSystem.dataAccess
 
             disk.Id = Int32.Parse(reader.GetValue(0).ToString());
             disk.Description = reader.GetValue(1).ToString();
-            disk.Capacity = Int32.Parse(reader.GetValue(2).ToString());
+            disk.Capacity = ulong.Parse(reader.GetValue(2).ToString());
             disk.Ssd = Boolean.Parse(reader.GetValue(3).ToString());
             disk.Inch = Double.Parse(reader.GetValue(4).ToString());
             disk.Producer = producerDataAccess.GetEntityById<Producer>(Int32.Parse(reader.GetValue(5).ToString()));
@@ -126,7 +126,7 @@ namespace InventoryManagementSystem.dataAccess
             while (reader.Read())
             {
                 PhysicalInterface physicalInterface = physicalInterfaceDataAccess.GetEntityById<PhysicalInterface>(Int32.Parse(reader.GetValue(1).ToString()));
-                int count = Int32.Parse(reader.GetValue(2).ToString());
+                uint count = uint.Parse(reader.GetValue(2).ToString());
                 physicalInterfaces.Add(new PhysicalInterfaceWithCount(physicalInterface, count));
             }
 

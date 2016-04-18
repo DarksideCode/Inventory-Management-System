@@ -30,7 +30,7 @@ namespace InventoryManagementSystem.validation
                 result = false;
             }
 
-            if (entity.Core <= 0)
+            if (entity.Core == 0)
             {
                 result = false;
             }
@@ -40,7 +40,7 @@ namespace InventoryManagementSystem.validation
                 result = false;
             }
 
-            if (entity.Architecture <= 0)
+            if (entity.Architecture == 0)
             {
                 result = false;
             }

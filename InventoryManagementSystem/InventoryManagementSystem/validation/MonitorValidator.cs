@@ -18,7 +18,7 @@ namespace InventoryManagementSystem.validation
         {
             bool result = true;
             
-            if(entity.Resolution <= 0)
+            if(entity.Resolution == 0)
             {
                 result = false;
             }
@@ -28,7 +28,7 @@ namespace InventoryManagementSystem.validation
                 result = false;
             }
 
-            if(entity.AspectRatio <= 0)
+            if(entity.AspectRatio == 0)
             {
                 result = false;
             }

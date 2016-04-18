@@ -72,9 +72,9 @@ namespace InventoryManagementSystem.dataAccess
             processor.Id = Int32.Parse(reader.GetValue(0).ToString());
             processor.Description = reader.GetValue(1).ToString();
             processor.Model = reader.GetValue(2).ToString();
-            processor.Core = Int32.Parse(reader.GetValue(3).ToString());
+            processor.Core = uint.Parse(reader.GetValue(3).ToString());
             processor.CommandSet = reader.GetValue(4).ToString();
-            processor.Architecture = Int32.Parse(reader.GetValue(5).ToString());
+            processor.Architecture = uint.Parse(reader.GetValue(5).ToString());
             processor.ClockRate = Double.Parse(reader.GetValue(6).ToString());
             processor.Producer = producerDataAccess.GetEntityById<Producer>(Int32.Parse(reader.GetValue(7).ToString()));
 

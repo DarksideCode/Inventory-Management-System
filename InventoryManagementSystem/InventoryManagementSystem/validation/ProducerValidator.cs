@@ -31,7 +31,7 @@ namespace InventoryManagementSystem.validation
                 result = false;
             }
 
-            if(entity.PhoneNumber < 0)
+            if(entity.PhoneNumber == 0)
             {
                 result = false;
             }
@@ -61,7 +61,7 @@ namespace InventoryManagementSystem.validation
                 result = false;
             }
 
-            if (entity.HouseNumber < 1)
+            if (entity.HouseNumber == 0)
             {
                 result = false;
             }

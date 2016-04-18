@@ -13,11 +13,11 @@
 
         public string Model { get; set; }
 
-        public int Core { get; set; }
+        public uint Core { get; set; }
 
         public string CommandSet { get; set; }
 
-        public int Architecture { get; set; }
+        public uint Architecture { get; set; }
 
         public double ClockRate { get; set; }
 
@@ -33,9 +33,9 @@
         public int Id { get; set; }
         public string Beschreibung { get; set; }
         public string Modell { get; set; }
-        public int Kerne { get; set; }
+        public uint Kerne { get; set; }
         public string Befehlssatz { get; set; }
-        public int Architektur { get; set; }
+        public uint Architektur { get; set; }
         public double Taktrate { get; set; }
         public string Hersteller { get; set; }
 

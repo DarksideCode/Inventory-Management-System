@@ -15,7 +15,7 @@
 
         public bool Serial { get; set; }
 
-        public int TransferRate { get; set; }
+        public uint TransferRate { get; set; }
     }
 
     /// <summary>
@@ -28,7 +28,7 @@
         public string Name { get; set; }
         public string Beschreibung { get; set; }
         public string Seriell { get; set; }
-        public int Transferrate { get; set; }
+        public uint Transferrate { get; set; }
 
         public void MapFromEntity(PhysicalInterface entity)
         {

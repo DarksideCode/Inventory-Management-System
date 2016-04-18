@@ -27,7 +27,7 @@ namespace InventoryManagementSystem.validation
                 result = false;
             }
 
-            if(entity.TransferRate <= 0)
+            if(entity.TransferRate == 0)
             {
                 result = false;
             }

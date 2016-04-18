@@ -101,9 +101,9 @@ namespace InventoryManagementSystem.dataAccess
 
             monitor.Id = Int32.Parse(reader.GetValue(0).ToString());
             monitor.Description = reader.GetValue(1).ToString();
-            monitor.Resolution = Int32.Parse(reader.GetValue(2).ToString());
+            monitor.Resolution = uint.Parse(reader.GetValue(2).ToString());
             monitor.Inch = Double.Parse(reader.GetValue(3).ToString());
-            monitor.AspectRatio = Int32.Parse(reader.GetValue(4).ToString());
+            monitor.AspectRatio = uint.Parse(reader.GetValue(4).ToString());
             monitor.Producer = producerDataAccess.GetEntityById<Producer>(Int32.Parse(reader.GetValue(5).ToString()));
             monitor.PhysicalInterfaces = this.GetPhysicalInterfaces(monitor);
            
@@ -129,7 +129,7 @@ namespace InventoryManagementSystem.dataAccess
             while (reader.Read())
             {
                 PhysicalInterface physicalInterface = physicalInterfaceDataAccess.GetEntityById<PhysicalInterface>(Int32.Parse(reader.GetValue(1).ToString()));
-                int count = Int32.Parse(reader.GetValue(2).ToString());
+                uint count = uint.Parse(reader.GetValue(2).ToString());
                 physicalInterfaces.Add(new PhysicalInterfaceWithCount(physicalInterface, count));
             }
 

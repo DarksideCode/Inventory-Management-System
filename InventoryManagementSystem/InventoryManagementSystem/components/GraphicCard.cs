@@ -22,7 +22,7 @@ namespace InventoryManagementSystem.components
 
         public string Model { get; set; }
 
-        public int Memory { get; set; }
+        public ulong Memory { get; set; }
 
         public Producer Producer { get; set; }
 
@@ -48,7 +48,7 @@ namespace InventoryManagementSystem.components
         public string Beschreibung { get; set; }
         public double Taktrate { get; set; }
         public string Modell { get; set; }
-        public int Speicher { get; set; }
+        public ulong Speicher { get; set; }
         public string Hersteller { get; set; }
         public string Schnittstellen { get; set; }
 

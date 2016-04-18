@@ -18,12 +18,12 @@ namespace InventoryManagementSystem.components
 
         public string Description { get; set; }
 
-        public int Capacity { get; set; }
+        public ulong Capacity { get; set; }
 
         public bool Ssd { get; set; }
 
         public double Inch { get; set; }
-
+       
         public Producer Producer { get; set; }
 
         public List<PhysicalInterfaceWithCount> PhysicalInterfaces
@@ -46,7 +46,7 @@ namespace InventoryManagementSystem.components
     {
         public int Id { get; set; }
         public string Beschreibung { get; set; }
-        public int Kapazität { get; set; }
+        public ulong Kapazität { get; set; }
         public string SSD { get; set; }
         public double Zoll { get; set; }
         public string Hersteller { get; set; }

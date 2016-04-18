@@ -70,13 +70,13 @@ namespace InventoryManagementSystem.dataAccess
 
             producer.Id = Int32.Parse(reader.GetValue(0).ToString());
             producer.CompanyName = reader.GetValue(1).ToString();
-            producer.PhoneNumber = Int32.Parse(reader.GetValue(2).ToString());
+            producer.PhoneNumber = uint.Parse(reader.GetValue(2).ToString());
             producer.Email = reader.GetValue(3).ToString();
             producer.Website = reader.GetValue(4).ToString();
-            producer.PostalCode = Int32.Parse(reader.GetValue(5).ToString());
+            producer.PostalCode = uint.Parse(reader.GetValue(5).ToString());
             producer.Place = reader.GetValue(6).ToString();
             producer.Street = reader.GetValue(7).ToString();
-            producer.HouseNumber = Int32.Parse(reader.GetValue(8).ToString());
+            producer.HouseNumber = uint.Parse(reader.GetValue(8).ToString());
 
             return producer;
         }

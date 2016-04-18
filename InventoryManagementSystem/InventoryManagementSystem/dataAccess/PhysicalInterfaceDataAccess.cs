@@ -71,7 +71,7 @@ namespace InventoryManagementSystem.dataAccess
             physicalInterface.Name = reader.GetValue(1).ToString();
             physicalInterface.Description = reader.GetValue(2).ToString();
             physicalInterface.Serial = Boolean.Parse(reader.GetValue(3).ToString());
-            physicalInterface.TransferRate = Int32.Parse(reader.GetValue(4).ToString());
+            physicalInterface.TransferRate = uint.Parse(reader.GetValue(4).ToString());
 
             return physicalInterface;
         }
