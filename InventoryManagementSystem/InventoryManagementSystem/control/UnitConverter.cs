@@ -16,9 +16,9 @@ namespace InventoryManagementSystem.control
         /// </summary>
         /// <param name="value">Bytewert</param>
         /// <returns>Parameter in Kilobyte</returns>
-        static public ulong ByteToKiloByte(ulong value)
+        static public ulong ByteToKiloByte(double value)
         {
-            return value / 1024;
+            return (ulong) value / 1024;
         }
 
         /// <summary>
@@ -26,9 +26,9 @@ namespace InventoryManagementSystem.control
         /// </summary>
         /// <param name="value">Bytewert</param>
         /// <returns>Parameter in Megabyte</returns>
-        static public ulong ByteToMegaByte(ulong value)
+        static public ulong ByteToMegaByte(double value)
         {
-            return value / (1024 * 1024);
+            return (ulong) value / (1024 * 1024);
         }
 
         /// <summary>
@@ -36,9 +36,9 @@ namespace InventoryManagementSystem.control
         /// </summary>
         /// <param name="value">Bytewert</param>
         /// <returns>Parameter in Gigabyte</returns>
-        static public ulong ByteToGigaByte(ulong value)
+        static public ulong ByteToGigaByte(double value)
         {
-            return value / (1024 * 1024 * 1024);
+            return (ulong) value / (1024 * 1024 * 1024);
         }
 
         /// <summary>
@@ -46,9 +46,9 @@ namespace InventoryManagementSystem.control
         /// </summary>
         /// <param name="value">Kilobytewert</param>
         /// <returns>Parameter in Byte</returns>
-        static public ulong KiloByteToByte(ulong value)
+        static public ulong KiloByteToByte(double value)
         {
-            return value * 1024;
+            return (ulong) value * 1024;
         }
 
         /// <summary>
@@ -56,9 +56,9 @@ namespace InventoryManagementSystem.control
         /// </summary>
         /// <param name="value">Megabytewert</param>
         /// <returns>Parameter in Byte</returns>
-        static public ulong MegaByteToByte(ulong value)
+        static public ulong MegaByteToByte(double value)
         {
-            return value * 1024 * 1024;
+            return (ulong) value * 1024 * 1024;
         }
 
         /// <summary>
@@ -66,9 +66,9 @@ namespace InventoryManagementSystem.control
         /// </summary>
         /// <param name="value">Gigabyte-Wert</param>
         /// <returns>Parameter in Byte</returns>
-        static public ulong GigaByteToByte(ulong value)
+        static public ulong GigaByteToByte(double value)
         {
-            return value * 1024 * 1024 * 1024;
+            return (ulong) value * 1024 * 1024 * 1024;
         }
     }
 }
