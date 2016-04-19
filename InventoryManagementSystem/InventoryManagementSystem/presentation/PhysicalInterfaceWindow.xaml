@@ -1,0 +1,62 @@
+﻿<Window x:Class="InventoryManagementSystem.presentation.PhysicalInterfaceWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Schnittstellen verwalten - IMS" Height="326" Width="400
+        
+        " ResizeMode="NoResize">
+    <Grid>
+        <ListBox HorizontalAlignment="Left" Name="physicalInterfaceList"  Height="210" Margin="10,35,0,0" VerticalAlignment="Top" Width="147" RenderTransformOrigin="0.16,0.04"/>
+        <Menu HorizontalAlignment="Left" Height="22" Margin="10,13,0,0" VerticalAlignment="Top" Width="147" FontSize="14" FontWeight="Bold">
+            <Menu.Background>
+                <LinearGradientBrush EndPoint="0,1" StartPoint="0,0">
+                    <GradientStop Color="#FFD5E8D4" Offset="0"/>
+                    <GradientStop Color="#FF97D077" Offset="1"/>
+                </LinearGradientBrush>
+            </Menu.Background>
+            <MenuItem Header="Schnittstellen" Width="147" HorizontalContentAlignment="Center" HorizontalAlignment="Center" Margin="0" Padding="27,2,8,3"/>
+        </Menu>
+        <ListBox x:Name="usedList" HorizontalAlignment="Left" Height="210" Margin="224,35,0,0" VerticalAlignment="Top" Width="147" RenderTransformOrigin="0.16,0.04"/>
+        <Menu HorizontalAlignment="Left" Height="22" Margin="224,13,0,0" VerticalAlignment="Top" Width="147" FontSize="14" FontWeight="Bold">
+            <Menu.Background>
+                <LinearGradientBrush EndPoint="0,1" StartPoint="0,0">
+                    <GradientStop Color="#FFD5E8D4" Offset="0"/>
+                    <GradientStop Color="#FF97D077" Offset="1"/>
+                </LinearGradientBrush>
+            </Menu.Background>
+            <MenuItem Header="Zugewiesen" Width="147" Padding="35,2,8,3"/>
+        </Menu>
+        <Button HorizontalAlignment="Left" VerticalAlignment="Top" Width="24" Margin="179,98,0,0" Content="+" RenderTransformOrigin="-2.167,0.545" FontWeight="Bold" Click="Add_Click">
+            <Button.Background>
+                <LinearGradientBrush EndPoint="0,1" StartPoint="0,0">
+                    <GradientStop Color="#FFD5E8D4" Offset="0"/>
+                    <GradientStop Color="#FF97D077" Offset="1"/>
+                </LinearGradientBrush>
+            </Button.Background>
+        </Button>
+        <Button HorizontalAlignment="Left" VerticalAlignment="Top" Width="24" Margin="179,138,0,0" Content="-" RenderTransformOrigin="0.625,1.364" FontWeight="Bold" Click="Remove_Click">
+            <Button.Background>
+                <LinearGradientBrush EndPoint="0,1" StartPoint="0,0">
+                    <GradientStop Color="#FFD5E8D4" Offset="0"/>
+                    <GradientStop Color="#FF97D077" Offset="1"/>
+                </LinearGradientBrush>
+            </Button.Background>
+        </Button>
+        <Button Content="Speichern" HorizontalAlignment="Left" Margin="109,264,0,0" VerticalAlignment="Top" Width="75" Click="Save_Click">
+            <Button.Background>
+                <LinearGradientBrush EndPoint="0,1" StartPoint="0,0">
+                    <GradientStop Color="#FFD5E8D4" Offset="0"/>
+                    <GradientStop Color="#FF97D077" Offset="1"/>
+                </LinearGradientBrush>
+            </Button.Background>
+        </Button>
+        <Button Content="Abbrechen" HorizontalAlignment="Left" Margin="197,264,0,0" VerticalAlignment="Top" Width="75" RenderTransformOrigin="0.587,-2.9">
+            <Button.Background>
+                <LinearGradientBrush EndPoint="0,1" StartPoint="0,0">
+                    <GradientStop Color="#FFD5E8D4" Offset="0"/>
+                    <GradientStop Color="#FF97D077" Offset="1"/>
+                </LinearGradientBrush>
+            </Button.Background>
+        </Button>
+
+    </Grid>
+</Window>

@@ -59,6 +59,25 @@ namespace InventoryManagementSystem.dataAccess
         }
 
         /// <summary>
+        /// Selektiert einen Datensatz aus der Datenbank, welcher mit dem übergebenen Namen übereinstimmt.
+        /// </summary>
+        /// <param name="name">Name der Schnittstelle</param>
+        /// <returns>Ein Objekt der Entität mit dem übergebenen Namen</returns>
+        public PhysicalInterface GetByName(string name)
+        {
+            MySqlConnection connection = this.CreateConnection();
+            MySqlCommand command = connection.CreateCommand();
+
+            command.CommandText = "SELECT * FROM `ims_schnittstelle` WHERE `Name` = '" + name + "'";
+
+            connection.Open();
+            MySqlDataReader reader = command.ExecuteReader();
+            reader.Read();
+
+            return (PhysicalInterface)this.MapToEntity(reader);
+        }
+
+        /// <summary>
         /// Mappt einen Datensatz aus der Datenbank auf ein Objekt vom Typ 'Schnittstelle'
         /// </summary>
         /// <param name="reader">Der Datensatz, welcher gemappt wird</param>
