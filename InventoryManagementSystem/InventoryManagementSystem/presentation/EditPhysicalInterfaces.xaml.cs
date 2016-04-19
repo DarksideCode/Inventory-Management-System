@@ -48,12 +48,20 @@ namespace InventoryManagementSystem.presentation
 
         private void Add_Click(object sender, RoutedEventArgs e)
         {
-
+            if(this.physicalInterfaceList.SelectedItems.Count > 0)
+            {
+                this.usedList.Items.Add(this.physicalInterfaceList.SelectedItems[0]);
+                this.physicalInterfaceList.UnselectAll();
+            }
         }
 
         private void Remove_Click(object sender, RoutedEventArgs e)
         {
-
+            if(this.usedList.SelectedItems.Count > 0)
+            {
+                this.usedList.Items.Remove(this.usedList.SelectedItems[0]);
+                this.usedList.UnselectAll();
+            }
         }
 
         private void Save_Click(object sender, RoutedEventArgs e)
