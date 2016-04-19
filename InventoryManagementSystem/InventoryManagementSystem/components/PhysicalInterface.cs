@@ -35,7 +35,10 @@
             this.Id = entity.Id;
             this.Name = entity.Name;
             this.Beschreibung = entity.Description;
-            this.Seriell = entity.Serial.ToString();
+            if (entity.Serial)
+                this.Seriell = "Ja";
+            else
+                this.Seriell = "Nein";
             this.Transferrate = entity.TransferRate;
         }
     }

@@ -10,6 +10,7 @@ using System.Data;
 using System;
 using System.Windows.Media;
 using InventoryManagementSystem.presentation;
+using InventoryManagementSystem.presentation.forms;
 
 namespace InventoryManagementSystem
 {
@@ -44,13 +45,13 @@ namespace InventoryManagementSystem
             this.dataGrid.ItemsSource = list;
         }
 
-        private void ChangeHeaderName(string currentHeader, string newHeader)
+        private void AddToHeaderName(string currentHeader, string addition)
         {
             for(int i = 0; i < this.dataGrid.Columns.Count; i++)
             {
                 if(this.dataGrid.Columns[i].Header.ToString().Equals(currentHeader))
                 {
-                    this.dataGrid.Columns[i].Header = newHeader;
+                    this.dataGrid.Columns[i].Header = currentHeader + addition;
                 }
             }
         }
@@ -96,6 +97,8 @@ namespace InventoryManagementSystem
                 RandomAccessMemoryDataAccess dataAccess = new RandomAccessMemoryDataAccess();
                 this.AddToTable(mapper.MapToGraphicalObject(dataAccess.GetAllEntities<RandomAccessMemory>()));
                 this.dataGrid.Columns[0].Visibility = Visibility.Hidden;
+                this.AddToHeaderName("Speicher", " (MB)");
+                this.AddToHeaderName("Taktrate", " (MHz)");
             } catch (MySql.Data.MySqlClient.MySqlException exception) {
                 this.showErrorMessage(exception, this.noDatabaseConnection);
             }
@@ -115,6 +118,7 @@ namespace InventoryManagementSystem
                 DiskDataAccess dataAccess = new DiskDataAccess();
                 this.AddToTable(mapper.MapToGraphicalObject(dataAccess.GetAllEntities<Disk>()));
                 this.dataGrid.Columns[0].Visibility = Visibility.Hidden;
+                this.AddToHeaderName("Kapazität", " (GB)");
             } catch (MySql.Data.MySqlClient.MySqlException exception) {
                 this.showErrorMessage(exception, this.noDatabaseConnection);
             }
@@ -134,6 +138,8 @@ namespace InventoryManagementSystem
                 GraphicCardDataAccess dataAccess = new GraphicCardDataAccess();
                 this.AddToTable(mapper.MapToGraphicalObject(dataAccess.GetAllEntities<GraphicCard>()));
                 this.dataGrid.Columns[0].Visibility = Visibility.Hidden;
+                this.AddToHeaderName("Taktrate", " (MHz)");
+                this.AddToHeaderName("Speicher", " (MB)");
             } catch (MySql.Data.MySqlClient.MySqlException exception) {
                 this.showErrorMessage(exception, this.noDatabaseConnection);
             }
@@ -191,6 +197,7 @@ namespace InventoryManagementSystem
                 ProcessorDataAccess dataAccess = new ProcessorDataAccess();
                 this.AddToTable(mapper.MapToGraphicalObject(dataAccess.GetAllEntities<Processor>()));
                 this.dataGrid.Columns[0].Visibility = Visibility.Hidden;
+                this.AddToHeaderName("Taktrate", " (MHz)");
             } catch (MySql.Data.MySqlClient.MySqlException exception) {
                 this.showErrorMessage(exception, this.noDatabaseConnection);
             }
@@ -229,6 +236,7 @@ namespace InventoryManagementSystem
                 PhysicalInterfaceDataAccess dataAccess = new PhysicalInterfaceDataAccess();
                 this.AddToTable(mapper.MapToGraphicalObject(dataAccess.GetAllEntities<PhysicalInterface>()));
                 this.dataGrid.Columns[0].Visibility = Visibility.Hidden;
+                this.AddToHeaderName("Transferrate", " (MB/s)");
             } catch (MySql.Data.MySqlClient.MySqlException exception) {
                 this.showErrorMessage(exception, this.noDatabaseConnection);
             }

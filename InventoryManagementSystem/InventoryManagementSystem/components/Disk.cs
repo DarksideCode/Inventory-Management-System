@@ -57,7 +57,10 @@ namespace InventoryManagementSystem.components
             this.Id = entity.Id;
             this.Beschreibung = entity.Description;
             this.Kapazität = entity.Capacity;
-            this.SSD = entity.Ssd.ToString();
+            if (entity.Ssd)
+                this.SSD = "Ja";
+            else
+                this.SSD = "Nein";
             this.Zoll = entity.Inch;
             this.Hersteller = entity.Producer.CompanyName;
             string schnittstellen = "";
