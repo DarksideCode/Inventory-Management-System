@@ -98,14 +98,14 @@
     <Compile Include="presentation\CreateEntity.xaml.cs">
       <DependentUpon>CreateEntity.xaml</DependentUpon>
     </Compile>
+    <Compile Include="presentation\EditPhysicalInterfaces.xaml.cs">
+      <DependentUpon>EditPhysicalInterfaces.xaml</DependentUpon>
+    </Compile>
     <Compile Include="presentation\forms\CreateDisk.xaml.cs">
       <DependentUpon>CreateDisk.xaml</DependentUpon>
     </Compile>
     <Compile Include="presentation\MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="presentation\PhysicalInterfaceWindow.xaml.cs">
-      <DependentUpon>PhysicalInterfaceWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="utilitys\ConfigProzesser.cs" />
     <Compile Include="validation\DiskValidator.cs" />
@@ -128,6 +128,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="presentation\EditPhysicalInterfaces.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="presentation\forms\CreateDisk.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -135,10 +139,6 @@
     <Page Include="presentation\MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
-    </Page>
-    <Page Include="presentation\PhysicalInterfaceWindow.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
     </Page>
   </ItemGroup>
   <ItemGroup>
