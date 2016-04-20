@@ -24,18 +24,34 @@ namespace InventoryManagementSystem.presentation
         {
             InitializeComponent();
             ConfigProzesser config = new ConfigProzesser();
-            this.TBHost.Text = config.getDBHost();
-            this.TBName.Text = config.getDBName();
-            this.TBPraefix.Text = config.getDBPraefix();
-            this.TBUser.Text = config.getDBUser();
-            this.TBPassword.Text = config.getDBPassword();
 
-            /*private InventoryManagementSystem.utilitys.ConfigProzesser otherForm;
-            private void test()
-            {
-                 string DBName = otherForm.
-            }*/
+            string DBName = config.PDBName;
+            string DBPraefix = config.PDBPraefix;
+            string DBHost = config.PDBHost;
+            string DBUser = config.PDBUser;
+            string DBPassword = config.PDBPassword;
 
+            this.TBName.Text = DBName;
+            this.TBPraefix.Text = DBPraefix;
+            this.TBHost.Text = DBHost;
+            this.TBUser.Text = DBUser;
+            this.TBPassword.Password = DBPassword;
+        }
+
+        protected void BtnSave_Click(object sender, RoutedEventArgs e)
+        {
+            string DBName = TBName.Text;
+            string DBPraefix = TBPraefix.Text;
+            string DBHost = TBHost.Text;
+            string DBUser = TBUser.Text;
+            string DBPassword = TBPassword.Password;
+
+            ConfigProzesser config = new ConfigProzesser();
+            config.saveDBName(DBName);
+            config.saveDBPraefix(DBPraefix);
+            config.saveDBHost(DBHost);
+            config.saveDBUser(DBUser);
+            config.saveDBPassword(DBPassword);
         }
     }
 }
