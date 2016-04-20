@@ -14,8 +14,6 @@ H:\Schule\LF6 (ml) - Programmieren\SQL\Projekt\IMS\InventoryManagementSystem\Inv
 C:\Users\dominik.traise\Documents\Schule\LF6 - Programmieren\SQL\Projekt - Inventory\Inventory-Management-System\InventoryManagementSystem\InventoryManagementSystem\bin\Debug\InventoryManagementSystem.exe.config
 C:\Users\dominik.traise\Documents\Schule\LF6 - Programmieren\SQL\Projekt - Inventory\Inventory-Management-System\InventoryManagementSystem\InventoryManagementSystem\bin\Debug\InventoryManagementSystem.exe
 C:\Users\dominik.traise\Documents\Schule\LF6 - Programmieren\SQL\Projekt - Inventory\Inventory-Management-System\InventoryManagementSystem\InventoryManagementSystem\bin\Debug\InventoryManagementSystem.pdb
-C:\Users\dominik.traise\Documents\Schule\LF6 - Programmieren\SQL\Projekt - Inventory\Inventory-Management-System\InventoryManagementSystem\InventoryManagementSystem\obj\Debug\MainWindow.baml
-C:\Users\dominik.traise\Documents\Schule\LF6 - Programmieren\SQL\Projekt - Inventory\Inventory-Management-System\InventoryManagementSystem\InventoryManagementSystem\obj\Debug\MainWindow.g.cs
 C:\Users\dominik.traise\Documents\Schule\LF6 - Programmieren\SQL\Projekt - Inventory\Inventory-Management-System\InventoryManagementSystem\InventoryManagementSystem\obj\Debug\App.g.cs
 C:\Users\dominik.traise\Documents\Schule\LF6 - Programmieren\SQL\Projekt - Inventory\Inventory-Management-System\InventoryManagementSystem\InventoryManagementSystem\obj\Debug\InventoryManagementSystem_MarkupCompile.cache
 C:\Users\dominik.traise\Documents\Schule\LF6 - Programmieren\SQL\Projekt - Inventory\Inventory-Management-System\InventoryManagementSystem\InventoryManagementSystem\obj\Debug\InventoryManagementSystem.g.resources
@@ -103,3 +101,10 @@ I:\Projekte\IMS\InventoryManagementSystem\InventoryManagementSystem\obj\Debug\pr
 I:\Projekte\IMS\InventoryManagementSystem\InventoryManagementSystem\obj\Debug\InventoryManagementSystem.g.resources
 I:\Projekte\IMS\InventoryManagementSystem\InventoryManagementSystem\obj\Debug\InventoryManagementSystem.Properties.Resources.resources
 I:\Projekte\IMS\InventoryManagementSystem\InventoryManagementSystem\obj\Debug\InventoryManagementSystem.csproj.GenerateResource.Cache
+C:\Users\dominik.traise\Documents\Schule\LF6 - Programmieren\SQL\Projekt - Inventory\Inventory-Management-System\InventoryManagementSystem\InventoryManagementSystem\obj\Debug\presentation\MainWindow.baml
+C:\Users\dominik.traise\Documents\Schule\LF6 - Programmieren\SQL\Projekt - Inventory\Inventory-Management-System\InventoryManagementSystem\InventoryManagementSystem\obj\Debug\presentation\ConfigWindow.g.cs
+C:\Users\dominik.traise\Documents\Schule\LF6 - Programmieren\SQL\Projekt - Inventory\Inventory-Management-System\InventoryManagementSystem\InventoryManagementSystem\obj\Debug\presentation\forms\CreateDisk.g.cs
+C:\Users\dominik.traise\Documents\Schule\LF6 - Programmieren\SQL\Projekt - Inventory\Inventory-Management-System\InventoryManagementSystem\InventoryManagementSystem\obj\Debug\presentation\MainWindow.g.cs
+C:\Users\dominik.traise\Documents\Schule\LF6 - Programmieren\SQL\Projekt - Inventory\Inventory-Management-System\InventoryManagementSystem\InventoryManagementSystem\obj\Debug\InventoryManagementSystem_MarkupCompile.lref
+C:\Users\dominik.traise\Documents\Schule\LF6 - Programmieren\SQL\Projekt - Inventory\Inventory-Management-System\InventoryManagementSystem\InventoryManagementSystem\obj\Debug\presentation\ConfigWindow.baml
+C:\Users\dominik.traise\Documents\Schule\LF6 - Programmieren\SQL\Projekt - Inventory\Inventory-Management-System\InventoryManagementSystem\InventoryManagementSystem\obj\Debug\presentation\forms\CreateDisk.baml
