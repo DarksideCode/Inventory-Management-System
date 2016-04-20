@@ -128,5 +128,28 @@ namespace InventoryManagementSystem.database.basic
 
             return entitys;
         }
+
+        /// <summary>
+        /// Liest den Datensatz der jeweiligen Entität aus der Datenbank, die dem übergebenen Namen
+        /// entspricht. Durch den generischen Ansatz muss der Typ der Entität übergeben werden.
+        /// Das Feld indem geprüft werden soll muss mit übergeben werden.
+        /// </summary>
+        /// <typeparam name="T">Entitätsklasse</typeparam>
+        /// <param name="fieldName">Feld in der Datenbank</param>
+        /// <param name="name">Gesuchter Datensatz</param>
+        /// <returns>Objekt der jeweiligen Entität</returns>
+        public virtual T GetEntityByName<T>(string fieldName, string name)
+        {
+            MySqlConnection connection = this.CreateConnection();
+            MySqlCommand command = connection.CreateCommand();
+            command.CommandText = "SELECT * FROM `" + this.GetTableName() + "` WHERE "+ fieldName +" = '" + name + "';";
+            connection.Open();
+            MySqlDataReader reader = command.ExecuteReader();
+            reader.Read();
+            T entity = (T)this.MapToEntity(reader);
+            connection.Close();
+
+            return entity;
+        }
     }
 }

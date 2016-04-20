@@ -15,6 +15,7 @@ using System.Windows.Shapes;
 using InventoryManagementSystem.dataAccess;
 using InventoryManagementSystem.components;
 using InventoryManagementSystem.validation;
+using InventoryManagementSystem.control;
 
 namespace InventoryManagementSystem.presentation.forms
 {
@@ -65,5 +66,41 @@ namespace InventoryManagementSystem.presentation.forms
                 DiskProducer.Items.Add(element.CompanyName.ToString());
             }
         }
+
+        private void DiskSave_Click(object sender, RoutedEventArgs e)
+        {
+            Disk dataDisk = new Disk();
+            ProducerDataAccess dataProducer = new ProducerDataAccess();
+            DiskDataAccess diskDataAccess = new DiskDataAccess();
+
+            dataDisk.Description = this.DiskDescription.Text;
+            if(this.DiskCapacityUnit.Text == "MB")
+            {
+                dataDisk.Capacity = UnitConverter.MegaByteToByte(Convert.ToUInt32(this.DiskCapacity.Text));
+            } else if (this.DiskCapacityUnit.Text == "GB")
+            {
+                dataDisk.Capacity = UnitConverter.GigaByteToByte(Convert.ToUInt32(this.DiskCapacity.Text));
+            }
+
+            dataDisk.Inch = Convert.ToDouble(this.DiskSize.Text);
+
+            Console.WriteLine(this.DiskType.IsChecked.ToString());
+            if(this.DiskType.IsChecked.ToString() == "True")
+            {
+                Console.WriteLine("foo");
+                dataDisk.Ssd = true;
+            } else
+            {
+                Console.WriteLine("FUY");
+                dataDisk.Ssd = false;
+            }
+
+            dataDisk.Producer = dataProducer.GetEntityByName<Producer>("Firma", this.DiskProducer.Text.ToString());
+
+            diskDataAccess.Save(dataDisk);
+
+            this.Close();
+        }
+
     }
 }
