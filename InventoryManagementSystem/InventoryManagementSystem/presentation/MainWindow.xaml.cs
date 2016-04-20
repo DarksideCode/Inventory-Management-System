@@ -40,16 +40,16 @@ namespace InventoryManagementSystem
         /// Lädt eine beliebige Liste in die Tabelle
         /// </summary>
         /// <param name="list">Eine beliebige Liste von Datensätzen</param>
-        private void AddToTable<T> (List<T> list)
+        private void AddToTable<T>(List<T> list)
         {
             this.dataGrid.ItemsSource = list;
         }
 
         private void AddToHeaderName(string currentHeader, string addition)
         {
-            for(int i = 0; i < this.dataGrid.Columns.Count; i++)
+            for (int i = 0; i < this.dataGrid.Columns.Count; i++)
             {
-                if(this.dataGrid.Columns[i].Header.ToString().Equals(currentHeader))
+                if (this.dataGrid.Columns[i].Header.ToString().Equals(currentHeader))
                 {
                     this.dataGrid.Columns[i].Header = currentHeader + addition;
                 }
@@ -64,7 +64,7 @@ namespace InventoryManagementSystem
         {
             //this.dataGrid.Columns[0].Visibility = Visibility.Hidden;
         }
-        
+
         /// <summary>
         /// Setzt die Hintergrundfarbe aller Elemente zurück auf die Ursprungsfarbe (Weiß)
         /// </summary>
@@ -72,7 +72,7 @@ namespace InventoryManagementSystem
         {
             for (int i = 0; i < this.menu.Items.Count; i++)
             {
-                if(((MenuItem)this.menu.Items[i]).Name != "menu_stammdaten" && ((MenuItem)this.menu.Items[i]).Name != "menu_komponenten")
+                if (((MenuItem)this.menu.Items[i]).Name != "menu_stammdaten" && ((MenuItem)this.menu.Items[i]).Name != "menu_komponenten")
                     ((MenuItem)this.menu.Items[i]).Background = Brushes.White;
             }
         }
@@ -93,13 +93,16 @@ namespace InventoryManagementSystem
         /// </summary>
         private void RAM_Selected(object sender, RoutedEventArgs e)
         {
-            try {
+            try
+            {
                 RandomAccessMemoryDataAccess dataAccess = new RandomAccessMemoryDataAccess();
                 this.AddToTable(mapper.MapToGraphicalObject(dataAccess.GetAllEntities<RandomAccessMemory>()));
                 this.dataGrid.Columns[0].Visibility = Visibility.Hidden;
                 this.AddToHeaderName("Speicher", " (MB)");
                 this.AddToHeaderName("Taktrate", " (MHz)");
-            } catch (MySql.Data.MySqlClient.MySqlException exception) {
+            }
+            catch (MySql.Data.MySqlClient.MySqlException exception)
+            {
                 this.showErrorMessage(exception, this.noDatabaseConnection);
             }
             this.entityName.Content = "Arbeitsspeicher";
@@ -114,12 +117,15 @@ namespace InventoryManagementSystem
         /// </summary>
         private void Disk_Selected(object sender, RoutedEventArgs e)
         {
-            try {
+            try
+            {
                 DiskDataAccess dataAccess = new DiskDataAccess();
                 this.AddToTable(mapper.MapToGraphicalObject(dataAccess.GetAllEntities<Disk>()));
                 this.dataGrid.Columns[0].Visibility = Visibility.Hidden;
                 this.AddToHeaderName("Kapazität", " (GB)");
-            } catch (MySql.Data.MySqlClient.MySqlException exception) {
+            }
+            catch (MySql.Data.MySqlClient.MySqlException exception)
+            {
                 this.showErrorMessage(exception, this.noDatabaseConnection);
             }
             this.entityName.Content = "Festplatte";
@@ -134,13 +140,16 @@ namespace InventoryManagementSystem
         /// </summary>
         private void GraphicCard_Selected(object sender, RoutedEventArgs e)
         {
-            try {
+            try
+            {
                 GraphicCardDataAccess dataAccess = new GraphicCardDataAccess();
                 this.AddToTable(mapper.MapToGraphicalObject(dataAccess.GetAllEntities<GraphicCard>()));
                 this.dataGrid.Columns[0].Visibility = Visibility.Hidden;
                 this.AddToHeaderName("Taktrate", " (MHz)");
                 this.AddToHeaderName("Speicher", " (MB)");
-            } catch (MySql.Data.MySqlClient.MySqlException exception) {
+            }
+            catch (MySql.Data.MySqlClient.MySqlException exception)
+            {
                 this.showErrorMessage(exception, this.noDatabaseConnection);
             }
             this.entityName.Content = "Grafikkarte";
@@ -155,11 +164,14 @@ namespace InventoryManagementSystem
         /// </summary>
         private void Motherboard_Selected(object sender, RoutedEventArgs e)
         {
-            try {
+            try
+            {
                 MotherboardDataAccess dataAccess = new MotherboardDataAccess();
                 this.AddToTable(mapper.MapToGraphicalObject(dataAccess.GetAllEntities<Motherboard>()));
                 this.dataGrid.Columns[0].Visibility = Visibility.Hidden;
-            } catch (MySql.Data.MySqlClient.MySqlException exception) {
+            }
+            catch (MySql.Data.MySqlClient.MySqlException exception)
+            {
                 this.showErrorMessage(exception, this.noDatabaseConnection);
             }
             this.entityName.Content = "Hauptplatine";
@@ -174,11 +186,14 @@ namespace InventoryManagementSystem
         /// </summary>
         private void Monitor_Selected(object sender, RoutedEventArgs e)
         {
-            try {
+            try
+            {
                 MonitorDataAccess dataAccess = new MonitorDataAccess();
                 this.AddToTable(mapper.MapToGraphicalObject(dataAccess.GetAllEntities<Monitor>()));
                 this.dataGrid.Columns[0].Visibility = Visibility.Hidden;
-            } catch (MySql.Data.MySqlClient.MySqlException exception) {
+            }
+            catch (MySql.Data.MySqlClient.MySqlException exception)
+            {
                 this.showErrorMessage(exception, this.noDatabaseConnection);
             }
             this.entityName.Content = "Monitor";
@@ -193,12 +208,15 @@ namespace InventoryManagementSystem
         /// </summary>
         private void Processor_Selected(object sender, RoutedEventArgs e)
         {
-            try {
+            try
+            {
                 ProcessorDataAccess dataAccess = new ProcessorDataAccess();
                 this.AddToTable(mapper.MapToGraphicalObject(dataAccess.GetAllEntities<Processor>()));
                 this.dataGrid.Columns[0].Visibility = Visibility.Hidden;
                 this.AddToHeaderName("Taktrate", " (MHz)");
-            } catch (MySql.Data.MySqlClient.MySqlException exception) {
+            }
+            catch (MySql.Data.MySqlClient.MySqlException exception)
+            {
                 this.showErrorMessage(exception, this.noDatabaseConnection);
             }
             this.entityName.Content = "Prozessor";
@@ -213,11 +231,14 @@ namespace InventoryManagementSystem
         /// </summary>
         private void Producer_Selected(object sender, RoutedEventArgs e)
         {
-            try {
+            try
+            {
                 ProducerDataAccess dataAccess = new ProducerDataAccess();
                 this.AddToTable(mapper.MapToGraphicalObject(dataAccess.GetAllEntities<Producer>()));
                 this.dataGrid.Columns[0].Visibility = Visibility.Hidden;
-            } catch (MySql.Data.MySqlClient.MySqlException exception) {
+            }
+            catch (MySql.Data.MySqlClient.MySqlException exception)
+            {
                 this.showErrorMessage(exception, this.noDatabaseConnection);
             }
             this.entityName.Content = "Hersteller";
@@ -232,12 +253,15 @@ namespace InventoryManagementSystem
         /// </summary>
         private void Interface_Selected(object sender, RoutedEventArgs e)
         {
-            try {
+            try
+            {
                 PhysicalInterfaceDataAccess dataAccess = new PhysicalInterfaceDataAccess();
                 this.AddToTable(mapper.MapToGraphicalObject(dataAccess.GetAllEntities<PhysicalInterface>()));
                 this.dataGrid.Columns[0].Visibility = Visibility.Hidden;
                 this.AddToHeaderName("Transferrate", " (MB/s)");
-            } catch (MySql.Data.MySqlClient.MySqlException exception) {
+            }
+            catch (MySql.Data.MySqlClient.MySqlException exception)
+            {
                 this.showErrorMessage(exception, this.noDatabaseConnection);
             }
             this.entityName.Content = "Schnittstelle";
@@ -300,10 +324,13 @@ namespace InventoryManagementSystem
                         dataAccess = new ProducerDataAccess();
                         id = ((ProducerGraphicalObject)this.dataGrid.SelectedItems[0]).Id;
 
-                        try {
+                        try
+                        {
                             dataAccess.Delete(id);
-                        } catch (MySql.Data.MySqlClient.MySqlException exception) {
-                            this.showErrorMessage(exception, this.elementStillReferenced);    
+                        }
+                        catch (MySql.Data.MySqlClient.MySqlException exception)
+                        {
+                            this.showErrorMessage(exception, this.elementStillReferenced);
                         }
 
                         this.AddToTable(mapper.MapToGraphicalObject(dataAccess.GetAllEntities<Producer>()));
@@ -311,10 +338,13 @@ namespace InventoryManagementSystem
                     case "PhysicalInterfaceGraphicalObject":
                         dataAccess = new PhysicalInterfaceDataAccess();
                         id = ((PhysicalInterfaceGraphicalObject)this.dataGrid.SelectedItems[0]).Id;
-                        
-                        try {
+
+                        try
+                        {
                             dataAccess.Delete(id);
-                        } catch (MySql.Data.MySqlClient.MySqlException exception) {
+                        }
+                        catch (MySql.Data.MySqlClient.MySqlException exception)
+                        {
                             this.showErrorMessage(exception, this.elementStillReferenced);
                         }
 
@@ -334,7 +364,7 @@ namespace InventoryManagementSystem
 
         private void NewBtn_Click(object sender, RoutedEventArgs e)
         {
-            switch(this.selectedEntity)
+            switch (this.selectedEntity)
             {
                 case "Disk":
                     CreateDisk createDiskWindow = new CreateDisk();
@@ -347,5 +377,20 @@ namespace InventoryManagementSystem
             }
         }
 
+        private void EditBtn_Click(object sender, RoutedEventArgs e)
+        {
+            if (this.dataGrid.SelectedItems.Count > 0)
+            {
+                switch (this.selectedEntity)
+                {
+                    case "Disk":
+                        DiskDataAccess diskDataAccess = new DiskDataAccess();
+                        DiskGraphicalObject disk = (DiskGraphicalObject)this.dataGrid.SelectedItems[0];
+                        CreateDisk createDiskWindow = new CreateDisk(diskDataAccess.GetEntityById<Disk>(disk.Id));
+                        createDiskWindow.ShowDialog();
+                        break;
+                }
+            }
+        }
     }
 }
