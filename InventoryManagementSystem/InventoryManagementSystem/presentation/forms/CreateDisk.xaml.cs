@@ -24,16 +24,28 @@ namespace InventoryManagementSystem.presentation.forms
     /// </summary>
     public partial class CreateDisk : Window
     {
+        private Disk entity;
 
-        public CreateDisk(Disk entity)
+        public CreateDisk(Disk entity = null)
         {
             InitializeComponent();
             this.SetValuesCapacityUnit();
             this.GetProducers();
-            if(entity != null)
+            this.entity = entity;
+            if (entity != null)
             {
                 this.SetAllFields(entity);
+                this.entity = entity;
             }
+            else
+            {
+                this.entity = new Disk();
+            }
+        }
+
+        public void SetPhysicalInterfaces(List<PhysicalInterfaceWithCount> physicalInterfaces)
+        {
+            this.entity.PhysicalInterfaces = physicalInterfaces;
         }
 
         private void SetValuesCapacityUnit()
@@ -47,7 +59,11 @@ namespace InventoryManagementSystem.presentation.forms
 
         private void SetAllFields(Disk entity)
         {
-           
+            this.DiskDescription.Text = entity.Description;
+            this.DiskCapacity.Text = entity.Capacity.ToString();
+            this.DiskSize.Text = entity.Inch.ToString();
+            this.DiskType.IsChecked = entity.Ssd;
+            this.DiskProducer.SelectedItem = entity.Producer.CompanyName;
         }
 
         private void SetValuesProducerBox()
@@ -78,15 +94,16 @@ namespace InventoryManagementSystem.presentation.forms
 
         private void DiskSave_Click(object sender, RoutedEventArgs e)
         {
-            Disk dataDisk = new Disk();
+            Disk dataDisk = this.entity;
             ProducerDataAccess dataProducer = new ProducerDataAccess();
             DiskDataAccess diskDataAccess = new DiskDataAccess();
 
             dataDisk.Description = this.DiskDescription.Text;
-            if(this.DiskCapacityUnit.Text == "MB")
+            if (this.DiskCapacityUnit.Text == "MB")
             {
                 dataDisk.Capacity = UnitConverter.MegaByteToByte(Convert.ToUInt32(this.DiskCapacity.Text));
-            } else if (this.DiskCapacityUnit.Text == "GB")
+            }
+            else if (this.DiskCapacityUnit.Text == "GB")
             {
                 dataDisk.Capacity = UnitConverter.GigaByteToByte(Convert.ToUInt32(this.DiskCapacity.Text));
             }
@@ -100,5 +117,23 @@ namespace InventoryManagementSystem.presentation.forms
             this.Close();
         }
 
+        private void DiskInterface_Click(object sender, RoutedEventArgs e)
+        {
+            EditPhysicalInterfaces interfaceWindow;
+
+            if (this.entity != null)
+            {
+                interfaceWindow = new EditPhysicalInterfaces(this.entity.PhysicalInterfaces);
+                interfaceWindow.ShowDialog();
+                entity.PhysicalInterfaces = interfaceWindow.list;
+            }
+            else
+            {
+                interfaceWindow = new EditPhysicalInterfaces(new List<PhysicalInterfaceWithCount>());
+                interfaceWindow.ShowDialog();
+                entity.PhysicalInterfaces = interfaceWindow.list;
+            }
+        
+        }
     }
 }

@@ -12,7 +12,14 @@
                 </LinearGradientBrush>
             </Button.Background>
         </Button>
-        <Button x:Name="editBtn" Content="Bearbeiten" HorizontalAlignment="Left" Margin="353,295,0,0" VerticalAlignment="Top" Width="79" Height="31" IsEnabled="False"/>
+        <Button x:Name="editBtn" Content="Bearbeiten" HorizontalAlignment="Left" Margin="353,295,0,0" VerticalAlignment="Top" Width="79" Height="31" FontWeight="Bold" Click="EditBtn_Click">
+            <Button.Background>
+                <LinearGradientBrush EndPoint="0,1" StartPoint="0,0">
+                    <GradientStop Color="#FFD5E8D4" Offset="0"/>
+                    <GradientStop Color="#FF97D077" Offset="1"/>
+                </LinearGradientBrush>
+            </Button.Background>
+        </Button>
         <Button x:Name="deleteBtn" HorizontalAlignment="Left" Margin="457,295,0,0" VerticalAlignment="Top" Width="79" Height="31" Click="Delete_Entity" FontWeight="Bold" Content="Löschen">
             <Button.Background>
                 <LinearGradientBrush EndPoint="0,1" StartPoint="0,0">

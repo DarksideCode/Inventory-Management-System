@@ -21,10 +21,13 @@ namespace InventoryManagementSystem.presentation
     /// </summary>
     public partial class EditPhysicalInterfaces : Window
     {
+        public List<PhysicalInterfaceWithCount> list;
+
         public EditPhysicalInterfaces(List<PhysicalInterfaceWithCount> usedEntities)
         {
             InitializeComponent();
             this.FillLists(usedEntities);
+            list = usedEntities;
         }
 
         private void FillLists(List<PhysicalInterfaceWithCount> usedEntities)
@@ -66,7 +69,33 @@ namespace InventoryManagementSystem.presentation
 
         private void Save_Click(object sender, RoutedEventArgs e)
         {
+            List<PhysicalInterfaceWithCount> list = this.BuildList();
+            this.Close();
+        }
 
+        private List<PhysicalInterfaceWithCount> BuildList()
+        {
+            PhysicalInterfaceDataAccess dataAccess = new PhysicalInterfaceDataAccess();
+
+            foreach (String interfaceName in this.usedList.Items)
+            {
+                bool foundEntity = false;
+                for (int i = 0; i < list.Count; i++)
+                {
+                    if (list[i].PhysicalInterface.Name.Equals(interfaceName))
+                    {
+                        list[i].Number = list[i].Number + 1;
+                        foundEntity = true;
+                    }
+                }
+                if (!foundEntity)
+                {
+                    PhysicalInterface physicalInterface = dataAccess.GetByName(interfaceName);
+                    list.Add(new PhysicalInterfaceWithCount(physicalInterface, 1));
+                }
+            }
+
+            return list;
         }
     }
 }
