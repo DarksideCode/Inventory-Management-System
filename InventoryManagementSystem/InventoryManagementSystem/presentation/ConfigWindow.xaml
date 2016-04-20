@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:InventoryManagementSystem.presentation"
         mc:Ignorable="d"
-        Title="Settings" Height="250.653" Width="426.11" ResizeMode="NoResize">
+        Title="Settings" Height="234.947" Width="400.587" ResizeMode="NoResize">
     <Grid>
         <Label x:Name="Lable01" Content="Datenbank Name" HorizontalAlignment="Left" Margin="17,19,0,0" VerticalAlignment="Top"/>
         <Label x:Name="label04" Content="Passwort" HorizontalAlignment="Left" Margin="223,76,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.51,0.819"/>
@@ -16,6 +16,14 @@
         <TextBox x:Name="TBPraefix" HorizontalAlignment="Left" Height="23" Margin="24,102,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="147"/>
         <TextBox x:Name="TBHost" HorizontalAlignment="Left" Height="23" Margin="24,157,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="147"/>
         <TextBox x:Name="TBUser" HorizontalAlignment="Left" Height="23" Margin="230,45,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="147"/>
-        <TextBox x:Name="TBPassword" HorizontalAlignment="Left" Height="23" Margin="230,102,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="147"/>
+        <PasswordBox x:Name="TBPassword" HorizontalAlignment="Left" Margin="230,102,0,0" VerticalAlignment="Top" Width="147" Height="23" Password="TextBox"/>
+        <Button x:Name="BtnSave" Content="Speichern" HorizontalAlignment="Left" Margin="230,157,0,0" VerticalAlignment="Top" Width="71" Height="23" FontWeight="Bold" Click="BtnSave_Click">
+            <Button.Background>
+                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                    <GradientStop Color="WhiteSmoke" Offset="0"/>
+                    <GradientStop Color="#FF97D077" Offset="1"/>
+                </LinearGradientBrush>
+            </Button.Background>
+        </Button>
     </Grid>
 </Window>

@@ -6,26 +6,47 @@
         * string contains DB Name
         **/
         private string DBName = "inventory";
-
+        public string PDBName
+        {
+            get { return DBName; }
+            set { DBName = value; }
+        }
         /**
         * string contains DB User
         **/
         private string DBUser = "root";
-
+        public string PDBUser
+        {
+            get { return DBUser; }
+            set { DBUser = value; }
+        }
         /**
         * string contains DB Password
         **/
         private string DBPassword;
-
+        public string PDBPassword
+        {
+            get { return DBPassword; }
+            set { DBPassword = value; }
+        }
         /**
         * string contains DB Praefix
         **/
         private string DBPraefix = "ims_";
-
+        public string PDBPraefix
+        {
+            get { return DBPraefix; }
+            set { DBPraefix = value; }
+        }
         /**
         * string contains DB Host
         **/
         private string DBHost = "localhost";
+        public string PDBHost
+        {
+            get { return DBHost; }
+            set { DBHost = value; }
+        }
 
         public ConfigProzesser()
         {
