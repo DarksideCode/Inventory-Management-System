@@ -52,6 +52,8 @@ namespace InventoryManagementSystem.presentation
             config.saveDBHost(DBHost);
             config.saveDBUser(DBUser);
             config.saveDBPassword(DBPassword);
+
+            this.Close();
         }
     }
 }
