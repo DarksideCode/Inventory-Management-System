@@ -92,27 +92,47 @@ namespace InventoryManagementSystem.presentation.forms
             }
         }
 
+        /// <summary>
+        /// Öffnet eine MessageBox mit der übergebenen Fehlermeldung.
+        /// </summary>
+        /// <param name="exception">Die Exception, welche ausgelöst wurde</param>
+        /// <param name="message">Die Fehlermeldung, welche angezeigt wird</param>
+        private void showErrorMessage(Exception exception, string message)
+        {
+            MessageBox.Show(message, exception.GetType().Name, MessageBoxButton.OK, MessageBoxImage.Warning);
+        }
+
         private void DiskSave_Click(object sender, RoutedEventArgs e)
         {
             Disk dataDisk = this.entity;
             ProducerDataAccess dataProducer = new ProducerDataAccess();
             DiskDataAccess diskDataAccess = new DiskDataAccess();
+            DiskValidator validator = new DiskValidator();
 
-            dataDisk.Description = this.DiskDescription.Text;
-            if (this.DiskCapacityUnit.Text == "MB")
-            {
-                dataDisk.Capacity = UnitConverter.MegaByteToByte(Convert.ToUInt32(this.DiskCapacity.Text));
+            try {
+                dataDisk.Description = this.DiskDescription.Text;
+                if (this.DiskCapacityUnit.Text == "MB")
+                {
+                    dataDisk.Capacity = UnitConverter.MegaByteToByte(Convert.ToUInt32(this.DiskCapacity.Text));
+                }
+                else if (this.DiskCapacityUnit.Text == "GB")
+                {
+                    dataDisk.Capacity = UnitConverter.GigaByteToByte(Convert.ToUInt32(this.DiskCapacity.Text));
+                }
+
+                dataDisk.Inch = Convert.ToDouble(this.DiskSize.Text);
+                dataDisk.Ssd = Convert.ToBoolean(this.DiskType.IsChecked);
+                dataDisk.Producer = dataProducer.GetEntityByName<Producer>("Firma", this.DiskProducer.Text.ToString());
+                if (!validator.CheckConsistency(dataDisk))
+                {
+                    throw new FormatException();
+                }
+            } catch (FormatException exception) {
+                this.showErrorMessage(exception, "Die eingegebenen Daten sind inkonsistent. Bitte überprüfen Sie Ihre Eingaben!");
             }
-            else if (this.DiskCapacityUnit.Text == "GB")
-            {
-                dataDisk.Capacity = UnitConverter.GigaByteToByte(Convert.ToUInt32(this.DiskCapacity.Text));
-            }
 
-            dataDisk.Inch = Convert.ToDouble(this.DiskSize.Text);
-            dataDisk.Ssd = Convert.ToBoolean(this.DiskType.IsChecked);
-            dataDisk.Producer = dataProducer.GetEntityByName<Producer>("Firma", this.DiskProducer.Text.ToString());
-
-            diskDataAccess.Save(dataDisk);
+            
+            //diskDataAccess.Save(dataDisk);
 
             this.Close();
         }
