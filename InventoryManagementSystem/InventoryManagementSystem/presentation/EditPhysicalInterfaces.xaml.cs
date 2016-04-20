@@ -27,7 +27,7 @@ namespace InventoryManagementSystem.presentation
         {
             InitializeComponent();
             this.FillLists(usedEntities);
-            list = new List<PhysicalInterfaceWithCount>();
+            list = usedEntities;
         }
 
         private void FillLists(List<PhysicalInterfaceWithCount> usedEntities)
