@@ -374,6 +374,10 @@ namespace InventoryManagementSystem
                     CreateRAM createRandomAccessMemoryWindow = new CreateRAM();
                     createRandomAccessMemoryWindow.ShowDialog();
                     break;
+                case "GraphicCard":
+                    CreateGraphicCard createGrapicCardWindow = new CreateGraphicCard();
+                    createGrapicCardWindow.ShowDialog();
+                    break;
             }
         }
 

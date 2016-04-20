@@ -101,6 +101,9 @@
     <Compile Include="presentation\forms\CreateDisk.xaml.cs">
       <DependentUpon>CreateDisk.xaml</DependentUpon>
     </Compile>
+    <Compile Include="presentation\forms\CreateGraphicCard.xaml.cs">
+      <DependentUpon>CreateGraphicCard.xaml</DependentUpon>
+    </Compile>
     <Compile Include="presentation\forms\CreateRAM.xaml.cs">
       <DependentUpon>CreateRAM.xaml</DependentUpon>
     </Compile>
@@ -129,6 +132,10 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="presentation\forms\CreateDisk.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="presentation\forms\CreateGraphicCard.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
