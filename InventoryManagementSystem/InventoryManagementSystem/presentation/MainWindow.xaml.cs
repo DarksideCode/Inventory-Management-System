@@ -334,7 +334,6 @@ namespace InventoryManagementSystem
 
         private void NewBtn_Click(object sender, RoutedEventArgs e)
         {
-            Console.WriteLine(this.selectedEntity);
             switch(this.selectedEntity)
             {
                 case "Disk":

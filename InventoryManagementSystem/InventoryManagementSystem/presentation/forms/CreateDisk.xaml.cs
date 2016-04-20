@@ -28,7 +28,7 @@ namespace InventoryManagementSystem.presentation.forms
         {
             InitializeComponent();
             this.SetValuesCapacityUnit();
-
+            this.GetProducers();
         }
 
         private void SetValuesCapacityUnit()
@@ -52,6 +52,18 @@ namespace InventoryManagementSystem.presentation.forms
         {
             // Close this window
             this.Close();
+        }
+
+        private void GetProducers()
+        {
+            ProducerDataAccess dataProducers = new ProducerDataAccess();
+
+            List<Producer> producers = dataProducers.GetAllEntities<Producer>();
+
+            foreach (Producer element in producers)
+            {
+                DiskProducer.Items.Add(element.CompanyName.ToString());
+            }
         }
     }
 }
