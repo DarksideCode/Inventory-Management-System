@@ -62,7 +62,7 @@ namespace InventoryManagementSystem
         /// </summary>
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-            this.dataGrid.Columns[0].Visibility = Visibility.Hidden;
+            //this.dataGrid.Columns[0].Visibility = Visibility.Hidden;
         }
         
         /// <summary>
@@ -338,7 +338,7 @@ namespace InventoryManagementSystem
             switch(this.selectedEntity)
             {
                 case "Disk":
-                    CreateEntity createWindow = new CreateEntity(this.selectedEntity);
+                    CreateDisk createWindow = new CreateDisk();
                     createWindow.ShowDialog();
                     break;
             }

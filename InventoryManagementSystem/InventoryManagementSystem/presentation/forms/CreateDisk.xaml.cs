@@ -14,13 +14,14 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using InventoryManagementSystem.dataAccess;
 using InventoryManagementSystem.components;
+using InventoryManagementSystem.validation;
 
 namespace InventoryManagementSystem.presentation.forms
 {
     /// <summary>
     /// Interaction logic for CreateDisk.xaml
     /// </summary>
-    public partial class CreateDisk : Page
+    public partial class CreateDisk : Window
     {
 
         public CreateDisk()
@@ -45,6 +46,12 @@ namespace InventoryManagementSystem.presentation.forms
 
             DiskProducer.Items.Add(producer.CompanyName);
             //DiskProducer.SelectedIndex = 1;
+        }
+
+        private void DiskCancel_Click(object sender, RoutedEventArgs e)
+        {
+            // Close this window
+            this.Close();
         }
     }
 }
