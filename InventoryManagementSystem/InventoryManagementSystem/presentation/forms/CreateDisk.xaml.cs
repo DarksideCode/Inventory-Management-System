@@ -25,6 +25,7 @@ namespace InventoryManagementSystem.presentation.forms
     public partial class CreateDisk : Window
     {
         private Disk entity;
+        private bool isAvailable;
 
         public CreateDisk(Disk entity = null)
         {
@@ -36,10 +37,12 @@ namespace InventoryManagementSystem.presentation.forms
             {
                 this.SetAllFields(entity);
                 this.entity = entity;
+                this.isAvailable = true;
             }
             else
             {
                 this.entity = new Disk();
+                this.isAvailable = false;
             }
         }
 
@@ -60,7 +63,7 @@ namespace InventoryManagementSystem.presentation.forms
         private void SetAllFields(Disk entity)
         {
             this.DiskDescription.Text = entity.Description;
-            this.DiskCapacity.Text = entity.Capacity.ToString();
+            this.DiskCapacity.Text = UnitConverter.ByteToGigaByte(entity.Capacity).ToString();
             this.DiskSize.Text = entity.Inch.ToString();
             this.DiskType.IsChecked = entity.Ssd;
             this.DiskProducer.SelectedItem = entity.Producer.CompanyName;
@@ -131,9 +134,10 @@ namespace InventoryManagementSystem.presentation.forms
                 this.showErrorMessage(exception, "Die eingegebenen Daten sind inkonsistent. Bitte überprüfen Sie Ihre Eingaben!");
             }
 
-            
-            //diskDataAccess.Save(dataDisk);
-
+            if (this.isAvailable)
+                diskDataAccess.Update(dataDisk);
+            else
+                diskDataAccess.Save(dataDisk);
             this.Close();
         }
 
