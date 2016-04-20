@@ -59,7 +59,11 @@ namespace InventoryManagementSystem.presentation.forms
 
         private void SetAllFields(Disk entity)
         {
-            
+            this.DiskDescription.Text = entity.Description;
+            this.DiskCapacity.Text = entity.Capacity.ToString();
+            this.DiskSize.Text = entity.Inch.ToString();
+            this.DiskType.IsChecked = entity.Ssd;
+            this.DiskProducer.SelectedItem = entity.Producer.CompanyName;
         }
 
         private void SetValuesProducerBox()
