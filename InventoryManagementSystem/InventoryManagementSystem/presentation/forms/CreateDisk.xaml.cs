@@ -57,13 +57,13 @@ namespace InventoryManagementSystem.presentation.forms
             DiskCapacityUnit.Items.Add("GB");
             DiskCapacityUnit.Items.Add("TB");
 
-            DiskCapacityUnit.SelectedIndex = 1;
+            DiskCapacityUnit.SelectedIndex = 0;
         }
 
         private void SetAllFields(Disk entity)
         {
             this.DiskDescription.Text = entity.Description;
-            this.DiskCapacity.Text = UnitConverter.ByteToGigaByte(entity.Capacity).ToString();
+            this.DiskCapacity.Text = entity.Capacity.ToString();
             this.DiskSize.Text = entity.Inch.ToString();
             this.DiskType.IsChecked = entity.Ssd;
             this.DiskProducer.SelectedItem = entity.Producer.CompanyName;

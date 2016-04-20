@@ -18,7 +18,7 @@ namespace InventoryManagementSystem.control
         /// <returns>Parameter in Kilobyte</returns>
         static public ulong ByteToKiloByte(double value)
         {
-            return (ulong) value / 1024;
+            return (ulong) value / 1000;
         }
 
         /// <summary>
@@ -28,7 +28,7 @@ namespace InventoryManagementSystem.control
         /// <returns>Parameter in Megabyte</returns>
         static public ulong ByteToMegaByte(double value)
         {
-            return (ulong) value / (1024 * 1024);
+            return (ulong) value / (1000 * 1000);
         }
 
         /// <summary>
@@ -38,7 +38,7 @@ namespace InventoryManagementSystem.control
         /// <returns>Parameter in Gigabyte</returns>
         static public ulong ByteToGigaByte(double value)
         {
-            return (ulong) value / (1024 * 1024 * 1024);
+            return (ulong) value / (1000 * 1000 * 1000);
         }
 
         /// <summary>
@@ -48,7 +48,7 @@ namespace InventoryManagementSystem.control
         /// <returns>Parameter in Byte</returns>
         static public ulong KiloByteToByte(double value)
         {
-            return (ulong) value * 1024;
+            return (ulong) value * 1000;
         }
 
         /// <summary>
@@ -58,7 +58,7 @@ namespace InventoryManagementSystem.control
         /// <returns>Parameter in Byte</returns>
         static public ulong MegaByteToByte(double value)
         {
-            return (ulong) value * 1024 * 1024;
+            return (ulong) value * 1000 * 1000;
         }
 
         /// <summary>
@@ -68,7 +68,7 @@ namespace InventoryManagementSystem.control
         /// <returns>Parameter in Byte</returns>
         static public ulong GigaByteToByte(double value)
         {
-            return (ulong) value * 1024 * 1024 * 1024;
+            return (ulong) value * 1000 * 1000 * 1000;
         }
     }
 }
