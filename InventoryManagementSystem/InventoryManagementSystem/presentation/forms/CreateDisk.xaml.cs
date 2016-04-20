@@ -1,17 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 using InventoryManagementSystem.dataAccess;
 using InventoryManagementSystem.components;
 using InventoryManagementSystem.validation;
@@ -27,15 +16,20 @@ namespace InventoryManagementSystem.presentation.forms
         private Disk entity;
         private bool isAvailable;
 
+        /// <summary>
+        /// Konstruktor: Setzt die Wert für die Initialisierung des Dialoges
+        /// </summary>
+        /// <param name="entity">Objekt einer Disk</param>
         public CreateDisk(Disk entity = null)
         {
             InitializeComponent();
-            this.SetValuesCapacityUnit();
+            this.DiskCapacityUnit.SelectedIndex = 0;
             this.GetProducers();
             this.entity = entity;
+            
             if (entity != null)
             {
-                this.SetAllFields(entity);
+                this.SetAllFields();
                 this.entity = entity;
                 this.isAvailable = true;
             }
@@ -46,47 +40,42 @@ namespace InventoryManagementSystem.presentation.forms
             }
         }
 
+        /// <summary>
+        /// Setzt die Schnittstellen der aktuellen Entität
+        /// Wird von EditPhysicalInterfaces aufgerufen
+        /// </summary>
+        /// <param name="physicalInterfaces">Liste von PhysicalInterfaceWithCount</param>
         public void SetPhysicalInterfaces(List<PhysicalInterfaceWithCount> physicalInterfaces)
         {
             this.entity.PhysicalInterfaces = physicalInterfaces;
         }
 
-        private void SetValuesCapacityUnit()
+        /// <summary>
+        /// Setzt die Werte der UI-Elemente, wenn eine Entität bearbeitet wird
+        /// </summary>
+        private void SetAllFields()
         {
-            DiskCapacityUnit.Items.Add("MB");
-            DiskCapacityUnit.Items.Add("GB");
-            DiskCapacityUnit.Items.Add("TB");
-
-            DiskCapacityUnit.SelectedIndex = 0;
+            this.DiskDescription.Text = this.entity.Description;
+            this.DiskCapacity.Text = this.entity.Capacity.ToString();
+            this.DiskSize.Text = this.entity.Inch.ToString();
+            this.DiskType.IsChecked = this.entity.Ssd;
+            this.DiskProducer.SelectedItem = this.entity.Producer.CompanyName;
         }
 
-        private void SetAllFields(Disk entity)
-        {
-            this.DiskDescription.Text = entity.Description;
-            this.DiskCapacity.Text = entity.Capacity.ToString();
-            this.DiskSize.Text = entity.Inch.ToString();
-            this.DiskType.IsChecked = entity.Ssd;
-            this.DiskProducer.SelectedItem = entity.Producer.CompanyName;
-        }
-
-        private void SetValuesProducerBox()
-        {
-            Producer producer = new Producer();
-
-            DiskProducer.Items.Add(producer.CompanyName);
-            //DiskProducer.SelectedIndex = 1;
-        }
-
+        /// <summary>
+        /// Schließt das aktuelle Fenster
+        /// </summary>
         private void DiskCancel_Click(object sender, RoutedEventArgs e)
         {
-            // Close this window
             this.Close();
         }
 
+        /// <summary>
+        /// Fügt alle Hersteller aus der Datenbank dem Drop-Down-Menü hinzu
+        /// </summary>
         private void GetProducers()
         {
             ProducerDataAccess dataProducers = new ProducerDataAccess();
-
             List<Producer> producers = dataProducers.GetAllEntities<Producer>();
 
             foreach (Producer element in producers)
@@ -105,6 +94,11 @@ namespace InventoryManagementSystem.presentation.forms
             MessageBox.Show(message, exception.GetType().Name, MessageBoxButton.OK, MessageBoxImage.Warning);
         }
 
+        /// <summary>
+        /// Ruft die Informationen aus dem Formular ab und speichert sie in die Datenbank.
+        /// Führt eine Umrechnung in MB aus. Wirft eine Fehlermeldung, wenn die Validierung
+        /// fehlschlägt.
+        /// </summary>
         private void DiskSave_Click(object sender, RoutedEventArgs e)
         {
             Disk dataDisk = this.entity;
@@ -141,6 +135,9 @@ namespace InventoryManagementSystem.presentation.forms
             this.Close();
         }
 
+        /// <summary>
+        /// Öffnet das Fenster für die Verwaltung der Schnittstellen.
+        /// </summary>
         private void DiskInterface_Click(object sender, RoutedEventArgs e)
         {
             EditPhysicalInterfaces interfaceWindow;
