@@ -25,11 +25,15 @@ namespace InventoryManagementSystem.presentation.forms
     public partial class CreateDisk : Window
     {
 
-        public CreateDisk()
+        public CreateDisk(Disk entity)
         {
             InitializeComponent();
             this.SetValuesCapacityUnit();
             this.GetProducers();
+            if(entity != null)
+            {
+                this.SetAllFields(entity);
+            }
         }
 
         private void SetValuesCapacityUnit()
@@ -39,6 +43,11 @@ namespace InventoryManagementSystem.presentation.forms
             DiskCapacityUnit.Items.Add("TB");
 
             DiskCapacityUnit.SelectedIndex = 1;
+        }
+
+        private void SetAllFields(Disk entity)
+        {
+           
         }
 
         private void SetValuesProducerBox()
@@ -83,18 +92,7 @@ namespace InventoryManagementSystem.presentation.forms
             }
 
             dataDisk.Inch = Convert.ToDouble(this.DiskSize.Text);
-
-            Console.WriteLine(this.DiskType.IsChecked.ToString());
-            if(this.DiskType.IsChecked.ToString() == "True")
-            {
-                Console.WriteLine("foo");
-                dataDisk.Ssd = true;
-            } else
-            {
-                Console.WriteLine("FUY");
-                dataDisk.Ssd = false;
-            }
-
+            dataDisk.Ssd = Convert.ToBoolean(this.DiskType.IsChecked);
             dataDisk.Producer = dataProducer.GetEntityByName<Producer>("Firma", this.DiskProducer.Text.ToString());
 
             diskDataAccess.Save(dataDisk);

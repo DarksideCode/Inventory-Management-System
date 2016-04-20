@@ -337,7 +337,7 @@ namespace InventoryManagementSystem
             switch(this.selectedEntity)
             {
                 case "Disk":
-                    CreateDisk createWindow = new CreateDisk();
+                    CreateDisk createWindow = new CreateDisk(null);
                     createWindow.ShowDialog();
                     break;
             }
