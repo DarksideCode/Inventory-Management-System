@@ -34,7 +34,7 @@ namespace InventoryManagementSystem.dataAccess
             MySqlCommand command = connection.CreateCommand();
 
             command.CommandText = "INSERT INTO `" + this.GetTableName() + "`(`Beschreibung`, `Kapazität`, `SSD`, `Zoll`, `ID_Hersteller`) "
-                                + "VALUES ('" + entity.Description + "'," + entity.Capacity + ",'" + entity.Ssd + "','" + entity.Inch + "',"
+                                + "VALUES ('" + entity.Description + "'," + entity.Capacity + ",'" + Convert.ToInt32(entity.Ssd) + "','" + entity.Inch + "',"
                                 + entity.Producer.Id + ")";
 
             connection.Open();
