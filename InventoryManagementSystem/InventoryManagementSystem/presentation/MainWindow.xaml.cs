@@ -337,8 +337,12 @@ namespace InventoryManagementSystem
             switch(this.selectedEntity)
             {
                 case "Disk":
-                    CreateDisk createWindow = new CreateDisk();
-                    createWindow.ShowDialog();
+                    CreateDisk createDiskWindow = new CreateDisk();
+                    createDiskWindow.ShowDialog();
+                    break;
+                case "RandomAccessMemory":
+                    CreateRAM createRandomAccessMemoryWindow = new CreateRAM();
+                    createRandomAccessMemoryWindow.ShowDialog();
                     break;
             }
         }
