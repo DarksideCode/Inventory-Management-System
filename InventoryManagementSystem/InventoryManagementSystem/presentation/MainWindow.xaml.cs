@@ -383,6 +383,7 @@ namespace InventoryManagementSystem
 
         private void EditBtn_Click(object sender, RoutedEventArgs e)
         {
+            //TODO: Mapping zu Enität von GraphicalObjectMapper übernehmen lassen!
             if (this.dataGrid.SelectedItems.Count > 0)
             {
                 switch (this.selectedEntity)
@@ -398,6 +399,12 @@ namespace InventoryManagementSystem
                         DiskGraphicalObject disk = (DiskGraphicalObject)this.dataGrid.SelectedItems[0];
                         CreateDisk createDiskWindow = new CreateDisk(diskDataAccess.GetEntityById<Disk>(disk.Id));
                         createDiskWindow.ShowDialog();
+                        break;
+                    case "GraphicCard":
+                        GraphicCardDataAccess graphicCardDataAccess = new GraphicCardDataAccess();
+                        GraphicCardGraphicalObject graphicCard = (GraphicCardGraphicalObject)this.dataGrid.SelectedItems[0];
+                        CreateGraphicCard createGraphicCardWindow = new CreateGraphicCard(graphicCardDataAccess.GetEntityById<GraphicCard>(graphicCard.Id));
+                        createGraphicCardWindow.ShowDialog();
                         break;
                 }
             }

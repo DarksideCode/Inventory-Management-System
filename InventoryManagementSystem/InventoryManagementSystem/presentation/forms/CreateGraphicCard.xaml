@@ -5,21 +5,24 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:InventoryManagementSystem.presentation.forms"
         mc:Ignorable="d"
-        Title="CreateGraphicCard" Height="300" Width="316.5">
+        Title="Grafikkarte - IMS" Height="317" Width="312" ResizeMode="NoResize">
     <Grid>
         <Label x:Name="CreateEntityName" Content="Grafikkarte" VerticalAlignment="Top" Margin="73,10,71,0" FontSize="18" FontWeight="Bold" RenderTransformOrigin="-0.15,0.356" Width="156" Opacity="0.9" AllowDrop="True" IsHitTestVisible="False" HorizontalAlignment="Center" HorizontalContentAlignment="Center"/>
         <Label x:Name="GraphicDescriptionLBL" Content="Beschreibung" HorizontalAlignment="Left" Margin="26,44,0,0" VerticalAlignment="Top"/>
-        <TextBox x:Name="GraphicDescription" HorizontalAlignment="Left" Height="23" Margin="140,47,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="140"/>
+        <TextBox x:Name="GraphicDescription" HorizontalAlignment="Left" Height="23" Margin="136,44,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="134"/>
         <Label x:Name="GraphicClockRateLBL" Content="Taktrate" HorizontalAlignment="Left" Margin="26,75,0,0" VerticalAlignment="Top"/>
-        <TextBox x:Name="GraphicClockRate" HorizontalAlignment="Left" Height="23" Margin="140,78,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="140"/>
+        <TextBox x:Name="GraphicClockRate" HorizontalAlignment="Left" Height="23" Margin="136,78,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="134"/>
         <Label x:Name="GraphicModelLBL" Content="Model" HorizontalAlignment="Left" Margin="26,110,0,0" VerticalAlignment="Top"/>
-        <TextBox x:Name="GraphicModel" HorizontalAlignment="Left" Height="23" Margin="140,113,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="140"/>
+        <TextBox x:Name="GraphicModel" HorizontalAlignment="Left" Height="23" Margin="136,113,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="134"/>
         <Label x:Name="GraphicStorageLBL" Content="Grafikspeicher" HorizontalAlignment="Left" Margin="26,141,0,0" VerticalAlignment="Top"/>
-        <TextBox x:Name="GraphicStorage" HorizontalAlignment="Left" Height="23" Margin="140,145,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="76"/>
+        <TextBox x:Name="GraphicStorage" HorizontalAlignment="Left" Height="23" Margin="136,144,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="66" RenderTransformOrigin="0.53,0"/>
         <Label x:Name="GraphicProducerLBL" Content="Hersteller" HorizontalAlignment="Left" Margin="26,172,0,0" VerticalAlignment="Top"/>
-        <ComboBox x:Name="GraphicProducer" HorizontalAlignment="Left" Margin="140,176,0,0" VerticalAlignment="Top" Width="140"/>
-        <ComboBox x:Name="GraphicStorageUnit" HorizontalAlignment="Left" Margin="235,145,0,0" VerticalAlignment="Top" Width="45"/>
-        <Button x:Name="GraphicSave" Content="Speichern" HorizontalAlignment="Left" Margin="48,230,0,0" VerticalAlignment="Top" Width="75" Click="GraphicSave_Click">
+        <ComboBox x:Name="GraphicProducer" HorizontalAlignment="Left" Margin="136,176,0,0" VerticalAlignment="Top" Width="134"/>
+        <ComboBox x:Name="GraphicStorageUnit" HorizontalAlignment="Left" Margin="218,144,0,0" VerticalAlignment="Top" Width="52">
+            <ComboBoxItem Content="MB" HorizontalAlignment="Left" Width="50"/>
+            <ComboBoxItem Content="GB" HorizontalAlignment="Left" Width="50"/>
+        </ComboBox>
+        <Button x:Name="GraphicSave" Content="Speichern" HorizontalAlignment="Left" Margin="48,245,0,0" VerticalAlignment="Top" Width="75" Click="GraphicSave_Click">
             <Button.Background>
                 <LinearGradientBrush EndPoint="0,1" StartPoint="0,0">
                     <GradientStop Color="#FFD5E8D4" Offset="0"/>
@@ -27,7 +30,16 @@
                 </LinearGradientBrush>
             </Button.Background>
         </Button>
-        <Button x:Name="GraphicCancel" Content="Abbrechen" HorizontalAlignment="Left" Margin="176,230,0,0" VerticalAlignment="Top" Width="75" RenderTransformOrigin="0.474,1.075" Click="GraphicCancel_Click">
+        <Button x:Name="GraphicCancel" Content="Abbrechen" HorizontalAlignment="Left" Margin="176,245,0,0" VerticalAlignment="Top" Width="75" RenderTransformOrigin="0.474,1.075" Click="GraphicCancel_Click">
+            <Button.Background>
+                <LinearGradientBrush EndPoint="0,1" StartPoint="0,0">
+                    <GradientStop Color="#FFD5E8D4" Offset="0"/>
+                    <GradientStop Color="#FF97D077" Offset="1"/>
+                </LinearGradientBrush>
+            </Button.Background>
+        </Button>
+        <Label x:Name="GraphicInterfaceLBL" Content="Schnittstellen" HorizontalAlignment="Left" Margin="26,201,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.506,0.885"/>
+        <Button x:Name="GraphicInterface" Content="Verwalten" HorizontalAlignment="Left" Margin="176,205,0,0" VerticalAlignment="Top" Width="75" RenderTransformOrigin="0.474,1.075" Click="GraphicInterface_Click">
             <Button.Background>
                 <LinearGradientBrush EndPoint="0,1" StartPoint="0,0">
                     <GradientStop Color="#FFD5E8D4" Offset="0"/>

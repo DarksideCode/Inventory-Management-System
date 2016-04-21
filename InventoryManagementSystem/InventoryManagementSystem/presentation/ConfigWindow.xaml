@@ -8,7 +8,7 @@
         Title="Settings" Height="271.218" Width="329.92" ResizeMode="NoResize">
     <Grid>
         <Menu x:Name="menu_Copy" HorizontalAlignment="Left" Height="179" Margin="169,10,0,0" VerticalAlignment="Top" Width="142">
-            <MenuItem Header="Anmeldung" Width="142" FontWeight="Bold">
+            <MenuItem Header="Anmeldung" Width="142" FontWeight="Bold" IsEnabled="False" Foreground="Black">
                 <MenuItem.Background>
                     <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
                         <GradientStop Color="White" Offset="0"/>
@@ -18,7 +18,7 @@
             </MenuItem>
         </Menu>
         <Menu x:Name="menu" HorizontalAlignment="Left" Height="179" Margin="10,10,0,0" VerticalAlignment="Top" Width="141">
-            <MenuItem Header="Datenbank" Width="141" FontWeight="Bold">
+            <MenuItem Header="Datenbank" Width="141" FontWeight="Bold" IsEnabled="False" Foreground="Black">
                 <MenuItem.Background>
                     <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
                         <GradientStop Color="White" Offset="0"/>

@@ -41,16 +41,6 @@ namespace InventoryManagementSystem.presentation.forms
         }
 
         /// <summary>
-        /// Setzt die Schnittstellen der aktuellen Entität
-        /// Wird von EditPhysicalInterfaces aufgerufen
-        /// </summary>
-        /// <param name="physicalInterfaces">Liste von PhysicalInterfaceWithCount</param>
-        public void SetPhysicalInterfaces(List<PhysicalInterfaceWithCount> physicalInterfaces)
-        {
-            this.entity.PhysicalInterfaces = physicalInterfaces;
-        }
-
-        /// <summary>
         /// Setzt die Werte der UI-Elemente, wenn eine Entität bearbeitet wird
         /// </summary>
         private void SetAllFields()
@@ -156,7 +146,6 @@ namespace InventoryManagementSystem.presentation.forms
                 interfaceWindow.ShowDialog();
                 entity.PhysicalInterfaces = interfaceWindow.list;
             }
-        
         }
     }
 }
