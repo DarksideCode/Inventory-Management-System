@@ -5,7 +5,7 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:InventoryManagementSystem.presentation.forms"
       mc:Ignorable="d"
-      Title="CreateDisk" Height="315.438" Width="312.897">
+      Title="Festplatte - IMS" Height="325" Width="312" ResizeMode="NoResize">
 
     <Grid>
         <Label x:Name="CreateEntityName" Content="Festplatte" VerticalAlignment="Top" Margin="73,10,71,0" FontSize="18" FontWeight="Bold" RenderTransformOrigin="-0.15,0.356" Width="156" Opacity="0.9" AllowDrop="True" IsHitTestVisible="False" HorizontalAlignment="Center" HorizontalContentAlignment="Center"/>

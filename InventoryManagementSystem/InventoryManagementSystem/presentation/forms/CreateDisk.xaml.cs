@@ -19,7 +19,7 @@ namespace InventoryManagementSystem.presentation.forms
         /// <summary>
         /// Konstruktor: Setzt die Wert für die Initialisierung des Dialoges
         /// </summary>
-        /// <param name="entity">Objekt einer Disk</param>
+        /// <param name="entity">Objekt einer Festplatte</param>
         public CreateDisk(Disk entity = null)
         {
             InitializeComponent();
@@ -96,31 +96,30 @@ namespace InventoryManagementSystem.presentation.forms
 
         /// <summary>
         /// Ruft die Informationen aus dem Formular ab und speichert sie in die Datenbank.
-        /// Führt eine Umrechnung in MB aus. Wirft eine Fehlermeldung, wenn die Validierung
+        /// Führt eine Umrechnung in MB aus und wirft eine Fehlermeldung, wenn die Validierung
         /// fehlschlägt.
         /// </summary>
         private void DiskSave_Click(object sender, RoutedEventArgs e)
         {
-            Disk dataDisk = this.entity;
             ProducerDataAccess dataProducer = new ProducerDataAccess();
             DiskDataAccess diskDataAccess = new DiskDataAccess();
             DiskValidator validator = new DiskValidator();
 
             try {
-                dataDisk.Description = this.DiskDescription.Text;
+                this.entity.Description = this.DiskDescription.Text;
                 if (this.DiskCapacityUnit.Text == "MB")
                 {
-                    dataDisk.Capacity = UnitConverter.MegaByteToByte(Convert.ToUInt32(this.DiskCapacity.Text));
+                    this.entity.Capacity = Convert.ToUInt32(this.DiskCapacity.Text);
                 }
                 else if (this.DiskCapacityUnit.Text == "GB")
                 {
-                    dataDisk.Capacity = UnitConverter.GigaByteToByte(Convert.ToUInt32(this.DiskCapacity.Text));
+                    this.entity.Capacity = UnitConverter.KiloByteToByte(Convert.ToUInt32(this.DiskCapacity.Text));
                 }
 
-                dataDisk.Inch = Convert.ToDouble(this.DiskSize.Text);
-                dataDisk.Ssd = Convert.ToBoolean(this.DiskType.IsChecked);
-                dataDisk.Producer = dataProducer.GetEntityByName<Producer>("Firma", this.DiskProducer.Text.ToString());
-                if (!validator.CheckConsistency(dataDisk))
+                this.entity.Inch = Convert.ToDouble(this.DiskSize.Text);
+                this.entity.Ssd = Convert.ToBoolean(this.DiskType.IsChecked);
+                this.entity.Producer = dataProducer.GetEntityByName<Producer>("Firma", this.DiskProducer.Text.ToString());
+                if (!validator.CheckConsistency(this.entity))
                 {
                     throw new FormatException();
                 }
@@ -129,9 +128,9 @@ namespace InventoryManagementSystem.presentation.forms
             }
 
             if (this.isAvailable)
-                diskDataAccess.Update(dataDisk);
+                diskDataAccess.Update(this.entity);
             else
-                diskDataAccess.Save(dataDisk);
+                diskDataAccess.Save(this.entity);
             this.Close();
         }
 

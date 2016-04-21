@@ -23,72 +23,115 @@ namespace InventoryManagementSystem.presentation.forms
     /// </summary>
     public partial class CreateRAM : Window
     {
+        private RandomAccessMemory entity;
+        private bool isAvailable;
+
+        /// <summary>
+        /// Konstruktor: Setzt die Wert für die Initialisierung des Dialoges
+        /// </summary>
+        /// <param name="entity">Objekt eines Arbeitsspeichers</param>
         public CreateRAM(RandomAccessMemory entity = null)
         {
             InitializeComponent();
             this.GetProducers();
-            this.SetValuesCapacityUnit();
+            this.RamStorageUnit.SelectedIndex = 0;
             if (entity != null)
             {
-                this.SetAllFields(entity);
+                this.entity = entity;
+                this.isAvailable = true;
+                this.SetAllFields();
+            }
+            else
+            {
+                this.entity = new RandomAccessMemory();
+                this.isAvailable = false;
             }
         }
 
-        private void SetAllFields(RandomAccessMemory entity)
+        /// <summary>
+        /// Setzt die Werte der UI-Elemente, wenn eine Entität bearbeitet wird
+        /// </summary>
+        private void SetAllFields()
         {
-            this.RamDescription.Text = entity.Description.ToString();
-            this.RamStorage.Text = entity.Memory.ToString();
-            this.RamClockRate.Text = entity.ClockRate.ToString();
+            this.RamDescription.Text = this.entity.Description.ToString();
+            this.RamStorage.Text = this.entity.Memory.ToString();
+            this.RamClockRate.Text = this.entity.ClockRate.ToString();
+            this.RamProducer.SelectedItem = this.entity.Producer.CompanyName;
         }
 
+        /// <summary>
+        /// Schließt das aktuelle Fenster
+        /// </summary>
         private void CancelRamBTN_Click(object sender, RoutedEventArgs e)
         {
             this.Close();
         }
 
+        /// <summary>
+        /// Öffnet eine MessageBox mit der übergebenen Fehlermeldung.
+        /// </summary>
+        /// <param name="exception">Die Exception, welche ausgelöst wurde</param>
+        /// <param name="message">Die Fehlermeldung, welche angezeigt wird</param>
+        private void showErrorMessage(Exception exception, string message)
+        {
+            MessageBox.Show(message, exception.GetType().Name, MessageBoxButton.OK, MessageBoxImage.Warning);
+        }
+
+        /// <summary>
+        /// Ruft die Informationen aus dem Formular ab und speichert sie in die Datenbank.
+        /// Führt eine Umrechnung in MB aus und wirft eine Fehlermeldung, wenn die Validierung
+        /// fehlschlägt.
+        /// </summary>
         private void CreateRamBTN_Click(object sender, RoutedEventArgs e)
         {
-            RandomAccessMemory dataRandomModel = new RandomAccessMemory();
             RandomAccessMemoryDataAccess dataRandom = new RandomAccessMemoryDataAccess();
             ProducerDataAccess dataProducer = new ProducerDataAccess();
+            RandomAccessMemoryValidator validator = new RandomAccessMemoryValidator();
 
-            dataRandomModel.Description = this.RamDescription.Text.ToString();
-            dataRandomModel.Memory = ulong.Parse(this.RamStorage.Text);
-            dataRandomModel.ClockRate = double.Parse(this.RamClockRate.Text);
-            dataRandomModel.Producer = dataProducer.GetEntityByName<Producer>("Firma", this.RamProducer.Text.ToString());
-
-            if (this.RamStorageUnit.Text == "MB")
+            try
             {
-                dataRandomModel.Memory = UnitConverter.MegaByteToByte(Convert.ToUInt32(this.RamStorage.Text));
+                this.entity.Description = this.RamDescription.Text.ToString();
+                this.entity.ClockRate = double.Parse(this.RamClockRate.Text);
+                this.entity.Producer = dataProducer.GetEntityByName<Producer>("Firma", this.RamProducer.Text.ToString());
+
+                if (this.RamStorageUnit.Text == "MB")
+                {
+                    this.entity.Memory = ulong.Parse(this.RamStorage.Text);
+                }
+                else if (this.RamStorageUnit.Text == "GB")
+                {
+                    this.entity.Memory = UnitConverter.KiloByteToByte(Convert.ToDouble(this.RamStorage.Text));
+                }
+                if (!validator.CheckConsistency(this.entity))
+                {
+                    throw new FormatException();
+                }
             }
-            else if (this.RamStorageUnit.Text == "GB")
+            catch (FormatException exception)
             {
-                dataRandomModel.Memory = UnitConverter.GigaByteToByte(Convert.ToUInt32(this.RamStorage.Text));
+                this.showErrorMessage(exception, "Die eingegebenen Daten sind inkonsistent. Bitte überprüfen Sie Ihre Eingaben!");
             }
 
-                dataRandom.Save(dataRandomModel);
-
+            if (this.isAvailable)
+                dataRandom.Update(this.entity);
+            else
+                dataRandom.Save(this.entity);
+            
             this.Close();
         }
 
+        /// <summary>
+        /// Fügt alle Hersteller aus der Datenbank dem Drop-Down-Menü hinzu
+        /// </summary>
         private void GetProducers()
         {
             ProducerDataAccess dataProducers = new ProducerDataAccess();
-
             List<Producer> producers = dataProducers.GetAllEntities<Producer>();
 
             foreach (Producer element in producers)
             {
                 this.RamProducer.Items.Add(element.CompanyName.ToString());
             }
-        }
-
-        private void SetValuesCapacityUnit()
-        {
-            this.RamStorageUnit.Items.Add("MB");
-            this.RamStorageUnit.Items.Add("GB");
-
-            this.RamStorageUnit.SelectedIndex = 1;
         }
     }
 }
