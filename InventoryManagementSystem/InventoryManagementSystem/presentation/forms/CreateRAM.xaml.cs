@@ -91,7 +91,7 @@ namespace InventoryManagementSystem.presentation.forms
             try
             {
                 this.entity.Description = this.RamDescription.Text.ToString();
-                this.entity.ClockRate = double.Parse(this.RamClockRate.Text);
+                this.entity.ClockRate = double.Parse(this.RamClockRate.Text.Replace('.',','));
                 this.entity.Producer = dataProducer.GetEntityByName<Producer>("Firma", this.RamProducer.Text.ToString());
 
                 if (this.RamStorageUnit.Text == "MB")
@@ -102,21 +102,23 @@ namespace InventoryManagementSystem.presentation.forms
                 {
                     this.entity.Memory = UnitConverter.KiloByteToByte(Convert.ToDouble(this.RamStorage.Text));
                 }
+
                 if (!validator.CheckConsistency(this.entity))
                 {
                     throw new FormatException();
+                }
+                else
+                {
+                    if (this.isAvailable)
+                        dataRandom.Update(this.entity);
+                    else
+                        dataRandom.Save(this.entity);
                 }
             }
             catch (FormatException exception)
             {
                 this.showErrorMessage(exception, "Die eingegebenen Daten sind inkonsistent. Bitte überprüfen Sie Ihre Eingaben!");
-            }
-
-            if (this.isAvailable)
-                dataRandom.Update(this.entity);
-            else
-                dataRandom.Save(this.entity);
-            
+            }            
             this.Close();
         }
 

@@ -116,21 +116,24 @@ namespace InventoryManagementSystem.presentation.forms
                     this.entity.Capacity = UnitConverter.KiloByteToByte(Convert.ToUInt32(this.DiskCapacity.Text));
                 }
 
-                this.entity.Inch = Convert.ToDouble(this.DiskSize.Text);
+                this.entity.Inch = Convert.ToDouble(this.DiskSize.Text.Replace('.',','));
                 this.entity.Ssd = Convert.ToBoolean(this.DiskType.IsChecked);
                 this.entity.Producer = dataProducer.GetEntityByName<Producer>("Firma", this.DiskProducer.Text.ToString());
+                
                 if (!validator.CheckConsistency(this.entity))
                 {
                     throw new FormatException();
                 }
+                else
+                {
+                    if (this.isAvailable)
+                        diskDataAccess.Update(this.entity);
+                    else
+                        diskDataAccess.Save(this.entity);
+                }
             } catch (FormatException exception) {
                 this.showErrorMessage(exception, "Die eingegebenen Daten sind inkonsistent. Bitte überprüfen Sie Ihre Eingaben!");
             }
-
-            if (this.isAvailable)
-                diskDataAccess.Update(this.entity);
-            else
-                diskDataAccess.Save(this.entity);
             this.Close();
         }
 
