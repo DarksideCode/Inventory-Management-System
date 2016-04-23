@@ -76,6 +76,7 @@ namespace InventoryManagementSystem.presentation
         private List<PhysicalInterfaceWithCount> BuildList()
         {
             PhysicalInterfaceDataAccess dataAccess = new PhysicalInterfaceDataAccess();
+            this.list = new List<PhysicalInterfaceWithCount>();
 
             foreach (String interfaceName in this.usedList.Items)
             {

@@ -5,7 +5,7 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:InventoryManagementSystem.presentation.forms"
       mc:Ignorable="d"
-      Title="CreateDisk" Height="315.438" Width="312.897">
+      Title="Festplatte - IMS" Height="325" Width="312" ResizeMode="NoResize">
 
     <Grid>
         <Label x:Name="CreateEntityName" Content="Festplatte" VerticalAlignment="Top" Margin="73,10,71,0" FontSize="18" FontWeight="Bold" RenderTransformOrigin="-0.15,0.356" Width="156" Opacity="0.9" AllowDrop="True" IsHitTestVisible="False" HorizontalAlignment="Center" HorizontalContentAlignment="Center"/>
@@ -13,7 +13,10 @@
         <TextBox x:Name="DiskDescription" HorizontalAlignment="Left" Height="23" Margin="136,49,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="134" ToolTip="Beschreibung der Fetplatte"/>
         <Label x:Name="DiskCapacityLBL" Content="Kapazität" HorizontalAlignment="Left" Margin="20,77,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.587,0.142" Width="82"/>
         <TextBox x:Name="DiskCapacity" HorizontalAlignment="Left" Height="23" Margin="136,81,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="66" ToolTip="Kapazität der Festplatte"/>
-        <ComboBox x:Name="DiskCapacityUnit" HorizontalAlignment="Left" Margin="218,81,0,0" VerticalAlignment="Top" Width="52" RenderTransformOrigin="1.584,0.679" IsReadOnly="True"/>
+        <ComboBox x:Name="DiskCapacityUnit" HorizontalAlignment="Left" Margin="218,81,0,0" VerticalAlignment="Top" Width="52" RenderTransformOrigin="1.584,0.679" IsReadOnly="True">
+            <ComboBoxItem Content="MB" HorizontalAlignment="Left" Width="50"/>
+            <ComboBoxItem Content="GB" HorizontalAlignment="Left" Width="50"/>
+        </ComboBox>
         <Label x:Name="DiskSizeLBL" Content="Zoll" HorizontalAlignment="Left" Margin="20,108,0,0" VerticalAlignment="Top"/>
         <TextBox x:Name="DiskSize" HorizontalAlignment="Left" Height="23" Margin="136,112,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="134" ToolTip="Größe der Festplatte in Zoll."/>
         <Label x:Name="DiskTypeLBL" Content="SSD" HorizontalAlignment="Left" Margin="20,139,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.213,-0.1"/>

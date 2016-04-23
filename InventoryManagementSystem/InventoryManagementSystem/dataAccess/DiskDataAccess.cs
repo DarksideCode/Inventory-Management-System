@@ -4,6 +4,7 @@ using MySql.Data.MySqlClient;
 using System;
 using System.Collections.Generic;
 using InventoryManagementSystem.database.basic;
+using InventoryManagementSystem.control;
 
 namespace InventoryManagementSystem.dataAccess
 {
@@ -34,8 +35,9 @@ namespace InventoryManagementSystem.dataAccess
             MySqlCommand command = connection.CreateCommand();
 
             command.CommandText = "INSERT INTO `" + this.GetTableName() + "`(`Beschreibung`, `Kapazität`, `SSD`, `Zoll`, `ID_Hersteller`) "
-                                + "VALUES ('" + entity.Description + "'," + entity.Capacity + ",'" + Convert.ToInt32(entity.Ssd) + "','" + entity.Inch + "',"
+                                + "VALUES ('" + entity.Description + "'," + entity.Capacity + ",'" + Convert.ToInt32(entity.Ssd) + "','" + entity.Inch.ToString().Replace(',','.') + "',"
                                 + entity.Producer.Id + ")";
+            Console.WriteLine(command.CommandText);
 
             connection.Open();
             command.ExecuteNonQuery();
@@ -63,8 +65,8 @@ namespace InventoryManagementSystem.dataAccess
             MySqlCommand interfaceCommand = connection.CreateCommand();
             string usedInterfaces = "";
 
-            command.CommandText = "UPDATE `" + this.GetTableName() + "` SET `Beschreibung`='" + entity.Description + "', `Kapazität`=" + entity.Capacity + ", `SSD`='" + entity.Ssd 
-                                + "', `Zoll`='" + entity.Inch + "', `ID_Hersteller`=" + entity.Producer.Id + " WHERE id = " + entity.Id;
+            command.CommandText = "UPDATE `" + this.GetTableName() + "` SET `Beschreibung`='" + entity.Description + "', `Kapazität`=" + entity.Capacity + ", `SSD`='" + Convert.ToInt32(entity.Ssd) 
+                                + "', `Zoll`='" + entity.Inch.ToString().Replace(',','.') + "', `ID_Hersteller`=" + entity.Producer.Id + " WHERE id = " + entity.Id;
 
             connection.Open();
 

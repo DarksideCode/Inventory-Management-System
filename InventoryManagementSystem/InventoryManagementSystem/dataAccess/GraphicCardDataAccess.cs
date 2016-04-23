@@ -33,7 +33,7 @@ namespace InventoryManagementSystem.dataAccess
             MySqlCommand command = connection.CreateCommand();
             command.CommandText = "INSERT INTO `" + this.GetTableName() + "`(`Beschreibung`, `Taktrate`, "
                                 + "`Modelbezeichnung`, `Grafikspeicher`, `ID_Hersteller`) "
-                                + "VALUES ('" + entity.Description + "'," + entity.ClockRate + ",'" + entity.Model + "',"
+                                + "VALUES ('" + entity.Description + "'," + entity.ClockRate.ToString().Replace(',','.') + ",'" + entity.Model + "',"
                                 + entity.Memory + "," + entity.Producer.Id + ")";
 
             connection.Open();
@@ -62,7 +62,7 @@ namespace InventoryManagementSystem.dataAccess
             MySqlCommand interfaceCommand = connection.CreateCommand();
             string usedInterfaces = "";
 
-            command.CommandText = "UPDATE `" + this.GetTableName() + "` SET `Beschreibung`='" + entity.Description + "', `Taktrate`='" + entity.ClockRate + "', "
+            command.CommandText = "UPDATE `" + this.GetTableName() + "` SET `Beschreibung`='" + entity.Description + "', `Taktrate`='" + entity.ClockRate.ToString().Replace(',','.') + "', "
                                 + "`Modelbezeichnung`='" + entity.Model + "', `Grafikspeicher`=" + entity.Memory + ", `ID_Hersteller`=" + entity.Producer.Id 
                                 + " WHERE id = " + entity.Id;
 

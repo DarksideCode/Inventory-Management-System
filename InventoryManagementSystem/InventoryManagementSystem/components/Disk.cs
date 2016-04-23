@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using InventoryManagementSystem.control;
 
 namespace InventoryManagementSystem.components
 {
@@ -56,7 +57,7 @@ namespace InventoryManagementSystem.components
         {
             this.Id = entity.Id;
             this.Beschreibung = entity.Description;
-            this.Kapazität = entity.Capacity;
+            this.Kapazität = UnitConverter.ByteToKiloByte(entity.Capacity);
             if (entity.Ssd)
                 this.SSD = "Ja";
             else
