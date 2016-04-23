@@ -378,6 +378,14 @@ namespace InventoryManagementSystem
                     CreateGraphicCard createGrapicCardWindow = new CreateGraphicCard();
                     createGrapicCardWindow.ShowDialog();
                     break;
+                case "Motherboard":
+                    CreateMotherboard createMotherboardWindow = new CreateMotherboard();
+                    createMotherboardWindow.ShowDialog();
+                    break;
+                case "Processor":
+                    CreateProcessor createProcessorWindow = new CreateProcessor();
+                    createProcessorWindow.ShowDialog();
+                    break;
             }
         }
 
