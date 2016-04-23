@@ -1,16 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
+using InventoryManagementSystem.dataAccess;
+using InventoryManagementSystem.components;
+using InventoryManagementSystem.validation;
+using InventoryManagementSystem.control;
 
 namespace InventoryManagementSystem.presentation.forms
 {
@@ -19,7 +13,11 @@ namespace InventoryManagementSystem.presentation.forms
     /// </summary>
     public partial class CreateProcessor : Window
     {
-        public CreateProcessor()
+        /// <summary>
+        /// Konstruktor: Setzt die Wert für die Initialisierung des Dialoges
+        /// </summary>
+        /// <param name="entity">Objekt eines Prozessors</param>
+        public CreateProcessor(Processor entity = null)
         {
             InitializeComponent();
         }

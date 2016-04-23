@@ -414,6 +414,12 @@ namespace InventoryManagementSystem
                         CreateGraphicCard createGraphicCardWindow = new CreateGraphicCard(graphicCardDataAccess.GetEntityById<GraphicCard>(graphicCard.Id));
                         createGraphicCardWindow.ShowDialog();
                         break;
+                    case "Motherboard":
+                        MotherboardDataAccess motherboardDataAccess = new MotherboardDataAccess();
+                        MotherboardGraphicalObject motherboard = (MotherboardGraphicalObject)this.dataGrid.SelectedItems[0];
+                        CreateMotherboard createMotherboardWindow = new CreateMotherboard(motherboardDataAccess.GetEntityById<Motherboard>(motherboard.Id));
+                        createMotherboardWindow.ShowDialog();
+                        break;
                 }
             }
         }
