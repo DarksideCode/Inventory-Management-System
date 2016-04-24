@@ -10,7 +10,7 @@ namespace InventoryManagementSystem.validation
     /// </summary>
     public class MotherboardValidator
     {
-        private string socketPattern = "^[A-Za-z0-9\\-]*$";
+        private string socketPattern = "^[A-Za-z0-9\\- ]*$";
 
         /// <summary>
         /// Prüft die Konsistenz der Attribute der Entität 'Hauptplatine'
