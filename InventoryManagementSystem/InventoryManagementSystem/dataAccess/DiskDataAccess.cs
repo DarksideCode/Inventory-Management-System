@@ -45,7 +45,7 @@ namespace InventoryManagementSystem.dataAccess
 
             for (int i = 0; i < entity.PhysicalInterfaces.Count; i++)
             {
-                command.CommandText = "INSERT INTO `" + this.GetTableName() + "`(`ID_Festplatte`, `ID_Schnittstelle`, `Anzahl`) VALUES "
+                command.CommandText = "INSERT INTO `" + this.GetTableName() + "_schnittstelle` (`ID_Festplatte`, `ID_Schnittstelle`, `Anzahl`) VALUES "
                                     + "(" + this.GetLastEntity<Disk>().Id + "," + entity.PhysicalInterfaces[i].PhysicalInterface.Id + "," + entity.PhysicalInterfaces[i].Number + ")";
                 connection.Open();
                 command.ExecuteNonQuery();
@@ -72,7 +72,7 @@ namespace InventoryManagementSystem.dataAccess
 
             for (int i = 0; i < entity.PhysicalInterfaces.Count; i++)
             {
-                interfaceCommand.CommandText = "UPDATE `" + this.GetTableName() + "` SET `Anzahl`=" + entity.PhysicalInterfaces[i].Number
+                interfaceCommand.CommandText = "UPDATE `" + this.GetTableName() + "_schnittstelle` SET `Anzahl`=" + entity.PhysicalInterfaces[i].Number
                                              + " WHERE `ID_Festplatte` = " + entity.Id + " AND `ID_Schnittstelle` = " + entity.PhysicalInterfaces[i].PhysicalInterface.Id;
                 interfaceCommand.ExecuteNonQuery();
                 usedInterfaces += entity.PhysicalInterfaces[i].PhysicalInterface.Id;
@@ -81,7 +81,7 @@ namespace InventoryManagementSystem.dataAccess
                     usedInterfaces += ",";
                 }
             }
-            interfaceCommand.CommandText = "DELETE FROM `" + this.GetTableName() + "` WHERE `ID_Festplatte` = " + entity.Id
+            interfaceCommand.CommandText = "DELETE FROM `" + this.GetTableName() + "_schnittstelle` WHERE `ID_Festplatte` = " + entity.Id
                                          + " AND `ID_Schnittstelle` NOT IN (" + usedInterfaces + ")";
             interfaceCommand.ExecuteNonQuery();
             command.ExecuteNonQuery();
@@ -121,7 +121,7 @@ namespace InventoryManagementSystem.dataAccess
             MySqlConnection connection = this.CreateConnection();
             MySqlCommand command = connection.CreateCommand();
 
-            command.CommandText = "SELECT * FROM `" + this.GetTableName() + "` WHERE id_festplatte = " + entity.Id;
+            command.CommandText = "SELECT * FROM `" + this.GetTableName() + "_schnittstelle` WHERE id_festplatte = " + entity.Id;
 
             connection.Open();
             MySqlDataReader reader = command.ExecuteReader();
