@@ -65,6 +65,27 @@ namespace InventoryManagementSystem.presentation.forms
         }
 
         /// <summary>
+        /// Öffnet das Fenster für die Verwaltung der Schnittstellen.
+        /// </summary>
+        private void MainboardInterface_Click(object sender, RoutedEventArgs e)
+        {
+            EditPhysicalInterfaces interfaceWindow;
+
+            if (this.entity != null)
+            {
+                interfaceWindow = new EditPhysicalInterfaces(this.entity.PhysicalInterfaces);
+                interfaceWindow.ShowDialog();
+                this.entity.PhysicalInterfaces = interfaceWindow.list;
+            }
+            else
+            {
+                interfaceWindow = new EditPhysicalInterfaces(new List<PhysicalInterfaceWithCount>());
+                interfaceWindow.ShowDialog();
+                this.entity.PhysicalInterfaces = interfaceWindow.list;
+            }
+        }
+
+        /// <summary>
         /// Öffnet eine MessageBox mit der übergebenen Fehlermeldung.
         /// </summary>
         /// <param name="exception">Die Exception, welche ausgelöst wurde</param>
@@ -98,13 +119,16 @@ namespace InventoryManagementSystem.presentation.forms
                     else
                         diskDataAccess.Save(this.entity);
                 }
+                this.Close();
             }
             catch (FormatException exception)
             {
                 this.showErrorMessage(exception, "Die eingegebenen Daten sind inkonsistent. Bitte überprüfen Sie Ihre Eingaben!");
             }
-
-            this.Close();
+            catch (MySql.Data.MySqlClient.MySqlException exception)
+            {
+                this.showErrorMessage(exception, "Die eingegebenen Daten sind inkonsistent. Bitte überprüfen Sie Ihre Eingaben!");
+            }
         }
 
         private void MainboardCancel_Click(object sender, RoutedEventArgs e)
