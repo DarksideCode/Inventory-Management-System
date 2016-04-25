@@ -110,6 +110,9 @@
     <Compile Include="presentation\forms\CreateProcessor.xaml.cs">
       <DependentUpon>CreateProcessor.xaml</DependentUpon>
     </Compile>
+    <Compile Include="presentation\forms\CreateProducer.xaml.cs">
+      <DependentUpon>CreateProducer.xaml</DependentUpon>
+    </Compile>
     <Compile Include="presentation\forms\CreateRAM.xaml.cs">
       <DependentUpon>CreateRAM.xaml</DependentUpon>
     </Compile>
@@ -150,6 +153,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="presentation\forms\CreateProcessor.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="presentation\forms\CreateProducer.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

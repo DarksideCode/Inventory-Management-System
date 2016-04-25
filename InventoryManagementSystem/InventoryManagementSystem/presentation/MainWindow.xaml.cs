@@ -386,6 +386,10 @@ namespace InventoryManagementSystem
                     CreateProcessor createProcessorWindow = new CreateProcessor();
                     createProcessorWindow.ShowDialog();
                     break;
+                case "Producer":
+                    CreateProducer createProducerWindow = new CreateProducer();
+                    createProducerWindow.ShowDialog();
+                    break;
             }
         }
 
@@ -419,6 +423,12 @@ namespace InventoryManagementSystem
                         MotherboardGraphicalObject motherboard = (MotherboardGraphicalObject)this.dataGrid.SelectedItems[0];
                         CreateMotherboard createMotherboardWindow = new CreateMotherboard(motherboardDataAccess.GetEntityById<Motherboard>(motherboard.Id));
                         createMotherboardWindow.ShowDialog();
+                        break;
+                    case "Producer":
+                        ProducerDataAccess producerDataAccess = new ProducerDataAccess();
+                        ProducerGraphicalObject producer = (ProducerGraphicalObject)this.dataGrid.SelectedItems[0];
+                        CreateProducer createProducerWindow = new CreateProducer(producerDataAccess.GetEntityById<Producer>(producer.Id));
+                        createProducerWindow.ShowDialog();
                         break;
                 }
             }
