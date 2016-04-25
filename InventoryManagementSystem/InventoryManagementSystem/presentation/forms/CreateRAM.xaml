@@ -5,16 +5,16 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:InventoryManagementSystem.presentation.forms"
         mc:Ignorable="d"
-        Title="Arbeitsspeicher - IMS" Height="275" Width="312" ResizeMode="NoResize">
+        Title="Arbeitsspeicher - IMS" Height="261" Width="312" ResizeMode="NoResize">
     <Grid>
         <Label x:Name="CreateEntityName" Content="RAM" VerticalAlignment="Top" Margin="60,10,76,0" FontSize="18" FontWeight="Bold" RenderTransformOrigin="-0.15,0.356" Width="156" Opacity="0.9" AllowDrop="True" IsHitTestVisible="False" HorizontalAlignment="Center" HorizontalContentAlignment="Center"/>
         <Label x:Name="RamDescriptionLBL" Content="Beschreibung" HorizontalAlignment="Left" Margin="25,49,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.934,0.904"/>
-        <TextBox x:Name="RamDescription" HorizontalAlignment="Left" Height="23" Margin="136,52,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="134"/>
+        <TextBox x:Name="RamDescription" HorizontalAlignment="Left" Height="23" Margin="136,52,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="134" ToolTip="Beschreibung des Arbeitsspeichers"/>
         <Label x:Name="RamStorageLBL" Content="Speicher" HorizontalAlignment="Left" Margin="25,78,0,0" VerticalAlignment="Top"/>
-        <TextBox x:Name="RamStorage" HorizontalAlignment="Left" Height="23" Margin="136,81,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="66"/>
+        <TextBox x:Name="RamStorage" HorizontalAlignment="Left" Height="23" Margin="136,81,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="66" ToolTip="Speicherkapazität des Arbeitsspeichers"/>
         <Label x:Name="RamClockRateLBL" Content="Taktrate" HorizontalAlignment="Left" Margin="25,106,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.567,1.481"/>
-        <TextBox x:Name="RamClockRate" HorizontalAlignment="Left" Height="23" Margin="136,109,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="134"/>
-        <Button x:Name="CreateRamBTN" Content="Speichern" HorizontalAlignment="Left" Margin="42,200,0,0" VerticalAlignment="Top" Width="75" Click="CreateRamBTN_Click">
+        <TextBox x:Name="RamClockRate" HorizontalAlignment="Left" Height="23" Margin="136,109,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="134" ToolTip="Taktrate des Arbeitsspeichers in MHz"/>
+        <Button x:Name="CreateRamBTN" Content="Speichern" HorizontalAlignment="Left" Margin="62,186,0,0" VerticalAlignment="Top" Width="75" Click="CreateRamBTN_Click" Cursor="Hand">
             <Button.Background>
                 <LinearGradientBrush EndPoint="0,1" StartPoint="0,0">
                     <GradientStop Color="#FFD5E8D4" Offset="0"/>
@@ -22,7 +22,7 @@
                 </LinearGradientBrush>
             </Button.Background>
         </Button>
-        <Button x:Name="CancelRamBTN" Content="Abbrechen" HorizontalAlignment="Left" Margin="170,200,0,0" VerticalAlignment="Top" Width="75" RenderTransformOrigin="1.167,0.725" Click="CancelRamBTN_Click">
+        <Button x:Name="CancelRamBTN" Content="Abbrechen" HorizontalAlignment="Left" Margin="165,186,0,0" VerticalAlignment="Top" Width="75" RenderTransformOrigin="1.167,0.725" Click="CancelRamBTN_Click" Cursor="Hand">
             <Button.Background>
                 <LinearGradientBrush EndPoint="0,1" StartPoint="0,0">
                     <GradientStop Color="#FFD5E8D4" Offset="0"/>

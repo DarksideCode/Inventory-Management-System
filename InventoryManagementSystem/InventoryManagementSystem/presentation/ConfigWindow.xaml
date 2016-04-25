@@ -32,12 +32,12 @@
         <Label x:Name="label05" Content="Benutzer" HorizontalAlignment="Left" Margin="172,30,0,0" VerticalAlignment="Top"/>
         <Label x:Name="label02" Content="Präfix" HorizontalAlignment="Left" Margin="14,78,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.371,0.62"/>
         <Label x:Name="label03" Content="Host" HorizontalAlignment="Left" Margin="14,127,0,0" VerticalAlignment="Top"/>
-        <TextBox x:Name="TBName" HorizontalAlignment="Left" Height="23" Margin="21,56,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="116"/>
-        <TextBox x:Name="TBPraefix" HorizontalAlignment="Left" Height="23" Margin="21,104,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="116"/>
-        <TextBox x:Name="TBHost" HorizontalAlignment="Left" Height="23" Margin="21,153,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="116"/>
-        <TextBox x:Name="TBUser" HorizontalAlignment="Left" Height="23" Margin="179,56,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="115"/>
-        <PasswordBox x:Name="TBPassword" HorizontalAlignment="Left" Margin="179,104,0,0" VerticalAlignment="Top" Width="115" Height="23" Password="TextBox"/>
-        <Button x:Name="BtnSave" Content="Speichern" HorizontalAlignment="Left" Margin="118,194,0,0" VerticalAlignment="Top" Width="79" Height="31" FontWeight="Bold" Click="BtnSave_Click">
+        <TextBox x:Name="TBName" HorizontalAlignment="Left" Height="23" Margin="21,56,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="116" ToolTip="Name der Datenbank"/>
+        <TextBox x:Name="TBPraefix" HorizontalAlignment="Left" Height="23" Margin="21,104,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="116" ToolTip="Tabellenpräfix"/>
+        <TextBox x:Name="TBHost" HorizontalAlignment="Left" Height="23" Margin="21,153,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="116" ToolTip="Datenbank-Host (IP-Adresse)"/>
+        <TextBox x:Name="TBUser" HorizontalAlignment="Left" Height="23" Margin="179,56,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="115" ToolTip="Benutzer der Datenbank"/>
+        <PasswordBox x:Name="TBPassword" HorizontalAlignment="Left" Margin="179,104,0,0" VerticalAlignment="Top" Width="115" Height="23" Password="TextBox" ToolTip="Passwort für den Datenbanknutzer"/>
+        <Button x:Name="BtnSave" Content="Speichern" HorizontalAlignment="Left" Margin="118,194,0,0" VerticalAlignment="Top" Width="79" Height="31" FontWeight="Bold" Click="BtnSave_Click" Cursor="Hand">
             <Button.Background>
                 <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
                     <GradientStop Color="WhiteSmoke" Offset="0"/>
