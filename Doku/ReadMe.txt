@@ -1,3 +1,22 @@
+======= Inhalt =======
+
+- Projekt-Datei als .exe
+- Projekt-Mappe für Visual Studio
+- SQL-Datei zum initialen Aufsetzen der Datenbank
+- Projektdokumentation als Word-Datei
+- Programmierer-Dokumentation als XML
+- Diagramme und Mockups
+
+
+======= Systemanforderungen =======
+
+- Microsoft Windows 7
+- .NET-Framework
+- MySQL/MariaDB-Datenbank
+
+
+======= Installation =======
+
 1. Visual Studio starten
 2. Projekt öffnen
 3. MySQL-Treiber aus dem Ordner ??? einbinden:
