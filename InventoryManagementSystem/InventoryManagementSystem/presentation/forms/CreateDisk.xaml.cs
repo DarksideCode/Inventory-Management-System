@@ -95,7 +95,8 @@ namespace InventoryManagementSystem.presentation.forms
             DiskDataAccess diskDataAccess = new DiskDataAccess();
             DiskValidator validator = new DiskValidator();
 
-            try {
+            try
+            {
                 this.entity.Description = this.DiskDescription.Text;
                 if (this.DiskCapacityUnit.Text == "MB")
                 {
@@ -106,10 +107,10 @@ namespace InventoryManagementSystem.presentation.forms
                     this.entity.Capacity = UnitConverter.KiloByteToByte(Convert.ToUInt32(this.DiskCapacity.Text));
                 }
 
-                this.entity.Inch = Convert.ToDouble(this.DiskSize.Text.Replace('.',','));
+                this.entity.Inch = Convert.ToDouble(this.DiskSize.Text.Replace('.', ','));
                 this.entity.Ssd = Convert.ToBoolean(this.DiskType.IsChecked);
                 this.entity.Producer = dataProducer.GetEntityByName<Producer>("Firma", this.DiskProducer.Text.ToString());
-                
+
                 if (!validator.CheckConsistency(this.entity))
                 {
                     throw new FormatException();
@@ -121,10 +122,16 @@ namespace InventoryManagementSystem.presentation.forms
                     else
                         diskDataAccess.Save(this.entity);
                 }
-            } catch (FormatException exception) {
+                this.Close();
+            }
+            catch (FormatException exception)
+            {
                 this.showErrorMessage(exception, "Die eingegebenen Daten sind inkonsistent. Bitte überprüfen Sie Ihre Eingaben!");
             }
-            this.Close();
+            catch (MySql.Data.MySqlClient.MySqlException exception)
+            {
+                this.showErrorMessage(exception, "Die eingegebenen Daten sind inkonsistent. Bitte überprüfen Sie Ihre Eingaben!");
+            }
         }
 
         /// <summary>

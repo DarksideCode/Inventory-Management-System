@@ -114,12 +114,16 @@ namespace InventoryManagementSystem.presentation.forms
                     else
                         dataRandom.Save(this.entity);
                 }
+                this.Close();
             }
             catch (FormatException exception)
             {
                 this.showErrorMessage(exception, "Die eingegebenen Daten sind inkonsistent. Bitte überprüfen Sie Ihre Eingaben!");
-            }            
-            this.Close();
+            }
+            catch (MySql.Data.MySqlClient.MySqlException exception)
+            {
+                this.showErrorMessage(exception, "Die eingegebenen Daten sind inkonsistent. Bitte überprüfen Sie Ihre Eingaben!");
+            }
         }
 
         /// <summary>

@@ -93,13 +93,13 @@ namespace InventoryManagementSystem.presentation.forms
             {
                 interfaceWindow = new EditPhysicalInterfaces(this.entity.PhysicalInterfaces);
                 interfaceWindow.ShowDialog();
-                entity.PhysicalInterfaces = interfaceWindow.list;
+                this.entity.PhysicalInterfaces = interfaceWindow.list;
             }
             else
             {
                 interfaceWindow = new EditPhysicalInterfaces(new List<PhysicalInterfaceWithCount>());
                 interfaceWindow.ShowDialog();
-                entity.PhysicalInterfaces = interfaceWindow.list;
+                this.entity.PhysicalInterfaces = interfaceWindow.list;
             }
         }
 
@@ -152,12 +152,16 @@ namespace InventoryManagementSystem.presentation.forms
                     else
                         dataGraphicModel.Save(this.entity);
                 }
+                this.Close();
             }
             catch (FormatException exception)
             {
                 this.showErrorMessage(exception, "Die eingegebenen Daten sind inkonsistent. Bitte überprüfen Sie Ihre Eingaben!");
             }
-            this.Close();
+            catch (MySql.Data.MySqlClient.MySqlException exception)
+            {
+                this.showErrorMessage(exception, "Die eingegebenen Daten sind inkonsistent. Bitte überprüfen Sie Ihre Eingaben!");
+            }
         }
     }
 }
