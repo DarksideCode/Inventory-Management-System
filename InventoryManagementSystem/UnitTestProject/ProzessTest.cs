@@ -37,7 +37,7 @@ namespace UnitTests
             physicalInterface.Name = "DVI";
             physicalInterface.Description = "Digital Visual Interface - Eine elektronische Schnittstelle zur Übertragungn von Videodaten.";
             physicalInterface.Serial = true;
-            physicalInterface.TransferRate = 1000;
+            physicalInterface.TransferRate = 10.4;
 
             dataAccess.Save(physicalInterface);
             PhysicalInterface dbPhysicalInterface = dataAccess.GetLastEntity<PhysicalInterface>();
@@ -167,7 +167,7 @@ namespace UnitTests
             Assert.AreEqual(monitor.Inch, dbMonitor.Inch);
         }
 
-
+        
         [TestMethod]
         public void deleteMonitorFromDatabase()
         {

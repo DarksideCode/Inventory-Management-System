@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Erstellungszeit: 01. Apr 2016 um 13:33
+-- Erstellungszeit: 26. Apr 2016 um 12:06
 -- Server Version: 5.6.16
 -- PHP-Version: 5.5.11
 
@@ -34,7 +34,7 @@ CREATE TABLE IF NOT EXISTS `ims_arbeitsspeicher` (
   `ID_Hersteller` int(11) NOT NULL,
   PRIMARY KEY (`ID`),
   KEY `Hersteller_RAM` (`ID_Hersteller`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=6 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=16 ;
 
 -- --------------------------------------------------------
 
@@ -51,7 +51,7 @@ CREATE TABLE IF NOT EXISTS `ims_festplatte` (
   `ID_Hersteller` int(11) NOT NULL,
   PRIMARY KEY (`ID`),
   KEY `hersteller_Festplatte` (`ID_Hersteller`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=6 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=16 ;
 
 -- --------------------------------------------------------
 
@@ -81,9 +81,8 @@ CREATE TABLE IF NOT EXISTS `ims_grafikkarte` (
   `Grafikspeicher` int(11) NOT NULL,
   `ID_Hersteller` int(11) NOT NULL,
   PRIMARY KEY (`ID`),
-  UNIQUE KEY `Modelbezeichnung` (`Modelbezeichnung`),
   KEY `ID_Hersteller` (`ID_Hersteller`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=6 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=15 ;
 
 -- --------------------------------------------------------
 
@@ -113,7 +112,7 @@ CREATE TABLE IF NOT EXISTS `ims_hauptplatine` (
   `ID_Hersteller` int(11) NOT NULL,
   PRIMARY KEY (`ID`),
   KEY `ID_Hersteller` (`ID_Hersteller`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=6 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=16 ;
 
 -- --------------------------------------------------------
 
@@ -147,7 +146,7 @@ CREATE TABLE IF NOT EXISTS `ims_hersteller` (
   `Hausnummer` int(11) DEFAULT NULL,
   PRIMARY KEY (`ID`),
   UNIQUE KEY `Firma` (`Firma`,`Webseite`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=6 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=18 ;
 
 -- --------------------------------------------------------
 
@@ -164,7 +163,7 @@ CREATE TABLE IF NOT EXISTS `ims_monitor` (
   `ID_Hersteller` int(11) NOT NULL,
   PRIMARY KEY (`ID`),
   KEY `Hersteller_ID` (`ID_Hersteller`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=6 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=15 ;
 
 -- --------------------------------------------------------
 
@@ -197,7 +196,7 @@ CREATE TABLE IF NOT EXISTS `ims_prozessor` (
   `ID_Hersteller` int(11) NOT NULL,
   PRIMARY KEY (`ID`),
   KEY `hersteller_prozessor` (`ID_Hersteller`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=6 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=16 ;
 
 -- --------------------------------------------------------
 
@@ -213,7 +212,7 @@ CREATE TABLE IF NOT EXISTS `ims_schnittstelle` (
   `Übertragungsrate` float NOT NULL,
   PRIMARY KEY (`ID`),
   UNIQUE KEY `Name` (`Name`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=6 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=14 ;
 
 --
 -- Constraints der exportierten Tabellen

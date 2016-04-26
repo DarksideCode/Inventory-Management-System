@@ -34,7 +34,7 @@ namespace InventoryManagementSystem.dataAccess
 
             command.CommandText = "INSERT INTO `" + this.GetTableName() + "`(`Name`, `Beschreibung`, `Seriell`, `Übertragungsrate`) "
                                 + "VALUES ('" + entity.Name + "','" + entity.Description + "','" + entity.Serial + "',"
-                                + entity.TransferRate + ")";
+                                + entity.TransferRate.ToString().Replace(',','.') + ")";
 
             connection.Open();
             command.ExecuteNonQuery();
@@ -51,7 +51,7 @@ namespace InventoryManagementSystem.dataAccess
             MySqlCommand command = connection.CreateCommand();
 
             command.CommandText = "UPDATE `" + this.GetTableName() + "` SET `Name`='" + entity.Name + "', `Beschreibung`='" + entity.Description + "', `Seriell`='" + entity.Serial
-                                + "', `Übertragungsrate`=" + entity.TransferRate + " WHERE id = " + entity.Id;
+                                + "', `Übertragungsrate`=" + entity.TransferRate.ToString().Replace(',','.') + " WHERE id = " + entity.Id;
 
             connection.Open();
             command.ExecuteNonQuery();
@@ -90,7 +90,7 @@ namespace InventoryManagementSystem.dataAccess
             physicalInterface.Name = reader.GetValue(1).ToString();
             physicalInterface.Description = reader.GetValue(2).ToString();
             physicalInterface.Serial = Boolean.Parse(reader.GetValue(3).ToString());
-            physicalInterface.TransferRate = uint.Parse(reader.GetValue(4).ToString());
+            physicalInterface.TransferRate = double.Parse(reader.GetValue(4).ToString());
 
             return physicalInterface;
         }

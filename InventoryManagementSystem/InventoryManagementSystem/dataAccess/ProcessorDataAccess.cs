@@ -34,7 +34,7 @@ namespace InventoryManagementSystem.dataAccess
 
             command.CommandText = "INSERT INTO `" + this.GetTableName() + "`(`Beschreibung`, `Modell`, `Kerne`, `Befehlssatz`, `Architektur`, `Taktrate`, "
                                 + "`ID_Hersteller`) VALUES ('" + entity.Description + "','" + entity.Model + "'," + entity.Core + ",'" + entity.CommandSet 
-                                + "'," + entity.Architecture + ",'" + entity.ClockRate + "'," + entity.Producer.Id + ")";
+                                + "'," + entity.Architecture + ",'" + entity.ClockRate.ToString().Replace(',','.') + "'," + entity.Producer.Id + ")";
 
             connection.Open();
             command.ExecuteNonQuery();
@@ -51,7 +51,7 @@ namespace InventoryManagementSystem.dataAccess
             MySqlCommand command = connection.CreateCommand();
 
             command.CommandText = "UPDATE `" + this.GetTableName() + "` SET `Beschreibung`='" + entity.Description + "', `Modell`='" + entity.Model + "', `Kerne`=" + entity.Core 
-                                + ", `Befehlssatz`='" + entity.CommandSet + "', `Architektur`=" + entity.Architecture + ", `Taktrate`='" + entity.ClockRate 
+                                + ", `Befehlssatz`='" + entity.CommandSet + "', `Architektur`=" + entity.Architecture + ", `Taktrate`='" + entity.ClockRate.ToString().Replace(',','.')
                                 + "', `ID_Hersteller`=" + entity.Producer.Id + " WHERE id = " + entity.Id;
 
             connection.Open();
