@@ -87,28 +87,81 @@ namespace InventoryManagementSystem
             MessageBox.Show(message, exception.GetType().Name, MessageBoxButton.OK, MessageBoxImage.Warning);
         }
 
+        private void Menu_Selected(object sender, int indicator, string[] HeaderName, string[] HeaderUnit, string[] Entity)
+        {
+            try
+            {
+                int counter = 0;
+                switch (indicator)
+                {
+                    case (1):
+                        RandomAccessMemoryDataAccess ramDataAccess = new RandomAccessMemoryDataAccess();
+                        this.AddToTable(mapper.MapToGraphicalObject(ramDataAccess.GetAllEntities<RandomAccessMemory>()));
+                        this.menu_ram.Background = this.defaultBrush;
+                        break;
+                    case (2):
+                        DiskDataAccess diskDataAccess = new DiskDataAccess();
+                        this.AddToTable(mapper.MapToGraphicalObject(diskDataAccess.GetAllEntities<Disk>()));
+                        this.menu_disk.Background = this.defaultBrush;
+                        break;
+                    case (3):
+                        GraphicCardDataAccess graphicCardDataAccess = new GraphicCardDataAccess();
+                        this.AddToTable(mapper.MapToGraphicalObject(graphicCardDataAccess.GetAllEntities<GraphicCard>()));
+                        this.menu_graphiccard.Background = this.defaultBrush;
+                        break;
+                    case (4):
+                        MotherboardDataAccess MotherboardDataAccess = new MotherboardDataAccess();
+                        this.AddToTable(mapper.MapToGraphicalObject(MotherboardDataAccess.GetAllEntities<Motherboard>()));
+                        this.menu_motherboard.Background = this.defaultBrush;
+                        break;
+                    case (5):
+                        MonitorDataAccess MonitorDataAccess = new MonitorDataAccess();
+                        this.AddToTable(mapper.MapToGraphicalObject(MonitorDataAccess.GetAllEntities<Monitor>()));
+                        this.menu_monitor.Background = this.defaultBrush;
+                        break;
+                    case (6):
+                        ProcessorDataAccess ProcessorDataAccess = new ProcessorDataAccess();
+                        this.AddToTable(mapper.MapToGraphicalObject(ProcessorDataAccess.GetAllEntities<Processor>()));
+                        this.menu_processor.Background = this.defaultBrush;
+                        break;
+                    case (7):
+                        ProducerDataAccess ProducerDataAccess = new ProducerDataAccess();
+                        this.AddToTable(mapper.MapToGraphicalObject(ProducerDataAccess.GetAllEntities<Producer>()));
+                        this.menu_producer.Background = this.defaultBrush;
+                        break;
+                    case (8):
+                        PhysicalInterfaceDataAccess InterfaceDataAccess = new PhysicalInterfaceDataAccess();
+                        this.AddToTable(mapper.MapToGraphicalObject(InterfaceDataAccess.GetAllEntities<PhysicalInterface>()));
+                        this.menu_interface.Background = this.defaultBrush;
+                        break;
+                }
+                this.dataGrid.Columns[0].Visibility = Visibility.Hidden;
+                foreach (string Name in HeaderName)
+                {
+                    this.AddToHeaderName(Name, HeaderUnit[counter]);
+                    counter++;
+                }
+            }
+            catch (MySql.Data.MySqlClient.MySqlException exception)
+            {
+                this.showErrorMessage(exception, this.noDatabaseConnection);
+            }
+            this.entityName.Content = Entity[0];
+            this.selectedEntity = Entity[1];
+            this.resetMenuBackground();
+        }
+
         /// <summary>
         /// Wird aufgerufen, wenn der Menüpunkt 'Arbeitsspeicher' selektiert wurde.
         /// Lädt die Tabelle neu, passt den Titel an und ändert die Hintergrundfarbe des Menüpunktes.
         /// </summary>
         private void RAM_Selected(object sender, RoutedEventArgs e)
         {
-            try
-            {
-                RandomAccessMemoryDataAccess dataAccess = new RandomAccessMemoryDataAccess();
-                this.AddToTable(mapper.MapToGraphicalObject(dataAccess.GetAllEntities<RandomAccessMemory>()));
-                this.dataGrid.Columns[0].Visibility = Visibility.Hidden;
-                this.AddToHeaderName("Speicher", " (MB)");
-                this.AddToHeaderName("Taktrate", " (MHz)");
-            }
-            catch (MySql.Data.MySqlClient.MySqlException exception)
-            {
-                this.showErrorMessage(exception, this.noDatabaseConnection);
-            }
-            this.entityName.Content = "Arbeitsspeicher";
-            this.selectedEntity = "RandomAccessMemory";
-            this.resetMenuBackground();
-            this.menu_ram.Background = this.defaultBrush;
+            int indicatorDA = 1;
+            string[] HeaderName = { "Speicher", "Taktrate" };
+            string[] HeaderUnit = { " (MB)", " (MHz)" };
+            string[] Entity = { "Arbeitsspeicher", "RandomAccessMemory" };
+            Menu_Selected(this, indicatorDA, HeaderName, HeaderUnit, Entity);
         }
 
         /// <summary>
@@ -117,21 +170,11 @@ namespace InventoryManagementSystem
         /// </summary>
         private void Disk_Selected(object sender, RoutedEventArgs e)
         {
-            try
-            {
-                DiskDataAccess dataAccess = new DiskDataAccess();
-                this.AddToTable(mapper.MapToGraphicalObject(dataAccess.GetAllEntities<Disk>()));
-                this.dataGrid.Columns[0].Visibility = Visibility.Hidden;
-                this.AddToHeaderName("Kapazität", " (GB)");
-            }
-            catch (MySql.Data.MySqlClient.MySqlException exception)
-            {
-                this.showErrorMessage(exception, this.noDatabaseConnection);
-            }
-            this.entityName.Content = "Festplatte";
-            this.selectedEntity = "Disk";
-            this.resetMenuBackground();
-            this.menu_disk.Background = this.defaultBrush;
+            int indicatorDA = 2;
+            string[] HeaderName = { "Kapazität" };
+            string[] HeaderUnit = { " (GB)" };
+            string[] Entity = { "Festplatte", "Disk" };
+            Menu_Selected(this, indicatorDA, HeaderName, HeaderUnit, Entity);
         }
 
         /// <summary>
@@ -140,22 +183,11 @@ namespace InventoryManagementSystem
         /// </summary>
         private void GraphicCard_Selected(object sender, RoutedEventArgs e)
         {
-            try
-            {
-                GraphicCardDataAccess dataAccess = new GraphicCardDataAccess();
-                this.AddToTable(mapper.MapToGraphicalObject(dataAccess.GetAllEntities<GraphicCard>()));
-                this.dataGrid.Columns[0].Visibility = Visibility.Hidden;
-                this.AddToHeaderName("Taktrate", " (MHz)");
-                this.AddToHeaderName("Speicher", " (MB)");
-            }
-            catch (MySql.Data.MySqlClient.MySqlException exception)
-            {
-                this.showErrorMessage(exception, this.noDatabaseConnection);
-            }
-            this.entityName.Content = "Grafikkarte";
-            this.selectedEntity = "GraphicCard";
-            this.resetMenuBackground();
-            this.menu_graphiccard.Background = this.defaultBrush;
+            int indicatorDA = 3;
+            string[] HeaderName = { "Taktrate", "Speicher" };
+            string[] HeaderUnit = { " (MHz)", " (MB)" };
+            string[] Entity = { "Grafikkarte", "GraphicCard" };
+            Menu_Selected(this, indicatorDA, HeaderName, HeaderUnit, Entity);
         }
 
         /// <summary>
@@ -164,20 +196,11 @@ namespace InventoryManagementSystem
         /// </summary>
         private void Motherboard_Selected(object sender, RoutedEventArgs e)
         {
-            try
-            {
-                MotherboardDataAccess dataAccess = new MotherboardDataAccess();
-                this.AddToTable(mapper.MapToGraphicalObject(dataAccess.GetAllEntities<Motherboard>()));
-                this.dataGrid.Columns[0].Visibility = Visibility.Hidden;
-            }
-            catch (MySql.Data.MySqlClient.MySqlException exception)
-            {
-                this.showErrorMessage(exception, this.noDatabaseConnection);
-            }
-            this.entityName.Content = "Hauptplatine";
-            this.selectedEntity = "Motherboard";
-            this.resetMenuBackground();
-            this.menu_motherboard.Background = this.defaultBrush;
+            int indicatorDA = 4;
+            string[] HeaderName = { };
+            string[] HeaderUnit = { };
+            string[] Entity = { "Hauptplatine", "Motherboard" };
+            Menu_Selected(this, indicatorDA, HeaderName, HeaderUnit, Entity);
         }
 
         /// <summary>
@@ -186,20 +209,11 @@ namespace InventoryManagementSystem
         /// </summary>
         private void Monitor_Selected(object sender, RoutedEventArgs e)
         {
-            try
-            {
-                MonitorDataAccess dataAccess = new MonitorDataAccess();
-                this.AddToTable(mapper.MapToGraphicalObject(dataAccess.GetAllEntities<Monitor>()));
-                this.dataGrid.Columns[0].Visibility = Visibility.Hidden;
-            }
-            catch (MySql.Data.MySqlClient.MySqlException exception)
-            {
-                this.showErrorMessage(exception, this.noDatabaseConnection);
-            }
-            this.entityName.Content = "Monitor";
-            this.selectedEntity = "Monitor";
-            this.resetMenuBackground();
-            this.menu_monitor.Background = this.defaultBrush;
+            int indicatorDA = 5;
+            string[] HeaderName = { };
+            string[] HeaderUnit = { };
+            string[] Entity = { "Monitor", "Monitor" };
+            Menu_Selected(this, indicatorDA, HeaderName, HeaderUnit, Entity);
         }
 
         /// <summary>
@@ -208,21 +222,11 @@ namespace InventoryManagementSystem
         /// </summary>
         private void Processor_Selected(object sender, RoutedEventArgs e)
         {
-            try
-            {
-                ProcessorDataAccess dataAccess = new ProcessorDataAccess();
-                this.AddToTable(mapper.MapToGraphicalObject(dataAccess.GetAllEntities<Processor>()));
-                this.dataGrid.Columns[0].Visibility = Visibility.Hidden;
-                this.AddToHeaderName("Taktrate", " (MHz)");
-            }
-            catch (MySql.Data.MySqlClient.MySqlException exception)
-            {
-                this.showErrorMessage(exception, this.noDatabaseConnection);
-            }
-            this.entityName.Content = "Prozessor";
-            this.selectedEntity = "Processor";
-            this.resetMenuBackground();
-            this.menu_processor.Background = this.defaultBrush;
+            int indicatorDA = 6;
+            string[] HeaderName = { "Taktrate" };
+            string[] HeaderUnit = { " (MHz)" };
+            string[] Entity = { "Prozessor", "Processor" };
+            Menu_Selected(this, indicatorDA, HeaderName, HeaderUnit, Entity);
         }
 
         /// <summary>
@@ -231,20 +235,11 @@ namespace InventoryManagementSystem
         /// </summary>
         private void Producer_Selected(object sender, RoutedEventArgs e)
         {
-            try
-            {
-                ProducerDataAccess dataAccess = new ProducerDataAccess();
-                this.AddToTable(mapper.MapToGraphicalObject(dataAccess.GetAllEntities<Producer>()));
-                this.dataGrid.Columns[0].Visibility = Visibility.Hidden;
-            }
-            catch (MySql.Data.MySqlClient.MySqlException exception)
-            {
-                this.showErrorMessage(exception, this.noDatabaseConnection);
-            }
-            this.entityName.Content = "Hersteller";
-            this.selectedEntity = "Producer";
-            this.resetMenuBackground();
-            this.menu_producer.Background = this.defaultBrush;
+            int indicatorDA = 7;
+            string[] HeaderName = { };
+            string[] HeaderUnit = { };
+            string[] Entity = { "Hersteller", "Producer" };
+            Menu_Selected(this, indicatorDA, HeaderName, HeaderUnit, Entity);
         }
 
         /// <summary>
@@ -253,21 +248,11 @@ namespace InventoryManagementSystem
         /// </summary>
         private void Interface_Selected(object sender, RoutedEventArgs e)
         {
-            try
-            {
-                PhysicalInterfaceDataAccess dataAccess = new PhysicalInterfaceDataAccess();
-                this.AddToTable(mapper.MapToGraphicalObject(dataAccess.GetAllEntities<PhysicalInterface>()));
-                this.dataGrid.Columns[0].Visibility = Visibility.Hidden;
-                this.AddToHeaderName("Transferrate", " (MB/s)");
-            }
-            catch (MySql.Data.MySqlClient.MySqlException exception)
-            {
-                this.showErrorMessage(exception, this.noDatabaseConnection);
-            }
-            this.entityName.Content = "Schnittstelle";
-            this.selectedEntity = "PhysicalInterface";
-            this.resetMenuBackground();
-            this.menu_interface.Background = this.defaultBrush;
+            int indicatorDA = 8;
+            string[] HeaderName = { "Transferrate" };
+            string[] HeaderUnit = { " (MB/s)" };
+            string[] Entity = { "Schnittstelle", "PhysicalInterface" };
+            Menu_Selected(this, indicatorDA, HeaderName, HeaderUnit, Entity);
         }
 
         /// <summary>
@@ -369,26 +354,32 @@ namespace InventoryManagementSystem
                 case "Disk":
                     CreateDisk createDiskWindow = new CreateDisk();
                     createDiskWindow.ShowDialog();
+                    this.Disk_Selected(null, null);
                     break;
                 case "RandomAccessMemory":
                     CreateRAM createRandomAccessMemoryWindow = new CreateRAM();
                     createRandomAccessMemoryWindow.ShowDialog();
+                    this.RAM_Selected(null, null);
                     break;
                 case "GraphicCard":
                     CreateGraphicCard createGrapicCardWindow = new CreateGraphicCard();
                     createGrapicCardWindow.ShowDialog();
+                    this.GraphicCard_Selected(null, null);
                     break;
                 case "Motherboard":
                     CreateMotherboard createMotherboardWindow = new CreateMotherboard();
                     createMotherboardWindow.ShowDialog();
+                    this.Motherboard_Selected(null, null);
                     break;
                 case "Processor":
                     CreateProcessor createProcessorWindow = new CreateProcessor();
                     createProcessorWindow.ShowDialog();
+                    this.Processor_Selected(null, null);
                     break;
                 case "Producer":
                     CreateProducer createProducerWindow = new CreateProducer();
                     createProducerWindow.ShowDialog();
+                    this.Producer_Selected(null, null);
                     break;
             }
         }
