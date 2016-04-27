@@ -32,7 +32,7 @@ namespace InventoryManagementSystem.dataAccess
             MySqlConnection connection = this.CreateConnection();
             MySqlCommand command = connection.CreateCommand();
             command.CommandText = "INSERT INTO `" + this.GetTableName() + "`(`Firma`, `Telefon`, `Email`, `Webseite`, `PLZ`, `Ort`, `Straße`, `Hausnummer`) "
-                                + "VALUES ('" + entity.CompanyName + "'," + entity.PhoneNumber + ",'" + entity.Email + "',"
+                                + "VALUES ('" + entity.CompanyName + "','" + entity.PhoneNumber + "','" + entity.Email + "',"
                                 + "'" + entity.Website + "'," + entity.PostalCode + ",'" + entity.Place + "','" + entity.Street + "'," + entity.HouseNumber + ")";
 
             connection.Open();
@@ -50,7 +50,7 @@ namespace InventoryManagementSystem.dataAccess
             MySqlConnection connection = this.CreateConnection();
             MySqlCommand command = connection.CreateCommand();
 
-            command.CommandText = "UPDATE `" + this.GetTableName() + "` SET `Firma`='" + entity.CompanyName + "', `Telefon`=" + entity.PhoneNumber + ", `Email`='" + entity.Email 
+            command.CommandText = "UPDATE `" + this.GetTableName() + "` SET `Firma`='" + entity.CompanyName + "', `Telefon`='" + entity.PhoneNumber + "', `Email`='" + entity.Email 
                                 + "', `Webseite`='" + entity.Website + "', `PLZ`=" + entity.PostalCode + ", `Ort`='" + entity.Place + "', `Straße`='" + entity.Street 
                                 + "', `Hausnummer`=" + entity.HouseNumber + " WHERE id = " + entity.Id;
 
@@ -70,7 +70,7 @@ namespace InventoryManagementSystem.dataAccess
 
             producer.Id = Int32.Parse(reader.GetValue(0).ToString());
             producer.CompanyName = reader.GetValue(1).ToString();
-            producer.PhoneNumber = uint.Parse(reader.GetValue(2).ToString());
+            producer.PhoneNumber = reader.GetValue(2).ToString();
             producer.Email = reader.GetValue(3).ToString();
             producer.Website = reader.GetValue(4).ToString();
             producer.PostalCode = uint.Parse(reader.GetValue(5).ToString());

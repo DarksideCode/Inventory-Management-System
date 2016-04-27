@@ -83,7 +83,7 @@ namespace InventoryManagementSystem.presentation.forms
             {
                 this.entity.CompanyName = this.ProducerCompanyName.Text;
                 this.entity.Email = this.ProducerEmail.Text;
-                this.entity.PhoneNumber = uint.Parse(this.ProducerTelephone.Text);
+                this.entity.PhoneNumber = this.ProducerTelephone.Text;
                 this.entity.Website = this.ProducerWebsite.Text;
                 this.entity.PostalCode = uint.Parse(this.ProducerPostalCode.Text);
                 this.entity.Place = this.ProducerPlace.Text;

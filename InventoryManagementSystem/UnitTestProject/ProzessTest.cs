@@ -14,7 +14,7 @@ namespace UnitTests
             Producer producer = new Producer();
 
             producer.CompanyName = "Siemens";
-            producer.PhoneNumber = 123456;
+            producer.PhoneNumber = "123456";
             producer.Email = "info@siemens.com";
             producer.Website = "www.siemens.de";
             producer.PostalCode = 21335;

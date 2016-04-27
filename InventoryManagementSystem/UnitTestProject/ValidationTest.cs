@@ -14,7 +14,7 @@ namespace UnitTests
             ProducerValidator validator = new ProducerValidator();
 
             producer.CompanyName = "Siemens";
-            producer.PhoneNumber = 123456;
+            producer.PhoneNumber = "123456";
             producer.Email = "info@siemens.com";
             producer.Website = "http://siemens.de";
             producer.PostalCode = 21335;
