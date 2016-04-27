@@ -111,6 +111,10 @@ namespace InventoryManagementSystem.presentation.forms
             {
                 this.showErrorMessage(exception, "Die eingegebenen Daten sind inkonsistent. Bitte überprüfen Sie Ihre Eingaben!");
             }
+            catch (System.OverflowException exception)
+            {
+                this.showErrorMessage(exception, "Die eingegebenen Daten sind zu lang!");
+            }
         }
 
         /// <summary>
