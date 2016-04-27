@@ -89,6 +89,7 @@ namespace InventoryManagementSystem
 
         private void Menu_Selected(object sender, int indicator, string[] HeaderName, string[] HeaderUnit, string[] Entity)
         {
+            this.resetMenuBackground();
             try
             {
                 int counter = 0;
@@ -148,7 +149,6 @@ namespace InventoryManagementSystem
             }
             this.entityName.Content = Entity[0];
             this.selectedEntity = Entity[1];
-            this.resetMenuBackground();
         }
 
         /// <summary>
