@@ -381,6 +381,11 @@ namespace InventoryManagementSystem
                     createProducerWindow.ShowDialog();
                     this.Producer_Selected(null, null);
                     break;
+                case "Monitor":
+                    CreateMonitor createMonitorWindow = new CreateMonitor();
+                    createMonitorWindow.ShowDialog();
+                    this.Monitor_Selected(null, null);
+                    break;
             }
         }
 
@@ -415,11 +420,22 @@ namespace InventoryManagementSystem
                         CreateMotherboard createMotherboardWindow = new CreateMotherboard(motherboardDataAccess.GetEntityById<Motherboard>(motherboard.Id));
                         createMotherboardWindow.ShowDialog();
                         break;
+                    case "Processor":
+                        CreateProcessor createProcessorWindow = new CreateProcessor();
+                        createProcessorWindow.ShowDialog();
+                        this.Processor_Selected(null, null);
+                        break;
                     case "Producer":
                         ProducerDataAccess producerDataAccess = new ProducerDataAccess();
                         ProducerGraphicalObject producer = (ProducerGraphicalObject)this.dataGrid.SelectedItems[0];
                         CreateProducer createProducerWindow = new CreateProducer(producerDataAccess.GetEntityById<Producer>(producer.Id));
                         createProducerWindow.ShowDialog();
+                        break;
+                    case "Monitor":
+                        MonitorDataAccess monitorDataAccess = new MonitorDataAccess();
+                        MonitorGraphicalObject monitor = (MonitorGraphicalObject)this.dataGrid.SelectedItems[0];
+                        CreateMonitor createMonitorWindow = new CreateMonitor(monitorDataAccess.GetEntityById<Monitor>(monitor.Id));
+                        createMonitorWindow.ShowDialog();
                         break;
                 }
             }
