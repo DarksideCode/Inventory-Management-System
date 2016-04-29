@@ -10,7 +10,7 @@ namespace InventoryManagementSystem.validation
     /// </summary>
     public class GraphicCardValidator
     {
-        private string modelPattern = "^[A-Za-z0-9]*$";
+        private string modelPattern = "^[A-Za-z0-9 ]*$";
 
         /// <summary>
         /// Prüft die Konsistenz der Attribute der Entität 'Grafikkarte'

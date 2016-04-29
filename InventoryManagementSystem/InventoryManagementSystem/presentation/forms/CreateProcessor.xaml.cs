@@ -70,7 +70,7 @@ namespace InventoryManagementSystem.presentation.forms
                 this.entity.Producer = dataProducer.GetEntityByName<Producer>("Firma", this.producer.Text.ToString());
                 this.entity.CommandSet = this.commandSet.Text;
                 this.entity.Architecture = uint.Parse(this.architecture.Text);
-                this.entity.ClockRate = double.Parse(this.clockRate.Text);
+                this.entity.ClockRate = double.Parse(this.clockRate.Text.Replace(".",","));
                 this.entity.Core = uint.Parse(this.cores.Text);
 
                 if (!validator.CheckConsistency(this.entity))

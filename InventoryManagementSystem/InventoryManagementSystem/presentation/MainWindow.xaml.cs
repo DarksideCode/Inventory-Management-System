@@ -386,6 +386,11 @@ namespace InventoryManagementSystem
                     createMonitorWindow.ShowDialog();
                     this.Monitor_Selected(null, null);
                     break;
+                case "PhysicalInterface":
+                    CreatePhysicalInterface createPhysicalInterfaceWindow = new CreatePhysicalInterface();
+                    createPhysicalInterfaceWindow.ShowDialog();
+                    this.Interface_Selected(null, null);
+                    break;
             }
         }
 
@@ -401,27 +406,33 @@ namespace InventoryManagementSystem
                         RandomAccessMemoryGraphicalObject ram = (RandomAccessMemoryGraphicalObject)this.dataGrid.SelectedItems[0];
                         CreateRAM createRAMWindow = new CreateRAM(ramDataAccess.GetEntityById<RandomAccessMemory>(ram.Id));
                         createRAMWindow.ShowDialog();
+                        this.RAM_Selected(null, null);
                         break;
                     case "Disk":
                         DiskDataAccess diskDataAccess = new DiskDataAccess();
                         DiskGraphicalObject disk = (DiskGraphicalObject)this.dataGrid.SelectedItems[0];
                         CreateDisk createDiskWindow = new CreateDisk(diskDataAccess.GetEntityById<Disk>(disk.Id));
                         createDiskWindow.ShowDialog();
+                        this.Disk_Selected(null, null);
                         break;
                     case "GraphicCard":
                         GraphicCardDataAccess graphicCardDataAccess = new GraphicCardDataAccess();
                         GraphicCardGraphicalObject graphicCard = (GraphicCardGraphicalObject)this.dataGrid.SelectedItems[0];
                         CreateGraphicCard createGraphicCardWindow = new CreateGraphicCard(graphicCardDataAccess.GetEntityById<GraphicCard>(graphicCard.Id));
                         createGraphicCardWindow.ShowDialog();
+                        this.GraphicCard_Selected(null, null);
                         break;
                     case "Motherboard":
                         MotherboardDataAccess motherboardDataAccess = new MotherboardDataAccess();
                         MotherboardGraphicalObject motherboard = (MotherboardGraphicalObject)this.dataGrid.SelectedItems[0];
                         CreateMotherboard createMotherboardWindow = new CreateMotherboard(motherboardDataAccess.GetEntityById<Motherboard>(motherboard.Id));
                         createMotherboardWindow.ShowDialog();
+                        this.Motherboard_Selected(null, null);
                         break;
                     case "Processor":
-                        CreateProcessor createProcessorWindow = new CreateProcessor();
+                        ProcessorDataAccess processorDataAccess = new ProcessorDataAccess();
+                        ProcessorGraphicalObject processor = (ProcessorGraphicalObject)this.dataGrid.SelectedItems[0];
+                        CreateProcessor createProcessorWindow = new CreateProcessor(processorDataAccess.GetEntityById<Processor>(processor.Id));
                         createProcessorWindow.ShowDialog();
                         this.Processor_Selected(null, null);
                         break;
@@ -430,12 +441,21 @@ namespace InventoryManagementSystem
                         ProducerGraphicalObject producer = (ProducerGraphicalObject)this.dataGrid.SelectedItems[0];
                         CreateProducer createProducerWindow = new CreateProducer(producerDataAccess.GetEntityById<Producer>(producer.Id));
                         createProducerWindow.ShowDialog();
+                        this.Producer_Selected(null, null);
                         break;
                     case "Monitor":
                         MonitorDataAccess monitorDataAccess = new MonitorDataAccess();
                         MonitorGraphicalObject monitor = (MonitorGraphicalObject)this.dataGrid.SelectedItems[0];
                         CreateMonitor createMonitorWindow = new CreateMonitor(monitorDataAccess.GetEntityById<Monitor>(monitor.Id));
                         createMonitorWindow.ShowDialog();
+                        this.Monitor_Selected(null, null);
+                        break;
+                    case "PhysicalInterface":
+                        PhysicalInterfaceDataAccess physicalInterfaceDataAccess = new PhysicalInterfaceDataAccess();
+                        PhysicalInterfaceGraphicalObject physicalInterface = (PhysicalInterfaceGraphicalObject)this.dataGrid.SelectedItems[0];
+                        CreatePhysicalInterface createPhysicalInterfaceWindow = new CreatePhysicalInterface(physicalInterfaceDataAccess.GetEntityById<PhysicalInterface>(physicalInterface.Id));
+                        createPhysicalInterfaceWindow.ShowDialog();
+                        this.Interface_Selected(null, null);
                         break;
                 }
             }
