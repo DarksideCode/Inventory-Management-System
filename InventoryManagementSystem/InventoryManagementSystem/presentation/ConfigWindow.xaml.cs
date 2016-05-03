@@ -17,41 +17,47 @@ namespace InventoryManagementSystem.presentation
 {
     /// <summary>
     /// Interaktionslogik für ConfigWindow.xaml
+    /// Ermöglicht das Konfigurieren der Datenbankverbindung auf Client-Seite.
     /// </summary>
     public partial class ConfigWindow : Window
     {
+        private ConfigProzesser config;
+
+        /// <summary>
+        /// Konstruktor: Initialisiert die Elemente.
+        /// </summary>
         public ConfigWindow()
         {
             InitializeComponent();
-            ConfigProzesser config = new ConfigProzesser();
-
-            string DBName = config.PDBName;
-            string DBPraefix = config.PDBPraefix;
-            string DBHost = config.PDBHost;
-            string DBUser = config.PDBUser;
-            string DBPassword = config.PDBPassword;
-
-            this.TBName.Text = DBName;
-            this.TBPraefix.Text = DBPraefix;
-            this.TBHost.Text = DBHost;
-            this.TBUser.Text = DBUser;
-            this.TBPassword.Password = DBPassword;
+            config = new ConfigProzesser();
+            this.FillTextFields();
         }
 
+        /// <summary>
+        /// Setzt die Werte der Text-Felder mit den Informationen aus
+        /// der Konfiguration
+        /// </summary>
+        private void FillTextFields()
+        {
+            this.TBName.Text = config.DBName;
+            this.TBPraefix.Text = config.DBPraefix;
+            this.TBHost.Text = config.DBHost;
+            this.TBUser.Text = config.DBUser;
+            this.TBPassword.Password = config.DBPassword;
+        }
+
+        /// <summary>
+        /// Wird aufgerufen, wenn der Speichern-Button geklickt wurde.
+        /// Setzt die Informationen aus der Konfiguration auf die eingegebenen
+        /// Werte und schließt das Fenster.
+        /// </summary>
         protected void BtnSave_Click(object sender, RoutedEventArgs e)
         {
-            string DBName = TBName.Text;
-            string DBPraefix = TBPraefix.Text;
-            string DBHost = TBHost.Text;
-            string DBUser = TBUser.Text;
-            string DBPassword = TBPassword.Password;
-
-            ConfigProzesser config = new ConfigProzesser();
-            config.saveDBName(DBName);
-            config.saveDBPraefix(DBPraefix);
-            config.saveDBHost(DBHost);
-            config.saveDBUser(DBUser);
-            config.saveDBPassword(DBPassword);
+            config.SaveDBName(this.TBName.Text);
+            config.SaveDBPraefix(this.TBPraefix.Text);
+            config.SaveDBHost(this.TBHost.Text);
+            config.SaveDBUser(this.TBUser.Text);
+            config.SaveDBPassword(this.TBPassword.Password);
 
             this.Close();
         }

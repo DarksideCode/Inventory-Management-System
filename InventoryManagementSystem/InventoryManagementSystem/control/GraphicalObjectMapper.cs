@@ -7,8 +7,17 @@ using InventoryManagementSystem.components;
 
 namespace InventoryManagementSystem.control
 {
+    /// <summary>
+    /// Stellt eine Reihe von Methoden für das Mapping von Entitäten in ihre jeweiligen
+    /// GraphicalObject-Klassen zur Verfügung.
+    /// </summary>
     public class GraphicalObjectMapper
     {
+        /// <summary>
+        /// Mappt eine Liste von Festplatten auf deren Anzeige-Objekte
+        /// </summary>
+        /// <param name="entities">Liste von Disk</param>
+        /// <returns>Liste von DiskGraphicalObject</returns>
         public List<DiskGraphicalObject> MapToGraphicalObject(List<Disk> entities)
         {
             List<DiskGraphicalObject> list = new List<DiskGraphicalObject>();
@@ -21,6 +30,11 @@ namespace InventoryManagementSystem.control
             return list;
         }
 
+        /// <summary>
+        /// Mappt eine Liste von Grafikkarten auf deren Anzeige-Objekte
+        /// </summary>
+        /// <param name="entities">Liste von GrapgicCard</param>
+        /// <returns>Liste von GraphicCardGraphicalObject</returns>
         public List<GraphicCardGraphicalObject> MapToGraphicalObject(List<GraphicCard> entities)
         {
             List<GraphicCardGraphicalObject> list = new List<GraphicCardGraphicalObject>();
@@ -33,6 +47,11 @@ namespace InventoryManagementSystem.control
             return list;
         }
 
+        /// <summary>
+        /// Mappt eine Liste von Monitoren auf deren Anzeige-Objekte
+        /// </summary>
+        /// <param name="entities">Liste von Monitor</param>
+        /// <returns>Liste von MonitorGraphicalObject</returns>
         public List<MonitorGraphicalObject> MapToGraphicalObject(List<Monitor> entities)
         {
             List<MonitorGraphicalObject> list = new List<MonitorGraphicalObject>();
@@ -45,6 +64,11 @@ namespace InventoryManagementSystem.control
             return list;
         }
 
+        /// <summary>
+        /// Mappt eine Liste von Hauptplatinen auf deren Anzeige-Objekte
+        /// </summary>
+        /// <param name="entities">Liste von Motherboard</param>
+        /// <returns>Liste von MotherboardGraphicalObject</returns>
         public List<MotherboardGraphicalObject> MapToGraphicalObject(List<Motherboard> entities)
         {
             List<MotherboardGraphicalObject> list = new List<MotherboardGraphicalObject>();
@@ -57,6 +81,11 @@ namespace InventoryManagementSystem.control
             return list;
         }
 
+        /// <summary>
+        /// Mappt eine Liste von Schnittstellen auf deren Anzeige-Objekte
+        /// </summary>
+        /// <param name="entities">Liste von PhysicalInterface</param>
+        /// <returns>Liste von PhysicalInterfaceGraphicalObject</returns>
         public List<PhysicalInterfaceGraphicalObject> MapToGraphicalObject(List<PhysicalInterface> entities)
         {
             List<PhysicalInterfaceGraphicalObject> list = new List<PhysicalInterfaceGraphicalObject>();
@@ -69,6 +98,11 @@ namespace InventoryManagementSystem.control
             return list;
         }
 
+        /// <summary>
+        /// Mappt eine Liste von Prozessoren auf deren Anzeige-Objekte
+        /// </summary>
+        /// <param name="entities">Liste von Processor</param>
+        /// <returns>Liste von ProcessorGraphicalObject</returns>
         public List<ProcessorGraphicalObject> MapToGraphicalObject(List<Processor> entities)
         {
             List<ProcessorGraphicalObject> list = new List<ProcessorGraphicalObject>();
@@ -81,6 +115,11 @@ namespace InventoryManagementSystem.control
             return list;
         }
 
+        /// <summary>
+        /// Mappt eine Liste von Herstellern auf deren Anzeige-Objekte
+        /// </summary>
+        /// <param name="entities">Liste von Producer</param>
+        /// <returns>Liste von ProducerGraphicalObject</returns>
         public List<ProducerGraphicalObject> MapToGraphicalObject(List<Producer> entities)
         {
             List<ProducerGraphicalObject> list = new List<ProducerGraphicalObject>();
@@ -93,6 +132,11 @@ namespace InventoryManagementSystem.control
             return list;
         }
 
+        /// <summary>
+        /// Mappt eine Liste von Arbeitsspeichern auf deren Anzeige-Objekte
+        /// </summary>
+        /// <param name="entities">Liste von RandomAccessMemory</param>
+        /// <returns>Liste von RandomAccessMemoryGraphicalObject</returns>
         public List<RandomAccessMemoryGraphicalObject> MapToGraphicalObject(List<RandomAccessMemory> entities)
         {
             List<RandomAccessMemoryGraphicalObject> list = new List<RandomAccessMemoryGraphicalObject>();

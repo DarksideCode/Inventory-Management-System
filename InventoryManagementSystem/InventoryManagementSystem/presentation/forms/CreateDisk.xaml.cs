@@ -53,14 +53,6 @@ namespace InventoryManagementSystem.presentation.forms
         }
 
         /// <summary>
-        /// Schließt das aktuelle Fenster
-        /// </summary>
-        private void DiskCancel_Click(object sender, RoutedEventArgs e)
-        {
-            this.Close();
-        }
-
-        /// <summary>
         /// Fügt alle Hersteller aus der Datenbank dem Drop-Down-Menü hinzu
         /// </summary>
         private void GetProducers()
@@ -75,13 +67,24 @@ namespace InventoryManagementSystem.presentation.forms
         }
 
         /// <summary>
-        /// Öffnet eine MessageBox mit der übergebenen Fehlermeldung.
+        /// Öffnet das Fenster für die Verwaltung der Schnittstellen.
         /// </summary>
-        /// <param name="exception">Die Exception, welche ausgelöst wurde</param>
-        /// <param name="message">Die Fehlermeldung, welche angezeigt wird</param>
-        private void showErrorMessage(Exception exception, string message)
+        private void DiskInterface_Click(object sender, RoutedEventArgs e)
         {
-            MessageBox.Show(message, exception.GetType().Name, MessageBoxButton.OK, MessageBoxImage.Warning);
+            EditPhysicalInterfaces interfaceWindow;
+
+            if (this.entity != null)
+            {
+                interfaceWindow = new EditPhysicalInterfaces(this.entity.PhysicalInterfaces);
+                interfaceWindow.ShowDialog();
+                entity.PhysicalInterfaces = interfaceWindow.list;
+            }
+            else
+            {
+                interfaceWindow = new EditPhysicalInterfaces(new List<PhysicalInterfaceWithCount>());
+                interfaceWindow.ShowDialog();
+                entity.PhysicalInterfaces = interfaceWindow.list;
+            }
         }
 
         /// <summary>
@@ -113,7 +116,7 @@ namespace InventoryManagementSystem.presentation.forms
 
                 if (!validator.CheckConsistency(this.entity))
                 {
-                    throw new FormatException();
+                    ErrorHandler.ShowErrorMessage("Validierung fehlgeschlagen", ErrorHandler.VALIDATION_FAILED);
                 }
                 else
                 {
@@ -121,38 +124,29 @@ namespace InventoryManagementSystem.presentation.forms
                         diskDataAccess.Update(this.entity);
                     else
                         diskDataAccess.Save(this.entity);
+                    this.Close();
                 }
-                this.Close();
             }
             catch (FormatException exception)
             {
-                this.showErrorMessage(exception, "Die eingegebenen Daten sind inkonsistent. Bitte überprüfen Sie Ihre Eingaben!");
+                ErrorHandler.ShowErrorMessage(exception, ErrorHandler.WRONG_FORMAT);
             }
             catch (MySql.Data.MySqlClient.MySqlException exception)
             {
-                this.showErrorMessage(exception, "Die eingegebenen Daten sind inkonsistent. Bitte überprüfen Sie Ihre Eingaben!");
+                ErrorHandler.ShowErrorMessage(exception, ErrorHandler.SAVE_WENT_WRONG);
+            }
+            catch (System.OverflowException exception)
+            {
+                ErrorHandler.ShowErrorMessage(exception, ErrorHandler.DATA_TOO_LONG);
             }
         }
 
         /// <summary>
-        /// Öffnet das Fenster für die Verwaltung der Schnittstellen.
+        /// Schließt das aktuelle Fenster
         /// </summary>
-        private void DiskInterface_Click(object sender, RoutedEventArgs e)
+        private void DiskCancel_Click(object sender, RoutedEventArgs e)
         {
-            EditPhysicalInterfaces interfaceWindow;
-
-            if (this.entity != null)
-            {
-                interfaceWindow = new EditPhysicalInterfaces(this.entity.PhysicalInterfaces);
-                interfaceWindow.ShowDialog();
-                entity.PhysicalInterfaces = interfaceWindow.list;
-            }
-            else
-            {
-                interfaceWindow = new EditPhysicalInterfaces(new List<PhysicalInterfaceWithCount>());
-                interfaceWindow.ShowDialog();
-                entity.PhysicalInterfaces = interfaceWindow.list;
-            }
+            this.Close();
         }
     }
 }

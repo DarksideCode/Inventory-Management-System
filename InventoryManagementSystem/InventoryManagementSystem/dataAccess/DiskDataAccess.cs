@@ -22,7 +22,7 @@ namespace InventoryManagementSystem.dataAccess
         public override string GetTableName()
         {
             ConfigProzesser config = new ConfigProzesser();
-            return config.getDBPraefix() + "festplatte";
+            return config.DBPraefix + "festplatte";
         }
 
         /// <summary>

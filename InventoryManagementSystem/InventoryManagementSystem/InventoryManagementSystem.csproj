@@ -81,6 +81,7 @@
     <Compile Include="components\Processor.cs" />
     <Compile Include="components\Producer.cs" />
     <Compile Include="components\RandomAccessMemory.cs" />
+    <Compile Include="control\ErrorHandler.cs" />
     <Compile Include="control\GraphicalObjectMapper.cs" />
     <Compile Include="control\UnitConverter.cs" />
     <Compile Include="dataAccess\DatabaseBasic.cs" />

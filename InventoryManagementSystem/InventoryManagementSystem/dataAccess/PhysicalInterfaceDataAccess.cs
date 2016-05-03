@@ -20,7 +20,7 @@ namespace InventoryManagementSystem.dataAccess
         public override string GetTableName()
         {
             ConfigProzesser config = new ConfigProzesser();
-            return config.getDBPraefix() + "schnittstelle";
+            return config.DBPraefix + "schnittstelle";
         }
 
         /// <summary>

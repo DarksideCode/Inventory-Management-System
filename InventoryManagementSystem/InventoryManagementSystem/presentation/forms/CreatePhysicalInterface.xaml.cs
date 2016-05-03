@@ -14,6 +14,7 @@ using System.Windows.Shapes;
 using InventoryManagementSystem.components;
 using InventoryManagementSystem.dataAccess;
 using InventoryManagementSystem.validation;
+using InventoryManagementSystem.control;
 
 namespace InventoryManagementSystem.presentation.forms
 {
@@ -59,24 +60,6 @@ namespace InventoryManagementSystem.presentation.forms
         }
 
         /// <summary>
-        /// Öffnet eine MessageBox mit der übergebenen Fehlermeldung.
-        /// </summary>
-        /// <param name="exception">Die Exception, welche ausgelöst wurde</param>
-        /// <param name="message">Die Fehlermeldung, welche angezeigt wird</param>
-        private void showErrorMessage(Exception exception, string message)
-        {
-            MessageBox.Show(message, exception.GetType().Name, MessageBoxButton.OK, MessageBoxImage.Warning);
-        }
-
-        /// <summary>
-        /// Schließt das aktuelle Fenster
-        /// </summary>
-        private void InterfaceCancel_Click(object sender, RoutedEventArgs e)
-        {
-            this.Close();
-        }
-
-        /// <summary>
         /// Ruft die Informationen aus dem Formular ab und speichert sie in die Datenbank.
         /// Wirft eine Fehlermeldung, wenn die Validierung fehlschlägt.
         /// </summary>
@@ -94,6 +77,7 @@ namespace InventoryManagementSystem.presentation.forms
 
                 if (!validator.CheckConsistency(this.entity))
                 {
+                    ErrorHandler.ShowErrorMessage("Validierung fehlgeschlagen", ErrorHandler.VALIDATION_FAILED);
                     throw new FormatException();
                 }
                 else
@@ -107,12 +91,24 @@ namespace InventoryManagementSystem.presentation.forms
             }
             catch (FormatException exception)
             {
-                this.showErrorMessage(exception, "Die eingegebenen Daten sind inkonsistent. Bitte überprüfen Sie Ihre Eingaben!");
+                ErrorHandler.ShowErrorMessage(exception, ErrorHandler.WRONG_FORMAT);   
             }
             catch (MySql.Data.MySqlClient.MySqlException exception)
             {
-                this.showErrorMessage(exception, "Die eingegebenen Daten sind inkonsistent. Bitte überprüfen Sie Ihre Eingaben!");
+                ErrorHandler.ShowErrorMessage(exception, ErrorHandler.SAVE_WENT_WRONG);
             }
+            catch (System.OverflowException exception)
+            {
+                ErrorHandler.ShowErrorMessage(exception, ErrorHandler.DATA_TOO_LONG);
+            }
+        }
+
+        /// <summary>
+        /// Schließt das aktuelle Fenster
+        /// </summary>
+        private void InterfaceCancel_Click(object sender, RoutedEventArgs e)
+        {
+            this.Close();
         }
     }
 }

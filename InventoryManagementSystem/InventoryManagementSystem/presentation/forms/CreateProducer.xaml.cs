@@ -14,6 +14,7 @@ using System.Windows.Shapes;
 using InventoryManagementSystem.components;
 using InventoryManagementSystem.dataAccess;
 using InventoryManagementSystem.validation;
+using InventoryManagementSystem.control;
 
 namespace InventoryManagementSystem.presentation.forms
 {
@@ -61,16 +62,6 @@ namespace InventoryManagementSystem.presentation.forms
         }
 
         /// <summary>
-        /// Öffnet eine MessageBox mit der übergebenen Fehlermeldung.
-        /// </summary>
-        /// <param name="exception">Die Exception, welche ausgelöst wurde</param>
-        /// <param name="message">Die Fehlermeldung, welche angezeigt wird</param>
-        private void showErrorMessage(Exception exception, string message)
-        {
-            MessageBox.Show(message, exception.GetType().Name, MessageBoxButton.OK, MessageBoxImage.Warning);
-        }
-
-        /// <summary>
         /// Ruft die Informationen aus dem Formular ab und speichert sie in die Datenbank.
         /// Wirft eine Fehlermeldung, wenn die Validierung fehlschlägt.
         /// </summary>
@@ -99,21 +90,21 @@ namespace InventoryManagementSystem.presentation.forms
                 }
                 else
                 {
-                    throw new FormatException();
+                    ErrorHandler.ShowErrorMessage("Validierung fehlgeschlagen", ErrorHandler.VALIDATION_FAILED);
                 }
                 this.Close();
             }
             catch (FormatException exception)
             {
-                this.showErrorMessage(exception, "Die eingegebenen Daten sind inkonsistent. Bitte überprüfen Sie Ihre Eingaben!");
+                ErrorHandler.ShowErrorMessage(exception, ErrorHandler.WRONG_FORMAT);
             }
             catch (MySql.Data.MySqlClient.MySqlException exception)
             {
-                this.showErrorMessage(exception, "Die eingegebenen Daten sind inkonsistent. Bitte überprüfen Sie Ihre Eingaben!");
+                ErrorHandler.ShowErrorMessage(exception, ErrorHandler.SAVE_WENT_WRONG);    
             }
             catch (System.OverflowException exception)
             {
-                this.showErrorMessage(exception, "Die eingegebenen Daten sind zu lang!");
+                ErrorHandler.ShowErrorMessage(exception, ErrorHandler.DATA_TOO_LONG);
             }
         }
 

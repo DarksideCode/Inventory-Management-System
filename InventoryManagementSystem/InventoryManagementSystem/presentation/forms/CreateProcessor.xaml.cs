@@ -39,6 +39,20 @@ namespace InventoryManagementSystem.presentation.forms
         }
 
         /// <summary>
+        /// Setzt die Werte der UI-Elemente, wenn eine Entität bearbeitet wird
+        /// </summary>
+        private void SetAllFields()
+        {
+            this.description.Text = this.entity.Description.ToString();
+            this.model.Text = this.entity.Model.ToString();
+            this.producer.SelectedItem = this.entity.Producer.CompanyName;
+            this.commandSet.Text = this.entity.CommandSet.ToString();
+            this.architecture.Text = this.entity.Architecture.ToString();
+            this.clockRate.Text = this.entity.ClockRate.ToString();
+            this.cores.Text = this.entity.Core.ToString();
+        }
+
+        /// <summary>
         /// Fügt alle Hersteller aus der Datenbank dem Drop-Down-Menü hinzu
         /// </summary>
         private void GetProducers()
@@ -52,11 +66,10 @@ namespace InventoryManagementSystem.presentation.forms
             }
         }
 
-        private void ProcessorCancel_Click(object sender, RoutedEventArgs e)
-        {
-            this.Close();
-        }
-
+        /// <summary>
+        /// Ruft die Informationen aus dem Formular ab und speichert sie in die Datenbank.
+        /// Wirft eine Fehlermeldung, wenn die Validierung fehlschlägt.
+        /// </summary>
         private void ProcessorSave_Click(object sender, RoutedEventArgs e)
         {
             ProducerDataAccess dataProducer = new ProducerDataAccess();
@@ -75,7 +88,7 @@ namespace InventoryManagementSystem.presentation.forms
 
                 if (!validator.CheckConsistency(this.entity))
                 {
-                    throw new FormatException();
+                    ErrorHandler.ShowErrorMessage("Validierung fehlgeschlagen", ErrorHandler.VALIDATION_FAILED);
                 }
                 else
                 {
@@ -88,36 +101,24 @@ namespace InventoryManagementSystem.presentation.forms
             }
             catch (FormatException exception)
             {
-                this.showErrorMessage(exception, "Die eingegebenen Daten sind inkonsistent. Bitte überprüfen Sie Ihre Eingaben!");
+                ErrorHandler.ShowErrorMessage(exception, ErrorHandler.WRONG_FORMAT);
             }
             catch (MySql.Data.MySqlClient.MySqlException exception)
             {
-                this.showErrorMessage(exception, "Die eingegebenen Daten sind inkonsistent. Bitte überprüfen Sie Ihre Eingaben!");
+                ErrorHandler.ShowErrorMessage(exception, ErrorHandler.SAVE_WENT_WRONG);
+            }
+            catch(System.OverflowException exception)
+            {
+                ErrorHandler.ShowErrorMessage(exception, ErrorHandler.DATA_TOO_LONG);
             }
         }
 
         /// <summary>
-        /// Setzt die Werte der UI-Elemente, wenn eine Entität bearbeitet wird
+        /// Schließt das aktuelle Fenster
         /// </summary>
-        private void SetAllFields()
+        private void ProcessorCancel_Click(object sender, RoutedEventArgs e)
         {
-            this.description.Text = this.entity.Description.ToString();
-            this.model.Text = this.entity.Model.ToString();
-            this.producer.SelectedItem = this.entity.Producer.CompanyName;
-            this.commandSet.Text = this.entity.CommandSet.ToString();
-            this.architecture.Text = this.entity.Architecture.ToString();
-            this.clockRate.Text = this.entity.ClockRate.ToString();
-            this.cores.Text = this.entity.Core.ToString();
-        }
-
-        /// <summary>
-        /// Öffnet eine MessageBox mit der übergebenen Fehlermeldung.
-        /// </summary>
-        /// <param name="exception">Die Exception, welche ausgelöst wurde</param>
-        /// <param name="message">Die Fehlermeldung, welche angezeigt wird</param>
-        private void showErrorMessage(Exception exception, string message)
-        {
-            MessageBox.Show(message, exception.GetType().Name, MessageBoxButton.OK, MessageBoxImage.Warning);
+            this.Close();
         }
     }
 }
