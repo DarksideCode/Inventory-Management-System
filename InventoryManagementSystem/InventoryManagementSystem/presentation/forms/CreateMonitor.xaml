@@ -5,8 +5,26 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:InventoryManagementSystem.presentation.forms"
         mc:Ignorable="d"
-        Title="CreateMonitor" Height="300" Width="300">
+        Title="CreateMonitor" Height="365.68" Width="300">
     <Grid>
-        
+        <Label x:Name="CreateEntityName" Content="Monitor" VerticalAlignment="Top" Margin="73,10,71,0" FontSize="18" FontWeight="Bold" RenderTransformOrigin="-0.15,0.356" Width="156" Opacity="0.9" AllowDrop="True" IsHitTestVisible="False" HorizontalAlignment="Center" HorizontalContentAlignment="Center"/>
+        <Button x:Name="MonitorSave" Content="Speichern" HorizontalAlignment="Left" Margin="24,284,0,0" VerticalAlignment="Top" Width="75" Cursor="Hand" Height="24">
+            <Button.Background>
+                <LinearGradientBrush EndPoint="0,1" StartPoint="0,0">
+                    <GradientStop Color="#FFD5E8D4" Offset="0"/>
+                    <GradientStop Color="#FF97D077" Offset="1"/>
+                </LinearGradientBrush>
+            </Button.Background>
+        </Button>
+        <Button x:Name="MonitorCancel" Content="Abbrechen" HorizontalAlignment="Left" Margin="183,284,0,0" VerticalAlignment="Top" Width="75" Cursor="Hand" Height="24" Click="MonitorCancel_Click">
+            <Button.Background>
+                <LinearGradientBrush EndPoint="0,1" StartPoint="0,0">
+                    <GradientStop Color="#FFD5E8D4" Offset="0"/>
+                    <GradientStop Color="#FF97D077" Offset="1"/>
+                </LinearGradientBrush>
+            </Button.Background>
+        </Button>
+        <Label x:Name="producerLBL" Content="Hersteller" HorizontalAlignment="Left" Margin="24,222,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.063,0.041"/>
+        <ComboBox x:Name="producer" HorizontalAlignment="Left" Margin="124,226,0,0" VerticalAlignment="Top" Width="134" RenderTransformOrigin="0.489,-2.382"/>
     </Grid>
 </Window>
