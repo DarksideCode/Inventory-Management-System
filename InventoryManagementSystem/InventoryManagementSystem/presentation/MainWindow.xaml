@@ -3,7 +3,7 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         Title="Inventory Management System - IMS" Height="370" Width="600" Loaded="Window_Loaded" ResizeMode="NoResize">
     <Grid>
-        <DataGrid x:Name="dataGrid" HorizontalAlignment="Left" Margin="184,49,0,0" VerticalAlignment="Top" Height="196" Width="391" Background="White" BorderBrush="Black" IsReadOnly="True"/>
+        <DataGrid x:Name="dataGrid" HorizontalAlignment="Left" Margin="184,36,0,0" VerticalAlignment="Top" Height="196" Width="391" Background="White" BorderBrush="Black" IsReadOnly="True"/>
         <Button x:Name="newBtn" Content="Neu" HorizontalAlignment="Left" Margin="246,295,0,0" VerticalAlignment="Top" Width="79" Height="31" Click="NewBtn_Click" FontWeight="Bold" Cursor="Hand">
             <Button.Background>
                 <LinearGradientBrush EndPoint="0,1" StartPoint="0,0">
@@ -55,6 +55,13 @@
             <MenuItem x:Name="menu_producer" Header="Hersteller" Width="159" Click="Producer_Selected" Cursor="Hand" ToolTip="Hersteller"/>
             <MenuItem x:Name="menu_interface" Header="Schnittstelle" Click="Interface_Selected" Width="159" Cursor="Hand" ToolTip="Schnittstelle"/>
         </Menu>
-        <Button x:Name="ConfigBtn" Content="Settings" HorizontalAlignment="Left" Margin="552,10,0,0" VerticalAlignment="Top" Width="23" RenderTransformOrigin="0.315,0.598" Click="ConfigBtn_Click"/>
+        <Button x:Name="ConfigBtn" Content="" Margin="543,0,19,309" Width="20" Height="20" Click="ConfigBtn_Click">
+            <Button.OpacityMask>
+                <ImageBrush ImageSource="/InventoryManagementSystem;component/images/config.jpg" Stretch="Uniform" TileMode="Tile"/>
+            </Button.OpacityMask>
+            <Button.Background>
+                <ImageBrush ImageSource="/InventoryManagementSystem;component/images/config_small.jpg" Stretch="Uniform"/>
+            </Button.Background>
+        </Button>
     </Grid>
 </Window>
