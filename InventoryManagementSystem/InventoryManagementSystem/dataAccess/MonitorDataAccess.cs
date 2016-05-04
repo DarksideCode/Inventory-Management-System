@@ -33,7 +33,7 @@ namespace InventoryManagementSystem.dataAccess
             MySqlCommand command = connection.CreateCommand();
 
             command.CommandText = "INSERT INTO `" + this.GetTableName() + "`(`Beschreibung`, `Auflösung`, `Zoll`, `Seitenverhältnis`, "
-                                + "`ID_Hersteller`) VALUES ('" + entity.Description + "'," + entity.Resolution + ",'" + entity.Inch.ToString().Replace(',','.') + "',"
+                                + "`ID_Hersteller`) VALUES ('" + entity.Description + "','" + entity.Resolution + "','" + entity.Inch.ToString().Replace(',','.') + "',"
                                 + "'" + entity.AspectRatio + "'," + entity.Producer.Id + ")";
 
             connection.Open();
@@ -63,8 +63,8 @@ namespace InventoryManagementSystem.dataAccess
             MySqlCommand interfaceCommand = connection.CreateCommand();
             string usedInterfaces = "";
 
-            command.CommandText = "UPDATE `" + this.GetTableName() + "` SET `Beschreibung`='" + entity.Description + "', `Auflösung`=" + entity.Resolution + ", `Zoll`='" + entity.Inch.ToString().Replace(',','.') + "', "
-                                + "`Seitenverhältnis`=" + entity.AspectRatio + ", `ID_Hersteller`=" + entity.Producer.Id + " WHERE id = " + entity.Id;
+            command.CommandText = "UPDATE `" + this.GetTableName() + "` SET `Beschreibung`='" + entity.Description + "', `Auflösung`='" + entity.Resolution + "', `Zoll`='" + entity.Inch.ToString().Replace(',','.') + "', "
+                                + "`Seitenverhältnis`='" + entity.AspectRatio + "', `ID_Hersteller`=" + entity.Producer.Id + " WHERE id = " + entity.Id;
 
             Console.WriteLine(command.CommandText);
 
@@ -101,9 +101,9 @@ namespace InventoryManagementSystem.dataAccess
 
             monitor.Id = Int32.Parse(reader.GetValue(0).ToString());
             monitor.Description = reader.GetValue(1).ToString();
-            monitor.Resolution = uint.Parse(reader.GetValue(2).ToString());
+            monitor.Resolution = reader.GetValue(2).ToString();
             monitor.Inch = Double.Parse(reader.GetValue(3).ToString());
-            monitor.AspectRatio = uint.Parse(reader.GetValue(4).ToString());
+            monitor.AspectRatio = reader.GetValue(4).ToString();
             monitor.Producer = producerDataAccess.GetEntityById<Producer>(Int32.Parse(reader.GetValue(5).ToString()));
             monitor.PhysicalInterfaces = this.GetPhysicalInterfaces(monitor);
            

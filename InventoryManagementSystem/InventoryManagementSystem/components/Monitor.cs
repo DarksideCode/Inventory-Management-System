@@ -18,11 +18,11 @@ namespace InventoryManagementSystem.components
 
         public string Description { get; set; }
 
-        public uint Resolution { get; set; }
+        public string Resolution { get; set; }
 
         public double Inch { get; set; }
 
-        public uint AspectRatio { get; set; }
+        public string AspectRatio { get; set; }
 
         public Producer Producer { get; set; }
 
@@ -46,9 +46,9 @@ namespace InventoryManagementSystem.components
     {
         public int Id { get; set; }
         public string Beschreibung { get; set; }
-        public uint Auflösung { get; set; }
+        public string Auflösung { get; set; }
         public double Zoll { get; set; }
-        public uint Seitenverhältnis { get; set; }
+        public string Seitenverhältnis { get; set; }
         public string Hersteller { get; set; }
         public string Schnittstellen { get; set; }
 

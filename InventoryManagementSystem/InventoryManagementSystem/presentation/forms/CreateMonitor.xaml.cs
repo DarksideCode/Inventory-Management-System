@@ -116,9 +116,9 @@ namespace InventoryManagementSystem.presentation.forms
         private void setEntityWithFormData(ProducerDataAccess dataProducer)
         {
             this.entity.Description = this.description.Text;
-            this.entity.Resolution = uint.Parse(this.resolution.Text);
-            this.entity.Inch = double.Parse(this.inch.Text);
-            this.entity.AspectRatio = uint.Parse(this.aspectRatio.Text);
+            this.entity.Resolution = this.resolution.Text;
+            this.entity.Inch = double.Parse(this.inch.Text.Replace('.',','));
+            this.entity.AspectRatio = this.aspectRatio.Text;
             this.entity.Producer = dataProducer.GetEntityByName<Producer>("Firma", this.producer.Text.ToString());
         }
 

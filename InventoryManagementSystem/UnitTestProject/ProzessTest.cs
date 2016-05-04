@@ -155,9 +155,9 @@ namespace UnitTests
             Monitor monitor = new Monitor();
 
             monitor.Description = "Dies ist ein Test";
-            monitor.Resolution = 1000;
+            monitor.Resolution = "1280*800";
             monitor.Inch = 24;
-            monitor.AspectRatio = 4;
+            monitor.AspectRatio = "16:9";
             monitor.Producer = producerDataAccess.GetLastEntity<Producer>();
             monitor.AddPhysicalInterface(new PhysicalInterfaceWithCount(physicalInterfaceDataAccess.GetLastEntity<PhysicalInterface>(), 3));
 

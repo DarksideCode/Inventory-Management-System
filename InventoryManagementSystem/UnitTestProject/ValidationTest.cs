@@ -102,9 +102,9 @@ namespace UnitTests
             MonitorValidator validator = new MonitorValidator();
 
             monitor.Description = "Dies ist ein Test";
-            monitor.Resolution = 1000;
+            monitor.Resolution = "1280*800";
             monitor.Inch = 24;
-            monitor.AspectRatio = 4;
+            monitor.AspectRatio = "16:9";
 
             Assert.AreEqual(true, validator.CheckConsistency(monitor));
         }

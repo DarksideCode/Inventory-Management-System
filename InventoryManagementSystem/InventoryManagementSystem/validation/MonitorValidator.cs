@@ -1,4 +1,5 @@
 ﻿using InventoryManagementSystem.components;
+using System.Text.RegularExpressions;
 
 namespace InventoryManagementSystem.validation
 {
@@ -9,6 +10,9 @@ namespace InventoryManagementSystem.validation
     /// </summary>
     public class MonitorValidator
     {
+        private string resolutionPattern = "^[0-9 \\*x]*$";
+        private string aspectRatioPattern = "^[0-9 \\:]*$";
+
         /// <summary>
         /// Prüft die Konsistenz der Attribute der Entität 'Monitor'
         /// </summary>
@@ -17,8 +21,10 @@ namespace InventoryManagementSystem.validation
         public bool CheckConsistency(Monitor entity)
         {
             bool result = true;
+            Regex resolutionReg = new Regex(this.resolutionPattern);
+            Regex aspectRatioReg = new Regex(this.aspectRatioPattern);
             
-            if(entity.Resolution == 0)
+            if(!resolutionReg.Match(entity.Resolution).Success)
             {
                 result = false;
             }
@@ -28,7 +34,7 @@ namespace InventoryManagementSystem.validation
                 result = false;
             }
 
-            if(entity.AspectRatio == 0)
+            if(!aspectRatioReg.Match(entity.AspectRatio).Success)
             {
                 result = false;
             }

@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Erstellungszeit: 27. Apr 2016 um 10:42
+-- Erstellungszeit: 04. Mai 2016 um 21:43
 -- Server-Version: 10.1.10-MariaDB
 -- PHP-Version: 7.0.4
 
@@ -142,7 +142,7 @@ CREATE TABLE `ims_monitor` (
   `ID` int(11) NOT NULL,
   `Beschreibung` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
   `Auflösung` varchar(12) COLLATE utf8_unicode_ci NOT NULL,
-  `Zoll` int(11) NOT NULL,
+  `Zoll` float NOT NULL,
   `Seitenverhältnis` varchar(6) COLLATE utf8_unicode_ci NOT NULL,
   `ID_Hersteller` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
@@ -286,42 +286,42 @@ ALTER TABLE `ims_schnittstelle`
 -- AUTO_INCREMENT für Tabelle `ims_arbeitsspeicher`
 --
 ALTER TABLE `ims_arbeitsspeicher`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT für Tabelle `ims_festplatte`
 --
 ALTER TABLE `ims_festplatte`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT für Tabelle `ims_grafikkarte`
 --
 ALTER TABLE `ims_grafikkarte`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT für Tabelle `ims_hauptplatine`
 --
 ALTER TABLE `ims_hauptplatine`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT für Tabelle `ims_hersteller`
 --
 ALTER TABLE `ims_hersteller`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT für Tabelle `ims_monitor`
 --
 ALTER TABLE `ims_monitor`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 --
 -- AUTO_INCREMENT für Tabelle `ims_prozessor`
 --
 ALTER TABLE `ims_prozessor`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT für Tabelle `ims_schnittstelle`
 --
 ALTER TABLE `ims_schnittstelle`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 --
 -- Constraints der exportierten Tabellen
 --
