@@ -27,10 +27,10 @@ namespace InventoryManagementSystem.database.basic
         public MySqlConnection CreateConnection()
         {
             ConfigProzesser config = new ConfigProzesser();
-            string myConnectionString = "SERVER=" + config.getDBHost()
-                                      + ";DATABASE=" + config.getDBName()
-                                      + ";UID=" + config.getDBUser()
-                                      + ";PASSWORD=" + config.getDBPassword() + ";";
+            string myConnectionString = "SERVER=" + config.DBHost
+                                      + ";DATABASE=" + config.DBName
+                                      + ";UID=" + config.DBUser
+                                      + ";PASSWORD=" + config.DBPassword + ";";
             MySqlConnection connection = new MySqlConnection(myConnectionString);
 
             return connection;
@@ -132,7 +132,7 @@ namespace InventoryManagementSystem.database.basic
         /// <summary>
         /// Liest den Datensatz der jeweiligen Entität aus der Datenbank, die dem übergebenen Namen
         /// entspricht. Durch den generischen Ansatz muss der Typ der Entität übergeben werden.
-        /// Das Feld indem geprüft werden soll muss mit übergeben werden.
+        /// Das Feld in dem geprüft werden soll muss ebenfalls übergeben werden.
         /// </summary>
         /// <typeparam name="T">Entitätsklasse</typeparam>
         /// <param name="fieldName">Feld in der Datenbank</param>

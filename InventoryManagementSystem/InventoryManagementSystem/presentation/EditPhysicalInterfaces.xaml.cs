@@ -18,6 +18,7 @@ namespace InventoryManagementSystem.presentation
 {
     /// <summary>
     /// Interaktionslogik für EditPhysicalInterfaces.xaml
+    /// Ermöglicht die Verwaltung von Schnittstellen einer beliebigen Entität. 
     /// </summary>
     public partial class EditPhysicalInterfaces : Window
     {

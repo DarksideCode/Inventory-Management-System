@@ -13,6 +13,7 @@ namespace InventoryManagementSystem.validation
         private string emailPattern = "^[a-zA-Z]{1,}.*\\@[a-zA-Z]*\\.(de|com|net|org){1,1}$";
         private string websitePattern = "^(http:\\/\\/|https:\\/\\/){0,1}www\\..{1,}\\.[a-z]{1,4}(\\/){0,1}$";
         private string placePattern = "^[A-Z]{1,}[A-Za-zöäü ]*$";
+        private string phonePattern = "^[0-9\\+\\/\\(\\) ]{1,}$";
 
         /// <summary>
         /// Prüft die Konsistenz der Attribute der Entität 'Hersteller'
@@ -25,13 +26,14 @@ namespace InventoryManagementSystem.validation
             Regex emailReg = new Regex(this.emailPattern, RegexOptions.IgnoreCase);
             Regex websiteReg = new Regex(this.websitePattern, RegexOptions.IgnoreCase);
             Regex placeReg = new Regex(this.placePattern);
+            Regex phoneReg = new Regex(this.phonePattern);
 
             if(entity.CompanyName.Length == 0)
             {
                 result = false;
             }
 
-            if(entity.PhoneNumber == 0)
+            if(!phoneReg.Match(entity.PhoneNumber).Success)
             {
                 result = false;
             }

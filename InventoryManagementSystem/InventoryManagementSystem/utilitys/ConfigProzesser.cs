@@ -1,172 +1,128 @@
 ﻿namespace InventoryManagementSystem.utilitys
 {
+    /// <summary>
+    /// Klasse zur Verwaltung der Konfigurationen
+    /// </summary>
     public class ConfigProzesser
     {
-        /**
-        * string contains DB Name
-        **/
-        private string DBName = "inventory";
-        public string PDBName
-        {
-            get { return DBName; }
-            set { DBName = value; }
-        }
-        /**
-        * string contains DB User
-        **/
-        private string DBUser = "root";
-        public string PDBUser
-        {
-            get { return DBUser; }
-            set { DBUser = value; }
-        }
-        /**
-        * string contains DB Password
-        **/
-        private string DBPassword;
-        public string PDBPassword
-        {
-            get { return DBPassword; }
-            set { DBPassword = value; }
-        }
-        /**
-        * string contains DB Praefix
-        **/
-        private string DBPraefix = "ims_";
-        public string PDBPraefix
-        {
-            get { return DBPraefix; }
-            set { DBPraefix = value; }
-        }
-        /**
-        * string contains DB Host
-        **/
-        private string DBHost = "localhost";
-        public string PDBHost
-        {
-            get { return DBHost; }
-            set { DBHost = value; }
-        }
+        private string dbName = "inventory";
+        private string dbUser = "root";
+        private string dbPassword = "";
+        private string dbPraefix = "ims_";
+        private string dbHost = "localhost";
 
+        /// <summary>
+        /// Konstruktor: Ruft die Methode für das setzer der Variablen auf
+        /// </summary>
         public ConfigProzesser()
         {
-            setConfigParams();
-            //ReadAllSettings();
+            this.SetConfigParams();
         }
 
-        private void setConfigParams()
+        /// <summary>
+        /// Getter/Setter für die Variable dbName
+        /// </summary>
+        public string DBName
         {
-            DBName = getDBName();
-            DBUser = getDBUser();
-            DBPassword = getDBPassword();
-            DBPraefix = getDBPraefix();
-            DBHost = getDBHost();
+            get { return this.dbName; }
+            set { this.dbName = value; }
         }
 
-        static void ReadAllSettings()
+        /// <summary>
+        /// Getter/Setter für die Variable dbUser
+        /// </summary>
+        public string DBUser
         {
-            //SAVE Configs
-            //Properties.Settings.Default.Save();
-            //@todo do it
+            get { return this.dbUser; }
+            set { this.dbUser = value; }
         }
 
-        /**
-        * Returns the DB Name from Config
-        * return string
-        **/
-        public string getDBName()
+        /// <summary>
+        /// Getter/Setter für die Variable dbPassword
+        /// </summary>
+        public string DBPassword
         {
-            return Properties.Settings.Default.DB_NAME;
+            get { return this.dbPassword; }
+            set { this.dbPassword = value; }
         }
 
-        /**
-        * Saves the DB Name in Config
-        * @sDBName = string
-        **/
-        public void saveDBName(string sDBName)
+        /// <summary>
+        /// Getter/Setter für die Variable dbPraefix
+        /// </summary>
+        public string DBPraefix
         {
-            Properties.Settings.Default.DB_NAME = sDBName;
+            get { return this.dbPraefix; }
+            set { this.dbPraefix = value; }
+        }
 
+        /// <summary>
+        /// Getter/Setter für die Variable dbHost
+        /// </summary>
+        public string DBHost
+        {
+            get { return this.dbHost; }
+            set { this.dbHost = value; }
+        }
+
+        /// <summary>
+        /// Liest die Einstellungen aus der Konfiguration und setzt die Variablen
+        /// </summary>
+        private void SetConfigParams()
+        {
+            this.dbName = Properties.Settings.Default.DB_NAME;
+            this.dbUser = Properties.Settings.Default.DB_USER;
+            this.dbPassword = Properties.Settings.Default.DB_PASSWORD;
+            this.dbPraefix = Properties.Settings.Default.DB_PRAEFIX;
+            this.dbHost = Properties.Settings.Default.DB_HOST;
+        }
+
+        /// <summary>
+        /// Speichert den Datenbank-Namen in den Konfigurationen
+        /// </summary>
+        /// <param name="dbName">Name der Datenbank</param>
+        public void SaveDBName(string dbName)
+        {
+            Properties.Settings.Default.DB_NAME = dbName;
             Properties.Settings.Default.Save();
         }
 
-        /**
-        * Returns the DB User from Config
-        * return string
-        **/
-        public string getDBUser()
+        /// <summary>
+        /// Speichert den Datenbank-Benutzer in den Konfigurationen
+        /// </summary>
+        /// <param name="dbUser">Name der Benutzers</param>
+        public void SaveDBUser(string dbUser)
         {
-            return Properties.Settings.Default.DB_USER;
-        }
-
-        /**
-        * Saves the DB User in Config
-        * @sDBUser = string
-        **/
-        public void saveDBUser(string sDBUser)
-        {
-            Properties.Settings.Default.DB_USER = sDBUser;
-
+            Properties.Settings.Default.DB_USER = dbUser;
             Properties.Settings.Default.Save();
         }
 
-        /**
-        * Returns the DB Password from Config
-        * return string
-        **/
-        public string getDBPassword()
+        /// <summary>
+        /// Speichert das Passwort für den Datenbank-Benutzer in den Konfigurationen
+        /// </summary>
+        /// <param name="dbPassword">Passwort des Benutzers</param>
+        public void SaveDBPassword(string dbPassword)
         {
-            return Properties.Settings.Default.DB_PASSWORD;
-        }
-
-        /**
-        * Saves the DB User in Config
-        * @sDBPassword = string
-        **/
-        public void saveDBPassword(string sDBPassword)
-        {
-            Properties.Settings.Default.DB_PASSWORD = sDBPassword;
-
+            Properties.Settings.Default.DB_PASSWORD = dbPassword;
             Properties.Settings.Default.Save();
         }
 
-        /**
-        * Returns the DB Praefix from Config
-        * return string
-        **/
-        public string getDBPraefix()
+        /// <summary>
+        /// Speichert den Tabellen-Präfix in den Konfigurationen
+        /// </summary>
+        /// <param name="dbPraefix">Präfix der Tabellen</param>
+        public void SaveDBPraefix(string dbPraefix)
         {
-            return Properties.Settings.Default.DB_PRAEFIX;
-        }
-
-        /**
-        * Saves the DB User in Config
-        * @sDBPraefix = string
-        **/
-        public void saveDBPraefix(string sDBPraefix)
-        {
-            Properties.Settings.Default.DB_PRAEFIX = sDBPraefix;
-
+            Properties.Settings.Default.DB_PRAEFIX = dbPraefix;
             Properties.Settings.Default.Save();
         }
 
-        /**
-        * Returns the DB Host from Config
-        * return string
-        **/
-        public string getDBHost()
+        /// <summary>
+        /// Speichert den Datenbank-Host in den Konfigurationen
+        /// </summary>
+        /// <param name="dbHost">Host der Datenbank</param>
+        public void SaveDBHost(string dbHost)
         {
-            return Properties.Settings.Default.DB_HOST;
-        }
-
-        /**
-        * Saves the DB Host in Config
-        * @sDBHost = string
-        **/
-        public void saveDBHost(string sDBHost)
-        {
-            Properties.Settings.Default.DB_HOST = sDBHost;
-
+            Properties.Settings.Default.DB_HOST = dbHost;
             Properties.Settings.Default.Save();
         }
     }

@@ -39,64 +39,6 @@ namespace InventoryManagementSystem.presentation.forms
         }
 
         /// <summary>
-        /// Fügt alle Hersteller aus der Datenbank dem Drop-Down-Menü hinzu
-        /// </summary>
-        private void GetProducers()
-        {
-            ProducerDataAccess dataProducers = new ProducerDataAccess();
-            List<Producer> producers = dataProducers.GetAllEntities<Producer>();
-
-            foreach (Producer element in producers)
-            {
-                this.producer.Items.Add(element.CompanyName.ToString());
-            }
-        }
-
-        private void ProcessorCancel_Click(object sender, RoutedEventArgs e)
-        {
-            this.Close();
-        }
-
-        private void ProcessorSave_Click(object sender, RoutedEventArgs e)
-        {
-            ProducerDataAccess dataProducer = new ProducerDataAccess();
-            ProcessorDataAccess processorDataAccess = new ProcessorDataAccess();
-            ProcessorValidator validator = new ProcessorValidator();
-
-            try
-            {
-                this.entity.Description = this.description.Text;
-                this.entity.Model = this.model.Text;
-                this.entity.Producer = dataProducer.GetEntityByName<Producer>("Firma", this.producer.Text.ToString());
-                this.entity.CommandSet = this.commandSet.Text;
-                this.entity.Architecture = uint.Parse(this.architecture.Text);
-                this.entity.ClockRate = double.Parse(this.clockRate.Text);
-                this.entity.Core = uint.Parse(this.cores.Text);
-
-                if (!validator.CheckConsistency(this.entity))
-                {
-                    throw new FormatException();
-                }
-                else
-                {
-                    if (this.isAvailable)
-                        processorDataAccess.Update(this.entity);
-                    else
-                        processorDataAccess.Save(this.entity);
-                }
-                this.Close();
-            }
-            catch (FormatException exception)
-            {
-                this.showErrorMessage(exception, "Die eingegebenen Daten sind inkonsistent. Bitte überprüfen Sie Ihre Eingaben!");
-            }
-            catch (MySql.Data.MySqlClient.MySqlException exception)
-            {
-                this.showErrorMessage(exception, "Die eingegebenen Daten sind inkonsistent. Bitte überprüfen Sie Ihre Eingaben!");
-            }
-        }
-
-        /// <summary>
         /// Setzt die Werte der UI-Elemente, wenn eine Entität bearbeitet wird
         /// </summary>
         private void SetAllFields()
@@ -111,13 +53,72 @@ namespace InventoryManagementSystem.presentation.forms
         }
 
         /// <summary>
-        /// Öffnet eine MessageBox mit der übergebenen Fehlermeldung.
+        /// Fügt alle Hersteller aus der Datenbank dem Drop-Down-Menü hinzu
         /// </summary>
-        /// <param name="exception">Die Exception, welche ausgelöst wurde</param>
-        /// <param name="message">Die Fehlermeldung, welche angezeigt wird</param>
-        private void showErrorMessage(Exception exception, string message)
+        private void GetProducers()
         {
-            MessageBox.Show(message, exception.GetType().Name, MessageBoxButton.OK, MessageBoxImage.Warning);
+            ProducerDataAccess dataProducers = new ProducerDataAccess();
+            List<Producer> producers = dataProducers.GetAllEntities<Producer>();
+
+            foreach (Producer element in producers)
+            {
+                this.producer.Items.Add(element.CompanyName.ToString());
+            }
+        }
+
+        /// <summary>
+        /// Ruft die Informationen aus dem Formular ab und speichert sie in die Datenbank.
+        /// Wirft eine Fehlermeldung, wenn die Validierung fehlschlägt.
+        /// </summary>
+        private void ProcessorSave_Click(object sender, RoutedEventArgs e)
+        {
+            ProducerDataAccess dataProducer = new ProducerDataAccess();
+            ProcessorDataAccess processorDataAccess = new ProcessorDataAccess();
+            ProcessorValidator validator = new ProcessorValidator();
+
+            try
+            {
+                this.entity.Description = this.description.Text;
+                this.entity.Model = this.model.Text;
+                this.entity.Producer = dataProducer.GetEntityByName<Producer>("Firma", this.producer.Text.ToString());
+                this.entity.CommandSet = this.commandSet.Text;
+                this.entity.Architecture = uint.Parse(this.architecture.Text);
+                this.entity.ClockRate = double.Parse(this.clockRate.Text.Replace(".",","));
+                this.entity.Core = uint.Parse(this.cores.Text);
+
+                if (!validator.CheckConsistency(this.entity))
+                {
+                    ErrorHandler.ShowErrorMessage("Validierung fehlgeschlagen", ErrorHandler.VALIDATION_FAILED);
+                }
+                else
+                {
+                    if (this.isAvailable)
+                        processorDataAccess.Update(this.entity);
+                    else
+                        processorDataAccess.Save(this.entity);
+                }
+                this.Close();
+            }
+            catch (FormatException exception)
+            {
+                ErrorHandler.ShowErrorMessage(exception, ErrorHandler.WRONG_FORMAT);
+            }
+            catch (MySql.Data.MySqlClient.MySqlException exception)
+            {
+                ErrorHandler.ShowErrorMessage(exception, ErrorHandler.SAVE_WENT_WRONG);
+            }
+            catch(System.OverflowException exception)
+            {
+                ErrorHandler.ShowErrorMessage(exception, ErrorHandler.DATA_TOO_LONG);
+            }
+        }
+
+        /// <summary>
+        /// Schließt das aktuelle Fenster
+        /// </summary>
+        private void ProcessorCancel_Click(object sender, RoutedEventArgs e)
+        {
+            this.Close();
         }
     }
 }

@@ -11,7 +11,7 @@
 
         public string CompanyName { get; set; }
 
-        public uint PhoneNumber { get; set; }
+        public string PhoneNumber { get; set; }
 
         public string Email { get; set; }
 
@@ -34,7 +34,7 @@
     {
         public int Id { get; set; }
         public string Firma { get; set; }
-        public uint Telefon { get; set; }
+        public string Telefon { get; set; }
         public string Email { get; set; }
         public string Webseite { get; set; }
         public uint PLZ { get; set; }

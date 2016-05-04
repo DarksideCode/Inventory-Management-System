@@ -10,7 +10,7 @@
     <Grid>
         <Label x:Name="CreateEntityName" Content="Festplatte" VerticalAlignment="Top" Margin="73,10,71,0" FontSize="18" FontWeight="Bold" RenderTransformOrigin="-0.15,0.356" Width="156" Opacity="0.9" AllowDrop="True" IsHitTestVisible="False" HorizontalAlignment="Center" HorizontalContentAlignment="Center"/>
         <Label x:Name="DiskDescriptionLBL" Content="Beschreibung" HorizontalAlignment="Left" Margin="20,46,0,0" VerticalAlignment="Top"/>
-        <TextBox x:Name="DiskDescription" HorizontalAlignment="Left" Height="23" Margin="136,49,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="134" ToolTip="Beschreibung der Fetplatte"/>
+        <TextBox x:Name="DiskDescription" HorizontalAlignment="Left" Height="23" Margin="136,49,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="134" ToolTip="Beschreibung der Festplatte"/>
         <Label x:Name="DiskCapacityLBL" Content="Kapazität" HorizontalAlignment="Left" Margin="20,77,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.587,0.142" Width="82"/>
         <TextBox x:Name="DiskCapacity" HorizontalAlignment="Left" Height="23" Margin="136,81,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="66" ToolTip="Kapazität der Festplatte"/>
         <ComboBox x:Name="DiskCapacityUnit" HorizontalAlignment="Left" Margin="218,81,0,0" VerticalAlignment="Top" Width="52" RenderTransformOrigin="1.584,0.679" IsReadOnly="True">
@@ -18,9 +18,9 @@
             <ComboBoxItem Content="GB" HorizontalAlignment="Left" Width="50"/>
         </ComboBox>
         <Label x:Name="DiskSizeLBL" Content="Zoll" HorizontalAlignment="Left" Margin="20,108,0,0" VerticalAlignment="Top"/>
-        <TextBox x:Name="DiskSize" HorizontalAlignment="Left" Height="23" Margin="136,112,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="134" ToolTip="Größe der Festplatte in Zoll."/>
+        <TextBox x:Name="DiskSize" HorizontalAlignment="Left" Height="23" Margin="136,112,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="134" ToolTip="Größe der Festplatte in Zoll"/>
         <Label x:Name="DiskTypeLBL" Content="SSD" HorizontalAlignment="Left" Margin="20,139,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.213,-0.1"/>
-        <CheckBox x:Name="DiskType" Content="" HorizontalAlignment="Left" Margin="196,144,0,0" VerticalAlignment="Top" ToolTip="Anhacken, wenn die Festplatte eine SSD ist" RenderTransformOrigin="1.176,0.375"/>
+        <CheckBox x:Name="DiskType" Content="" HorizontalAlignment="Left" Margin="196,144,0,0" VerticalAlignment="Top" ToolTip="Anhaken, wenn die Festplatte eine SSD ist" RenderTransformOrigin="1.176,0.375"/>
         <Label x:Name="DiskProducerLBL" Content="Hersteller" HorizontalAlignment="Left" Margin="20,170,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.541,-0.537"/>
         <ComboBox x:Name="DiskProducer" HorizontalAlignment="Left" Margin="136,174,0,0" VerticalAlignment="Top" Width="134"/>
         <Button x:Name="DiskSave" Content="Speichern" HorizontalAlignment="Left" Margin="62,250,0,0" VerticalAlignment="Top" Width="75" Click="DiskSave_Click" Cursor="Hand">

@@ -20,7 +20,7 @@ namespace InventoryManagementSystem.dataAccess
         public override string GetTableName()
         {
             ConfigProzesser config = new ConfigProzesser();
-            return config.getDBPraefix() + "schnittstelle";
+            return config.DBPraefix + "schnittstelle";
         }
 
         /// <summary>
@@ -33,7 +33,7 @@ namespace InventoryManagementSystem.dataAccess
             MySqlCommand command = connection.CreateCommand();
 
             command.CommandText = "INSERT INTO `" + this.GetTableName() + "`(`Name`, `Beschreibung`, `Seriell`, `Übertragungsrate`) "
-                                + "VALUES ('" + entity.Name + "','" + entity.Description + "','" + entity.Serial + "',"
+                                + "VALUES ('" + entity.Name + "','" + entity.Description + "','" + Convert.ToInt32(entity.Serial) + "',"
                                 + entity.TransferRate.ToString().Replace(',','.') + ")";
 
             connection.Open();
@@ -50,7 +50,7 @@ namespace InventoryManagementSystem.dataAccess
             MySqlConnection connection = this.CreateConnection();
             MySqlCommand command = connection.CreateCommand();
 
-            command.CommandText = "UPDATE `" + this.GetTableName() + "` SET `Name`='" + entity.Name + "', `Beschreibung`='" + entity.Description + "', `Seriell`='" + entity.Serial
+            command.CommandText = "UPDATE `" + this.GetTableName() + "` SET `Name`='" + entity.Name + "', `Beschreibung`='" + entity.Description + "', `Seriell`='" + Convert.ToInt32(entity.Serial)
                                 + "', `Übertragungsrate`=" + entity.TransferRate.ToString().Replace(',','.') + " WHERE id = " + entity.Id;
 
             connection.Open();

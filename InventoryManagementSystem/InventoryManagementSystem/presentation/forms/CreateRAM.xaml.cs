@@ -60,21 +60,17 @@ namespace InventoryManagementSystem.presentation.forms
         }
 
         /// <summary>
-        /// Schließt das aktuelle Fenster
+        /// Fügt alle Hersteller aus der Datenbank dem Drop-Down-Menü hinzu
         /// </summary>
-        private void CancelRamBTN_Click(object sender, RoutedEventArgs e)
+        private void GetProducers()
         {
-            this.Close();
-        }
+            ProducerDataAccess dataProducers = new ProducerDataAccess();
+            List<Producer> producers = dataProducers.GetAllEntities<Producer>();
 
-        /// <summary>
-        /// Öffnet eine MessageBox mit der übergebenen Fehlermeldung.
-        /// </summary>
-        /// <param name="exception">Die Exception, welche ausgelöst wurde</param>
-        /// <param name="message">Die Fehlermeldung, welche angezeigt wird</param>
-        private void showErrorMessage(Exception exception, string message)
-        {
-            MessageBox.Show(message, exception.GetType().Name, MessageBoxButton.OK, MessageBoxImage.Warning);
+            foreach (Producer element in producers)
+            {
+                this.RamProducer.Items.Add(element.CompanyName.ToString());
+            }
         }
 
         /// <summary>
@@ -82,7 +78,7 @@ namespace InventoryManagementSystem.presentation.forms
         /// Führt eine Umrechnung in MB aus und wirft eine Fehlermeldung, wenn die Validierung
         /// fehlschlägt.
         /// </summary>
-        private void CreateRamBTN_Click(object sender, RoutedEventArgs e)
+        private void RamSave_Click(object sender, RoutedEventArgs e)
         {
             RandomAccessMemoryDataAccess dataRandom = new RandomAccessMemoryDataAccess();
             ProducerDataAccess dataProducer = new ProducerDataAccess();
@@ -105,7 +101,7 @@ namespace InventoryManagementSystem.presentation.forms
 
                 if (!validator.CheckConsistency(this.entity))
                 {
-                    throw new FormatException();
+                    ErrorHandler.ShowErrorMessage("Validierung fehlgeschlagen", ErrorHandler.VALIDATION_FAILED);
                 }
                 else
                 {
@@ -118,26 +114,24 @@ namespace InventoryManagementSystem.presentation.forms
             }
             catch (FormatException exception)
             {
-                this.showErrorMessage(exception, "Die eingegebenen Daten sind inkonsistent. Bitte überprüfen Sie Ihre Eingaben!");
+                ErrorHandler.ShowErrorMessage(exception, ErrorHandler.WRONG_FORMAT);
             }
             catch (MySql.Data.MySqlClient.MySqlException exception)
             {
-                this.showErrorMessage(exception, "Die eingegebenen Daten sind inkonsistent. Bitte überprüfen Sie Ihre Eingaben!");
+                ErrorHandler.ShowErrorMessage(exception, ErrorHandler.SAVE_WENT_WRONG);
+            }
+            catch (System.OverflowException exception)
+            {
+                ErrorHandler.ShowErrorMessage(exception, ErrorHandler.DATA_TOO_LONG);
             }
         }
 
         /// <summary>
-        /// Fügt alle Hersteller aus der Datenbank dem Drop-Down-Menü hinzu
+        /// Schließt das aktuelle Fenster
         /// </summary>
-        private void GetProducers()
+        private void RamCancel_Click(object sender, RoutedEventArgs e)
         {
-            ProducerDataAccess dataProducers = new ProducerDataAccess();
-            List<Producer> producers = dataProducers.GetAllEntities<Producer>();
-
-            foreach (Producer element in producers)
-            {
-                this.RamProducer.Items.Add(element.CompanyName.ToString());
-            }
+            this.Close();
         }
     }
 }
