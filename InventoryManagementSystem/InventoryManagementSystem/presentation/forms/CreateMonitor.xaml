@@ -5,14 +5,14 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:InventoryManagementSystem.presentation.forms"
         mc:Ignorable="d"
-        Title="CreateMonitor" Height="365.68" Width="300">
+        Title="Monitor - IMS" Height="365.68" Width="312" ResizeMode="NoResize">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="131*"/>
             <RowDefinition Height="205*"/>
         </Grid.RowDefinitions>
         <Label x:Name="CreateEntityName" Content="Monitor" VerticalAlignment="Top" Margin="69,10,67,0" FontSize="18" FontWeight="Bold" RenderTransformOrigin="-0.15,0.356" Width="156" Opacity="0.9" AllowDrop="True" IsHitTestVisible="False" HorizontalAlignment="Center" HorizontalContentAlignment="Center"/>
-        <Button x:Name="MonitorSave" Content="Speichern" HorizontalAlignment="Left" Margin="24,153.5,0,0" VerticalAlignment="Top" Width="75" Cursor="Hand" Height="24" Grid.Row="1" Click="MonitorSave_Click">
+        <Button x:Name="MonitorSave" Content="Speichern" HorizontalAlignment="Left" Margin="62,153,0,0" VerticalAlignment="Top" Width="75" Cursor="Hand" Height="24" Grid.Row="1" Click="MonitorSave_Click">
             <Button.Background>
                 <LinearGradientBrush EndPoint="0,1" StartPoint="0,0">
                     <GradientStop Color="#FFD5E8D4" Offset="0"/>
@@ -20,7 +20,7 @@
                 </LinearGradientBrush>
             </Button.Background>
         </Button>
-        <Button x:Name="MonitorCancel" Content="Abbrechen" HorizontalAlignment="Left" Margin="183,153.5,0,0" VerticalAlignment="Top" Width="75" Cursor="Hand" Height="24" Click="MonitorCancel_Click" Grid.Row="1">
+        <Button x:Name="MonitorCancel" Content="Abbrechen" HorizontalAlignment="Left" Margin="165,153,0,0" VerticalAlignment="Top" Width="75" Cursor="Hand" Height="24" Click="MonitorCancel_Click" Grid.Row="1">
             <Button.Background>
                 <LinearGradientBrush EndPoint="0,1" StartPoint="0,0">
                     <GradientStop Color="#FFD5E8D4" Offset="0"/>
@@ -29,17 +29,17 @@
             </Button.Background>
         </Button>
         <Label x:Name="producerLBL" Content="Hersteller" HorizontalAlignment="Left" Margin="24,77,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.063,0.041" Grid.Row="1"/>
-        <ComboBox x:Name="producer" HorizontalAlignment="Left" Margin="124,81,0,0" VerticalAlignment="Top" Width="134" RenderTransformOrigin="0.489,-2.382" Grid.Row="1"/>
+        <ComboBox x:Name="producer" HorizontalAlignment="Left" Margin="136,81,0,0" VerticalAlignment="Top" Width="134" RenderTransformOrigin="0.489,-2.382" Grid.Row="1"/>
         <Label x:Name="descriptionLBL" Content="Beschreibung" HorizontalAlignment="Left" Margin="24,49,0,0" VerticalAlignment="Top"/>
-        <TextBox x:Name="description" HorizontalAlignment="Left" Height="59" Margin="124,53,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="134"/>
+        <TextBox x:Name="description" HorizontalAlignment="Left" Height="59" Margin="136,53,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="134" ToolTip="Beschreibung des Monitors"/>
         <Label x:Name="resolutionLBL" Content="Auflösung" HorizontalAlignment="Left" Margin="24,116,0,0" VerticalAlignment="Top" Grid.RowSpan="2"/>
-        <TextBox x:Name="resolution" HorizontalAlignment="Left" Height="22" Margin="124,120,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="134" Grid.RowSpan="2"/>
+        <TextBox x:Name="resolution" HorizontalAlignment="Left" Height="22" Margin="136,117,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="134" Grid.RowSpan="2" ToolTip="Auflösung des Bildschirms"/>
         <Label x:Name="inchLBL" Content="Zoll" HorizontalAlignment="Left" Margin="24,17,0,0" VerticalAlignment="Top" Grid.Row="1"/>
-        <TextBox x:Name="inch" HorizontalAlignment="Left" Height="24" Margin="124,19,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="134" Grid.Row="1"/>
+        <TextBox x:Name="inch" HorizontalAlignment="Left" Height="24" Margin="136,17,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="134" Grid.Row="1" ToolTip="Größe des Bildschirms"/>
         <Label x:Name="aspectRatioLBL" Content="Seitenverhältnis" HorizontalAlignment="Left" Margin="24,47,0,0" VerticalAlignment="Top" Grid.Row="1"/>
-        <TextBox x:Name="aspectRatio" HorizontalAlignment="Left" Height="22" Margin="124,51,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="134" Grid.Row="1"/>
+        <TextBox x:Name="aspectRatio" HorizontalAlignment="Left" Height="22" Margin="136,51,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="134" Grid.Row="1" ToolTip="Seitenverhältnis des Monitors"/>
         <Label x:Name="GraphicInterfaceLBL" Content="Schnittstellen" HorizontalAlignment="Left" Margin="24,112,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.506,0.885" Grid.Row="1"/>
-        <Button x:Name="GraphicInterface" Content="Verwalten" HorizontalAlignment="Left" Margin="184,115,0,0" VerticalAlignment="Top" Width="74" RenderTransformOrigin="0.474,1.075" Click="GraphicInterface_Click" Cursor="Hand" ToolTip="Schnittstellen verwalten" Grid.Row="1">
+        <Button x:Name="GraphicInterface" Content="Verwalten" HorizontalAlignment="Left" Margin="164,115,0,0" VerticalAlignment="Top" Width="74" RenderTransformOrigin="0.474,1.075" Click="GraphicInterface_Click" Cursor="Hand" ToolTip="Schnittstellen verwalten" Grid.Row="1">
             <Button.Background>
                 <LinearGradientBrush EndPoint="0,1" StartPoint="0,0">
                     <GradientStop Color="#FFD5E8D4" Offset="0"/>
