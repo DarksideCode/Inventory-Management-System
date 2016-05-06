@@ -126,6 +126,8 @@ namespace InventoryManagementSystem.database.basic
                 entitys.Add(entity);
             }
 
+            connection.Close();
+
             return entitys;
         }
 

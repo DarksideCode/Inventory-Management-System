@@ -70,8 +70,15 @@ namespace InventoryManagementSystem.dataAccess
 
             for (int i = 0; i < entity.PhysicalInterfaces.Count; i++)
             {
-                interfaceCommand.CommandText = "UPDATE `" + this.GetTableName() + "_schnittstelle` SET `Anzahl`=" + entity.PhysicalInterfaces[i].Number
+                if (this.IsInterfaceInUse(entity.PhysicalInterfaces[i].PhysicalInterface, entity)) {
+                    interfaceCommand.CommandText = "UPDATE `" + this.GetTableName() + "_schnittstelle` SET `Anzahl`=" + entity.PhysicalInterfaces[i].Number
                                              + " WHERE `ID_Grafikkarte` = " + entity.Id + " AND `ID_Schnittstelle` = " + entity.PhysicalInterfaces[i].PhysicalInterface.Id;
+                } else {
+                    interfaceCommand.CommandText = "INSERT INTO `" + this.GetTableName() + "_schnittstelle`(`ID_Grafikkarte`, `ID_Schnittstelle`, `Anzahl`) "
+                                                 + "VALUES (" + entity.Id + "," + entity.PhysicalInterfaces[i].PhysicalInterface.Id + ","
+                                                 + entity.PhysicalInterfaces[i].Number + ")";
+                }
+
                 interfaceCommand.ExecuteNonQuery();
                 usedInterfaces += entity.PhysicalInterfaces[i].PhysicalInterface.Id;
                 if (i != entity.PhysicalInterfaces.Count - 1)
@@ -131,6 +138,27 @@ namespace InventoryManagementSystem.dataAccess
             }
 
             return physicalInterfaces;
+        }
+
+        /// <summary>
+        /// Prüft, ob ein Interface bereits der Entität zugewiesen ist
+        /// </summary>
+        /// <param name="physicalInterface">Die Schnittstelle auf welche geprüft wird</param>
+        /// <param name="entity">Die Entität, welche geprüft wird</param>
+        /// <returns>true, wenn eine Schnittstelle zugewiesen wurde</returns>
+        private bool IsInterfaceInUse(PhysicalInterface physicalInterface, GraphicCard entity)
+        {
+            MySqlConnection connection = this.CreateConnection();
+            MySqlCommand command = connection.CreateCommand();
+            bool result;
+
+            connection.Open();
+            command.CommandText = "SELECT * FROM `" + this.GetTableName() + "_schnittstelle` WHERE `ID_Grafikkarte` = " + entity.Id
+                                + " AND `ID_Schnittstelle` = " + physicalInterface.Id;
+            result = command.ExecuteReader().HasRows;
+            connection.Close();
+
+            return result;
         }
     }
 }
