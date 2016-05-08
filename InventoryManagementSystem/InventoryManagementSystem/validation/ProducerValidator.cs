@@ -12,7 +12,7 @@ namespace InventoryManagementSystem.validation
     {
         private string emailPattern = "^[a-zA-Z]{1,}.*\\@[a-zA-Z]*\\.(de|com|net|org){1,1}$";
         private string websitePattern = "^(http:\\/\\/|https:\\/\\/){0,1}www\\..{1,}\\.[a-z]{1,4}(\\/){0,1}$";
-        private string placePattern = "^[A-Z]{1,}[A-Za-zöäü ]*$";
+        private string placePattern = "^[A-Z]{1,}[A-Za-zöäü \\.]*$";
         private string phonePattern = "^[0-9\\+\\/\\(\\) ]{1,}$";
 
         /// <summary>

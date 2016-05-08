@@ -86,8 +86,8 @@ namespace InventoryManagementSystem.presentation.forms
                         interfaceDataAccess.Update(this.entity);
                     else
                         interfaceDataAccess.Save(this.entity);
+                    this.Close();
                 }
-                this.Close();
             }
             catch (FormatException exception)
             {

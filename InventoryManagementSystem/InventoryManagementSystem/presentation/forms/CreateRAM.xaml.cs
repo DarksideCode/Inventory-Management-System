@@ -109,8 +109,8 @@ namespace InventoryManagementSystem.presentation.forms
                         dataRandom.Update(this.entity);
                     else
                         dataRandom.Save(this.entity);
+                    this.Close();
                 }
-                this.Close();
             }
             catch (FormatException exception)
             {

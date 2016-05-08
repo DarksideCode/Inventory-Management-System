@@ -8,7 +8,7 @@
         Title="Hauptplatine - IMS" Height="317" Width="312" ResizeMode="NoResize">
     <Grid>
         <Label x:Name="CreateEntityName" Content="Mainboard" VerticalAlignment="Top" Margin="73,10,71,0" FontSize="18" FontWeight="Bold" RenderTransformOrigin="-0.15,0.356" Width="156" Opacity="0.9" AllowDrop="True" IsHitTestVisible="False" HorizontalAlignment="Center" HorizontalContentAlignment="Center"/>
-        <Button x:Name="MainboardSave" Content="Speichern" HorizontalAlignment="Left" Margin="62,241,0,0" VerticalAlignment="Top" Width="75" Click="MainboardSave_Click" Cursor="Hand">
+        <Button x:Name="MainboardSave" Content="Speichern" HorizontalAlignment="Left" Margin="62,257,0,0" VerticalAlignment="Top" Width="75" Click="MainboardSave_Click" Cursor="Hand">
             <Button.Background>
                 <LinearGradientBrush EndPoint="0,1" StartPoint="0,0">
                     <GradientStop Color="#FFD5E8D4" Offset="0"/>
@@ -16,7 +16,7 @@
                 </LinearGradientBrush>
             </Button.Background>
         </Button>
-        <Button x:Name="MainboardCancel" Content="Abbrechen" HorizontalAlignment="Left" Margin="165,241,0,0" VerticalAlignment="Top" Width="75" Click="MainboardCancel_Click" RenderTransformOrigin="0.474,1.075" Cursor="Hand">
+        <Button x:Name="MainboardCancel" Content="Abbrechen" HorizontalAlignment="Left" Margin="165,257,0,0" VerticalAlignment="Top" Width="75" Click="MainboardCancel_Click" RenderTransformOrigin="0.474,1.075" Cursor="Hand">
             <Button.Background>
                 <LinearGradientBrush EndPoint="0,1" StartPoint="0,0">
                     <GradientStop Color="#FFD5E8D4" Offset="0"/>
@@ -25,15 +25,15 @@
             </Button.Background>
         </Button>
         <Label x:Name="descriptionLBL" Content="Beschreibung" HorizontalAlignment="Left" Margin="22,49,0,0" VerticalAlignment="Top"/>
-        <TextBox x:Name="description" HorizontalAlignment="Left" Height="48" Margin="136,53,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="134" ToolTip="Beschreibung der Hauptplatine"/>
-        <Label x:Name="sizeLBL" Content="Zoll" HorizontalAlignment="Left" Margin="22,101,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.473,-0.418"/>
-        <TextBox x:Name="size" HorizontalAlignment="Left" Height="23" Margin="136,106,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="134" RenderTransformOrigin="0.486,-0.196" ToolTip="Größe der Hauptplatine in Zoll"/>
-        <Label x:Name="socketLBL" Content="Sockel" HorizontalAlignment="Left" Margin="22,132,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.478,0.087"/>
-        <TextBox x:Name="socket" HorizontalAlignment="Left" Height="23" Margin="136,135,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="134" ToolTip="Art des Sockels der Hauptplatine"/>
-        <Label x:Name="producerLBL" Content="Hersteller" HorizontalAlignment="Left" Margin="22,163,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.063,0.041"/>
-        <ComboBox x:Name="producer" HorizontalAlignment="Left" Margin="136,167,0,0" VerticalAlignment="Top" Width="134"/>
-        <Label x:Name="producerLBL_Copy" Content="Schnittstellen" HorizontalAlignment="Left" Margin="23,194,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.063,0.041"/>
-        <Button x:Name="MainboardInterface" Content="Verwalten" HorizontalAlignment="Left" Margin="165,196,0,0" VerticalAlignment="Top" Width="75" Click="MainboardInterface_Click" RenderTransformOrigin="0.474,1.075" Cursor="Hand" ToolTip="Schnittstellen verwalten">
+        <TextBox x:Name="description" HorizontalAlignment="Left" Height="59" Margin="136,53,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="134" ToolTip="Beschreibung der Hauptplatine"/>
+        <Label x:Name="sizeLBL" Content="Zoll" HorizontalAlignment="Left" Margin="22,117,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.473,-0.418"/>
+        <TextBox x:Name="size" HorizontalAlignment="Left" Height="23" Margin="136,122,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="134" RenderTransformOrigin="0.486,-0.196" ToolTip="Größe der Hauptplatine in Zoll"/>
+        <Label x:Name="socketLBL" Content="Sockel" HorizontalAlignment="Left" Margin="22,148,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.478,0.087"/>
+        <TextBox x:Name="socket" HorizontalAlignment="Left" Height="23" Margin="136,151,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="134" ToolTip="Art des Sockels der Hauptplatine"/>
+        <Label x:Name="producerLBL" Content="Hersteller" HorizontalAlignment="Left" Margin="22,179,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.063,0.041"/>
+        <ComboBox x:Name="producer" HorizontalAlignment="Left" Margin="136,183,0,0" VerticalAlignment="Top" Width="134"/>
+        <Label x:Name="producerLBL_Copy" Content="Schnittstellen" HorizontalAlignment="Left" Margin="23,210,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.063,0.041"/>
+        <Button x:Name="MainboardInterface" Content="Verwalten" HorizontalAlignment="Left" Margin="165,212,0,0" VerticalAlignment="Top" Width="75" Click="MainboardInterface_Click" RenderTransformOrigin="0.474,1.075" Cursor="Hand" ToolTip="Schnittstellen verwalten">
             <Button.Background>
                 <LinearGradientBrush EndPoint="0,1" StartPoint="0,0">
                     <GradientStop Color="#FFD5E8D4" Offset="0"/>

@@ -92,8 +92,8 @@ namespace InventoryManagementSystem.presentation.forms
                         monitorDataAccess.Update(this.entity);
                     else
                         monitorDataAccess.Save(this.entity);
-                }
-                this.Close();
+                    this.Close();
+                }              
             }
             catch (FormatException exception)
             {

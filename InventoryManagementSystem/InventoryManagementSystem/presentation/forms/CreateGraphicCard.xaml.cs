@@ -133,8 +133,8 @@ namespace InventoryManagementSystem.presentation.forms
                         dataGraphicModel.Update(this.entity);
                     else
                         dataGraphicModel.Save(this.entity);
+                    this.Close();
                 }
-                this.Close();
             }
             catch (FormatException exception)
             {

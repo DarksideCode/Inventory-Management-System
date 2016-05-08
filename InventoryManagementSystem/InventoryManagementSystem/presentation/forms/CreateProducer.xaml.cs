@@ -81,18 +81,18 @@ namespace InventoryManagementSystem.presentation.forms
                 this.entity.Street = this.ProducerStreet.Text;
                 this.entity.HouseNumber = uint.Parse(this.ProducerHouseNumber.Text);
 
-                if (validator.CheckConsistency(this.entity))
+                if (!validator.CheckConsistency(this.entity))
+                {
+                    ErrorHandler.ShowErrorMessage("Validierung fehlgeschlagen", ErrorHandler.VALIDATION_FAILED);
+                }
+                else
                 {
                     if (this.isAvailable)
                         dataAccess.Update(this.entity);
                     else
                         dataAccess.Save(this.entity);
+                    this.Close();
                 }
-                else
-                {
-                    ErrorHandler.ShowErrorMessage("Validierung fehlgeschlagen", ErrorHandler.VALIDATION_FAILED);
-                }
-                this.Close();
             }
             catch (FormatException exception)
             {

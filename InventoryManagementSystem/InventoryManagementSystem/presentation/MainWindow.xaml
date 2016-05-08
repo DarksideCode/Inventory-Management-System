@@ -55,7 +55,7 @@
             <MenuItem x:Name="menu_producer" Header="Hersteller" Width="159" Click="Producer_Selected" Cursor="Hand" ToolTip="Hersteller"/>
             <MenuItem x:Name="menu_interface" Header="Schnittstelle" Click="Interface_Selected" Width="159" Cursor="Hand" ToolTip="Schnittstelle"/>
         </Menu>
-        <Button x:Name="ConfigBtn" Content="" Margin="543,0,19,309" Width="20" Height="20" Click="ConfigBtn_Click">
+        <Button x:Name="ConfigBtn" Content="" Margin="539,10,19,299" Click="ConfigBtn_Click">
             <Button.OpacityMask>
                 <ImageBrush ImageSource="/InventoryManagementSystem;component/images/config.jpg" Stretch="Uniform" TileMode="Tile"/>
             </Button.OpacityMask>

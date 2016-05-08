@@ -108,8 +108,8 @@ namespace InventoryManagementSystem.presentation.forms
                         diskDataAccess.Update(this.entity);
                     else
                         diskDataAccess.Save(this.entity);
+                    this.Close();
                 }
-                this.Close();
             }
             catch (FormatException exception)
             {
