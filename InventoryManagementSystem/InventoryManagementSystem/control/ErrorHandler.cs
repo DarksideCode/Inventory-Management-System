@@ -7,6 +7,10 @@ using System.Windows;
 
 namespace InventoryManagementSystem.control
 {
+    /// <summary>
+    /// Stellt Methoden zur Anzeige von Fehlermeldungen zur Verfügung und bietet eine Auswahl von passenden
+    /// Fehlermeldungen für verschiedene Situationen
+    /// </summary>
     public class ErrorHandler
     {
         public static string VALIDATION_FAILED = "Die eingegebenen Daten sind inkonsistent. Bitte überprüfen Sie Ihre Eingaben!";

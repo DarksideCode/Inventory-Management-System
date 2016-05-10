@@ -107,7 +107,7 @@ namespace InventoryManagementSystem.presentation.forms
                 }
                 else if (this.DiskCapacityUnit.Text == "GB")
                 {
-                    this.entity.Capacity = UnitConverter.KiloByteToByte(Convert.ToUInt32(this.DiskCapacity.Text));
+                    this.entity.Capacity = UnitConverter.ConvertToLower(Convert.ToUInt32(this.DiskCapacity.Text));
                 }
 
                 this.entity.Inch = Convert.ToDouble(this.DiskSize.Text.Replace('.', ','));

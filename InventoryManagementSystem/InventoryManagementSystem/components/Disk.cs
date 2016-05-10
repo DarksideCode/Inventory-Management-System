@@ -57,7 +57,7 @@ namespace InventoryManagementSystem.components
         {
             this.Id = entity.Id;
             this.Beschreibung = entity.Description;
-            this.Kapazität = UnitConverter.ByteToKiloByte(entity.Capacity);
+            this.Kapazität = UnitConverter.ConvertToHigher(entity.Capacity);
             if (entity.Ssd)
                 this.SSD = "Ja";
             else

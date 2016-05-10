@@ -96,7 +96,7 @@ namespace InventoryManagementSystem.presentation.forms
                 }
                 else if (this.RamStorageUnit.Text == "GB")
                 {
-                    this.entity.Memory = UnitConverter.KiloByteToByte(Convert.ToDouble(this.RamStorage.Text));
+                    this.entity.Memory = UnitConverter.ConvertToLower(Convert.ToDouble(this.RamStorage.Text));
                 }
 
                 if (!validator.CheckConsistency(this.entity))

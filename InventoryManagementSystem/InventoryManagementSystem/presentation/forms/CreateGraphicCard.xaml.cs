@@ -118,7 +118,7 @@ namespace InventoryManagementSystem.presentation.forms
                 }
                 else if (this.GraphicStorageUnit.Text == "GB")
                 {
-                    this.entity.Memory = UnitConverter.KiloByteToByte(Convert.ToDouble(this.GraphicStorage.Text));
+                    this.entity.Memory = UnitConverter.ConvertToLower(Convert.ToDouble(this.GraphicStorage.Text));
                 }
 
                 this.entity.Producer = dataProducer.GetEntityByName<Producer>("Firma", this.GraphicProducer.Text.ToString());

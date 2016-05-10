@@ -86,8 +86,16 @@ namespace InventoryManagementSystem.dataAccess
                     usedInterfaces += ",";
                 }
             }
-            interfaceCommand.CommandText = "DELETE FROM `" + this.GetTableName() + "_schnittstelle` WHERE `ID_Grafikkarte` = " + entity.Id
-                                         + " AND `ID_Schnittstelle` NOT IN (" + usedInterfaces + ")";
+            if (usedInterfaces.Length > 0)
+            {
+                interfaceCommand.CommandText = "DELETE FROM `" + this.GetTableName() + "_schnittstelle` WHERE `ID_Grafikkarte` = " + entity.Id
+                                             + " AND `ID_Schnittstelle` NOT IN (" + usedInterfaces + ")";
+            }
+            else
+            {
+                interfaceCommand.CommandText = "DELETE FROM `" + this.GetTableName() + "_schnittstelle` WHERE `ID_Grafikkarte` = " + entity.Id;
+            }
+
             interfaceCommand.ExecuteNonQuery();
             command.ExecuteNonQuery();
             connection.Close();
