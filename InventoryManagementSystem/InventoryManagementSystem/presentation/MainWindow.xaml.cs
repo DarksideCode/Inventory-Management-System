@@ -23,9 +23,6 @@ namespace InventoryManagementSystem
         private string selectedEntity = "RandomAccessMemory";
         private SolidColorBrush defaultBrush = new SolidColorBrush();
 
-        private readonly string noDatabaseConnection = "Es konnte keine Verbindung zur Datenbank hergestellt werden. Bitte überprüfen Sie Ihre Einstellungen!";
-        private readonly string elementStillReferenced = "Das ausgewählte Element kann nicht gelöscht werden, da noch eine Referenz darauf besteht.";
-
         /// <summary>
         /// Initialisiert die UI-Elemente und selektiert den ersten Menüeintrag (Arbeitsspeicher)
         /// </summary>
@@ -75,16 +72,6 @@ namespace InventoryManagementSystem
                 if (((MenuItem)this.menu.Items[i]).Name != "menu_stammdaten" && ((MenuItem)this.menu.Items[i]).Name != "menu_komponenten")
                     ((MenuItem)this.menu.Items[i]).Background = Brushes.White;
             }
-        }
-
-        /// <summary>
-        /// Öffnet eine MessageBox mit der übergebenen Fehlermeldung.
-        /// </summary>
-        /// <param name="exception">Die Exception, welche ausgelöst wurde</param>
-        /// <param name="message">Die Fehlermeldung, welche angezeigt wird</param>
-        private void showErrorMessage(Exception exception, string message)
-        {
-            MessageBox.Show(message, exception.GetType().Name, MessageBoxButton.OK, MessageBoxImage.Warning);
         }
 
         private void Menu_Selected(object sender, int indicator, string[] HeaderName, string[] HeaderUnit, string[] Entity)
@@ -145,7 +132,7 @@ namespace InventoryManagementSystem
             }
             catch (MySql.Data.MySqlClient.MySqlException exception)
             {
-                this.showErrorMessage(exception, this.noDatabaseConnection);
+                ErrorHandler.ShowErrorMessage(exception, ErrorHandler.NO_DATABASE_CONNECTION);
             }
             this.entityName.Content = Entity[0];
             this.selectedEntity = Entity[1];
@@ -315,7 +302,7 @@ namespace InventoryManagementSystem
                         }
                         catch (MySql.Data.MySqlClient.MySqlException exception)
                         {
-                            this.showErrorMessage(exception, this.elementStillReferenced);
+                            ErrorHandler.ShowErrorMessage(exception, ErrorHandler.ENTITY_STILL_REFERENCED);
                         }
 
                         this.AddToTable(mapper.MapToGraphicalObject(dataAccess.GetAllEntities<Producer>()));
@@ -330,7 +317,7 @@ namespace InventoryManagementSystem
                         }
                         catch (MySql.Data.MySqlClient.MySqlException exception)
                         {
-                            this.showErrorMessage(exception, this.elementStillReferenced);
+                            ErrorHandler.ShowErrorMessage(exception, ErrorHandler.ENTITY_STILL_REFERENCED);
                         }
 
                         this.AddToTable(mapper.MapToGraphicalObject(dataAccess.GetAllEntities<PhysicalInterface>()));
@@ -396,7 +383,6 @@ namespace InventoryManagementSystem
 
         private void EditBtn_Click(object sender, RoutedEventArgs e)
         {
-            //TODO: Mapping zu Enität von GraphicalObjectMapper übernehmen lassen!
             if (this.dataGrid.SelectedItems.Count > 0)
             {
                 switch (this.selectedEntity)
