@@ -85,6 +85,22 @@ namespace InventoryManagementSystem.presentation.forms
             }
         }
 
+        /// <summary>
+        /// Setzt die Werte des Formulares in der entity.
+        /// </summary>
+        /// <param name="dataProducer">Dataaccess Objekt eines Produzenten</param>
+        private void setEntityWithFormData(ProducerDataAccess dataProducer)
+        {
+            this.entity.Description = this.description.Text;
+            this.entity.Inch = Convert.ToDouble(this.size.Text.Replace('.', ','));
+            this.entity.Producer = dataProducer.GetEntityByName<Producer>("Firma", this.producer.Text.ToString());
+            this.entity.Socket = this.socket.Text;
+        }
+
+        /// <summary>
+        /// Ruft die Informationen aus dem Formular ab und speichert sie in die Datenbank.
+        /// Wirft eine Fehlermeldung, wenn die Validierung fehlschlägt.
+        /// </summary>
         private void MainboardSave_Click(object sender, RoutedEventArgs e)
         {
             ProducerDataAccess dataProducer = new ProducerDataAccess();
@@ -93,10 +109,7 @@ namespace InventoryManagementSystem.presentation.forms
 
             try
             {
-                this.entity.Description = this.description.Text;
-                this.entity.Inch = Convert.ToDouble(this.size.Text.Replace('.', ','));
-                this.entity.Producer = dataProducer.GetEntityByName<Producer>("Firma", this.producer.Text.ToString());
-                this.entity.Socket = this.socket.Text;
+                this.setEntityWithFormData(dataProducer);
 
                 if (!validator.CheckConsistency(this.entity))
                 {

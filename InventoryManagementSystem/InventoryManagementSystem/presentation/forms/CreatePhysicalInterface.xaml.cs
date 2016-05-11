@@ -60,6 +60,18 @@ namespace InventoryManagementSystem.presentation.forms
         }
 
         /// <summary>
+        /// Setzt die Werte des Formulares in der entity.
+        /// </summary>
+        /// <param name="dataProducer">Dataaccess Objekt eines Produzenten</param>
+        private void setEntityWithFormData(ProducerDataAccess dataProducer = null)
+        {
+            this.entity.Name = this.interfaceName.Text;
+            this.entity.Description = this.interfaceDescription.Text;
+            this.entity.Serial = Convert.ToBoolean(this.interfaceSerial.IsChecked);
+            this.entity.TransferRate = Convert.ToDouble(this.interfaceTransferRate.Text.Replace('.', ','));
+        }
+
+        /// <summary>
         /// Ruft die Informationen aus dem Formular ab und speichert sie in die Datenbank.
         /// Wirft eine Fehlermeldung, wenn die Validierung fehlschlägt.
         /// </summary>
@@ -70,10 +82,7 @@ namespace InventoryManagementSystem.presentation.forms
 
             try
             {
-                this.entity.Name = this.interfaceName.Text;
-                this.entity.Description = this.interfaceDescription.Text;
-                this.entity.Serial = Convert.ToBoolean(this.interfaceSerial.IsChecked);
-                this.entity.TransferRate = Convert.ToDouble(this.interfaceTransferRate.Text.Replace('.', ','));
+                this.setEntityWithFormData();
 
                 if (!validator.CheckConsistency(this.entity))
                 {

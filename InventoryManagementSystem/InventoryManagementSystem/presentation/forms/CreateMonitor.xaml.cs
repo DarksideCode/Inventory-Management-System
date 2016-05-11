@@ -122,7 +122,6 @@ namespace InventoryManagementSystem.presentation.forms
             this.entity.Producer = dataProducer.GetEntityByName<Producer>("Firma", this.producer.Text.ToString());
         }
 
-
         /// <summary>
         /// Öffnet das Fenster für die Verwaltung der Schnittstellen.
         /// </summary>

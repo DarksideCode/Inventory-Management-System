@@ -62,6 +62,22 @@ namespace InventoryManagementSystem.presentation.forms
         }
 
         /// <summary>
+        /// Setzt die Werte des Formulares in der entity.
+        /// </summary>
+        /// <param name="dataProducer">Dataaccess Objekt eines Produzenten</param>
+        private void setEntityWithFormData(ProducerDataAccess dataProducer = null)
+        {
+            this.entity.CompanyName = this.ProducerCompanyName.Text;
+            this.entity.Email = this.ProducerEmail.Text;
+            this.entity.PhoneNumber = this.ProducerTelephone.Text;
+            this.entity.Website = this.ProducerWebsite.Text;
+            this.entity.PostalCode = uint.Parse(this.ProducerPostalCode.Text);
+            this.entity.Place = this.ProducerPlace.Text;
+            this.entity.Street = this.ProducerStreet.Text;
+            this.entity.HouseNumber = uint.Parse(this.ProducerHouseNumber.Text);
+        }
+
+        /// <summary>
         /// Ruft die Informationen aus dem Formular ab und speichert sie in die Datenbank.
         /// Wirft eine Fehlermeldung, wenn die Validierung fehlschlägt.
         /// </summary>
@@ -72,14 +88,7 @@ namespace InventoryManagementSystem.presentation.forms
 
             try
             {
-                this.entity.CompanyName = this.ProducerCompanyName.Text;
-                this.entity.Email = this.ProducerEmail.Text;
-                this.entity.PhoneNumber = this.ProducerTelephone.Text;
-                this.entity.Website = this.ProducerWebsite.Text;
-                this.entity.PostalCode = uint.Parse(this.ProducerPostalCode.Text);
-                this.entity.Place = this.ProducerPlace.Text;
-                this.entity.Street = this.ProducerStreet.Text;
-                this.entity.HouseNumber = uint.Parse(this.ProducerHouseNumber.Text);
+                this.setEntityWithFormData();
 
                 if (!validator.CheckConsistency(this.entity))
                 {
