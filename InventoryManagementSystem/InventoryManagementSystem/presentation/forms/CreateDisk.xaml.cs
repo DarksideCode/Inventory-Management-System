@@ -88,6 +88,27 @@ namespace InventoryManagementSystem.presentation.forms
         }
 
         /// <summary>
+        /// Setzt die Werte des Formulares in der entity.
+        /// </summary>
+        /// <param name="dataProducer">Dataaccess Objekt eines Produzenten</param>
+        private void setEntityWithFormData(ProducerDataAccess dataProducer)
+        {
+            this.entity.Description = this.DiskDescription.Text;
+            if (this.DiskCapacityUnit.Text == "MB")
+            {
+                this.entity.Capacity = Convert.ToUInt32(this.DiskCapacity.Text);
+            }
+            else if (this.DiskCapacityUnit.Text == "GB")
+            {
+                this.entity.Capacity = UnitConverter.ConvertToLower(Convert.ToUInt32(this.DiskCapacity.Text));
+            }
+
+            this.entity.Inch = Convert.ToDouble(this.DiskSize.Text.Replace('.', ','));
+            this.entity.Ssd = Convert.ToBoolean(this.DiskType.IsChecked);
+            this.entity.Producer = dataProducer.GetEntityByName<Producer>("Firma", this.DiskProducer.Text.ToString());
+        }
+
+        /// <summary>
         /// Ruft die Informationen aus dem Formular ab und speichert sie in die Datenbank.
         /// Führt eine Umrechnung in MB aus und wirft eine Fehlermeldung, wenn die Validierung
         /// fehlschlägt.
@@ -100,19 +121,7 @@ namespace InventoryManagementSystem.presentation.forms
 
             try
             {
-                this.entity.Description = this.DiskDescription.Text;
-                if (this.DiskCapacityUnit.Text == "MB")
-                {
-                    this.entity.Capacity = Convert.ToUInt32(this.DiskCapacity.Text);
-                }
-                else if (this.DiskCapacityUnit.Text == "GB")
-                {
-                    this.entity.Capacity = UnitConverter.ConvertToLower(Convert.ToUInt32(this.DiskCapacity.Text));
-                }
-
-                this.entity.Inch = Convert.ToDouble(this.DiskSize.Text.Replace('.', ','));
-                this.entity.Ssd = Convert.ToBoolean(this.DiskType.IsChecked);
-                this.entity.Producer = dataProducer.GetEntityByName<Producer>("Firma", this.DiskProducer.Text.ToString());
+                this.setEntityWithFormData(dataProducer);
 
                 if (!validator.CheckConsistency(this.entity))
                 {

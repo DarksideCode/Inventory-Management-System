@@ -67,6 +67,21 @@ namespace InventoryManagementSystem.presentation.forms
         }
 
         /// <summary>
+        /// Setzt die Werte des Formulares in der entity.
+        /// </summary>
+        /// <param name="dataProducer">Dataaccess Objekt eines Produzenten</param>
+        private void setEntityWithFormData(ProducerDataAccess dataProducer)
+        {
+            this.entity.Description = this.description.Text;
+            this.entity.Model = this.model.Text;
+            this.entity.Producer = dataProducer.GetEntityByName<Producer>("Firma", this.producer.Text.ToString());
+            this.entity.CommandSet = this.commandSet.Text;
+            this.entity.Architecture = uint.Parse(this.architecture.Text);
+            this.entity.ClockRate = double.Parse(this.clockRate.Text.Replace(".", ","));
+            this.entity.Core = uint.Parse(this.cores.Text);
+        }
+
+        /// <summary>
         /// Ruft die Informationen aus dem Formular ab und speichert sie in die Datenbank.
         /// Wirft eine Fehlermeldung, wenn die Validierung fehlschlägt.
         /// </summary>
@@ -78,13 +93,7 @@ namespace InventoryManagementSystem.presentation.forms
 
             try
             {
-                this.entity.Description = this.description.Text;
-                this.entity.Model = this.model.Text;
-                this.entity.Producer = dataProducer.GetEntityByName<Producer>("Firma", this.producer.Text.ToString());
-                this.entity.CommandSet = this.commandSet.Text;
-                this.entity.Architecture = uint.Parse(this.architecture.Text);
-                this.entity.ClockRate = double.Parse(this.clockRate.Text.Replace(".",","));
-                this.entity.Core = uint.Parse(this.cores.Text);
+                this.setEntityWithFormData(dataProducer);
 
                 if (!validator.CheckConsistency(this.entity))
                 {

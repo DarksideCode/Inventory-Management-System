@@ -74,6 +74,26 @@ namespace InventoryManagementSystem.presentation.forms
         }
 
         /// <summary>
+        /// Setzt die Werte des Formulares in der entity.
+        /// </summary>
+        /// <param name="dataProducer">Dataaccess Objekt eines Produzenten</param>
+        private void setEntityWithFormData(ProducerDataAccess dataProducer)
+        {
+            this.entity.Description = this.RamDescription.Text.ToString();
+            this.entity.ClockRate = double.Parse(this.RamClockRate.Text.Replace('.', ','));
+            this.entity.Producer = dataProducer.GetEntityByName<Producer>("Firma", this.RamProducer.Text.ToString());
+
+            if (this.RamStorageUnit.Text == "MB")
+            {
+                this.entity.Memory = ulong.Parse(this.RamStorage.Text);
+            }
+            else if (this.RamStorageUnit.Text == "GB")
+            {
+                this.entity.Memory = UnitConverter.ConvertToLower(Convert.ToDouble(this.RamStorage.Text));
+            }
+        }
+
+        /// <summary>
         /// Ruft die Informationen aus dem Formular ab und speichert sie in die Datenbank.
         /// Führt eine Umrechnung in MB aus und wirft eine Fehlermeldung, wenn die Validierung
         /// fehlschlägt.
@@ -86,18 +106,7 @@ namespace InventoryManagementSystem.presentation.forms
 
             try
             {
-                this.entity.Description = this.RamDescription.Text.ToString();
-                this.entity.ClockRate = double.Parse(this.RamClockRate.Text.Replace('.',','));
-                this.entity.Producer = dataProducer.GetEntityByName<Producer>("Firma", this.RamProducer.Text.ToString());
-
-                if (this.RamStorageUnit.Text == "MB")
-                {
-                    this.entity.Memory = ulong.Parse(this.RamStorage.Text);
-                }
-                else if (this.RamStorageUnit.Text == "GB")
-                {
-                    this.entity.Memory = UnitConverter.ConvertToLower(Convert.ToDouble(this.RamStorage.Text));
-                }
+                this.setEntityWithFormData(dataProducer);
 
                 if (!validator.CheckConsistency(this.entity))
                 {

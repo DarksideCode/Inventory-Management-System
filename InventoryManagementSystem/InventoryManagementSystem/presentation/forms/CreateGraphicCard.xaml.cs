@@ -96,6 +96,28 @@ namespace InventoryManagementSystem.presentation.forms
         }
 
         /// <summary>
+        /// Setzt die Werte des Formulares in der entity.
+        /// </summary>
+        /// <param name="dataProducer">Dataaccess Objekt eines Produzenten</param>
+        private void setEntityWithFormData(ProducerDataAccess dataProducer)
+        {
+            this.entity.Description = this.GraphicDescription.Text.ToString();
+            this.entity.ClockRate = double.Parse(this.GraphicClockRate.Text.Replace('.', ','));
+            this.entity.Model = this.GraphicModel.Text.ToString();
+
+            if (this.GraphicStorageUnit.Text == "MB")
+            {
+                this.entity.Memory = ulong.Parse(this.GraphicStorage.Text);
+            }
+            else if (this.GraphicStorageUnit.Text == "GB")
+            {
+                this.entity.Memory = UnitConverter.ConvertToLower(Convert.ToDouble(this.GraphicStorage.Text));
+            }
+
+            this.entity.Producer = dataProducer.GetEntityByName<Producer>("Firma", this.GraphicProducer.Text.ToString());
+        }
+
+        /// <summary>
         /// Ruft die Informationen aus dem Formular ab und speichert sie in die Datenbank.
         /// Führt eine Umrechnung in MB aus und wirft eine Fehlermeldung, wenn die Validierung
         /// fehlschlägt.
@@ -108,20 +130,7 @@ namespace InventoryManagementSystem.presentation.forms
 
             try
             {
-                this.entity.Description = this.GraphicDescription.Text.ToString();
-                this.entity.ClockRate = double.Parse(this.GraphicClockRate.Text.Replace('.', ','));
-                this.entity.Model = this.GraphicModel.Text.ToString();
-
-                if (this.GraphicStorageUnit.Text == "MB")
-                {
-                    this.entity.Memory = ulong.Parse(this.GraphicStorage.Text);
-                }
-                else if (this.GraphicStorageUnit.Text == "GB")
-                {
-                    this.entity.Memory = UnitConverter.ConvertToLower(Convert.ToDouble(this.GraphicStorage.Text));
-                }
-
-                this.entity.Producer = dataProducer.GetEntityByName<Producer>("Firma", this.GraphicProducer.Text.ToString());
+                this.setEntityWithFormData(dataProducer);
 
                 if (!validator.CheckConsistency(this.entity))
                 {
