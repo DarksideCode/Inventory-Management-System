@@ -5,7 +5,7 @@ using InventoryManagementSystem.dataAccess;
 namespace UnitTests
 {
     [TestClass]
-    public class ProzessTest
+    public class DataAccessTest
     {
         [TestMethod]
         public void getProducerFromDatabase()
