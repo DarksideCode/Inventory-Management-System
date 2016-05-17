@@ -39,6 +39,10 @@
         public double Taktrate { get; set; }
         public string Hersteller { get; set; }
 
+        /// <summary>
+        /// Wandelt ein Objekt der Entität 'Prozessor' in eine grafisches Objekt.
+        /// </summary>
+        /// <param name="entity">Objekt vom Typ 'Prozessor'</param>
         public void MapFromEntity (Processor entity)
         {
             this.Id = entity.Id;

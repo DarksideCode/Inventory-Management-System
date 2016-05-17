@@ -40,7 +40,7 @@
             </Button.Background>
         </Button>
         <Label x:Name="GraphicInterfaceLBL" Content="Schnittstellen" HorizontalAlignment="Left" Margin="26,232,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.506,0.885"/>
-        <Button x:Name="GraphicInterface" Content="Verwalten" HorizontalAlignment="Left" Margin="165,236,0,0" VerticalAlignment="Top" Width="75" RenderTransformOrigin="0.474,1.075" Click="GraphicInterface_Click" Cursor="Hand" ToolTip="Schnittstellen verwalten">
+        <Button x:Name="GraphicInterface" Content="Verwalten" HorizontalAlignment="Left" Margin="165,236,0,0" VerticalAlignment="Top" Width="75" RenderTransformOrigin="0.474,1.075" Click="GraphicInterface_Click" Cursor="Hand" ToolTip="Schnittstellen verwalten" Focusable="False">
             <Button.Background>
                 <LinearGradientBrush EndPoint="0,1" StartPoint="0,0">
                     <GradientStop Color="#FFD5E8D4" Offset="0"/>

@@ -42,6 +42,10 @@
         public string Straße { get; set; }
         public uint Hausnummer { get; set; }
 
+        /// <summary>
+        /// Wandelt ein Objekt der Entität 'Hersteller' in eine grafisches Objekt.
+        /// </summary>
+        /// <param name="entity">Objekt vom Typ 'Hersteller'</param>
         public void MapFromEntity (Producer entity)
         {
             this.Id = entity.Id;

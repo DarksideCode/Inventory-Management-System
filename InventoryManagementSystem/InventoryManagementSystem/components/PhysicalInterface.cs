@@ -30,6 +30,11 @@
         public string Seriell { get; set; }
         public double Transferrate { get; set; }
 
+        /// <summary>
+        /// Wandelt ein Objekt der Entität 'Schnittstelle' in eine grafisches Objekt.
+        /// Übersetzt englische Begriffe.
+        /// </summary>
+        /// <param name="entity">Objekt vom Typ 'Schnittstelle'</param>
         public void MapFromEntity(PhysicalInterface entity)
         {
             this.Id = entity.Id;
