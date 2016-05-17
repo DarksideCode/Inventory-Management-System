@@ -12,7 +12,7 @@
             <RowDefinition Height="205*"/>
         </Grid.RowDefinitions>
         <Label x:Name="CreateEntityName" Content="Monitor" VerticalAlignment="Top" Margin="69,10,67,0" FontSize="18" FontWeight="Bold" RenderTransformOrigin="-0.15,0.356" Width="156" Opacity="0.9" AllowDrop="True" IsHitTestVisible="False" HorizontalAlignment="Center" HorizontalContentAlignment="Center"/>
-        <Button x:Name="MonitorSave" Content="Speichern" HorizontalAlignment="Left" Margin="62,153,0,0" VerticalAlignment="Top" Width="75" Cursor="Hand" Height="24" Grid.Row="1" Click="MonitorSave_Click">
+        <Button x:Name="MonitorSave" Content="Speichern" HorizontalAlignment="Left" Margin="62,153,0,0" VerticalAlignment="Top" Width="75" Cursor="Hand" Height="24" Grid.Row="1" Click="MonitorSave_Click" Focusable="False">
             <Button.Background>
                 <LinearGradientBrush EndPoint="0,1" StartPoint="0,0">
                     <GradientStop Color="#FFD5E8D4" Offset="0"/>

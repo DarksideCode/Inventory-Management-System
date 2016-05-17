@@ -23,7 +23,7 @@
             <ComboBoxItem Content="MB" HorizontalAlignment="Left" Width="50"/>
             <ComboBoxItem Content="GB" HorizontalAlignment="Left" Width="50"/>
         </ComboBox>
-        <Button x:Name="GraphicSave" Content="Speichern" HorizontalAlignment="Left" Margin="62,281,0,-6" VerticalAlignment="Top" Width="75" Click="GraphicSave_Click" Cursor="Hand">
+        <Button x:Name="GraphicSave" Content="Speichern" HorizontalAlignment="Left" Margin="62,281,0,-6" VerticalAlignment="Top" Width="75" Click="GraphicSave_Click" Cursor="Hand" Focusable="False">
             <Button.Background>
                 <LinearGradientBrush EndPoint="0,1" StartPoint="0,0">
                     <GradientStop Color="#FFD5E8D4" Offset="0"/>

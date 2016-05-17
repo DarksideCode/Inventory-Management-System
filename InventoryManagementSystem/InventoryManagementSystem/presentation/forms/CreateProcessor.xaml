@@ -8,7 +8,7 @@
         Title="Prozessor - IMS" Height="392.5" Width="312" ResizeMode="NoResize">
     <Grid>
         <Label x:Name="CreateEntityName" Content="Prozessor" VerticalAlignment="Top" Margin="73,10,71,0" FontSize="18" FontWeight="Bold" RenderTransformOrigin="-0.15,0.356" Width="156" Opacity="0.9" AllowDrop="True" IsHitTestVisible="False" HorizontalAlignment="Center" HorizontalContentAlignment="Center"/>
-        <Button x:Name="ProcessorSave" Content="Speichern" HorizontalAlignment="Left" Margin="62,318,0,0" VerticalAlignment="Top" Width="75" Cursor="Hand" Click="ProcessorSave_Click" Height="24">
+        <Button x:Name="ProcessorSave" Content="Speichern" HorizontalAlignment="Left" Margin="62,318,0,0" VerticalAlignment="Top" Width="75" Cursor="Hand" Click="ProcessorSave_Click" Height="24" Focusable="False">
             <Button.Background>
                 <LinearGradientBrush EndPoint="0,1" StartPoint="0,0">
                     <GradientStop Color="#FFD5E8D4" Offset="0"/>

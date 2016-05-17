@@ -12,7 +12,7 @@
         <CheckBox x:Name="interfaceSerial" Content="" HorizontalAlignment="Left" Margin="199,146,0,0" VerticalAlignment="Top" ToolTip="Anhaken, wenn die Schnittstelle seriell ist" RenderTransformOrigin="1.176,0.375"/>
         <Label x:Name="interfaceTransferRateLBL" Content="Übertragungsrate" HorizontalAlignment="Left" Margin="20,164,0,0" VerticalAlignment="Top"/>
         <TextBox x:Name="interfaceTransferRate" HorizontalAlignment="Left" Height="23" Margin="136,167,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="134" ToolTip="Übertragungsrate in MB/s für die Schnittstelle"/>
-        <Button x:Name="DiskSave" Content="Speichern" HorizontalAlignment="Left" Margin="62,212,0,0" VerticalAlignment="Top" Width="75" Cursor="Hand" Click="InterfaceSave_Click">
+        <Button x:Name="DiskSave" Content="Speichern" HorizontalAlignment="Left" Margin="62,212,0,0" VerticalAlignment="Top" Width="75" Cursor="Hand" Click="InterfaceSave_Click" Focusable="False">
             <Button.Background>
                 <LinearGradientBrush EndPoint="0,1" StartPoint="0,0">
                     <GradientStop Color="#FFD5E8D4" Offset="0"/>
