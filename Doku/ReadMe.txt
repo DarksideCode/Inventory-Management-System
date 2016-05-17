@@ -1,34 +1,18 @@
 ﻿======= Inhalt =======
 
-
-
 - Projekt-Datei als .exe
-
 - Projekt-Mappe für Visual Studio
-
 - SQL-Dateien zum initialen Aufsetzen der Datenbank
 - Projektdokumentation als PDF-Datei
 - Programmierer-Dokumentation als XML
-
 - Diagramme und Mockups
-
-
-
-
 
 
 ======= Systemanforderungen =======
 
-
-
 - Microsoft Windows 7
-
 - .NET-Framework
-
 - MySQL/MariaDB
-- Datenbank
-
-
 
 
 ======= Installation ohne Visual Studio =======
@@ -55,18 +39,11 @@ Um das Projekt auch aus Visual Studio zu betreiben sind nur wenige Schritte nöt
 
 1. Visual Studio starten
 2. Projekt öffnen
-
 3. MySQL-Treiber aus dem Ordner 'Treiber' des Abgabe-Verzeichnises einbinden:
-
 3.1 Rechtsklick auf InformationManagementSystem
-
 3.2 Hinzufügen -> Verweis
-
 3.3 Durchsuchen
-
 3.4 Die Datei mysql.data.dll einfügen
-
-
 
 Die Anwendung sollte sich nun starten lassen. Damit die Unit-Tests keine bestehenden Daten 
 in der Datenbank manipulieren sollten sie auf einer seperaten Datenbank ausgeführt werden.
