@@ -52,6 +52,11 @@ namespace InventoryManagementSystem.components
         public string Hersteller { get; set; }
         public string Schnittstellen { get; set; }
 
+        /// <summary>
+        /// Wandelt ein Objekt der Entität 'Grafikkarte' in eine grafisches Objekt.
+        /// Übersetzt englische Begriffe und zählt alle Schnittstellen in einer Liste auf.
+        /// </summary>
+        /// <param name="entity">Objekt vom Typ 'Grafikkarte'</param>
         public void MapFromEntity(GraphicCard entity)
         {
             this.Id = entity.Id;

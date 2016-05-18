@@ -8,7 +8,7 @@
         Title="Hauptplatine - IMS" Height="337" Width="312" ResizeMode="NoResize">
     <Grid>
         <Label x:Name="CreateEntityName" Content="Mainboard" VerticalAlignment="Top" Margin="73,10,71,0" FontSize="18" FontWeight="Bold" RenderTransformOrigin="-0.15,0.356" Width="156" Opacity="0.9" AllowDrop="True" IsHitTestVisible="False" HorizontalAlignment="Center" HorizontalContentAlignment="Center"/>
-        <Button x:Name="MainboardSave" Content="Speichern" HorizontalAlignment="Left" Margin="62,257,0,0" VerticalAlignment="Top" Width="75" Click="MainboardSave_Click" Cursor="Hand">
+        <Button x:Name="MainboardSave" Content="Speichern" HorizontalAlignment="Left" Margin="62,257,0,0" VerticalAlignment="Top" Width="75" Click="MainboardSave_Click" Cursor="Hand" Focusable="False">
             <Button.Background>
                 <LinearGradientBrush EndPoint="0,1" StartPoint="0,0">
                     <GradientStop Color="#FFD5E8D4" Offset="0"/>
@@ -33,7 +33,7 @@
         <Label x:Name="producerLBL" Content="Hersteller" HorizontalAlignment="Left" Margin="22,179,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.063,0.041"/>
         <ComboBox x:Name="producer" HorizontalAlignment="Left" Margin="136,183,0,0" VerticalAlignment="Top" Width="134"/>
         <Label x:Name="producerLBL_Copy" Content="Schnittstellen" HorizontalAlignment="Left" Margin="23,210,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.063,0.041"/>
-        <Button x:Name="MainboardInterface" Content="Verwalten" HorizontalAlignment="Left" Margin="165,212,0,0" VerticalAlignment="Top" Width="75" Click="MainboardInterface_Click" RenderTransformOrigin="0.474,1.075" Cursor="Hand" ToolTip="Schnittstellen verwalten">
+        <Button x:Name="MainboardInterface" Content="Verwalten" HorizontalAlignment="Left" Margin="165,212,0,0" VerticalAlignment="Top" Width="75" Click="MainboardInterface_Click" RenderTransformOrigin="0.474,1.075" Cursor="Hand" ToolTip="Schnittstellen verwalten" Focusable="False">
             <Button.Background>
                 <LinearGradientBrush EndPoint="0,1" StartPoint="0,0">
                     <GradientStop Color="#FFD5E8D4" Offset="0"/>

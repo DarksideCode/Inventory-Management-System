@@ -58,6 +58,11 @@ namespace InventoryManagementSystem.database.basic
             return entity;
         }
 
+        /// <summary>
+        /// Abstracte Methode für das Umwandeln in ein Objekt der jeweiligen Entität
+        /// </summary>
+        /// <param name="reader">Die Rückgabe der Datenbank</param>
+        /// <returns>Objekt der Entität</returns>
         protected abstract object MapToEntity(MySqlDataReader reader);
 
         /// <summary>

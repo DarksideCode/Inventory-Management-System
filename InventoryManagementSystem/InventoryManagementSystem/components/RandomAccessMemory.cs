@@ -30,6 +30,10 @@
         public double Taktrate { get; set; }
         public string Hersteller { get; set; }
 
+        /// <summary>
+        /// Wandelt ein Objekt der Entität 'Arbeitsspeicher' in eine grafisches Objekt.
+        /// </summary>
+        /// <param name="entity">Objekt vom Typ 'Arbeitsspeicher'</param>
         public void MapFromEntity(RandomAccessMemory entity)
         {
             this.Id = entity.Id;

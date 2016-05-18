@@ -25,7 +25,7 @@
             </Menu.Background>
             <MenuItem Header="Zugewiesen" Width="147" Padding="35,2,8,3"/>
         </Menu>
-        <Button HorizontalAlignment="Left" VerticalAlignment="Top" Width="24" Margin="179,98,0,0" Content="+" RenderTransformOrigin="-2.167,0.545" FontWeight="Bold" Click="Add_Click" Cursor="Hand" ToolTip="Schnittstelle zuweisen">
+        <Button HorizontalAlignment="Left" VerticalAlignment="Top" Width="24" Margin="179,98,0,0" Content="+" RenderTransformOrigin="-2.167,0.545" FontWeight="Bold" Click="Add_Click" Cursor="Hand" ToolTip="Schnittstelle zuweisen" Focusable="False">
             <Button.Background>
                 <LinearGradientBrush EndPoint="0,1" StartPoint="0,0">
                     <GradientStop Color="#FFD5E8D4" Offset="0"/>
@@ -33,7 +33,7 @@
                 </LinearGradientBrush>
             </Button.Background>
         </Button>
-        <Button HorizontalAlignment="Left" VerticalAlignment="Top" Width="24" Margin="179,138,0,0" Content="-" RenderTransformOrigin="0.625,1.364" FontWeight="Bold" Click="Remove_Click" Cursor="Hand" ToolTip="Schnittstelle entfernen">
+        <Button HorizontalAlignment="Left" VerticalAlignment="Top" Width="24" Margin="179,138,0,0" Content="-" RenderTransformOrigin="0.625,1.364" FontWeight="Bold" Click="Remove_Click" Cursor="Hand" ToolTip="Schnittstelle entfernen" Focusable="False">
             <Button.Background>
                 <LinearGradientBrush EndPoint="0,1" StartPoint="0,0">
                     <GradientStop Color="#FFD5E8D4" Offset="0"/>

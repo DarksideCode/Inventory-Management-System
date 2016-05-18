@@ -52,6 +52,11 @@ namespace InventoryManagementSystem.components
         public string Hersteller { get; set; }
         public string Schnittstellen { get; set; }
 
+        /// <summary>
+        /// Wandelt ein Objekt der Entität 'Monitor' in eine grafisches Objekt.
+        /// Übersetzt englische Begriffe und zählt alle Schnittstellen in einer Liste auf.
+        /// </summary>
+        /// <param name="entity">Objekt vom Typ 'Monitor'</param>
         public void MapFromEntity(Monitor entity)
         {
             this.Id = entity.Id;

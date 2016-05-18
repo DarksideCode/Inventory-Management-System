@@ -22,8 +22,15 @@ namespace InventoryManagementSystem.presentation
     /// </summary>
     public partial class EditPhysicalInterfaces : Window
     {
+        /// <summary>
+        /// Liste der Schnittstellen, welche der Entität zugewiesen wurden
+        /// </summary>
         public List<PhysicalInterfaceWithCount> list;
 
+        /// <summary>
+        /// Konstruktor: Initalisiert die Komponenten und lädt die Liste aller Schnittstellen
+        /// </summary>
+        /// <param name="usedEntities"></param>
         public EditPhysicalInterfaces(List<PhysicalInterfaceWithCount> usedEntities)
         {
             InitializeComponent();

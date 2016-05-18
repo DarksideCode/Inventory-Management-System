@@ -4,7 +4,7 @@
         Title="Inventory Management System - IMS" Height="370" Width="600" Loaded="Window_Loaded" ResizeMode="NoResize">
     <Grid>
         <DataGrid x:Name="dataGrid" HorizontalAlignment="Left" Margin="184,48,0,0" VerticalAlignment="Top" Height="196" Width="391" Background="White" BorderBrush="Black" IsReadOnly="True"/>
-        <Button x:Name="newBtn" Content="Neu" HorizontalAlignment="Left" Margin="246,295,0,0" VerticalAlignment="Top" Width="79" Height="31" Click="NewBtn_Click" FontWeight="Bold" Cursor="Hand">
+        <Button x:Name="newBtn" Content="Neu" HorizontalAlignment="Left" Margin="246,295,0,0" VerticalAlignment="Top" Width="79" Height="31" Click="NewBtn_Click" FontWeight="Bold" Cursor="Hand" IsHitTestVisible="True" IsTabStop="False" Focusable="False">
             <Button.Background>
                 <LinearGradientBrush EndPoint="0,1" StartPoint="0,0">
                     <GradientStop Color="#FFD5E8D4" Offset="0"/>
@@ -12,7 +12,7 @@
                 </LinearGradientBrush>
             </Button.Background>
         </Button>
-        <Button x:Name="editBtn" Content="Bearbeiten" HorizontalAlignment="Left" Margin="353,295,0,0" VerticalAlignment="Top" Width="79" Height="31" FontWeight="Bold" Click="EditBtn_Click" Cursor="Hand">
+        <Button x:Name="editBtn" Content="Bearbeiten" HorizontalAlignment="Left" Margin="353,295,0,0" VerticalAlignment="Top" Width="79" Height="31" FontWeight="Bold" Click="EditBtn_Click" Cursor="Hand" Focusable="False">
             <Button.Background>
                 <LinearGradientBrush EndPoint="0,1" StartPoint="0,0">
                     <GradientStop Color="#FFD5E8D4" Offset="0"/>
@@ -20,7 +20,7 @@
                 </LinearGradientBrush>
             </Button.Background>
         </Button>
-        <Button x:Name="deleteBtn" HorizontalAlignment="Left" Margin="457,295,0,0" VerticalAlignment="Top" Width="79" Height="31" Click="Delete_Entity" FontWeight="Bold" Content="Löschen" Cursor="Hand">
+        <Button x:Name="deleteBtn" HorizontalAlignment="Left" Margin="457,295,0,0" VerticalAlignment="Top" Width="79" Height="31" Click="Delete_Entity" FontWeight="Bold" Content="Löschen" Cursor="Hand" Focusable="False">
             <Button.Background>
                 <LinearGradientBrush EndPoint="0,1" StartPoint="0,0">
                     <GradientStop Color="#FFD5E8D4" Offset="0"/>
@@ -55,7 +55,7 @@
             <MenuItem x:Name="menu_producer" Header="Hersteller" Width="159" Click="Producer_Selected" Cursor="Hand" ToolTip="Hersteller"/>
             <MenuItem x:Name="menu_interface" Header="Schnittstelle" Click="Interface_Selected" Width="159" Cursor="Hand" ToolTip="Schnittstelle"/>
         </Menu>
-        <Button x:Name="ConfigBtn" Content="" Margin="539,10,19,299" Click="ConfigBtn_Click">
+        <Button x:Name="ConfigBtn" Content="" Margin="539,10,19,299" Click="ConfigBtn_Click" Focusable="False">
             <Button.OpacityMask>
                 <ImageBrush ImageSource="/InventoryManagementSystem;component/images/config.jpg" Stretch="Uniform" TileMode="Tile"/>
             </Button.OpacityMask>

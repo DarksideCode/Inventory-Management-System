@@ -23,7 +23,7 @@
         <CheckBox x:Name="DiskType" Content="" HorizontalAlignment="Left" Margin="196,175,0,0" VerticalAlignment="Top" ToolTip="Anhaken, wenn die Festplatte eine SSD ist" RenderTransformOrigin="1.176,0.375"/>
         <Label x:Name="DiskProducerLBL" Content="Hersteller" HorizontalAlignment="Left" Margin="20,201,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.541,-0.537"/>
         <ComboBox x:Name="DiskProducer" HorizontalAlignment="Left" Margin="136,205,0,0" VerticalAlignment="Top" Width="134"/>
-        <Button x:Name="DiskSave" Content="Speichern" HorizontalAlignment="Left" Margin="62,281,0,-6" VerticalAlignment="Top" Width="75" Click="DiskSave_Click" Cursor="Hand">
+        <Button x:Name="DiskSave" Content="Speichern" HorizontalAlignment="Left" Margin="62,281,0,-6" VerticalAlignment="Top" Width="75" Click="DiskSave_Click" Cursor="Hand" Focusable="False">
             <Button.Background>
                 <LinearGradientBrush EndPoint="0,1" StartPoint="0,0">
                     <GradientStop Color="#FFD5E8D4" Offset="0"/>
@@ -40,7 +40,7 @@
             </Button.Background>
         </Button>
         <Label x:Name="DiskInterfaceLBL" Content="Schnittstelle" HorizontalAlignment="Left" Margin="20,232,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.541,-0.537"/>
-        <Button x:Name="DiskInterfaceBtn" Content="Verwalten" HorizontalAlignment="Left" Margin="165,236,0,0" VerticalAlignment="Top" Width="75" Click="DiskInterface_Click" RenderTransformOrigin="0.474,1.075" Cursor="Hand" ToolTip="Schnittstellen verwalten">
+        <Button x:Name="DiskInterfaceBtn" Content="Verwalten" HorizontalAlignment="Left" Margin="165,236,0,0" VerticalAlignment="Top" Width="75" Click="DiskInterface_Click" RenderTransformOrigin="0.474,1.075" Cursor="Hand" ToolTip="Schnittstellen verwalten" Focusable="False">
             <Button.Background>
                 <LinearGradientBrush EndPoint="0,1" StartPoint="0,0">
                     <GradientStop Color="#FFD5E8D4" Offset="0"/>
